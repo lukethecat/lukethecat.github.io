@@ -1,0 +1,47 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 456 456'>
+  <!-- 背景圆形 -->
+  <circle cx='228' cy='228' r='220' fill='white' stroke='#8B4513' stroke-width='8'/>
+  
+  <!-- 简化的山脉轮廓 - 代表新疆的山脉 -->
+  <path d='M156 280 L206 220 L256 260 L306 210 L356 280' fill='none' stroke='#8B4513' stroke-width='6' stroke-linejoin='round'/>
+  
+  <!-- 简化的卷轴 -->
+  <path d='M156 180 L306 180 L306 250 L156 250 Z' fill='#F5F5DC' stroke='#8B4513' stroke-width='3'/>
+  
+  <!-- 简化的装饰线 -->
+  <path d='M176 215 L286 215' stroke='#8B4513' stroke-width='2'/>
+  
+  <!-- 墨迹效果 -->
+  <path d='M228 160 Q248 200 228 240 Q208 200 228 160' fill='#8B4513' opacity='0.7'/>
+  
+  <!-- 李瑜汉字 - 简化风格 -->
+  <text x='228' y='225' font-family='Arial, sans-serif' font-size='45' text-anchor='middle' fill='#8B4513' font-weight='bold' style='font-family: "STKaiti", "AR PL UKai CN", serif;'>李瑜</text>
+  
+  <!-- 添加动画效果 -->
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes drawLine {
+      from { stroke-dashoffset: 1000; }
+      to { stroke-dashoffset: 0; }
+    }
+    
+    path {
+      animation: fadeIn 1.5s ease-in-out forwards;
+    }
+    
+    path[stroke] {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: drawLine 2s ease-in-out forwards;
+    }
+    
+    text {
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out 1.5s forwards;
+    }
+  </style>
+</svg>

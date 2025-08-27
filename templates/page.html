@@ -30,7 +30,7 @@
   {% set relpath = current_path ~ page.extra.social_img %}
   {%- set social_img = get_url(path=relpath) %}
 {% else %}
-  {%- set social_img = "https://endler.dev/default.png" %}
+  {%- set social_img = "https://www.liyupoetry.com/liyu_logo.svg" %}
 {%- endif %}
 
 <meta property="og:title" content="{{ page.title }} | 李瑜" />
@@ -45,10 +45,12 @@
 <meta name="twitter:site" content="@liyupoetry">
 <meta name="twitter:creator" content="@liyupoetry">
 <meta name="twitter:image" content="{{ social_img | safe }}">
+<link rel="icon" href="/favicon.svg" />
 {%- endblock header -%}
 
 {%- block site_header %}
 <header>
+    {% set logo = load_data(path="static/liyu_logo.svg") %}
   <div class="site-header">
     <a href="/" aria-label="Go back to homepage">
       <div class="logo">{{ logo | safe }}</div>

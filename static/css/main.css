@@ -1,5 +1,5 @@
 :root {
-  --body-font: "Merriweather", Georgia, "Times New Roman", serif;
+  --body-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --heading-font: "Happy", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --mono-font: "JetBrainsMono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   
@@ -18,7 +18,7 @@
   --dark-border: rgba(255, 255, 255, 0.2);
   
   --base-font-size: calc(1em + 0.32vw);
-  --line-height: 1.75;
+  --line-height: 1.8;
   
   /* Layout */
   --max-width: 34em; 
@@ -118,11 +118,12 @@ body {
   line-height: var(--line-height);
   color: var(--text-color);
   background: var(--background);
-  hyphens: none;
+  hyphens: auto;
   overflow-wrap: break-word;
   font-variant-ligatures: common-ligatures;
   font-feature-settings: "kern", "liga", "clig", "calt";
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
+  text-rendering: optimizeLegibility;
 }
 
 .container {
@@ -131,7 +132,11 @@ body {
 }
 
 p { 
-  margin-bottom: 1.6em;
+  margin-bottom: 1.8em;
+  text-align: justify;
+  text-justify: inter-word;
+  orphans: 2;
+  widows: 2;
 }
 
 ::selection {
@@ -154,18 +159,25 @@ h6 {
 
 h1 {
   font-size: 2.0em;
-  line-height: 1.2;
+  line-height: 1.3;
+  margin-bottom: 1.2em;
+  letter-spacing: -0.02em;
 }
 
 h2 {
   font-size: 1.5em;
-  margin-top: 70px;
-  line-height: 1.3;
+  margin-top: 2.5em;
+  margin-bottom: 1.2em;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
 }
 
 h3 {
   font-size: 1.2em;
-  margin-top: 40px;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
 }
 
 article h1,
@@ -233,11 +245,36 @@ header {
 .logo {
   width: 50px;
   height: 50px;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 
 .homepage-header .logo {
   width: 80px;
   height: 80px;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .homepage-header {
+    padding: 40px 0 60px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .site-header {
+    padding: 40px 0 0;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .homepage-header .logo {
+    width: 60px;
+    height: 60px;
+  }
 }
 
 header h1,
@@ -274,6 +311,34 @@ main article {
   overflow-wrap: anywhere;
 }
 
+/* 印刷品质感优化 */
+.article-content p:first-of-type {
+  text-indent: 0;
+}
+
+.article-content p:not(:first-of-type) {
+  text-indent: 2em;
+  margin-top: 0;
+}
+
+.article-content blockquote {
+  margin: 2em 0;
+  padding: 1em 2em;
+  border-left: 3px solid var(--accent-color);
+  background: var(--surface-color);
+  font-style: italic;
+  text-indent: 0;
+}
+
+.article-content blockquote p {
+  text-indent: 0;
+  margin-bottom: 1em;
+}
+
+.article-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
 /* Article styles */
 .article-header {
   text-align: center;
@@ -299,6 +364,10 @@ main article {
 
 .article-content {
   margin: 0 auto;
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 1.85;
+  word-spacing: 0.05em;
 }
 
 .post-meta {

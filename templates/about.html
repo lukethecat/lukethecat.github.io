@@ -1,12 +1,15 @@
 {% extends "index.html" %}
 
 {% block header %}
-<title>李瑜 - 诗人、作家</title>
+<title>{{ page.title }} | 李瑜</title>
+
+<link rel="preload" href="/fonts/Happy-Headline.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/merriweather-v31-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
 
 <!-- Open Graph meta tags (Facebook, LinkedIn, etc.) -->
 <meta property="og:title" content="关于李瑜" />
 <meta property="og:description" content="中国作家协会会员，新疆诗人，创作了《准噶尔诗草》《啊，伊犁河水漂白了我的军衣》等诗集" />
-<meta property="og:image" content="https://www.liyupoetry.com/default.svg" />
+<meta property="og:image" content="https://www.liyupoetry.com/liyu_logo.svg" />
 <meta property="og:image:alt" content="李瑜 - 诗人、作家" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -18,13 +21,13 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="关于李瑜" />
 <meta name="twitter:description" content="中国作家协会会员，新疆诗人，创作了《准噶尔诗草》《啊，伊犁河水漂白了我的军衣》等诗集" />
-<meta name="twitter:image" content="https://www.liyupoetry.com/default.svg" />
+<meta name="twitter:image" content="https://www.liyupoetry.com/liyu_logo.svg" />
 <meta name="twitter:image:alt" content="李瑜 - 诗人、作家" />
 
 <meta name="description" content="中国作家协会会员，新疆诗人，创作了《准噶尔诗草》《啊，伊犁河水漂白了我的军衣》等诗集" />
 <meta name="author" content="李瑜 (Li Yu)" />
 
-<meta name="thumbnail" content="https://www.liyupoetry.com/default.svg" />
+<meta name="thumbnail" content="https://www.liyupoetry.com/liyu_logo.svg" />
 
 <script type="application/ld+json">
 {
@@ -32,7 +35,7 @@
   "@type": "Person",
   "name": "李瑜",
   "url": "https://www.liyupoetry.com/about/",
-  "image": "https://www.liyupoetry.com/default.svg",
+  "image": "https://www.liyupoetry.com/liyu_logo.svg",
   "jobTitle": "诗人、作家",
   "description": "中国作家协会会员，新疆诗人，创作了《准噶尔诗草》《啊，伊犁河水漂白了我的军衣》等诗集",
   "worksFor": {
@@ -50,27 +53,103 @@
 </script>
 
 <style>
+    @font-face {
+        font-family: "Happy-Headline";
+        src: url("/fonts/Happy-Headline.woff2") format("woff2"); 
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "Happy";
+        src: url("/fonts/Happy.woff2") format("woff2");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "JetBrainsMono";
+        src: url("/fonts/JetBrainsMono-Regular.woff2") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-display: swap;
+        font-family: 'Merriweather';
+        font-style: normal;
+        font-weight: 400;
+        src: url('/fonts/merriweather-v31-latin-regular.woff2') format('woff2');
+    }
+
+    @font-face {
+        font-display: swap;
+        font-family: 'Merriweather';
+        font-style: italic;
+        font-weight: 400;
+        src: url('/fonts/merriweather-v31-latin-italic.woff2') format('woff2');
+    }
+
+    @font-face {
+        font-display: swap;
+        font-family: 'Merriweather';
+        font-style: bold;
+        font-weight: 700;
+        src: url('/fonts/merriweather-v31-latin-700.woff2') format('woff2');
+    }
+
     .profile-photo-inline {
         width: 150px;
         height: 150px;
         border-radius: 8px;
         float: left;
-        margin: 1rem 2rem 0 0;
+        margin: 1rem 2rem 1rem 0;
         left: 0;
         transform: translateX(0);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     /* Normal links in the stars table look quite busy */
     table a {
         text-decoration: none;
     }
+    
+    /* About页面特定的排版优化 */
+    article {
+        text-align: justify;
+        text-justify: inter-word;
+        line-height: 1.85;
+        word-spacing: 0.05em;
+    }
+    
+    article h1 {
+        text-align: center;
+        margin-bottom: 2em;
+        letter-spacing: -0.02em;
+    }
+    
+    article p {
+        margin-bottom: 1.8em;
+        text-indent: 2em;
+        orphans: 2;
+        widows: 2;
+    }
+    
+    article p:first-of-type {
+        text-indent: 0;
+        margin-top: 0;
+    }
+    
+    /* 确保头像周围的文字环绕效果更好 */
+    .profile-photo-inline + p {
+        text-indent: 0;
+    }
 </style>
 
-<link rel="apple-touch-icon" sizes="180x180" href="/about/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/about/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/about/favicon-16x16.png">
-<link rel="manifest" href="/about/site.webmanifest">
-<link rel="shortcut icon" href="/about/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 {% endblock header %}
 
 {% block content %}
@@ -78,7 +157,7 @@
 <article>
     <h1>{{ page.title }}</h1>
     
-    <img src="/default.svg" 
+    <img src="/liyu_logo.svg" 
          alt="李瑜的头像" 
          class="profile-photo-inline"
          width="150" 
