@@ -165,4 +165,14 @@
     
     {{ page.content | safe }}
 </article>
+
+<script>
+// 给about页面的表格添加样式类
+document.addEventListener('DOMContentLoaded', function() {
+    const tables = document.querySelectorAll('article table');
+    tables.forEach(table => {
+        table.classList.add('about-table');
+    });
+});
+</script>
 {% endblock content %}
