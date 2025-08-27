@@ -1,78 +1,50 @@
 {% extends "index.html" %}
 
 {% block header %}
-<title>Matthias Endler - Rust Consultant & Open Source Maintainer</title>
+<title>李瑜 - 诗人、作家</title>
 
 <!-- Open Graph meta tags (Facebook, LinkedIn, etc.) -->
-<meta property="og:title" content="About Matthias Endler" />
-<meta property="og:description" content="Rust consultant and open source developer, creator of lychee link checker, host of 'Rust in Production' podcast" />
-<meta property="og:image" content="https://endler.dev/about/matthias-endler.jpg" />
-<meta property="og:image:alt" content="Matthias Endler - Software Engineer" />
+<meta property="og:title" content="关于李瑜" />
+<meta property="og:description" content="中国作家协会会员，新疆诗人，创作了《准噶尔诗草》《啊，伊犁河水漂白了我的军衣》等诗集" />
+<meta property="og:image" content="https://www.liyupoetry.com/default.svg" />
+<meta property="og:image:alt" content="李瑜 - 诗人、作家" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://endler.dev/about/" />
+<meta property="og:url" content="https://www.liyupoetry.com/about/" />
 <meta property="og:type" content="profile" />
-<meta property="og:site_name" content="Matthias Endler" />
+<meta property="og:site_name" content="西域诗魂｜李瑜和他的作品" />
 
 <!-- Twitter Card meta tags -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="About Matthias Endler" />
-<meta name="twitter:description" content="Rust consultant and open source developer, creator of lychee link checker, host of 'Rust in Production' podcast" />
-<meta name="twitter:image" content="https://endler.dev/about/matthias-endler.jpg" />
-<meta name="twitter:image:alt" content="Matthias Endler - Software Engineer" />
+<meta name="twitter:title" content="关于李瑜" />
+<meta name="twitter:description" content="中国作家协会会员，新疆诗人，创作了《准噶尔诗草》《啊，伊犁河水漂白了我的军衣》等诗集" />
+<meta name="twitter:image" content="https://www.liyupoetry.com/default.svg" />
+<meta name="twitter:image:alt" content="李瑜 - 诗人、作家" />
 
-<meta name="description" content="Rust consultant and open source developer, creator of lychee link checker, host of 'Rust in Production' podcast" />
-<meta name="author" content="Matthias Endler" />
+<meta name="description" content="中国作家协会会员，新疆诗人，创作了《准噶尔诗草》《啊，伊犁河水漂白了我的军衣》等诗集" />
+<meta name="author" content="李瑜 (Li Yu)" />
 
-<meta name="thumbnail" content="https://endler.dev/about/matthias-endler.jpg" />
+<meta name="thumbnail" content="https://www.liyupoetry.com/default.svg" />
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Matthias Endler",
-  "alternateName": "mre",
-  "url": "https://endler.dev/about/",
-  "image": "https://endler.dev/about/matthias-endler.jpg",
-  "jobTitle": "Rust Consultant & Open Source Maintainer",
-  "description": "Rust consultant and open source developer, creator of lychee link checker, host of 'Rust in Production' podcast",
+  "name": "李瑜",
+  "url": "https://www.liyupoetry.com/about/",
+  "image": "https://www.liyupoetry.com/default.svg",
+  "jobTitle": "诗人、作家",
+  "description": "中国作家协会会员，新疆诗人，创作了《准噶尔诗草》《啊，伊犁河水漂白了我的军衣》等诗集",
   "worksFor": {
     "@type": "Organization",
-    "name": "corrode",
-    "url": "https://corrode.dev"
+    "name": "中国作家协会",
+    "url": "https://www.liyupoetry.com"
   },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Düsseldorf",
-    "addressCountry": "Germany"
-  },
-  "sameAs": [
-    "https://github.com/mre",
-    "https://twitter.com/matthiasendler",
-    "https://linkedin.com/in/matthiasendler"
-  ],
+  "sameAs": [],
   "knowsAbout": [
-    "Rust Programming",
-    "Backend Development",
-    "Open Source Software",
-    "Technical Consulting",
-    "Software Architecture"
-  ],
-  "owns": [
-    {
-      "@type": "SoftwareApplication",
-      "name": "lychee",
-      "description": "Fast, async link checker written in Rust",
-      "url": "https://github.com/lycheeverse/lychee"
-    }
-  ],
-  "creator": [
-    {
-      "@type": "PodcastSeries",
-      "name": "Rust in Production",
-      "description": "Podcast about companies using Rust in production",
-      "url": "https://corrode.dev/podcast/"
-    }
+    "诗歌创作",
+    "文学",
+    "新疆文化"
   ]
 }
 </script>
@@ -106,8 +78,8 @@
 <article>
     <h1>{{ page.title }}</h1>
     
-    <img src="https://endler.dev/about/matthias-endler.jpg" 
-         alt="Photograph of Matthias Endler taken in 2024" 
+    <img src="/default.svg" 
+         alt="李瑜的头像" 
          class="profile-photo-inline"
          width="150" 
          height="150" />

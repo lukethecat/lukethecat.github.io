@@ -1,9 +1,9 @@
 # The URL the site will be built for
-base_url = "http://www.liyupoetry.com"
+base_url = "https://www.liyupoetry.com"
 
 title = "西域诗魂｜李瑜和他的作品"
 description = "李瑜和他的小说，散文和诗歌，也会有他收藏的国画作品展示。"
-author = "103032@qq.com (Jaco Li/李家锟)"
+author = "李瑜 (Li Yu)"
 
 generate_feeds = true
 feed_filenames = ["atom.xml", "rss.xml"]

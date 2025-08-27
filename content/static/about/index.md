@@ -1,96 +1,67 @@
 +++
-title = "Hey, it's me!"
+title = "关于我"
 path = "about"
 template = "about.html"
 +++
 
 |                 |                                                                                                                                                             |
 | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 🗺️ **Living in**   | Düsseldorf, Germany                                                                                                                                         |
-| 🏭 **Company**     | [corrode](https://corrode.dev) (Rust Consulting)                                                                                                            |
-| 🎙️ **Podcast**     | Host of [Rust in Production](https://corrode.dev/podcast)                                                                                                   |
-| ❤️ **Open Source** | [lychee](https://lychee.cli.rs), [Analysis Tools](https://analysis-tools.dev), [Idiomatic Rust](https://github.com/mre/idiomatic-rust), [...](#open-source) |
-| 🎯 **Focus areas** | Rust, backend systems, performance optimizations                                                                                                            |
-| 🎓 **Education**   | M. Sc. Computer Science, [Universität Bayreuth](https://www.uni-bayreuth.de/)                                                                               |
-| 🤝 **Contact**     | [Linkedin], [Twitter], [Mastodon], [GitHub], [Email]                                                                                                        |
+| 🗺️ **居住地**   | 新疆，中国                                                                                                                                         |
+| 📚 **作品**     | 《准噶尔诗草》《啊，伊犁河水漂白了我的军衣》《战争与城》《为了爱情，巴格达不嫌远》《汗血马》《黑罂粟》                                                                                                            |
+| 🎯 **创作领域** | 诗歌、散文、小说                                                                                                            |
+| 🏆 **荣誉**   | 中国作家协会会员                                                                               |
+| 🤝 **联系方式**     | 微信公众号，微博，豆瓣                                                                                                        |
 
-## The Full Story 
+## 个人简介 
 
-My first computer was a Vobis Highscreen Big Tower with a 16 MHz 386SX.
-I managed to get Windows 95 running on it, which took 50 out of the available 60 MB of
-disk space. Booting Win95 took around 30 minutes on that machine; it was glorious.
-Eventually I fried it when I flipped the voltage switch from 230V to 115V while it was running.
+李瑜，男，汉族，1980年生于新疆伊犁哈萨克自治州伊宁市，中国作家协会会员。
 
-I fried a few more computers, but I also helped fix some. I learned how to
-configure routers and set up networks before I had internet access, because
-we used to have print magazines with articles about how to do that,
-and people paid money to get them online.
+我的诗歌创作丰富，有诗集《准噶尔诗草》《啊，伊犁河水漂白了我的军衣》《战争与城》《为了爱情，巴格达不嫌远》《汗血马》等。《战争与城》是一部正面描述战争的短诗结集。诗作揭示了战争中人的生存本质，从哲学层面完成了生者与死者的对话。
 
-As a kid living up on a mountain with no internet, the only programming language
-I had access to was QBASIC because it came pre-installed with the OS, including the documentation.
-I learned to program by brute force, typing in commands and seeing what
-happened.
-The first game I wrote was an Asteroids clone, but I didn't know what arrays were,
-so all asteroids had hardcoded names in the program.
-Later, I wrote a table tennis game for two players with nice graphics and double-buffering, but
-when I reinstalled the operating system, I forgot to save it to a floppy disk.
-Those were the days.
+诗集《黑罂粟》堪称我诗歌创作的压卷之作。诗集对新疆的自然风光和人文景观，进行了全景式立体的诗歌扫描。
 
-This is also around the time I started to have my own blog.
-I've been maintaining some form of personal website for more than 25 years now. Some of the [different versions](https://github.com/mre/endler.dev) are still available on GitHub and the Internet Archive.
+我的诗风忧伤、缠绵、轻柔、淡远。以独特的诗美为"新边塞诗"的多样性和丰富性作出了特殊的贡献。
 
-My first Linux distribution was Aurox, as it came with one of these magazines.
-After that, I was a proud Slackware user for a few years and managed to break my kernel and boot loader on a regular basis,
-as was customary in those days.
-The first version of my penguin logo dates back to that time, too.
+除了诗歌创作外，我也创作散文和小说，作品常以新疆的自然风光和人文历史为背景，展现了西域独特的魅力和文化底蕴。
 
-My [first company](https://web.archive.org/web/20111128060819/http://www.ebit-systems.de/) was a small software consultancy that I founded with my friend Johannes.
-We fixed hardware, created websites, and wrote simple applications for mid-sized companies in the region.
+我热爱中国传统文化，尤其是国画艺术。在这个网站上，我也会分享一些我收藏的国画作品，希望能与大家一起欣赏中国传统艺术的魅力。
 
-Later on, I studied Computer Science at [Universit&auml;t Bayreuth] and started to contribute to open-source software.
-After graduating, I went on to work as a backend engineer at [trivago], where I
-mostly dealt with website performance and scaling our backend systems. 
+感谢您访问我的个人网站，希望我的作品能给您带来一些思考和感动。
+ 
 
-I learned many programming languages throughout the years, but ever since I learned of Rust in 2015, I've been using it as my main programming language.
-In 2021, I founded [corrode](https://corrode.dev), a consulting company that helps teams
-make the most of Rust.
 
-I usually go by my handle `mre` on the internet, which is short for "Matthias Richard Endler".
-You can find me on [Mastodon], [Twitter], [LinkedIn], and [GitHub].
-Here is a list of my [public speaking][talks] engagements.
 
-If you wish to get in touch, feel free to [schedule a meeting][calendar] or [send me an e-mail][email].
 
-## Active Projects / Companies
 
-- [Rust in Production](https://corrode.dev/podcast): A podcast about companies using Rust in production.
-- [Open Podcast](https://openpodcast.app): An open platform for podcast analytics.
-- [lychee](https://lychee.cli.rs): A fast link checker written in Rust.
-- [Analysis Tools](https://analysis-tools.dev): An open comparison
-  platform for static/dynamic code analysis software, listing 600+ tools.
-- [Idiomatic Rust](https://github.com/mre/idiomatic-rust): A
-  peer-reviewed collection of articles/talks/repos that teach concise, idiomatic
-  Rust.
 
-## Previous Projects / Companies
 
-- [codeprints](https://codeprints.dev): A shop for framed art prints of your
-  Github contributions (co-founder, since acquired).
-- [Hello, Rust!](https://corrode.dev/hello-rust/): A YouTube channel about the Rust programming language
-  (discontinued).
+如果您想与我联系，可以通过微信公众号或者在网站上留言。
 
-## Open Source
+## 主要作品
 
-As of today, I have started more than 100 open source projects. Here's a list of the more popular ones:
+- 《准噶尔诗草》：收录了我早期创作的诗歌作品，以新疆准噶尔地区的自然风光和历史文化为主题。
+- 《啊，伊犁河水漂白了我的军衣》：以军旅生活为背景的诗集，展现了边疆军人的生活和情感。
+- 《战争与城》：一部正面描述战争的短诗结集，揭示了战争中人的生存本质。
+- 《为了爱情，巴格达不嫌远》：以爱情为主题的诗集，展现了爱情的力量和美好。
+- 《汗血马》：以新疆特有的汗血宝马为意象，创作的一系列诗歌作品。
+- 《黑罂粟》：我诗歌创作的压卷之作，对新疆的自然风光和人文景观进行了全景式立体的诗歌扫描。
+- 《散文集》：收录了我创作的散文作品，以新疆的自然风光和人文历史为背景。
+- 《小说集》：我的小说创作，展现了西域独特的魅力和文化底蕴。
+- 《国画收藏》：我收藏的中国传统国画作品，展现了中国传统艺术的魅力。
 
-{{ load_stars() }}
+  
 
-[universit&auml;t bayreuth]: https://www.uni-bayreuth.de
-[trivago]: https://tech.trivago.com/
-[talks]: @/static/talks/index.md
-[github]: https://github.com/mre/
-[twitter]: https://twitter.com/matthiasendler
-[linkedin]: https://www.linkedin.com/in/matthiasendler/
-[mastodon]: https://mastodon.social/@mre
-[calendar]: https://cal.com/matthias-endler
-[email]: mailto:matthias@endler.dev
+## 荣誉与成就
+
+- 中国作家协会会员
+- 新疆作家协会理事
+- 多次获得全国性诗歌奖项
+- 作品被翻译成多种语言在国际上发表
+## 创作理念
+
+我的创作以新疆的自然风光和人文历史为背景，致力于通过诗歌、散文和小说展现西域独特的魅力和文化底蕴。我的创作理念包括：
+
+- **真实性**：忠实记录和表达新疆的自然风光和人文历史，力求真实反映西域的独特魅力。
+- **情感性**：通过细腻的情感描写，展现人与自然、人与历史的情感联系。
+- **哲理性**：在作品中融入哲学思考，探讨生命、爱情、战争等永恒主题。
+- **艺术性**：注重语言的美感和意象的运用，创造独特的诗美。
