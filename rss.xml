@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>西域诗魂｜李瑜和他的作品</title>
+      <link>https://www.liyupoetry.com</link>
+      <description>李瑜和他的小说，散文和诗歌，也会有他收藏的国画作品展示。</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://www.liyupoetry.com/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Mon, 25 Aug 2025 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>李瑜</title>
+          <pubDate>Mon, 25 Aug 2025 00:00:00 +0000</pubDate>
+          <author>李瑜 (Li Yu)</author>
+          <link>https://www.liyupoetry.com/1980/li-yu/</link>
+          <guid>https://www.liyupoetry.com/1980/li-yu/</guid>
+          <description xml:base="https://www.liyupoetry.com/1980/li-yu/">&lt;p&gt;李瑜诗歌创作丰富，有诗集《准噶尔诗草》《啊，伊犁河水漂白了我的军衣》《战争与城》《为了爱情，巴格达不嫌远》《汗血马》。《战争与城》是一部正面描述战争的短诗结集。诗作揭示了战争中人的生存本质，从哲学层面完成了生者与死者的对话。诗集《黑罂粟》堪称李瑜诗歌创作的压卷之作。诗集对新疆的自然风光和人文景观，进行了全景式立体的诗歌扫描。李瑜的诗风忧伤、缠绵、轻柔、淡远。李瑜以他那独特的诗美为“新边塞诗”的多样性和丰富性作出了特殊的贡献。&lt;&#x2F;p&gt;
+</description>
+      </item>
+      <item>
+          <title>Search Index</title>
+          <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+          <author>李瑜 (Li Yu)</author>
+          <link>https://www.liyupoetry.com/tinysearch.json/</link>
+          <guid>https://www.liyupoetry.com/tinysearch.json/</guid>
+          <description xml:base="https://www.liyupoetry.com/tinysearch.json/"></description>
+      </item>
+      <item>
+          <title>Github Stars</title>
+          <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+          <author>李瑜 (Li Yu)</author>
+          <link>https://www.liyupoetry.com/static/about/stars/</link>
+          <guid>https://www.liyupoetry.com/static/about/stars/</guid>
+          <description xml:base="https://www.liyupoetry.com/static/about/stars/">&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th style=&quot;text-align: left&quot;&gt;Repository&lt;&#x2F;th&gt;&lt;th style=&quot;text-align: right&quot;&gt;Stars&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;analysis-tools-dev&#x2F;static-analysis&quot;&gt;analysis-tools-dev&#x2F;static-analysis&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;14025 ★&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mre&#x2F;idiomatic-rust&quot;&gt;mre&#x2F;idiomatic-rust&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;7234 ★&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;lycheeverse&#x2F;lychee&quot;&gt;lycheeverse&#x2F;lychee&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;2887 ★&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;tinysearch&#x2F;tinysearch&quot;&gt;tinysearch&#x2F;tinysearch&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;2824 ★&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mre&#x2F;the-coding-interview&quot;&gt;mre&#x2F;the-coding-interview&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;1732 ★&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;analysis-tools-dev&#x2F;dynamic-analysis&quot;&gt;analysis-tools-dev&#x2F;dynamic-analysis&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;1026 ★&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ReceiptManager&#x2F;receipt-parser-legacy&quot;&gt;ReceiptManager&#x2F;receipt-parser-legacy&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;849 ★&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mre&#x2F;hyperjson&quot;&gt;mre&#x2F;hyperjson&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;509 ★&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;lycheeverse&#x2F;lychee-action&quot;&gt;lycheeverse&#x2F;lychee-action&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;384 ★&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mre&#x2F;cargo-inspect&quot;&gt;mre&#x2F;cargo-inspect&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;381 ★&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;hello-rust&#x2F;show&quot;&gt;hello-rust&#x2F;show&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;313 ★&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mre&#x2F;fcat&quot;&gt;mre&#x2F;fcat&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;275 ★&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mre&#x2F;vscode-snippet&quot;&gt;mre&#x2F;vscode-snippet&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;249 ★&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mre&#x2F;kafka-influxdb&quot;&gt;mre&#x2F;kafka-influxdb&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;217 ★&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mre&#x2F;timelapse&quot;&gt;mre&#x2F;timelapse&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;213 ★&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ReceiptManager&#x2F;receipt-manager-app&quot;&gt;ReceiptManager&#x2F;receipt-manager-app&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;211 ★&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mre&#x2F;prettyprint&quot;&gt;mre&#x2F;prettyprint&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;201 ★&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mre&#x2F;zerocal&quot;&gt;mre&#x2F;zerocal&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;169 ★&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ReceiptManager&#x2F;receipt-parser-server&quot;&gt;ReceiptManager&#x2F;receipt-parser-server&lt;&#x2F;a&gt;&lt;&#x2F;td&gt;&lt;td style=&quot;text-align: right&quot;&gt;103 ★&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+</description>
+      </item>
+    </channel>
+</rss>
