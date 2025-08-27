@@ -30,6 +30,12 @@
       </p>
 
       {% include "snippets/social.html" %}
+      
+      <div class="last-updated">
+        <small style="color: var(--meta-color); font-size: 0.8em; opacity: 0.7;">
+          最后更新：{{ now() | date(format="%Y-%m-%d") }}
+        </small>
+      </div>
     </div>
   </div>
   <script>
