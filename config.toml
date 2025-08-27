@@ -1,9 +1,9 @@
 # The URL the site will be built for
-base_url = "https://endler.dev"
+base_url = "http://www.liyupoetry.com"
 
-title = "Matthias Endler"
-description = "Consultant at corrode.dev. Likes just-in-time compilers and hot chocolate"
-author = "matthias@endler.dev (Matthias Endler)"
+title = "西域诗魂｜李瑜和他的作品"
+description = "李瑜和他的小说，散文和诗歌，也会有他收藏的国画作品展示。"
+author = "103032@qq.com (Jaco Li/李家锟)"
 
 generate_feeds = true
 feed_filenames = ["atom.xml", "rss.xml"]
@@ -15,7 +15,7 @@ minify_html = true
 # https://www.getzola.org/documentation/content/search/
 # This is used for tinysearch
 # build_search_index = true
-# default_language = "en"
+# default_language = "cn"
 
 taxonomies = [{ name = "tags", feed = true, paginate_by = 10 }]
 
