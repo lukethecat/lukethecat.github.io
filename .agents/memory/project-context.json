@@ -1,0 +1,136 @@
+{
+  "project_name": "liyupoetry.com",
+  "project_type": "static-website",
+  "description": "李瑜诗歌网站 - 收录诗人李瑜的完整诗集，包括《1980》《汗血马》等诗集",
+  "repository": "https://github.com/lukethecat/lukethecat.github.io",
+  "production_url": "https://www.liyupoetry.com",
+  "github_pages_url": "https://lukethecat.github.io",
+
+  "technology_stack": {
+    "static_site_generator": "Zola",
+    "programming_language": "Rust (Zola) + JavaScript (minimal)",
+    "templating": "Jinja2 (via Zola)",
+    "markup": "Markdown with TOML front matter",
+    "styling": "CSS",
+    "deployment": "GitHub Pages + Cloudflare Pages",
+    "ci_cd": "GitHub Actions",
+    "version_control": "Git"
+  },
+
+  "project_structure": {
+    "root_directories": [
+      "content/ - 网站内容 (诗歌、文章)",
+      "templates/ - Jinja2 模板",
+      "static/ - 静态资源 (图片、CSS、字体)",
+      "public/ - 构建输出 (在 .gitignore 中)",
+      ".github/workflows/ - CI/CD 配置",
+      ".agents/ - AI 代理技能和记忆系统"
+    ],
+    "key_files": [
+      "config.toml - Zola 配置文件",
+      "Makefile - 构建脚本",
+      "README.md - 项目文档",
+      "validate_deployment.sh - 部署验证脚本"
+    ]
+  },
+
+  "content_structure": {
+    "poetry_collections": [
+      {
+        "name": "1980诗集",
+        "path": "content/1980/",
+        "url": "/1980/",
+        "description": "1980年诗集"
+      },
+      {
+        "name": "汗血马诗集",
+        "path": "content/1995hanxuema/",
+        "url": "/1995hanxuema/",
+        "description": "1995年汗血马诗集"
+      }
+    ],
+    "other_sections": [
+      {
+        "name": "归档",
+        "path": "content/archive/",
+        "url": "/archive/",
+        "description": "文章归档"
+      },
+      {
+        "name": "关于",
+        "path": "content/about/",
+        "url": "/about/",
+        "description": "关于诗人李瑜"
+      }
+    ]
+  },
+
+  "deployment_configuration": {
+    "primary_target": "GitHub Pages",
+    "secondary_target": "Cloudflare Pages",
+    "ci_workflow": ".github/workflows/ci.yml",
+    "build_command": "make clean && make content",
+    "validation": "./validate_deployment.sh",
+
+    "github_pages": {
+      "status": "fully_operational",
+      "url": "https://lukethecat.github.io",
+      "configuration": "Automatic via GitHub Actions"
+    },
+
+    "cloudflare_pages": {
+      "status": "partially_operational",
+      "url": "https://www.liyupoetry.com",
+      "requirements": ["CF_API_TOKEN", "CF_ACCOUNT_ID GitHub Secrets"],
+      "notes": "Only homepage accessible without proper configuration"
+    }
+  },
+
+  "recent_changes": {
+    "2026-02-03": [
+      "Fixed GitHub Pages deployment (all pages now accessible)",
+      "Created standardized AI agent skills directory (.agents/skills/)",
+      "Implemented memory diary system (.agents/memory/)",
+      "Added deployment validation script",
+      "Updated CI/CD workflow for reliable deployments"
+    ]
+  },
+
+  "current_issues": [
+    {
+      "id": "cloudflare-config",
+      "description": "Cloudflare Pages requires GitHub Secrets configuration",
+      "priority": "medium",
+      "status": "pending"
+    }
+  ],
+
+  "ai_agent_system": {
+    "skills_directory": ".agents/skills/",
+    "memory_directory": ".agents/memory/",
+    "current_skills": [
+      "deployment-ci-cd",
+      "zola-build",
+      "github-actions"
+    ],
+    "purpose": "Standardized knowledge management for AI agents working on this project"
+  },
+
+  "maintenance_notes": [
+    "Website uses Zola static site generator",
+    "All content is in Markdown format with TOML front matter",
+    "Build output goes to public/ directory (excluded from git)",
+    "Deployment is automated via GitHub Actions",
+    "Regular validation recommended after changes"
+  ],
+
+  "contact_information": {
+    "repository_owner": "lukethecat",
+    "project_maintainer": "AI Agent System",
+    "documentation": "See README.md and docs/ directory"
+  },
+
+  "created_at": "2026-02-03T18:56:00Z",
+  "last_updated": "2026-02-03T18:56:00Z",
+  "version": "1.0.0"
+}

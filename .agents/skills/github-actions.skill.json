@@ -1,0 +1,253 @@
+{
+  "name": "github-actions",
+  "version": "1.0.0",
+  "description": "GitHub Actions CI/CD workflow configuration and management",
+  "category": "deployment",
+  "entry_point": "skills/github-actions.skill.json",
+  "created": "2026-02-03",
+  "last_used": "2026-02-03",
+  "author": "AI Agent System",
+
+  "dependencies": [
+    "deployment-ci-cd",
+    "zola-build"
+  ],
+
+  "parameters": {
+    "workflow_dir": ".github/workflows",
+    "primary_workflow": "ci.yml",
+    "runner": "ubuntu-latest",
+    "trigger_branches": ["main"],
+    "auto_deploy": true
+  },
+
+  "capabilities": [
+    "Configure GitHub Actions workflows",
+    "Troubleshoot workflow failures",
+    "Manage workflow dependencies",
+    "Configure deployment triggers",
+    "Set up environment variables and secrets",
+    "Monitor workflow execution",
+    "Optimize workflow performance",
+    "Implement workflow best practices"
+  ],
+
+  "workflow_structure": {
+    "name": "Workflow name",
+    "on": "Event triggers (push, pull_request, schedule, etc.)",
+    "permissions": "Required permissions for the workflow",
+    "concurrency": "Control concurrent executions",
+    "jobs": {
+      "build": "Build job configuration",
+      "deploy": "Deployment job configuration",
+      "validate": "Validation job configuration"
+    }
+  },
+
+  "current_configuration": {
+    "workflow_file": ".github/workflows/ci.yml",
+    "jobs": ["build", "deploy-to-github-pages", "deploy-to-cloudflare", "validate", "summary"],
+    "triggers": ["push", "pull_request", "schedule", "repository_dispatch", "workflow_dispatch"],
+    "permissions": {
+      "contents": "read",
+      "pages": "write",
+      "id-token": "write"
+    }
+  },
+
+  "common_workflow_patterns": [
+    {
+      "pattern": "Build and deploy static site",
+      "description": "Build Zola site and deploy to GitHub Pages/Cloudflare",
+      "use_case": "Primary deployment workflow"
+    },
+    {
+      "pattern": "Link checking",
+      "description": "Regular link validation with lychee",
+      "use_case": "Maintenance workflow (links.yml)"
+    }
+  ],
+
+  "environment_secrets": {
+    "required": ["GITHUB_TOKEN"],
+    "optional": ["CF_API_TOKEN", "CF_ACCOUNT_ID"],
+    "purpose": {
+      "GITHUB_TOKEN": "Automatically provided for repository access",
+      "CF_API_TOKEN": "Cloudflare API authentication",
+      "CF_ACCOUNT_ID": "Cloudflare account identification"
+    }
+  },
+
+  "common_issues": [
+    {
+      "issue": "Workflow fails to start",
+      "causes": [
+        "Syntax error in YAML",
+        "Missing required permissions",
+        "Invalid event triggers"
+      ],
+      "solutions": [
+        "Check YAML syntax with online validator",
+        "Verify repository permissions",
+        "Review workflow trigger configuration"
+      ]
+    },
+    {
+      "issue": "Job fails during execution",
+      "causes": [
+        "Missing dependencies",
+        "Script errors",
+        "Permission errors",
+        "Resource limitations"
+      ],
+      "solutions": [
+        "Check job logs for specific error messages",
+        "Test commands locally",
+        "Verify required tools are installed",
+        "Check resource usage and limits"
+      ]
+    },
+    {
+      "issue": "Deployment fails",
+      "causes": [
+        "Missing secrets",
+        "Invalid configuration",
+        "Network issues",
+        "Target service errors"
+      ],
+      "solutions": [
+        "Verify all required secrets are set",
+        "Check deployment configuration",
+        "Test deployment manually",
+        "Check target service status"
+      ]
+    }
+  ],
+
+  "optimization_tips": [
+    "Use caching for dependencies to speed up builds",
+    "Run jobs in parallel when possible",
+    "Use matrix builds for multiple configurations",
+    "Set appropriate timeout values",
+    "Clean up artifacts after use",
+    "Use reusable workflows for common patterns"
+  ],
+
+  "validation_checks": [
+    "Workflow YAML syntax is valid",
+    "All required secrets are configured",
+    "Triggers are correctly set up",
+    "Permissions are properly configured",
+    "Jobs complete successfully",
+    "Deployment targets are reachable"
+  ],
+
+  "tools_and_actions": {
+    "core_actions": [
+      "actions/checkout@v4 - Checkout repository code",
+      "actions/setup-node@v4 - Setup Node.js environment",
+      "actions/setup-python@v5 - Setup Python environment"
+    ],
+    "deployment_actions": [
+      "actions/deploy-pages@v4 - Deploy to GitHub Pages",
+      "cloudflare/pages-action@v1 - Deploy to Cloudflare Pages",
+      "actions/upload-pages-artifact@v3 - Upload GitHub Pages artifact"
+    ],
+    "utility_actions": [
+      "actions/download-artifact@v4 - Download workflow artifacts",
+      "actions/upload-artifact@v4 - Upload workflow artifacts",
+      "lycheeverse/lychee-action@master - Link checking"
+    ]
+  },
+
+  "project_specific_configuration": {
+    "zola_installation": "sudo snap install --edge zola",
+    "build_commands": [
+      "make clean",
+      "make content"
+    ],
+    "deployment_targets": [
+      {
+        "name": "GitHub Pages",
+        "url": "https://lukethecat.github.io",
+        "configuration": "Automatic via pages deployment"
+      },
+      {
+        "name": "Cloudflare Pages",
+        "url": "https://www.liyupoetry.com",
+        "configuration": "Requires CF_API_TOKEN and CF_ACCOUNT_ID secrets"
+      }
+    ],
+    "validation_script": "./validate_deployment.sh"
+  },
+
+  "monitoring_and_debugging": {
+    "access_logs": "https://github.com/lukethecat/lukethecat.github.io/actions",
+    "debug_techniques": [
+      "Enable debug logging with ACTIONS_STEP_DEBUG secret",
+      "Check workflow run summary",
+      "Examine job logs step by step",
+      "Test commands locally before adding to workflow"
+    ],
+    "notifications": [
+      "Email notifications on failure (configured in repository settings)",
+      "Workflow status badges in README"
+    ]
+  },
+
+  "best_practices": [
+    "Keep workflows in .github/workflows/ directory",
+    "Use descriptive workflow and job names",
+    "Include comments for complex configurations",
+    "Test workflows on feature branches before merging to main",
+    "Regularly review and update workflow dependencies",
+    "Monitor workflow execution times and optimize",
+    "Secure sensitive data with GitHub Secrets"
+  ],
+
+  "examples": [
+    {
+      "scenario": "Add new deployment target",
+      "steps": [
+        "Add new job to workflow",
+        "Configure required secrets",
+        "Test deployment on feature branch",
+        "Monitor first deployment on main branch"
+      ]
+    },
+    {
+      "scenario": "Fix failing workflow",
+      "steps": [
+        "Check workflow run logs",
+        "Identify failing step",
+        "Test command locally",
+        "Fix issue and test on feature branch",
+        "Merge fix to main"
+      ]
+    },
+    {
+      "scenario": "Optimize workflow performance",
+      "steps": [
+        "Analyze workflow timing",
+        "Add caching for dependencies",
+        "Parallelize independent jobs",
+        "Remove unnecessary steps"
+      ]
+    }
+  ],
+
+  "related_skills": [
+    "deployment-ci-cd",
+    "zola-build",
+    "cloudflare-pages",
+    "validation-testing"
+  ],
+
+  "notes": [
+    "GitHub Actions provides 2,000 minutes/month free for private repositories",
+    "Workflows run in isolated virtual environments",
+    "Secrets are encrypted and only available to workflows",
+    "Artifacts are stored for 90 days by default",
+    "Use workflow_dispatch for manual triggers when needed"
+  ]
+}

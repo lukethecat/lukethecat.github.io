@@ -1,0 +1,47 @@
+{
+  "name": "liyupoetry-agent-skills",
+  "version": "1.0.0",
+  "description": "AI Agent Skills Directory for liyupoetry.com project",
+  "author": "AI Agent System",
+  "created": "2026-02-03",
+  "last_updated": "2026-02-03",
+
+  "skills_directory": ".agents/skills",
+  "memory_directory": ".agents/memory",
+
+  "categories": {
+    "deployment": "Deployment and CI/CD related skills",
+    "development": "Development and coding skills",
+    "debugging": "Debugging and troubleshooting skills",
+    "documentation": "Documentation and knowledge management",
+    "maintenance": "Project maintenance and operations"
+  },
+
+  "active_skills": [
+    "deployment-ci-cd",
+    "zola-build",
+    "github-actions",
+    "cloudflare-pages",
+    "validation-testing",
+    "documentation-management"
+  ],
+
+  "skill_format": {
+    "required_fields": ["name", "version", "description", "category", "entry_point"],
+    "optional_fields": ["dependencies", "parameters", "examples", "notes"],
+    "file_extension": ".skill.json"
+  },
+
+  "memory_format": {
+    "daily_journals": "memory/daily/{YYYY-MM-DD}.json",
+    "project_context": "memory/project-context.json",
+    "conversation_history": "memory/conversations/{session_id}.json",
+    "decisions_log": "memory/decisions/{YYYY-MM}.json"
+  },
+
+  "indexing": {
+    "auto_index": true,
+    "index_file": ".agents/skills/index.json",
+    "update_frequency": "on_change"
+  }
+}
