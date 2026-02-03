@@ -77,5 +77,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: ${{ secrets.CF_PROJECT_NAME || 'endler-dev' }}
+          projectName: ${{ secrets.CF_PROJECT_NAME }}
           directory: ./public
