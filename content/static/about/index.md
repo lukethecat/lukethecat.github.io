@@ -1,7 +1,6 @@
 +++
 title = "Hey, it's me!"
 path = "about"
-template = "about.html"
 +++
 
 |                 |                                                                                                                                                             |
