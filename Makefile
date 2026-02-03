@@ -20,14 +20,14 @@ clean: clean-pub clean-img ## Remove public files and images
 
 .PHONY: versions
 versions: ## Show versions of tools
-	zola --version
-	gh-stats --version
-	tinysearch --version
-	wasm-opt --version
-	terser --version
-	wasm-opt --version
-	cavif --version
-	convert -version
+	@echo "=== Checking installed tools ==="
+	@if command -v zola >/dev/null 2>&1; then echo "✅ zola: $$(zola --version)"; else echo "⚠️ zola: not installed"; fi
+	@if command -v gh-stats >/dev/null 2>&1; then echo "✅ gh-stats: $$(gh-stats --version 2>&1 | head -1)"; else echo "⚠️ gh-stats: not installed (optional)"; fi
+	@if command -v tinysearch >/dev/null 2>&1; then echo "✅ tinysearch: $$(tinysearch --version 2>&1 | head -1)"; else echo "⚠️ tinysearch: not installed (optional)"; fi
+	@if command -v wasm-opt >/dev/null 2>&1; then echo "✅ wasm-opt: $$(wasm-opt --version 2>&1 | head -1)"; else echo "⚠️ wasm-opt: not installed (optional)"; fi
+	@if command -v terser >/dev/null 2>&1; then echo "✅ terser: $$(terser --version 2>&1 | head -1)"; else echo "⚠️ terser: not installed (optional)"; fi
+	@if command -v cavif >/dev/null 2>&1; then echo "✅ cavif: $$(cavif --version 2>&1 | head -1)"; else echo "⚠️ cavif: not installed (optional)"; fi
+	@if command -v convert >/dev/null 2>&1; then echo "✅ ImageMagick: $$(convert -version 2>&1 | head -1)"; else echo "⚠️ ImageMagick: not installed"; fi
 
 .PHONY: content
 content: ## Build the content of the static site with zola
