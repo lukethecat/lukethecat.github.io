@@ -1,30 +1,24 @@
-# The URL the site will be built for
-base_url = "http://www.liyupoetry.com"
-
-title = "西域诗魂｜李瑜和他的作品"
-description = "李瑜和他的小说，散文和诗歌，也会有他收藏的国画作品展示。"
-author = "103032@qq.com (Jaco Li/李家锟)"
+base_url = "https://www.liyupoetry.com"
+title = "李瑜诗歌"
+description = "李瑜个人诗歌网站，收录《1980》《汗血马》等诗集"
 
 generate_feeds = true
-feed_filenames = ["atom.xml", "rss.xml"]
-
+feed_filenames = ["atom.xml"]
 minify_html = true
 
-# Whether to build a search index out of the pages and section
-# content for the `default_language`
-# https://www.getzola.org/documentation/content/search/
-# This is used for tinysearch
-# build_search_index = true
-# default_language = "cn"
+default_language = "en"
 
-taxonomies = [{ name = "tags", feed = true, paginate_by = 10 }]
+taxonomies = [
+    { name = "tags", feed = true, paginate_by = 10 },
+    { name = "categories", feed = true, paginate_by = 10 }
+]
 
 [markdown]
 smart_punctuation = true
-highlight_code = true
-highlight_theme = "css"
-highlight_themes_css = [
-    { theme = "cheerfully-light", filename = "syntax-theme-light-custom.css" },
-    { theme = "dracula", filename = "syntax-theme-dark-custom.css" },
-]
+insert_anchor_links = "left"
 bottom_footnotes = true
+
+[extra]
+author = "李瑜"
+news_last_updated = "2026-02-03"
+copyright = "Copyright © 1995-2026 Li Yu, All Rights Reserved"
