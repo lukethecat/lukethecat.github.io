@@ -118,9 +118,16 @@ jobs:
         id: check-cloudflare
         run: |
           echo "Checking Cloudflare configuration..."
+          echo "CF_API_TOKEN configured: ${{ secrets.CF_API_TOKEN != '' }}"
+          echo "CF_ACCOUNT_ID configured: ${{ secrets.CF_ACCOUNT_ID != '' }}"
+
           if [ -z "${{ secrets.CF_API_TOKEN }}" ]; then
             echo "❌ CF_API_TOKEN secret is not configured"
             echo "Cloudflare Pages deployment will be skipped"
+            echo "To enable Cloudflare Pages deployment:"
+            echo "1. Go to GitHub repository Settings > Secrets and variables > Actions"
+            echo "2. Add CF_API_TOKEN (Cloudflare API Token)"
+            echo "3. Add CF_ACCOUNT_ID (Cloudflare Account ID)"
             echo "status=skipped" >> $GITHUB_OUTPUT
           elif [ -z "${{ secrets.CF_ACCOUNT_ID }}" ]; then
             echo "❌ CF_ACCOUNT_ID secret is not configured"
@@ -139,12 +146,21 @@ jobs:
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           projectName: liyupoetry
           directory: ./public
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          wranglerVersion: "3"
 
   validate:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: [deploy-to-github-pages, deploy-to-cloudflare]
     steps:
+      - name: 📊 Deployment Status
+        run: |
+          echo "=== Deployment Status ==="
+          echo "GitHub Pages: ✅ Always deployed"
+          echo "Cloudflare Pages: ${{ needs.deploy-to-cloudflare.result }}"
+          echo "Cloudflare Secrets Configured: ${{ secrets.CF_API_TOKEN != '' && secrets.CF_ACCOUNT_ID != '' }}"
+
       - name: ⏳ Wait for deployment propagation
         run: |
           echo "Waiting for deployments to propagate..."
@@ -199,6 +215,10 @@ jobs:
             urls["https://www.liyupoetry.com/1995hanxuema/"]="Cloudflare Pages 汗血马诗集"
             urls["https://www.liyupoetry.com/1980/"]="Cloudflare Pages 1980诗集"
             urls["https://www.liyupoetry.com/archive/"]="Cloudflare Pages Archive"
+            urls["https://www.liyupoetry.com/test-deployment.txt"]="Cloudflare Pages Test File"
+          else
+            echo "⚠️ Cloudflare Pages not configured - skipping validation"
+            echo "To enable Cloudflare Pages, configure CF_API_TOKEN and CF_ACCOUNT_ID secrets"
           fi
 
           # Check all URLs
@@ -271,4 +291,14 @@ jobs:
             echo "⚠️ To enable Cloudflare Pages deployment:"
             echo "   • Add CF_API_TOKEN and CF_ACCOUNT_ID secrets in GitHub"
             echo "   • See docs/DEPLOYMENT_SETUP.md for instructions"
+            echo ""
+            echo "📝 Current Cloudflare Pages Status:"
+            echo "   The domain www.liyupoetry.com points to Cloudflare"
+            echo "   but automatic deployment is not configured."
+            echo "   The site shows old content from a previous manual deployment."
+            echo ""
+            echo "🔧 Quick Fix Options:"
+            echo "   1. Configure GitHub Secrets for automatic deployment (recommended)"
+            echo "   2. Point www.liyupoetry.com to GitHub Pages instead"
+            echo "   3. Manually deploy to Cloudflare Pages dashboard"
           fi
