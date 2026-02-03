@@ -71,12 +71,32 @@ jobs:
           make content
           ls -la public/
 
-      # Temporarily disabled Cloudflare deployment - GitHub Pages auto-deployment is working
-      # - name: 🚀 Deploy to Cloudflare Pages
-      #   if: github.ref == 'refs/heads/main'
-      #   uses: cloudflare/pages-action@v1
-      #   with:
-      #     apiToken: ${{ secrets.CF_API_TOKEN }}
-      #     accountId: ${{ secrets.CF_ACCOUNT_ID }}
-      #     projectName: liyupoetry
-      #     directory: ./public
+      - name: 🚀 Deploy to Cloudflare Pages
+        if: github.ref == 'refs/heads/main'
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          projectName: liyupoetry
+          directory: ./public
+
+      - name: ✅ Validate deployment
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "Waiting for Cloudflare Pages deployment to propagate..."
+          sleep 30
+          echo "Checking if key pages are accessible..."
+
+          # Check homepage
+          echo "Checking https://www.liyupoetry.com/"
+          curl -s -o /dev/null -w "%{http_code}" https://www.liyupoetry.com/ | grep -q "200" && echo "✅ Homepage is accessible" || echo "❌ Homepage returned non-200 status"
+
+          # Check 1995hanxuema page (the reported 404 issue)
+          echo "Checking https://www.liyupoetry.com/1995hanxuema/"
+          curl -s -o /dev/null -w "%{http_code}" https://www.liyupoetry.com/1995hanxuema/ | grep -q "200" && echo "✅ 1995hanxuema page is accessible" || echo "❌ 1995hanxuema page returned non-200 status"
+
+          # Check 1980 page
+          echo "Checking https://www.liyupoetry.com/1980/"
+          curl -s -o /dev/null -w "%{http_code}" https://www.liyupoetry.com/1980/ | grep -q "200" && echo "✅ 1980 page is accessible" || echo "❌ 1980 page returned non-200 status"
+
+          echo "Validation complete. If any pages show ❌, check Cloudflare Pages dashboard for deployment status."

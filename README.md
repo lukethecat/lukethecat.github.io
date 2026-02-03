@@ -161,6 +161,115 @@ git diff --cached | grep -E "(password|token|key|@|12345|个人)" && echo "警�
    - 访问生产环境网站
    - 检查更新内容
 
+### 部署后验证检查表 (每次 push 后必做)
+
+**部署后必须按顺序验证以下项目：**
+
+#### 1. ✅ GitHub Actions 部署状态验证
+- [ ] 访问 GitHub Actions: https://github.com/lukethecat/lukethecat.github.io/actions
+- [ ] 确认最新 workflow 运行状态为 ✅ 绿色 (Success)
+- [ ] 查看 Build 日志，确认无错误信息
+- [ ] 确认 deploy 步骤执行完成
+
+#### 2. ✅ Cloudflare Pages 部署状态验证
+- [ ] 登录 Cloudflare Dashboard
+- [ ] 进入 Pages > liyupoetry 项目
+- [ ] 确认最新部署状态为 ✅ Success
+- [ ] 查看部署日志，确认所有文件已上传
+- [ ] 检查部署的 URL (如: https://<hash>.liyupoetry.pages.dev)
+- [ ] 访问该 URL 测试预发布环境
+
+#### 3. ✅ 生产环境网站验证
+
+**关键页面检查** (每个页面必须返回 200 状态码):
+
+```bash
+# 使用 curl 或浏览器访问以下 URL:
+```
+
+- [ ] **首页**: https://www.liyupoetry.com/
+  - 预期: 200 OK, 显示诗人介绍和书籍列表
+  
+- [ ] **汗血马诗集** (1995hanxuema) - 修复的 404 页面:
+  - [ ] https://www.liyupoetry.com/1995hanxuema/
+  - 预期: 200 OK, 显示诗集目录
+  - [ ] https://www.liyupoetry.com/1995hanxuema/汗血马/
+  - 预期: 200 OK, 显示具体章节
+  
+- [ ] **1980 诗集**:
+  - [ ] https://www.liyupoetry.com/1980/
+  - 预期: 200 OK, 显示诗集内容
+  
+- [ ] **归档页面**:
+  - [ ] https://www.liyupoetry.com/archive/
+  - 预期: 200 OK, 显示所有书籍列表
+  
+- [ ] **关于页面**:
+  - [ ] https://www.liyupoetry.com/about/
+  - 预期: 200 OK
+
+**验证命令示例**:
+```bash
+# 检查状态码
+curl -s -o /dev/null -w "%{http_code}" https://www.liyupoetry.com/1995hanxuema/
+
+# 或批量检查
+pages=(
+  "https://www.liyupoetry.com/"
+  "https://www.liyupoetry.com/1995hanxuema/"
+  "https://www.liyupoetry.com/1980/"
+  "https://www.liyupoetry.com/archive/"
+)
+
+for url in "${pages[@]}"; do
+  status=$(curl -s -o /dev/null -w "%{http_code}" "$url")
+  echo "$url: $status"
+done
+```
+
+#### 4. ✅ 内容验证
+
+- [ ] 首页显示最新的诗歌集合
+- [ ] 所有书籍封面图片加载正常
+- [ ] 诗歌列表完整 (101 首诗歌)
+- [ ] 导航链接有效无 404
+- [ ] 移动端显示正常 (响应式设计)
+
+#### 5. ✅ 功能验证
+
+- [ ] 搜索功能正常工作
+- [ ] 分类和标签页面可访问
+- [ ] 深色/浅色主题切换正常
+- [ ] RSS/Atom 订阅源可访问 (https://www.liyupoetry.com/atom.xml)
+
+#### 6. ✅ 错误页面验证
+
+- [ ] 404 页面样式正确: https://www.liyupoetry.com/nonexistent-page/
+- [ ] 返回正确的 404 状态码
+
+---
+
+**⚠️ 如果发现问题**:
+
+1. **检查部署日志**: 查看 GitHub Actions 和 Cloudflare Pages 的详细日志
+2. **清除缓存**:
+   - Cloudflare: 清除 CDN 缓存 (Caching > Configuration > Purge Everything)
+   - 浏览器: 清除本地缓存或硬刷新 (Ctrl+Shift+R 或 Cmd+Shift+R)
+3. **等待 5-10 分钟**: CDN 全球传播需要时间
+4. **检查 DNS**: 使用工具如 `dig www.liyupoetry.com` 或 `nslookup www.liyupoetry.com`
+5. **回滚**: 如有严重问题，回滚到上一个稳定版本的 Git commit
+
+---
+
+**自动化验证 (CI/CD)**:
+
+GitHub Actions 工作流已自动包含部署验证步骤:
+- 构建后自动检查关键页面状态码
+- 部署失败会收到通知
+- 查看 `.github/workflows/ci.yml` 中的 `Validate deployment` 步骤
+
+---
+
 ### 手动部署（仅用于测试）
 
 ```bash
