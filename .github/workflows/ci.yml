@@ -2,9 +2,9 @@ name: Deploy
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
   schedule:
     - cron: "0 18 1 * *"
   repository_dispatch:
@@ -74,11 +74,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
 
       - name: 🚀 Deploy to Cloudflare Pages
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: 1c71f27d6fa097a1576b4ffab9186fa8
           projectName: endler-dev
           directory: ./public
-      
