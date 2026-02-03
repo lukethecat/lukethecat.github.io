@@ -139,7 +139,7 @@ rustc --version
 
 ```bash
 # 进入项目根目录
-cd /Users/jellyfishjaco/Documents/Git\|Repo/liyupoerty.com-master
+cd /path/to/liyupoerty.com-master
 
 # 启动 Zola 开发服务器 (热重载)
 zola serve
@@ -349,7 +349,7 @@ python3 generate_poetry_pages.py
 ### 1. 手动构建 (开发/测试)
 
 ```bash
-cd /Users/jellyfishjaco/Documents/Git\|Repo/liyupoerty.com-master
+cd /path/to/liyupoerty.com-master
 
 # 完整构建流程
 make build
@@ -440,7 +440,7 @@ jobs:
 
 ```bash
 # 进入项目根目录
-cd /Users/jellyfishjaco/Documents/Git\|Repo/liyupoerty.com-master
+cd /path/to/liyupoerty.com-master
 
 # 构建网站
 make build
@@ -543,7 +543,7 @@ ls public/static/wasm/
 **修复步骤**:
 ```bash
 # 重新运行搜索索引构建
-cd /Users/jellyfishjaco/Documents/Git\|Repo/liyupoerty.com-master
+cd /path/to/liyupoerty.com-master
 cargo install wasm-pack
 make search
 ```

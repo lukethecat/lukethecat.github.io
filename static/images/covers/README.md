@@ -36,8 +36,8 @@ static/images/covers/
 
 ### 方法一：手动添加
 ```bash
-# 进入项目目录
-cd /Users/jellyfishjaco/Documents/Git\|Repo/liyupoerty.com-master
+# 进入项目根目录
+cd /path/to/liyupoerty.com-master
 
 # 创建目录 (如果不存在)
 mkdir -p static/images/covers/1995hanxuema
@@ -73,7 +73,7 @@ python3 generate_poetry_pages.py
 - 用户可以看到精美的书籍封面设计
 
 ### 如果封面文件不存在
-- 显示默认的友好的占位符
+- 显示默认的友好占位符
 - 因此封面文件是可选但推荐添加的
 
 ## 版权说明
@@ -125,7 +125,7 @@ python3 generate_poetry_pages.py
 
 ## 维护视图
 
-- **封面添加后**: 无需手动修改模板，IREE 会自动引用
+- **封面添加后**: 无需手动修改模板，IĈJ 会自动引用
 - **更新封面**: 直接替换同名文件即可
 - **删除封面**: 删除文件，模板会显示占位符
 

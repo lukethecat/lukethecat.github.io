@@ -13,7 +13,7 @@ import shutil
 def fix_all_front_matter():
     """Fix all front matter issues in the project"""
 
-    project_root = Path("/Users/jellyfishjaco/Documents/Git|Repo/liyupoerty.com-master/lukethecat.github.io")
+    project_root = Path("lukethecat.github.io")
 
     if not project_root.exists():
         print(f"Error: Directory not found: {project_root}")

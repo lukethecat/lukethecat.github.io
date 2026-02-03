@@ -12,7 +12,7 @@ from pathlib import Path
 def remove_taxonomies_from_sections():
     """Find and remove [taxonomies] from section _index.md files"""
 
-    project_root = Path("/Users/jellyfishjaco/Documents/Git|Repo/liyupoerty.com-master/lukethecat.github.io")
+    project_root = Path("lukethecat.github.io")
 
     if not project_root.exists():
         print(f"Error: Directory not found: {project_root}")
@@ -87,7 +87,7 @@ def remove_taxonomies_from_sections():
     print(f"Files modified: {modified_count}")
     print(f"Backup files created: *.bak")
     print(f"\nBackup files can be safely deleted with:")
-    print(f"  find /Users/jellyfishjaco/Documents/Git\\|Repo/liyupoerty.com-master/lukethecat.github.io -name '*.bak' -delete")
+    print(f"  find lukethecat.github.io -name '*.bak' -delete")
 
 
 if __name__ == "__main__":
