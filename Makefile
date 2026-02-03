@@ -18,6 +18,26 @@ clean-pub: ## Remove build files
 .PHONY: clean
 clean: clean-pub clean-img ## Remove public files and images
 
+.PHONY: debug
+debug: ## Debug build environment (CI troubleshooting)
+	@echo "=== Debug Information ==="
+	@echo "Working directory: $$(pwd)"
+	@echo "Whoami: $$(whoami)"
+	@echo "Zola version:"
+	zola --version 2>&1 || echo "❌ zola not found"
+	@echo ""
+	@echo "Carrying capacity:"
+	@echo "Disk space: $$(df -h . | tail -1)"
+	@echo "Memory: $$(free -h 2>/dev/null || echo 'N/A')"
+	@echo ""
+	@echo "File system check:"
+	@ls -la config.toml 2>/dev/null || echo "❌ config.toml not found"
+	@ls -la content/static/about/stars.md 2>/dev/null || echo "⚠️ stars.md not found"
+	@echo ""
+	@echo "Environment:"
+	@echo "GITHUB_TOKEN: $$(if [ -n "$$GITHUB_TOKEN" ]; then echo 'SET'; else echo 'NOT SET'; fi)"
+	@env | grep -E "^(GITHUB_|CF_|HOME|PATH|USER|LOGNAME)" | head -10
+
 .PHONY: versions
 versions: ## Show versions of tools
 	@echo "=== Checking installed tools ==="

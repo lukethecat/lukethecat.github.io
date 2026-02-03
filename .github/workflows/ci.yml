@@ -66,7 +66,10 @@ jobs:
         run: make versions
 
       - name: 📖 Build
-        run: make build-ci
+        run: |
+          make clean
+          make content
+          ls -la public/
 
       - name: 🚀 Deploy to Cloudflare Pages
         if: github.ref == 'refs/heads/main'
