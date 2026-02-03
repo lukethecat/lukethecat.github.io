@@ -63,7 +63,7 @@ minify: ## Compress JavaScript assets
 	fi
 
 .PHONY: build
-build: stars content index minify ## Build static site and search index, minify JS
+build: stars content index minify ## Build static site and search index, minify JS (images removed)
 
 .PHONY: build-quick
 build-quick: stars content ## Build static site (includes star stats)
