@@ -71,6 +71,25 @@ jobs:
           make content
           ls -la public/
 
+      - name: 🔍 Check Cloudflare Secrets
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "Checking Cloudflare configuration..."
+          if [ -z "${{ secrets.CF_API_TOKEN }}" ]; then
+            echo "❌ ERROR: CF_API_TOKEN secret is not configured"
+            echo "Please add CF_API_TOKEN secret in GitHub repository settings"
+          else
+            echo "✅ CF_API_TOKEN is configured"
+          fi
+          if [ -z "${{ secrets.CF_ACCOUNT_ID }}" ]; then
+            echo "❌ ERROR: CF_ACCOUNT_ID secret is not configured"
+            echo "Please add CF_ACCOUNT_ID secret in GitHub repository settings"
+            echo "Your Cloudflare Account ID can be found in the Cloudflare Dashboard"
+          else
+            echo "✅ CF_ACCOUNT_ID is configured"
+          fi
+          echo "If both secrets are configured, the Cloudflare Pages deployment should succeed."
+
       - name: 🚀 Deploy to Cloudflare Pages
         if: github.ref == 'refs/heads/main'
         uses: cloudflare/pages-action@v1
@@ -84,19 +103,74 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: |
           echo "Waiting for Cloudflare Pages deployment to propagate..."
-          sleep 30
+          sleep 60
           echo "Checking if key pages are accessible..."
 
+          # Create a simple log file
+          check_url() {
+            local url=$1
+            local description=$2
+            echo "🔍 Checking $description..."
+            local status=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$url")
+            if [ "$status" = "200" ]; then
+              echo "✅ $description is accessible (200)"
+              return 0
+            else
+              echo "❌ $description returned HTTP $status (expected 200)"
+              return 1
+            fi
+          }
+
+          # Track results
+          success_count=0
+          total_checks=0
+
           # Check homepage
-          echo "Checking https://www.liyupoetry.com/"
-          curl -s -o /dev/null -w "%{http_code}" https://www.liyupoetry.com/ | grep -q "200" && echo "✅ Homepage is accessible" || echo "❌ Homepage returned non-200 status"
+          total_checks=$((total_checks + 1))
+          check_url "https://www.liyupoetry.com/" "Homepage" && success_count=$((success_count + 1))
 
           # Check 1995hanxuema page (the reported 404 issue)
-          echo "Checking https://www.liyupoetry.com/1995hanxuema/"
-          curl -s -o /dev/null -w "%{http_code}" https://www.liyupoetry.com/1995hanxuema/ | grep -q "200" && echo "✅ 1995hanxuema page is accessible" || echo "❌ 1995hanxuema page returned non-200 status"
+          total_checks=$((total_checks + 1))
+          check_url "https://www.liyupoetry.com/1995hanxuema/" "汗血马诗集 (1995hanxuema)" && success_count=$((success_count + 1))
 
           # Check 1980 page
-          echo "Checking https://www.liyupoetry.com/1980/"
-          curl -s -o /dev/null -w "%{http_code}" https://www.liyupoetry.com/1980/ | grep -q "200" && echo "✅ 1980 page is accessible" || echo "❌ 1980 page returned non-200 status"
+          total_checks=$((total_checks + 1))
+          check_url "https://www.liyupoetry.com/1980/" "1980诗集" && success_count=$((success_count + 1))
 
-          echo "Validation complete. If any pages show ❌, check Cloudflare Pages dashboard for deployment status."
+          # Checkout archive page
+          total_checks=$((total_checks + 1))
+          check_url "https://www.liyupoetry.com/archive/" "Archive" && success_count=$((success_count + 1))
+
+          # Summary
+          echo ""
+          echo "========== Validation Summary =========="
+          echo "✅ Passed: $success_count / $total_checks"
+          if [ "$success_count" -eq "$total_checks" ]; then
+            echo "🎉 All checks passed! Deployment successful."
+            exit 0
+          else
+            echo "❌ Some checks failed. Please review the deployment."
+            echo "📋 Troubleshooting tips:"
+            echo "   1. Check Cloudflare Pages dashboard: https://dash.cloudflare.com"
+            echo "   2. Verify secrets are configured in GitHub repository settings"
+            echo "   3. Wait 5-10 minutes and re-check (CDN propagation time)"
+            echo "   4. Check Cloudflare Pages logs for build errors"
+            exit 1
+          fi
+
+      - name: 📊 Deployment Summary
+        if: always()
+        run: |
+          echo "========== Deployment Summary =========="
+          echo "Commit: ${{ github.sha }}"
+          echo "Author: ${{ github.actor }}"
+          echo "Workflow: ${{ github.workflow }}"
+          echo "Status: ${{ job.status }}"
+          echo ""
+          echo "Next steps:"
+          echo "1. Check GitHub Actions logs above for any errors"
+          echo "2. Verify Cloudflare Pages deployment at https://dash.cloudflare.com"
+          echo "3. If successful, validate pages are accessible:"
+          echo "   - https://www.liyupoetry.com/"
+          echo "   - https://www.liyupoetry.com/1995hanxuema/"
+          echo "4. If failed, check GitHub Secrets configuration"
