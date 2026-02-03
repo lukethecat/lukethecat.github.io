@@ -120,6 +120,14 @@ jobs:
           echo "Checking Cloudflare configuration..."
           echo "CF_API_TOKEN configured: ${{ secrets.CF_API_TOKEN != '' }}"
           echo "CF_ACCOUNT_ID configured: ${{ secrets.CF_ACCOUNT_ID != '' }}"
+          echo ""
+          echo "=== DEBUG INFO ==="
+          echo "Repository: ${{ github.repository }}"
+          echo "Event: ${{ github.event_name }}"
+          echo "Ref: ${{ github.ref }}"
+          echo "SHA: ${{ github.sha }}"
+          echo "=================="
+          echo ""
 
           if [ -z "${{ secrets.CF_API_TOKEN }}" ]; then
             echo "❌ CF_API_TOKEN secret is not configured"
@@ -135,6 +143,8 @@ jobs:
             echo "status=skipped" >> $GITHUB_OUTPUT
           else
             echo "✅ Cloudflare configuration detected"
+            echo "CF_API_TOKEN length: ${#CF_API_TOKEN}"
+            echo "CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}"
             echo "status=ready" >> $GITHUB_OUTPUT
           fi
 
@@ -148,6 +158,8 @@ jobs:
           directory: ./public
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           wranglerVersion: "3"
+        env:
+          DEBUG: "true"
 
   validate:
     if: github.ref == 'refs/heads/main'
@@ -160,6 +172,18 @@ jobs:
           echo "GitHub Pages: ✅ Always deployed"
           echo "Cloudflare Pages: ${{ needs.deploy-to-cloudflare.result }}"
           echo "Cloudflare Secrets Configured: ${{ secrets.CF_API_TOKEN != '' && secrets.CF_ACCOUNT_ID != '' }}"
+          echo ""
+          echo "=== Cloudflare Deployment Details ==="
+          echo "Check Cloudflare step output: ${{ steps.check-cloudflare.outputs.status }}"
+          echo "CF_API_TOKEN configured: ${{ secrets.CF_API_TOKEN != '' }}"
+          echo "CF_ACCOUNT_ID configured: ${{ secrets.CF_ACCOUNT_ID != '' }}"
+          echo ""
+          echo "=== Next Steps ==="
+          echo "If Cloudflare deployment failed:"
+          echo "1. Check Cloudflare configuration step above"
+          echo "2. Verify GitHub Secrets are correct"
+          echo "3. Check Cloudflare Pages project exists"
+          echo "4. Review Cloudflare API Token permissions"
 
       - name: ⏳ Wait for deployment propagation
         run: |
