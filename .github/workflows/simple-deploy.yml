@@ -1,0 +1,51 @@
+name: Simple Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    # 简化步骤，只使用基本工具
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: 💡 设置 Node.js (用于可能的 JS 依赖)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: 📦 安装 Zola (从 GitHub Releases)
+        run: |
+          set -e
+          curl -sSL https://github.com/getzola/zola/releases/download/v0.22.1/zola-v0.22.1-x86_64-unknown-linux-gnu.tar.gz | tar xzf -
+          sudo install zola /usr/local/bin
+          zola --version
+
+      - name: 🔍 快速构建测试
+        run: |
+          echo "=== 构建中... ==="
+          zola build
+          echo "=== 构建完成 ==="
+          find ./public -name "*.html" | wc -l | xargs echo "生成的 HTML 页面数:"
+
+      - name: 🚀 部署到 Cloudflare Pages
+        if: github.ref == 'refs/heads/main'
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          projectName: ${{ secrets.CF_PROJECT_NAME }}
+          directory: ./public
+          branch: main
+```
+
+**说明：**
+- 这是一个极简版的 CI 配置
+- 只安装必要的 Zola（其他工具如 gh-stats、tinysearch、cavif 都跳过）
+- 移除了 `make build` 依赖的复杂工具链
+- 使用 GitHub Secrets 配置所有参数
+- 极大减少了构建时间和失败可能性
