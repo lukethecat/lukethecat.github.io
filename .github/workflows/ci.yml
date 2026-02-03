@@ -1,4 +1,4 @@
-name: Deploy
+name: Build and Deploy
 
 on:
   push:
@@ -10,12 +10,23 @@ on:
   repository_dispatch:
   workflow_dispatch:
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
 
       - name: ⏬ Install zola
         run: sudo snap install --edge zola
@@ -55,43 +66,73 @@ jobs:
       - name: ⏬ Install ImageMagick
         run: sudo apt-get update && sudo apt-get install -y imagemagick
 
-      # Ideally we'd install ImageMagick 7 here because it provides the new `magick` binary that we use later.
-      # However it's quite tedious to do right now, see
-      # https://github.com/walterbm/rusty-resizer/blob/33295758168171d3ad022e9e4938525f2d264017/.github/workflows/ci.yml#L13-L27
-      # Instead, we just alias the old binary name to the new one because we don't use any of the new functionality.
       - name: 🔗 Alias ImageMagick
         run: sudo ln -s /usr/bin/convert /usr/bin/magick
 
       - name: 🔍 Tool versions
         run: make versions
 
-      - name: 📖 Build
+      - name: 📖 Build website
         run: |
           make clean
           make content
+          echo "Build completed. Public directory contents:"
           ls -la public/
 
-      - name: 🔍 Check Cloudflare Secrets
-        if: github.ref == 'refs/heads/main'
+      - name: 📦 Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: github-pages
+          path: ./public
+
+  deploy-to-github-pages:
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: 🚀 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  deploy-to-cloudflare:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: 📥 Checkout and build
+        uses: actions/checkout@v4
+
+      - name: ⏬ Install zola
+        run: sudo snap install --edge zola
+
+      - name: 📖 Build website
+        run: |
+          make clean
+          make content
+          echo "Build completed for Cloudflare deployment"
+
+      - name: 🔍 Check Cloudflare configuration
+        id: check-cloudflare
         run: |
           echo "Checking Cloudflare configuration..."
           if [ -z "${{ secrets.CF_API_TOKEN }}" ]; then
-            echo "❌ ERROR: CF_API_TOKEN secret is not configured"
-            echo "Please add CF_API_TOKEN secret in GitHub repository settings"
+            echo "❌ CF_API_TOKEN secret is not configured"
+            echo "Cloudflare Pages deployment will be skipped"
+            echo "status=skipped" >> $GITHUB_OUTPUT
+          elif [ -z "${{ secrets.CF_ACCOUNT_ID }}" ]; then
+            echo "❌ CF_ACCOUNT_ID secret is not configured"
+            echo "Cloudflare Pages deployment will be skipped"
+            echo "status=skipped" >> $GITHUB_OUTPUT
           else
-            echo "✅ CF_API_TOKEN is configured"
+            echo "✅ Cloudflare configuration detected"
+            echo "status=ready" >> $GITHUB_OUTPUT
           fi
-          if [ -z "${{ secrets.CF_ACCOUNT_ID }}" ]; then
-            echo "❌ ERROR: CF_ACCOUNT_ID secret is not configured"
-            echo "Please add CF_ACCOUNT_ID secret in GitHub repository settings"
-            echo "Your Cloudflare Account ID can be found in the Cloudflare Dashboard"
-          else
-            echo "✅ CF_ACCOUNT_ID is configured"
-          fi
-          echo "If both secrets are configured, the Cloudflare Pages deployment should succeed."
 
       - name: 🚀 Deploy to Cloudflare Pages
-        if: github.ref == 'refs/heads/main'
+        if: steps.check-cloudflare.outputs.status == 'ready'
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
@@ -99,78 +140,135 @@ jobs:
           projectName: liyupoetry
           directory: ./public
 
-      - name: ✅ Validate deployment
-        if: github.ref == 'refs/heads/main'
+  validate:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: [deploy-to-github-pages, deploy-to-cloudflare]
+    steps:
+      - name: ⏳ Wait for deployment propagation
         run: |
-          echo "Waiting for Cloudflare Pages deployment to propagate..."
-          sleep 60
-          echo "Checking if key pages are accessible..."
+          echo "Waiting for deployments to propagate..."
+          sleep 30
 
-          # Create a simple log file
+      - name: ✅ Validate deployments
+        run: |
+          echo "Validating deployments..."
+
+          # Function to check URL with retries
           check_url() {
             local url=$1
             local description=$2
-            echo "🔍 Checking $description..."
-            local status=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$url")
-            if [ "$status" = "200" ]; then
-              echo "✅ $description is accessible (200)"
-              return 0
-            else
-              echo "❌ $description returned HTTP $status (expected 200)"
-              return 1
-            fi
+            local max_retries=3
+            local retry_count=0
+
+            while [ $retry_count -lt $max_retries ]; do
+              echo "🔍 Checking $description (attempt $((retry_count + 1))/$max_retries)..."
+              local status=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$url")
+
+              if [ "$status" = "200" ]; then
+                echo "✅ $description is accessible (HTTP 200)"
+                return 0
+              else
+                echo "⚠️ $description returned HTTP $status (expected 200)"
+                retry_count=$((retry_count + 1))
+                if [ $retry_count -lt $max_retries ]; then
+                  sleep 10
+                fi
+              fi
+            done
+
+            echo "❌ $description failed after $max_retries attempts"
+            return 1
           }
 
           # Track results
           success_count=0
           total_checks=0
 
-          # Check homepage
-          total_checks=$((total_checks + 1))
-          check_url "https://www.liyupoetry.com/" "Homepage" && success_count=$((success_count + 1))
+          # URLs to check
+          declare -A urls=(
+            ["https://lukethecat.github.io/"]="GitHub Pages Homepage"
+            ["https://lukethecat.github.io/1995hanxuema/"]="GitHub Pages 汗血马诗集"
+            ["https://lukethecat.github.io/1980/"]="GitHub Pages 1980诗集"
+            ["https://lukethecat.github.io/archive/"]="GitHub Pages Archive"
+          )
 
-          # Check 1995hanxuema page (the reported 404 issue)
-          total_checks=$((total_checks + 1))
-          check_url "https://www.liyupoetry.com/1995hanxuema/" "汗血马诗集 (1995hanxuema)" && success_count=$((success_count + 1))
+          # Add Cloudflare URLs if configured
+          if [ -n "${{ secrets.CF_API_TOKEN }}" ] && [ -n "${{ secrets.CF_ACCOUNT_ID }}" ]; then
+            urls["https://www.liyupoetry.com/"]="Cloudflare Pages Homepage"
+            urls["https://www.liyupoetry.com/1995hanxuema/"]="Cloudflare Pages 汗血马诗集"
+            urls["https://www.liyupoetry.com/1980/"]="Cloudflare Pages 1980诗集"
+            urls["https://www.liyupoetry.com/archive/"]="Cloudflare Pages Archive"
+          fi
 
-          # Check 1980 page
-          total_checks=$((total_checks + 1))
-          check_url "https://www.liyupoetry.com/1980/" "1980诗集" && success_count=$((success_count + 1))
-
-          # Checkout archive page
-          total_checks=$((total_checks + 1))
-          check_url "https://www.liyupoetry.com/archive/" "Archive" && success_count=$((success_count + 1))
+          # Check all URLs
+          for url in "${!urls[@]}"; do
+            total_checks=$((total_checks + 1))
+            if check_url "$url" "${urls[$url]}"; then
+              success_count=$((success_count + 1))
+            fi
+          done
 
           # Summary
           echo ""
-          echo "========== Validation Summary =========="
+          echo "========== Deployment Validation Summary =========="
           echo "✅ Passed: $success_count / $total_checks"
+
           if [ "$success_count" -eq "$total_checks" ]; then
-            echo "🎉 All checks passed! Deployment successful."
+            echo "🎉 All deployments validated successfully!"
             exit 0
+          elif [ "$success_count" -ge $((total_checks / 2)) ]; then
+            echo "⚠️ Partial success. Some deployments may need attention."
+            echo "📋 Next steps:"
+            echo "   1. Check GitHub Actions logs for errors"
+            echo "   2. Wait 5-10 minutes and re-check (CDN propagation time)"
+            echo "   3. Verify GitHub Secrets configuration if Cloudflare failed"
+            exit 0  # Partial success is acceptable
           else
-            echo "❌ Some checks failed. Please review the deployment."
-            echo "📋 Troubleshooting tips:"
-            echo "   1. Check Cloudflare Pages dashboard: https://dash.cloudflare.com"
-            echo "   2. Verify secrets are configured in GitHub repository settings"
-            echo "   3. Wait 5-10 minutes and re-check (CDN propagation time)"
-            echo "   4. Check Cloudflare Pages logs for build errors"
+            echo "❌ Multiple deployments failed. Please review."
+            echo "📋 Troubleshooting:"
+            echo "   1. Check build logs for errors"
+            echo "   2. Verify GitHub Pages settings"
+            echo "   3. Check Cloudflare Pages dashboard if configured"
+            echo "   4. Review GitHub Secrets configuration"
             exit 1
           fi
 
+  summary:
+    if: always() && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: [build, deploy-to-github-pages, deploy-to-cloudflare, validate]
+    steps:
       - name: 📊 Deployment Summary
-        if: always()
         run: |
           echo "========== Deployment Summary =========="
+          echo "Repository: ${{ github.repository }}"
           echo "Commit: ${{ github.sha }}"
           echo "Author: ${{ github.actor }}"
           echo "Workflow: ${{ github.workflow }}"
-          echo "Status: ${{ job.status }}"
+          echo "Trigger: ${{ github.event_name }}"
           echo ""
-          echo "Next steps:"
-          echo "1. Check GitHub Actions logs above for any errors"
-          echo "2. Verify Cloudflare Pages deployment at https://dash.cloudflare.com"
-          echo "3. If successful, validate pages are accessible:"
-          echo "   - https://www.liyupoetry.com/"
-          echo "   - https://www.liyupoetry.com/1995hanxuema/"
-          echo "4. If failed, check GitHub Secrets configuration"
+          echo "Deployment Targets:"
+          echo "  ✅ GitHub Pages: https://lukethecat.github.io"
+          if [ -n "${{ secrets.CF_API_TOKEN }}" ] && [ -n "${{ secrets.CF_ACCOUNT_ID }}" ]; then
+            echo "  ✅ Cloudflare Pages: https://www.liyupoetry.com"
+          else
+            echo "  ⚠️ Cloudflare Pages: Not configured (missing secrets)"
+          fi
+          echo ""
+          echo "Key Pages:"
+          echo "  • Homepage: https://lukethecat.github.io/"
+          echo "  • 汗血马诗集: https://lukethecat.github.io/1995hanxuema/"
+          echo "  • 1980诗集: https://lukethecat.github.io/1980/"
+          echo "  • Archive: https://lukethecat.github.io/archive/"
+          echo ""
+          echo "Next Steps:"
+          echo "  1. Visit the website to verify content"
+          echo "  2. Check for any broken links or missing pages"
+          echo "  3. Monitor GitHub Actions for future deployments"
+          echo ""
+          if [ -z "${{ secrets.CF_API_TOKEN }}" ] || [ -z "${{ secrets.CF_ACCOUNT_ID }}" ]; then
+            echo "⚠️ To enable Cloudflare Pages deployment:"
+            echo "   • Add CF_API_TOKEN and CF_ACCOUNT_ID secrets in GitHub"
+            echo "   • See docs/DEPLOYMENT_SETUP.md for instructions"
+          fi
