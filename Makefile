@@ -35,7 +35,11 @@ content: ## Build the content of the static site with zola
 
 .PHONY: images
 images: ## Create avif images
-	cargo run --manifest-path ./helpers/img/Cargo.toml
+	@if command -v cargo >/dev/null 2>&1; then \
+		cargo run --manifest-path ./helpers/img/Cargo.toml; \
+	else \
+		echo "⚠️  cargo not installed, skipping image generation"; \
+	fi
 
 # Creating a temporary directory here because wasm-pack seems to overwrite
 # the public output directory. Haven't yet found the reason why.
