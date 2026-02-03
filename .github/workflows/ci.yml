@@ -78,7 +78,6 @@ jobs:
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
-          accountId: ${{ secrets.CF_ACCOUNT_ID.liyupoery }}
-          projectName: ${{ secrets.CF_PROJECT_NAME.liyupoetry }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          projectName: endler-dev
           directory: ./public
-``
