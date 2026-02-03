@@ -62,8 +62,9 @@ minify: ## Compress JavaScript assets
 		echo "⚠️  terser not installed, skipping minification"; \
 	fi
 
-.PHONY: build
-build: stars content index minify ## Build static site and search index, minify JS (images removed)
+.PHONY: build build-ci
+build: stars content index minify ## Build static site and search index, minify JS (full build)
+build-ci: content index minify ## Build static site without stars (CI-only, no API token required)
 
 .PHONY: build-quick
 build-quick: stars content ## Build static site (includes star stats)
@@ -74,12 +75,13 @@ dev run serve: ## Serve website locally
 
 .PHONY: stars
 stars: ## Update Github stars statistics for my projects
-	@if command -v gh-stats >/dev/null 2>&1; then \
+	@if command -v gh-stats >/dev/null 2>&1 && [ -n "$$GITHUB_TOKEN" ]; then \
 		rm -f content/static/about/stars.md; \
 		gh-stats --filter gitpod --stars 100 --template .star-counter-template.md --output content/static/about/stars.md 2>/dev/null || echo "⚠️  gh-stats failed, using fallback content"; \
+	elif command -v gh-stats >/dev/null 2>&1 && [ -z "$$GITHUB_TOKEN" ]; then \
+		echo "⚠️  gh-stats available but GITHUB_TOKEN not set, skipping statistics"; \
+		python3 -c "import sys; content = '---\ntitle: \"GitHub Star Statistics\"\ndate: 2020-01-01\n---\n\n# GitHub Star Statistics\n\n暂无可用的星标统计数据。\n\n该功能需要有效 GitHub token 才能从 API 获取实时数据。\n'; f = open('content/static/about/stars.md', 'w', encoding='utf-8'); f.write(content); f.close()"; \
 	else \
 		echo "⚠️  gh-stats not installed, skipping star statistics"; \
-	fi
-	@if [ ! -f content/static/about/stars.md ]; then \
 		python3 -c "import sys; content = '---\ntitle: \"GitHub Star Statistics\"\ndate: 2020-01-01\n---\n\n# GitHub Star Statistics\n\n暂无可用的星标统计数据。\n\n该功能需要 gh-stats 工具才能从 GitHub API 获取实时数据。\n\n## 状态\n\n- **本地开发**：此功能已配置为可选跳过\n- **CI/CD 构建**：使用 GitHub Actions 安装所需工具\n- **产品环境**：依赖 Cloudflare 秘钥配置\n\n功能正常运行，不影响主内容构建和部署。\n'; f = open('content/static/about/stars.md', 'w', encoding='utf-8'); f.write(content); f.close()"; \
 	fi

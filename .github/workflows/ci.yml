@@ -66,9 +66,7 @@ jobs:
         run: make versions
 
       - name: 📖 Build
-        run: make build
-        env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+        run: make build-ci
 
       - name: 🚀 Deploy to Cloudflare Pages
         if: github.ref == 'refs/heads/main'
