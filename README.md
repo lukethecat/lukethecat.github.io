@@ -2,7 +2,8 @@
 
 这是一个基于 Zola 静态网站生成器构建的诗歌网站，收录了诗人李瑜的完整诗集。
 
-**生产环境**: https://liyupoerty.com  
+**生产环境**: https://www.liyupoetry.com  
+**GitHub Pages**: https://lukethecat.github.io  
 **GitHub 仓库**: https://github.com/lukethecat/lukethecat.github.io
 
 ---

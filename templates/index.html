@@ -35,7 +35,7 @@ load_data(path="static/logo_font_dark.svg") %}
 
         <link rel="stylesheet" href="/css/main.css" />
         <link rel="canonical" href="{{ current_url | safe }}" />
-        <link rel="me" href="https://mastodon.social/@mre" />
+        <link rel="me" href="" />
 
         <style>
             @font-face {
@@ -96,14 +96,11 @@ load_data(path="static/logo_font_dark.svg") %}
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#ffffff" />
-        <meta name="author" content="Matthias Endler" />
-        <meta
-            name="description"
-            content="Personal website of Matthias Endler, a Software Engineer interested in low-level programming and Backend development. Rust, Go"
-        />
+        <meta name="author" content="{{ config.extra.author }}" />
+        <meta name="description" content="{{ config.description }}" />
 
         {%- block header %}
-        <title>Matthias Endler</title>
+        <title>{{ config.title }}</title>
         {%- endblock header %}
     </head>
 
@@ -116,7 +113,7 @@ load_data(path="static/logo_font_dark.svg") %}
                 </a>
                 <div>
                     <a href="/" aria-label="Go back to homepage">
-                        <h1 class="homepage-title">Matthias Endler</h1>
+                        <h1 class="homepage-title">{{ config.title }}</h1>
                     </a>
                 </div>
 

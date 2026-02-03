@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 
 {%- block header %}
-<title>{{ page.title }} | Matthias Endler</title>
+<title>{{ page.title }} | {{ config.extra.author }}</title>
 <link rel="canonical" href="{{ page.permalink | safe }}" />
 {%- if page.extra.css %}
 <link href="./article.css" rel="stylesheet" />
@@ -30,20 +30,20 @@
   {% set relpath = current_path ~ page.extra.social_img %}
   {%- set social_img = get_url(path=relpath) %}
 {% else %}
-  {%- set social_img = "https://endler.dev/default.png" %}
+  {%- set social_img = "https://liyupoetry.com/default.png" %}
 {%- endif %}
 
-<meta property="og:title" content="{{ page.title }} | Matthias Endler" />
+<meta property="og:title" content="{{ page.title }} | {{ config.extra.author }}" />
 <meta property="og:type" content="website" />
 <meta property="og:description" content="{{ social_description | safe | striptags }}" />
-<meta property="og:url" content="https://endler.dev{{ page.path | safe }}" />
+<meta property="og:url" content="https://liyupoetry.com{{ page.path | safe }}" />
 <meta property="og:image" content="{{ social_img | safe }}" />
 
 <meta name="twitter:title" content="{{ page.title | safe }}">
 <meta name="twitter:description" content="{{ social_description | safe | striptags }}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@matthiasendler">
-<meta name="twitter:creator" content="@matthiasendler">
+<meta name="twitter:site" content="@liyupoetry">
+<meta name="twitter:creator" content="@liyupoetry">
 <meta name="twitter:image" content="{{ social_img | safe }}">
 {%- endblock header -%}
 
@@ -55,7 +55,7 @@
     </a>
     <div>
       <a href="/">
-        <h1>Matthias Endler</h1>
+        <h1>{{ config.extra.author }}</h1>
       </a>
     </div>
   </div>

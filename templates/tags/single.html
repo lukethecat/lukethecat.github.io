@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 
 {% block header %}
-    <title>All {{ term.pages | length }} {{ term.name }} posts | Matthias Endler</title>
+    <title>All {{ term.pages | length }} {{ term.name }} posts | {{ config.extra.author }}</title>
 {% endblock header %}
 
 {% block content %}
