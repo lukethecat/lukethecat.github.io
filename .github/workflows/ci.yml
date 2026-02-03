@@ -5,6 +5,8 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  schedule:
+    - cron: "0 18 1 * *"
   repository_dispatch:
   workflow_dispatch:
 
@@ -76,6 +78,7 @@ jobs:
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
-          accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: ${{ secrets.CF_PROJECT_NAME }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID.liyupoery }}
+          projectName: ${{ secrets.CF_PROJECT_NAME.liyupoetry }}
           directory: ./public
+``
