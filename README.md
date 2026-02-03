@@ -52,7 +52,7 @@ grep "^public/" .gitignore || echo "警告: public/ 未在 .gitignore 中"
 # 检查代码中是否包含个人信息
 grep -r "jellyfishjaco" --include="*.md" --include="*.toml" --include="*.py" .
 grep -r "\.com/Documents" --include="*.md" --include="*.toml" --include="*.py" .
-grep -r "/Users/" --include="*.md" --include="*.toml" --include="*.py" .
+grep -r "[DETECTED]" --include="*.md" --include="*.toml" --include="*.py" .
 ```
 
 **检查项：**
