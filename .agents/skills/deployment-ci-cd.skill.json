@@ -8,11 +8,7 @@
   "last_used": "2026-02-03",
   "author": "AI Agent System",
 
-  "dependencies": [
-    "zola-build",
-    "github-actions",
-    "validation-testing"
-  ],
+  "dependencies": ["zola-build", "github-actions", "validation-testing"],
 
   "parameters": {
     "deployment_targets": ["github-pages", "cloudflare-pages"],
@@ -103,6 +99,11 @@
     "curl for HTTP validation",
     "git for version control"
   ],
+
+  "post_deployment_rules": {
+    "mandatory_verification": true,
+    "instructions": "After every deployment (push to main), the Agent MUST:\n1. Check the GitHub Actions run status.\n2. Verify the live site (GitHub Pages: https://lukethecat.github.io) returns HTTP 200.\n3. Verify the Cloudflare mirror (if active: https://www.liyupoetry.com) returns HTTP 200.\n4. Report success/failure back to the user."
+  },
 
   "notes": [
     "GitHub Pages is primary deployment target",

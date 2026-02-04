@@ -44,29 +44,59 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-  deploy-cloudflare:
-    needs: build
-    runs-on: ubuntu-latest
-    if: env.CF_API_TOKEN != '' # Only run if secrets are available (checked implicitly)
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install Zola
-        run: |
-          curl -L https://github.com/getzola/zola/releases/download/v0.19.1/zola-v0.19.1-x86_64-unknown-linux-gnu.tar.gz | tar xzf -
-          sudo mv zola /usr/local/bin/
+    deploy-cloudflare:
+      needs: build
 
-      - name: Build for Cloudflare
-        # Cloudflare might need a different Base URL if custom domain is used
-        # For now, we reuse the standard build or rebuild
-        run: zola build --base-url https://www.liyupoetry.com
+      runs-on: ubuntu-latest
 
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-          accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: liyupoetry
-          directory: ./public
-          branch: main
-        env:
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+      if: ${{ secrets.CF_API_TOKEN != '' }}
+
+      steps:
+        - uses: actions/checkout@v4
+
+        - name: Install Zola
+
+          run: |
+
+            curl -L https://github.com/getzola/zola/releases/download/v0.19.1/zola-v0.19.1-x86_64-unknown-linux-gnu.tar.gz | tar xzf -
+
+            sudo mv zola /usr/local/bin/
+
+        - name: Build for Cloudflare
+
+          run: zola build --base-url https://www.liyupoetry.com
+
+        - name: Deploy to Cloudflare Pages
+
+          uses: cloudflare/pages-action@v1
+
+          with:
+            apiToken: ${{ secrets.CF_API_TOKEN }}
+
+            accountId: ${{ secrets.CF_ACCOUNT_ID }}
+
+            projectName: liyupoetry
+
+            directory: ./public
+
+            branch: main
+
+    verify-deployment:
+      needs: [deploy-gh-pages]
+
+      runs-on: ubuntu-latest
+
+      if: always()
+
+      steps:
+        - name: Verify GitHub Pages
+
+          run: |
+
+            echo "Waiting for pages to propagate..."
+
+            sleep 30
+
+            curl -I -f https://lukethecat.github.io/ || exit 1
+
+            echo "GitHub Pages is UP."
