@@ -9,6 +9,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: write
 
 concurrency:
   group: "pages"
@@ -47,13 +48,25 @@ jobs:
   deploy-cloudflare:
     needs: build
     runs-on: ubuntu-latest
-    if: secrets.CF_API_TOKEN != null
     steps:
       - uses: actions/checkout@v4
       - name: Install Zola
         run: |
           curl -L https://github.com/getzola/zola/releases/download/v0.19.1/zola-v0.19.1-x86_64-unknown-linux-gnu.tar.gz | tar xzf -
           sudo mv zola /usr/local/bin/
+      - name: Debug Secrets Status
+        run: |
+          echo "Checking Cloudflare Secrets configuration..."
+          if [ -z "${{ secrets.CF_API_TOKEN }}" ]; then
+            echo "❌ CF_API_TOKEN is missing"
+            exit 1
+          fi
+          if [ -z "${{ secrets.CF_ACCOUNT_ID }}" ]; then
+            echo "❌ CF_ACCOUNT_ID is missing"
+            exit 1
+          fi
+          echo "✅ CF_API_TOKEN exists"
+          echo "✅ CF_ACCOUNT_ID exists"
 
       - name: Build for Cloudflare
         run: zola build --base-url https://www.liyupoetry.com
