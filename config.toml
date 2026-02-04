@@ -10,7 +10,9 @@ default_language = "en"
 
 taxonomies = [
     { name = "tags", feed = true, paginate_by = 10 },
-    { name = "categories", feed = true, paginate_by = 10 }
+    { name = "categories", feed = true, paginate_by = 10 },
+    { name = "series", feed = true, paginate_by = 10 },
+    { name = "years", feed = true, paginate_by = 10 }
 ]
 
 [markdown]
@@ -22,3 +24,29 @@ bottom_footnotes = true
 author = "李瑜"
 news_last_updated = "2026-02-03"
 copyright = "Copyright © 1995-2026 Li Yu, All Rights Reserved"
+
+# Main Navigation Menu
+[[extra.menu]]
+name = "诗歌"
+url = "/poetry"
+weight = 1
+
+[[extra.menu]]
+name = "书籍"
+url = "/books"
+weight = 2
+
+[[extra.menu]]
+name = "国画"
+url = "/art"
+weight = 3
+
+[[extra.menu]]
+name = "文章"
+url = "/essays"
+weight = 4
+
+[[extra.menu]]
+name = "关于"
+url = "/static/about"
+weight = 5

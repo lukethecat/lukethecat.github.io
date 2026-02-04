@@ -59,6 +59,26 @@ load_data(path="static/logo_font_dark.svg") %}
                     </a>
                 </div>
 
+                <nav class="site-nav">
+                    {% for item in config.extra.menu %}
+                    <a
+                        href="{{ item.url }}"
+                        {%
+                        if
+                        current_url
+                        and
+                        current_url
+                        is
+                        starting_with(item.url)
+                        %}class="active"
+                        {%
+                        endif
+                        %}
+                        >{{ item.name }}</a
+                    >
+                    {% endfor %}
+                </nav>
+
                 <button
                     onclick="toggleTheme()"
                     class="theme-toggle"
