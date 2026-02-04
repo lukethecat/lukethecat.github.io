@@ -1,17 +1,16 @@
-{% extends "index.html" %}
-
-{% block header %}
-<title>{{ section.title }} | {{ config.extra.author }}</title>
-{% endblock header %}
+{% extends "base.html" %}
 
 {% block content %}
-{% for year, posts in section.pages | group_by(attribute="year") %}
-    <h3>{{ year }}</h3>
+<div class="prose">
+    <h1>{{ section.title }}</h1>
+    {{ section.content | safe }}
 
-    <ul>
-    {% for post in posts %}
-        <li><a href="{{ post.permalink }}">{{ post.title }}</a></li>
-    {% endfor %}
-    </ul>
-{% endfor %}
+    <div class="poem-list">
+        {% for page in section.pages %}
+            <div class="poem-link">
+                <a href="{{ page.permalink }}">{{ page.title }}</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock content %}

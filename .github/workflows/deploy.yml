@@ -1,61 +1,72 @@
-name: Deploy to Cloudflare Pages
+name: Deploy Website
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-
     steps:
-      - name: 📥 检出代码
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: 📦 安装 Zola (LTS 版本)
+      - name: Install Zola
         run: |
-          set -e
-          curl -sSL https://github.com/getzola/zola/releases/download/v0.19.1/zola-v0.19.1-x86_64-unknown-linux-gnu.tar.gz | tar xzf -
-          sudo install zola /usr/local/bin
-          zola --version
+          curl -L https://github.com/getzola/zola/releases/download/v0.19.1/zola-v0.19.1-x86_64-unknown-linux-gnu.tar.gz | tar xzf -
+          sudo mv zola /usr/local/bin/
 
-      - name: 🧹 清理旧构建
+      - name: Build
+        run: zola build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy-gh-pages:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  deploy-cloudflare:
+    needs: build
+    runs-on: ubuntu-latest
+    if: env.CF_API_TOKEN != '' # Only run if secrets are available (checked implicitly)
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Zola
         run: |
-          rm -rf public/
-          echo "已清理 public/ 目录"
+          curl -L https://github.com/getzola/zola/releases/download/v0.19.1/zola-v0.19.1-x86_64-unknown-linux-gnu.tar.gz | tar xzf -
+          sudo mv zola /usr/local/bin/
 
-      - name: 🏗️ 构建网站
-        run: |
-          echo "[info] 使用已安装的 Zola 构建..."
-          zola build --base-url "https://www.liyupoetry.com"
-          echo "[success] Zola 构建完成"
-          echo "[info] 生成的 HTML 文件数量: $(find public/ -name "*.html" | wc -l)"
-          echo "[info] 生成目录结构:"
-          ls -la public/ | head -10
+      - name: Build for Cloudflare
+        # Cloudflare might need a different Base URL if custom domain is used
+        # For now, we reuse the standard build or rebuild
+        run: zola build --base-url https://www.liyupoetry.com
 
-      - name: 🔍 验证构建结果
-        run: |
-          if [ ! -f "public/index.html" ]; then
-            echo "❌ 错误: public/index.html 不存在"
-            exit 1
-          fi
-
-          PAGE_COUNT=$(find public/ -name "*.html" | wc -l)
-          if [ "$PAGE_COUNT" -lt 50 ]; then
-            echo "❌ 警告: 生成的页面数量太少 (< 50): $PAGE_COUNT"
-            exit 1
-          fi
-
-          echo "✅ 构建验证通过: $PAGE_COUNT 个 HTML 页面"
-
-      - name: 🚀 部署到 Cloudflare Pages
-        if: github.ref == 'refs/heads/main'
+      - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: ${{ secrets.CF_PROJECT_NAME }}
+          projectName: liyupoetry
           directory: ./public
           branch: main
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}

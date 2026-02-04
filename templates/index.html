@@ -1,189 +1,26 @@
-{% import "_macros.html" as macros %} {% set logo =
-load_data(path="static/logo.svg") %} {% set logo_font_light =
-load_data(path="static/logo_font_light.svg") %} {% set logo_font_dark =
-load_data(path="static/logo_font_dark.svg") %}
+{% extends "base.html" %}
 
-<!doctype html>
-<html lang="cn">
-    <head>
-        <script>
-            (function () {
-                const savedTheme = localStorage.getItem("theme");
-                if (savedTheme) {
-                    document.documentElement.setAttribute(
-                        "data-theme",
-                        savedTheme,
-                    );
-                }
-            })();
-        </script>
+{% block content %}
+<div class="prose">
+    <h1>{{ section.title }}</h1>
 
-        <link rel="stylesheet" href="/css/main.css" />
-        <link rel="canonical" href="{{ current_url | safe }}" />
-        <link rel="me" href="" />
+    {% if section.content %}
+        {{ section.content | safe }}
+    {% endif %}
 
-        <style>
-            @font-face {
-                font-family: "JetBrainsMono";
-                src: url("/fonts/JetBrainsMono-Regular.woff2")
-                    format("truetype");
-                font-weight: normal;
-                font-style: normal;
-                font-display: swap;
-            }
-        </style>
+    <ul>
+    {% for page in section.pages %}
+        <li><a href="{{ page.permalink }}">{{ page.title }}</a></li>
+    {% endfor %}
+    </ul>
 
-        <link rel="icon" href="data:image/svg+xml;utf8,{{ logo }}" />
-        <link href="/rss.xml" rel="alternate" type="application/rss+xml" />
-        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#ffffff" />
-        <meta name="author" content="{{ config.extra.author }}" />
-        <meta name="description" content="{{ config.description }}" />
-
-        {%- block header %}
-        <title>{{ config.title }}</title>
-        {%- endblock header %}
-    </head>
-
-    <body>
-        {%- block site_header %}
-        <header>
-            <div class="homepage-header">
-                <a href="/" aria-label="Go back to homepage">
-                    <div class="logo">{{ logo | safe }}</div>
-                </a>
-                <div>
-                    <a href="/" aria-label="Go back to homepage">
-                        <h1 class="homepage-title">{{ config.title }}</h1>
-                    </a>
-                </div>
-
-                <nav class="site-nav">
-                    {% for item in config.extra.menu %}
-                    <a
-                        href="{{ item.url }}"
-                        {%
-                        if
-                        current_url
-                        and
-                        current_url
-                        is
-                        starting_with(item.url)
-                        %}class="active"
-                        {%
-                        endif
-                        %}
-                        >{{ item.name }}</a
-                    >
-                    {% endfor %}
-                </nav>
-
-                <button
-                    onclick="toggleTheme()"
-                    class="theme-toggle"
-                    aria-label="Toggle dark mode"
-                >
-                    <svg
-                        class="sun-icon"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    >
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line
-                            x1="18.36"
-                            y1="18.36"
-                            x2="19.78"
-                            y2="19.78"
-                        ></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                    <svg
-                        class="moon-icon"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    >
-                        <path
-                            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-                        ></path>
-                    </svg>
-                </button>
-            </div>
-        </header>
-        {%- endblock site_header %}
-
-        <div class="container">
-            <main>
-                {% block content %} {% for page in paginator.pages %} {% include
-                "snippets/article_preview.html" %} {% endfor %}
-
-                <nav class="pagination" aria-label="Blog pagination">
-                    {% if paginator.previous %}
-                    <a href="{{ paginator.previous}}" rel="prev"
-                        >« Newer posts</a
-                    >
-                    {% else %}
-                    <span></span>
-                    {% endif %} {% if paginator.next %}
-                    <a href="{{ paginator.next }}" rel="next">Older posts »</a>
-                    {% else %}
-                    <span></span>
-                    {% endif %}
-                </nav>
-                {% endblock content %}
-            </main>
-        </div>
-
-        {% include "snippets/footer.html" %}
-
-        <script>
-            function toggleTheme() {
-                const currentTheme =
-                    document.documentElement.getAttribute("data-theme") ||
-                    "light";
-                const newTheme = currentTheme === "dark" ? "light" : "dark";
-
-                document.documentElement.setAttribute("data-theme", newTheme);
-                localStorage.setItem("theme", newTheme);
-            }
-
-            function initTheme() {
-                const savedTheme = localStorage.getItem("theme");
-                if (savedTheme) {
-                    document.documentElement.setAttribute(
-                        "data-theme",
-                        savedTheme,
-                    );
-                } else {
-                    if (
-                        window.matchMedia &&
-                        window.matchMedia("(prefers-color-scheme: dark)")
-                            .matches
-                    ) {
-                        document.documentElement.setAttribute(
-                            "data-theme",
-                            "dark",
-                        );
-                    } else {
-                        document.documentElement.setAttribute(
-                            "data-theme",
-                            "light",
-                        );
-                    }
-                }
-            }
-
-            initTheme();
-        </script>
-    </body>
-</html>
+    <!-- If this is the Root index, show books -->
+    {% if section.path == "_index.md" %}
+        <h2>Books</h2>
+        <!-- Hardcoded for now since we just rebooted -->
+        <ul>
+            <li><a href="/1995hanxuema/">汗血马 (1995)</a></li>
+        </ul>
+    {% endif %}
+</div>
+{% endblock content %}

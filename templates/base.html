@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+    <link rel="stylesheet" href="/css/zed.css">
+    {% block extra_head %}{% endblock extra_head %}
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <a href="/" class="sidebar-title">{{ config.title }}</a>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="search" class="search-input" placeholder="Search poems...">
+        </div>
+
+        <div class="sidebar-nav">
+            <!-- Navigation Loop -->
+            {% set section = get_section(path="1995hanxuema/_index.md") %}
+            <div class="nav-group">
+                <div class="nav-group-title">{{ section.title }}</div>
+                {% for subsection_path in section.subsections %}
+                    {% set subsection = get_section(path=subsection_path) %}
+                    <a href="{{ subsection.permalink }}" class="nav-item {% if current_url == subsection.permalink %}active{% endif %}">
+                        {{ subsection.title }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        {% block content %}{% endblock content %}
+    </main>
+
+    <!-- Simple Search Script (Placeholder for now) -->
+    <script>
+        // Basic search implementation would go here or load elasticlunr
+    </script>
+</body>
+</html>
