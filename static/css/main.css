@@ -492,6 +492,23 @@ th {
 
 @media (max-width: 640px) {
     .site-nav {
-        display: none; /* Hide on mobile for now, or use a hamburger */
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 1rem;
+
+        justify-content: center;
+
+        margin-top: 1rem;
+
+        width: 100%;
+    }
+
+    .site-header,
+    .homepage-header {
+        flex-direction: column;
+
+        align-items: center;
     }
 }

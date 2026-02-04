@@ -1,39 +1,56 @@
 <footer>
-  <div class="body">
-    <div class="footer-author">
-      <a href="/about">
-        <img
-          src="/liyu_logo.svg"
-          alt="李瑜"
-          class="footer-author-photo"
-          width="80"
-          height="80">
-      </a>
-      <div class="footer-author-text">
-        <span class="greeting">您好</span>, 我是 <a href="/about">李瑜</a>。
-      </div>
+    <div class="body">
+        <div class="footer-author">
+            <a href="/about">
+                <img
+                    src="/logo.svg"
+                    alt="李瑜"
+                    class="footer-author-photo"
+                    width="80"
+                    height="80"
+                />
+            </a>
+            <div class="footer-author-text">
+                <span class="greeting">您好</span>, 我是
+                <a href="/about">李瑜</a>。
+            </div>
+        </div>
+
+        <div>
+            <p>
+                来自新疆的诗人，创作了《准噶尔诗草》《啊，伊犁河水漂白了我的军衣》等诗集。
+            </p>
+
+            <p>
+                我的诗歌风格忧伤、缠绵、轻柔、淡远，为"新边塞诗"的多样性和丰富性作出了特殊的贡献。
+            </p>
+
+            <p>
+                浏览我的 <a href="/archive">文章归档</a>，订阅我的
+                <a href="/rss.xml">RSS feed</a>，或了解更多
+                <a href="/about">关于我</a> 的信息。
+            </p>
+
+            {% include "snippets/social.html" %}
+        </div>
     </div>
-
-    <div>
-      <p>来自新疆的诗人，创作了《准噶尔诗草》《啊，伊犁河水漂白了我的军衣》等诗集。</p>
-
-      <p>我的诗歌风格忧伤、缠绵、轻柔、淡远，为"新边塞诗"的多样性和丰富性作出了特殊的贡献。</p>
-
-      <p>浏览我的 <a href="/archive">文章归档</a>，订阅我的 <a href="/rss.xml">RSS feed</a>，或了解更多 <a href="/about">关于我</a> 的信息。</p>
-
-      {% include "snippets/social.html" %}
-    </div>
-  </div>
-  <script>
-    // Switch the greeting between a few possible options on dom loaded
-    document.addEventListener("DOMContentLoaded", function () {
-      // Chinese greetings:
-      const greetings = ["您好", "欢迎", "幸会", "敬启", "见字如面", "展信佳"];
-      const greetingElement = document.querySelector(".greeting");
-      if (greetingElement) {
-        greetingElement.textContent =
-          greetings[Math.floor(Math.random() * greetings.length)];
-      }
-    });
-  </script>
+    <script>
+        // Switch the greeting between a few possible options on dom loaded
+        document.addEventListener("DOMContentLoaded", function () {
+            // Chinese greetings:
+            const greetings = [
+                "您好",
+                "欢迎",
+                "幸会",
+                "敬启",
+                "见字如面",
+                "展信佳",
+            ];
+            const greetingElement = document.querySelector(".greeting");
+            if (greetingElement) {
+                greetingElement.textContent =
+                    greetings[Math.floor(Math.random() * greetings.length)];
+            }
+        });
+    </script>
 </footer>
