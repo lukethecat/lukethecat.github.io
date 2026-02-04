@@ -14,29 +14,39 @@ def parse_source():
         text = f.read()
 
     sections = text.split("---")
+    print(f"DEBUG: Found {len(sections)} sections")
+
     intro_section = sections[0].strip()
     toc_section = sections[1].strip()
 
     chapters = []
     other_sections = []
 
-    for section in sections[2:]:
+    for i, section in enumerate(sections[2:]):
         section = section.strip()
         if not section:
             continue
 
-        match = re.match(r"^##\s+(.+?)(（\d+首）)?$", section.split("\n")[0])
-        if (
-            match
-            and "序" not in match.group(1)
-            and "后记" not in match.group(1)
-            and "出版信息" not in match.group(1)
-        ):
+        first_line = section.split("\n")[0]
+        print(f"DEBUG: Section {i + 2} first line: '{first_line}'")
+
+        match = re.match(r"^##\s+(.+?)(（\d+首）)?$", first_line)
+        if match:
             chapter_name = match.group(1).strip()
-            chapters.append({"name": chapter_name, "content": section})
+            print(f"DEBUG:   -> Chapter: {chapter_name}")
+            if (
+                "序" not in chapter_name
+                and "后记" not in chapter_name
+                and "出版信息" not in chapter_name
+            ):
+                chapters.append({"name": chapter_name, "content": section})
+            else:
+                print("DEBUG:   -> Skipped (Excluded)")
         else:
+            print("DEBUG:   -> No Match")
             other_sections.append(section)
 
+    print(f"DEBUG: Total chapters found: {len(chapters)}")
     return intro_section, toc_section, chapters, other_sections
 
 
@@ -99,6 +109,7 @@ def save_poem(poem, directory, chapter_name, weight):
 
     # Escape quotes
     toml_title = title.replace('"', '\\"')
+    # print(f"Saving {filename}")
 
     full_body_title = f"### {title}"
     if subtitle:
