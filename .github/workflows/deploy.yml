@@ -47,7 +47,7 @@ jobs:
   deploy-cloudflare:
     needs: build
     runs-on: ubuntu-latest
-    if: ${{ secrets.CF_API_TOKEN }}
+    if: secrets.CF_API_TOKEN != null
     steps:
       - uses: actions/checkout@v4
       - name: Install Zola
@@ -59,7 +59,7 @@ jobs:
         run: zola build --base-url https://www.liyupoetry.com
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/pages-action@1
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
