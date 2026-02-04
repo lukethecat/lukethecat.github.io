@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Tags - {{ config.title }}{% endblock title %}
+
+{% block content %}
+<div class="prose">
+    <h1>Tags</h1>
+
+    <div class="tags-cloud">
+        {% for tag in tags %}
+        <a href="{{ tag.permalink }}" class="tag">
+            {{ tag.name }}
+            <span class="tag-count">({{ tag.pages | length }})</span>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
+```
+
+I need to create more taxonomy templates. Let me continue with the tag single template.

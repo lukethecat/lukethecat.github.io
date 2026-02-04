@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block title %}{{ term.name }} - {{ config.title
+}}{% endblock title %} {% block content %}
+<div class="prose">
+    <h1>{{ term.name }}</h1>
+
+    {% for page in term.pages %}
+    <article class="poem-list-item">
+        <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+        <p>{{ page.content | striptags | truncate(length=200) }}</p>
+        <div class="meta">
+            {% if page.extra.subtitle %}{{ page.extra.subtitle }}{% endif %} {%
+            if page.date %} | {{ page.date | date(format="%Y") }}{% endif %}
+        </div>
+    </article>
+    {% endfor %}
+</div>
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category.name }} - Categories - {{ config.title }}{% endblock title %}
+
+{% block content %}
+<div class="prose">
+    <h1>Poems in category "{{ category.name }}"</h1>
+
+    {% for page in paginator.pages %}
+    <article class="poem-list-item">
+        <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+        <p>
+            {{ page.content | striptags | truncate(length=200) }}
+        </p>
+        <div class="meta">
+            {% if page.extra.subtitle %}{{ page.extra.subtitle }}{% endif %}
+            {% if page.date %} | {{ page.date | date(format="%Y") }}{% endif %}
+        </div>
+    </article>
+    {% endfor %}
+
+    <!-- Pagination -->
+    {% if paginator.total_pages > 1 %}
+    <nav class="pagination" style="margin-top: 2rem;">
+        {% if paginator.previous %}
+        <a href="{{ paginator.previous }}">&larr; Previous</a>
+        {% endif %}
+
+        <span class="page-info">
+            Page {{ paginator.current }} of {{ paginator.total_pages }}
+        </span>
+
+        {% if paginator.next %}
+        <a href="{{ paginator.next }}">Next &rarr;</a>
+        {% endif %}
+    </nav>
+    {% endif %}
+</div>
+{% endblock content %}

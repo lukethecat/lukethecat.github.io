@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Categories - {{ config.title }}{% endblock title %}
+
+{% block content %}
+<div class="prose">
+    <h1>Categories</h1>
+
+    <ul>
+        {% for category in categories %}
+        <li>
+            <a href="{{ category.permalink }}">
+                {{ category.name }}
+                <span>({{ category.pages | length }})</span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}

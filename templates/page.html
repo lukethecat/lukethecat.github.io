@@ -1,20 +1,25 @@
-{% extends "base.html" %}
-
-{% block title %}{{ page.title }} - {{ config.title }}{% endblock title %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}{{ page.title }} - {{ config.title
+}}{% endblock title %} {% block content %}
 <article>
     <!-- Poem Title handled by content body typically, but let's be safe -->
     <!-- We parsed content to include ### Title, so we don't need h1 here if we trust the parser -->
     <!-- But Zola typically doesn't render title automatically -->
 
-    <div class="poem-body">
-        {{ page.content | safe }}
-    </div>
+    <div class="poem-body">{{ page.content | safe }}</div>
 
-    <div class="meta" style="margin-top: 3rem; border-top: 1px solid var(--border-color); padding-top: 1rem; color: #666; font-size: 0.9rem;">
-        {% if page.extra.subtitle %}Subtitle: {{ page.extra.subtitle }}<br>{% endif %}
-        Published: {{ page.date | date(format="%Y") }}
+    <div
+        class="meta"
+        style="
+            margin-top: 3rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        "
+    >
+        {% if page.extra.subtitle %}Subtitle: {{ page.extra.subtitle }}<br />{%
+        endif %} {% if page.date %}Published: {{ page.date | date(format="%Y")
+        }}{% endif %}
     </div>
 </article>
 {% endblock content %}

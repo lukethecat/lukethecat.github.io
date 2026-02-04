@@ -1,7 +1,7 @@
 base_url = "https://lukethecat.github.io"
 title = "李瑜诗歌"
 description = "李瑜个人诗歌网站，收录《1980》《汗血马》等诗集"
-default_language = "zh"
+default_language = "en"
 
 # Enable search
 build_search_index = true
