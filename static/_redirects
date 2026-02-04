@@ -1,3 +1,55 @@
 # Cloudflare Pages _redirects file
 # This file defines URL redirects and rewrites for Cloudflare Pages
 # Documentation: https://developers.cloudflare.com/pages/platform/redirects/
+
+# Ensure trailing slashes for directories
+/* /:splat 200! rewrite=trailingslash
+
+# Handle directory indexes - ensure Zola-generated pages work correctly
+/1995hanxuema /1995hanxuema/ 200
+/1980 /1980/ 200
+/archive /archive/ 200
+/about /about/ 200
+
+# Handle Chinese character URLs - ensure they are properly encoded
+/1995hanxuema/汗血马 /1995hanxuema/汗血马/ 200
+
+# Custom 404 page
+/* /404.html 404
+
+# Force HTTPS (already handled by Cloudflare but good practice)
+http://www.liyupoetry.com/* https://www.liyupoetry.com/:splat 301
+http://liyupoetry.com/* https://www.liyupoetry.com/:splat 301
+https://liyupoetry.com/* https://www.liyupoetry.com/:splat 301
+
+# Remove trailing .html extensions for cleaner URLs
+/*.html /:splat 301
+
+# API endpoints (if any) - keep as is
+/api/* /api/:splat 200
+
+# Static assets - no redirects needed
+/static/* /static/:splat 200
+/css/* /css/:splat 200
+/js/* /js/:splat 200
+/fonts/* /fonts/:splat 200
+/images/* /images/:splat 200
+
+# RSS feed
+/rss.xml /rss.xml 200
+/atom.xml /atom.xml 200
+
+# Sitemap
+/sitemap.xml /sitemap.xml 200
+
+# Testing endpoint
+/test-deployment.txt /test-deployment.txt 200
+
+# Catch-all for single page apps (not needed for static site but included for completeness)
+# /blog/* /index.html 200
+
+# Redirect old pages if needed
+# /old-page /new-page 301
+
+# Default priority order
+/* /index.html 200
