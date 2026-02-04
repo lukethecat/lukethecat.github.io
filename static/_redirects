@@ -1,30 +1,13 @@
-# Cloudflare Pages _redirects file
-# Simplified for static Zola site deployment
 
-# Ensure trailing slashes for directories
-/* /:splat 200! rewrite=trailingslash
+# Cloudflare Pages redirects for liyupoetry.com
+# Minimal test configuration
 
-# Force HTTPS (good practice)
+# HTTPS enforcement
 http://www.liyupoetry.com/* https://www.liyupoetry.com/:splat 301
 http://liyupoetry.com/* https://www.liyupoetry.com/:splat 301
-https://liyupoetry.com/* https://www.liyupoetry.com/:splat 301
 
-# Serve static assets
-/static/* 200
-/css/* 200
-/js/* 200
-/fonts/* 200
-/images/* 200
+# Test redirect - verify Cloudflare Pages routing works
+/test-redirect / 302
 
-# RSS feeds
-/rss.xml 200
-/atom.xml 200
-
-# Testing endpoint
-/test-deployment.txt 200
-
-# Custom 404 page
+# Custom 404 page for missing routes
 /* /404.html 404
-
-# Clean URLs - remove .html extensions
-/*.html /:splat 301
