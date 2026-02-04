@@ -111,7 +111,7 @@ jobs:
       - name: 📖 Build website
         run: |
           make clean
-          make content
+          zola build --base-url "https://www.liyupoetry.com"
           echo "Build completed for Cloudflare deployment"
 
       - name: 📂 Debug - List public directory contents
