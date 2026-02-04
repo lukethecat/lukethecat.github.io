@@ -6,15 +6,15 @@ default_language = "zh"
 # Enable search
 build_search_index = true
 
+taxonomies = [
+    {name = "tags", paginate_by = 10},
+    {name = "categories", paginate_by = 10},
+]
+
 [markdown]
-highlight_code = true
 smart_punctuation = true
 
 [extra]
 author = "李瑜"
 # Zed-like theme settings can be referenced here if needed by templates
 theme = "zed"
-
-[taxonomies]
-tags = {name = "tags", paginate_by = 10}
-categories = {name = "categories", paginate_by = 10}
