@@ -114,39 +114,102 @@ jobs:
           make content
           echo "Build completed for Cloudflare deployment"
 
+      - name: 📂 Debug - List public directory contents
+        run: |
+          echo "=== Public directory contents ==="
+          ls -la public/
+          echo ""
+          echo "=== Key HTML files ==="
+          find public/ -name "*.html" | head -20
+          echo ""
+          echo "=== 1995hanxuema directory ==="
+          ls -la public/1995hanxuema/ 2>/dev/null || echo "1995hanxuema directory not found"
+          echo ""
+          echo "=== 1980 directory ==="
+          ls -la public/1980/ 2>/dev/null || echo "1980 directory not found"
+          echo ""
+          echo "=== Test file creation ==="
+          echo "Test deployment file for Cloudflare Pages" > public/test-deployment.txt
+          ls -la public/test-deployment.txt
+
       - name: 🔍 Check Cloudflare configuration
         id: check-cloudflare
         run: |
-          echo "Checking Cloudflare configuration..."
-          echo "CF_API_TOKEN configured: ${{ secrets.CF_API_TOKEN != '' }}"
-          echo "CF_ACCOUNT_ID configured: ${{ secrets.CF_ACCOUNT_ID != '' }}"
+          echo "🧪 Cloudflare Pages Configuration Diagnostic"
+          echo "==========================================="
           echo ""
-          echo "=== DEBUG INFO ==="
-          echo "Repository: ${{ github.repository }}"
-          echo "Event: ${{ github.event_name }}"
-          echo "Ref: ${{ github.ref }}"
-          echo "SHA: ${{ github.sha }}"
-          echo "=================="
+          echo "📊 Secrets Status:"
+          echo "  CF_API_TOKEN configured: ${{ secrets.CF_API_TOKEN != '' }}"
+          echo "  CF_ACCOUNT_ID configured: ${{ secrets.CF_ACCOUNT_ID != '' }}"
           echo ""
 
-          if [ -z "${{ secrets.CF_API_TOKEN }}" ]; then
-            echo "❌ CF_API_TOKEN secret is not configured"
-            echo "Cloudflare Pages deployment will be skipped"
-            echo "To enable Cloudflare Pages deployment:"
-            echo "1. Go to GitHub repository Settings > Secrets and variables > Actions"
-            echo "2. Add CF_API_TOKEN (Cloudflare API Token)"
-            echo "3. Add CF_ACCOUNT_ID (Cloudflare Account ID)"
-            echo "status=skipped" >> $GITHUB_OUTPUT
-          elif [ -z "${{ secrets.CF_ACCOUNT_ID }}" ]; then
-            echo "❌ CF_ACCOUNT_ID secret is not configured"
-            echo "Cloudflare Pages deployment will be skipped"
+          echo "🔧 Build Information:"
+          echo "  Repository: ${{ github.repository }}"
+          echo "  Branch: ${{ github.ref }}"
+          echo "  Event: ${{ github.event_name }}"
+          echo "  Commit SHA: ${{ github.sha }}"
+          echo ""
+
+          echo "📋 Project Configuration:"
+          echo "  Project Name: liyupoetry"
+          echo "  Build Directory: ./public"
+          echo "  Zola Base URL: https://www.liyupoetry.com"
+          echo ""
+
+          # Validate secrets with detailed diagnostics
+          if [ -z "${{ secrets.CF_API_TOKEN }}" ] || [ -z "${{ secrets.CF_ACCOUNT_ID }}" ]; then
+            echo "❌ Cloudflare Pages deployment cannot proceed"
+            echo ""
+
+            if [ -z "${{ secrets.CF_API_TOKEN }}" ]; then
+              echo "   🔴 Missing: CF_API_TOKEN"
+              echo "      This secret is required for Cloudflare Pages deployment."
+              echo "      The API Token authenticates GitHub Actions with Cloudflare."
+            fi
+
+            if [ -z "${{ secrets.CF_ACCOUNT_ID }}" ]; then
+              echo "   🔴 Missing: CF_ACCOUNT_ID"
+              echo "      This secret identifies your Cloudflare account."
+              echo "      You can find it in Cloudflare Dashboard under Account ID."
+            fi
+
+            echo ""
+            echo "🛠️ Setup Instructions:"
+            echo "   1. Visit: https://github.com/lukethecat/lukethecat.github.io/settings/secrets/actions"
+            echo "   2. Click 'New repository secret'"
+            echo "   3. Add CF_API_TOKEN with your Cloudflare API Token"
+            echo "   4. Add CF_ACCOUNT_ID with your Cloudflare Account ID"
+            echo ""
+            echo "📚 Documentation:"
+            echo "   - See CLOUDFLARE_API_TOKEN_SETUP.md for detailed setup guide"
+            echo "   - Run ./setup-cloudflare-pages.sh for interactive setup"
+            echo ""
+            echo "⚠️  Note: GitHub Pages deployment will continue normally."
+            echo "    Cloudflare Pages is optional but provides CDN benefits."
+            echo ""
             echo "status=skipped" >> $GITHUB_OUTPUT
           else
             echo "✅ Cloudflare configuration detected"
-            echo "CF_API_TOKEN length: ${#CF_API_TOKEN}"
-            echo "CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}"
+            echo ""
+            echo "🔐 Security Check:"
+            echo "   CF_API_TOKEN: ${#{{ secrets.CF_API_TOKEN }}} characters (hidden)"
+            echo "   CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}"
+            echo ""
+            echo "📦 Deployment Settings:"
+            echo "   Project: liyupoetry"
+            echo "   Directory: ./public"
+            echo "   Branch: main"
+            echo ""
+            echo "🚀 Proceeding with Cloudflare Pages deployment..."
             echo "status=ready" >> $GITHUB_OUTPUT
           fi
+
+          echo ""
+          echo "📈 Current Deployment Status:"
+          echo "   GitHub Pages: https://lukethecat.github.io"
+          echo "   Cloudflare Pages: https://www.liyupoetry.com"
+          echo ""
+          echo "✅ Diagnostic complete"
 
       - name: 🚀 Deploy to Cloudflare Pages
         if: steps.check-cloudflare.outputs.status == 'ready'
