@@ -36,6 +36,7 @@ build/
 # Temporary files
 *.tmp
 *.temp
-```
 
-Now I'll stage the changes, create a proper commit, and push to the repository:
+# Next.js
+.next/
+out/
