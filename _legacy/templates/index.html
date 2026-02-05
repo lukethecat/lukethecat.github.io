@@ -1,0 +1,172 @@
+{% extends "base.html" %} {% block title %}{{ config.title }} -
+诗人李谕诗歌作品精选{% endblock %} {% block seo %}
+<meta
+    name="description"
+    content="李谕 (李瑜) 1956-，中国当代著名诗人，西部诗歌奠基人。代表诗集：《汗血马》《1980》《匈奴传》。收录47首西域抒情诗作。"
+/>
+<meta property="og:title" content="{{ config.title }} - 李谕诗歌" />
+<meta
+    property="og:description"
+    content="李谕当代中国西部诗歌代表诗人诗集数字档案馆"
+/>
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ config.base_url }}" />
+{% endblock %} {% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <h1 class="hero-title">李谕 (Li Yu)</h1>
+    <p class="hero-subtitle">
+        1956年生于新疆石河子，当代中国西部诗歌奠基人。以恢弘气势和西域意象著称，代表诗集《汗血马》收录47首史诗性抒情作品。
+    </p>
+    <div class="hero-meta">
+        <span>1956- </span> · <span>新疆·石河子</span> ·
+        <span>21年创作生涯</span>
+    </div>
+</section>
+
+<!-- Books Section - Clean Card Grid -->
+<section>
+    <div class="section-header">
+        <h2 class="section-title">诗集作品</h2>
+        <div class="section-count">1部诗集</div>
+    </div>
+
+    <div class="card-grid">
+        {% for subsection in section.subsections %} {% set book =
+        get_section(path=subsection) %}
+        <article class="card">
+            <h3 class="card-title">
+                <a href="{{ book.permalink }}">{{ book.title }}</a>
+            </h3>
+            <p class="card-excerpt">
+                {{ book.content | striptags | truncate(length=120) }}
+            </p>
+            <div class="card-meta">
+                <span>{{ book.pages | length }} 首诗</span>
+                <span>·</span>
+                <span>1995年出版</span>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Author Bio - Clean Section -->
+<section
+    style="
+        margin-top: 3rem;
+        padding-top: 3rem;
+        border-top: 1px solid var(--border-subtle);
+    "
+>
+    <div class="section-header">
+        <h2 class="section-title">诗人简介</h2>
+    </div>
+
+    <div style="font-size: 1rem; line-height: 1.7; color: var(--fg-secondary)">
+        <p>
+            李谕，当代著名西部诗人，原籍安徽巢县，生于重庆，长在武汉，浪迹了大半个中国，但一生中大部光阴却是在天山北麓的风雪和浓荫中度过的。
+        </p>
+
+        <p>
+            爱与死的永恒主题和他结下不解之缘。他的诗及其创作生涯曾由中国国际广播电台以十多种语言对外播发介绍，并翻译成多种国内少数民族文字。
+        </p>
+
+        <p>
+            著有诗集《准噶尔诗草》《啊，伊犁河水漂白了我的军衣》《战争与城》《为了爱情，巴格达不嫌远》和散文集《小巷系列》等。
+        </p>
+    </div>
+
+    <div
+        class="card"
+        style="margin-top: 2rem; background: var(--bg-secondary); border: none"
+    >
+        <h3 style="margin-top: 0">关于《汗血马》</h3>
+        <p>
+            《汗血马》是李谕西域历史系列组诗，其规模近似于史诗。从他涉及的历史文化知识而言，我以为他基本囊括了这一地域历史中每一具有强烈折射力的棱面，从而构成了一个完整的西域历史的诗歌世界。
+        </p>
+        <p>
+            它所涉及的地域范围、历史人物和历史事件，之广泛、之众多、之完整，是此前的诗歌中所从来没有过的。不知诗人李谕什么时候具备了建筑学家的结构框架意识，这种庞大的建构性和开拓性，表现了李谕的心智和精神能力，也表现了他投入西部世界的情感使命意识。
+        </p>
+        <p style="text-align: right; font-style: italic; margin-bottom: 0">
+            —— 张小平《序：<汗血马>》
+        </p>
+    </div>
+</section>
+
+<!-- Quick Navigation -->
+<section
+    style="
+        margin-top: 3rem;
+        padding-top: 3rem;
+        border-top: 1px solid var(--border-subtle);
+    "
+>
+    <div class="section-header">
+        <h2 class="section-title">站点导航</h2>
+    </div>
+
+    <div
+        style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        "
+    >
+        <a
+            href="/tags/"
+            class="card"
+            style="
+                padding: 1rem;
+                text-align: center;
+                display: block;
+                border-bottom: 1px solid var(--border-default);
+                justify-content: center;
+                align-items: center;
+            "
+        >
+            <div style="font-size: 1.5rem">🏷️</div>
+            <div style="margin-top: 0.5rem; font-weight: 600">标签系统</div>
+        </a>
+        <a
+            href="/categories/"
+            class="card"
+            style="
+                padding: 1rem;
+                text-align: center;
+                display: block;
+                border-bottom: 1px solid var(--border-default);
+                justify-content: center;
+                align-items: center;
+            "
+        >
+            <div style="font-size: 1.5rem">📂</div>
+            <div style="margin-top: 0.5rem; font-weight: 600">分类</div>
+        </a>
+        <a
+            href="/search/"
+            class="card"
+            style="
+                padding: 1rem;
+                text-align: center;
+                display: block;
+                border-bottom: 1px solid var(--border-default);
+                justify-content: center;
+                align-items: center;
+            "
+        >
+            <div style="font-size: 1.5rem">🔍</div>
+            <div style="margin-top: 0.5rem; font-weight: 600">全站搜索</div>
+        </a>
+    </div>
+</section>
+{% endblock %} {% block extra_js %}
+<script>
+    // Highlight active nav item
+    document.querySelectorAll(".main-nav a").forEach((link) => {
+        if (link.getAttribute("href") === "/") {
+            link.setAttribute("aria-current", "page");
+        }
+    });
+</script>
+{% endblock %}

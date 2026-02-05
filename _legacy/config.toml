@@ -16,5 +16,6 @@ smart_punctuation = true
 
 [extra]
 author = "李瑜"
-# Zed-like theme settings can be referenced here if needed by templates
-theme = "zed"
+# Template style settings
+theme = "medium"
+style = "medium"
