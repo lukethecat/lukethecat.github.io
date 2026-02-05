@@ -1,16 +1,154 @@
-{% extends "base.html" %}
-
-{% block content %}
-<div class="prose">
-    <h1>{{ section.title }}</h1>
-    {{ section.content | safe }}
-
-    <div class="poem-list">
-        {% for page in section.pages %}
-            <div class="poem-link">
-                <a href="{{ page.permalink }}">{{ page.title }}</a>
-            </div>
-        {% endfor %}
+{% extends "base.html" %} {% block title %}{{ section.title }} - 李瑜诗歌 - Li
+Yu's Poetry{% endblock title %} {% block content %}
+<div>
+    <!-- Breadcrumb -->
+    <div class="breadcrumbs">
+        <a href="/">诗歌首页</a>
+        <span> / </span>
+        <strong>{{ section.title }}</strong>
     </div>
+
+    <!-- Section header -->
+    <header style="margin-bottom: 2.5rem">
+        <h1>{{ section.title }}</h1>
+
+        <!-- Introduction/description -->
+        {% if section.content %}
+        <div
+            style="
+                margin-top: 1.2rem;
+                line-height: 1.7;
+                color: var(--muted-color);
+                font-size: 1rem;
+            "
+        >
+            {{ section.content | safe }}
+        </div>
+        {% endif %}
+
+        <!-- Section metadata -->
+        <div class="poem-meta" style="margin-top: 1.5rem">
+            <span>{{ section.pages | length }}</span>
+            <span>首诗歌</span>
+            <span style="margin-left: 1rem">•</span>
+            <span>1995年出版</span>
+            {% if section.subsections %}
+            <span style="margin-left: 1rem">•</span>
+            <span>{{ section.subsections | length }} 个章节</span>
+            {% endif %}
+        </div>
+    </header>
+
+    <!-- If this section has subsections (chapters), show them as cards -->
+    {% if section.subsections %}
+    <section style="margin-top: 3rem">
+        <div class="chapters-grid" style="display: grid; gap: 1rem">
+            {% for chapter_path in section.subsections %} {% set chapter =
+            get_section(path=chapter_path) %}
+            <div
+                style="
+                    border: 1px solid var(--border-color);
+                    border-radius: 8px;
+                    padding: 1.5rem;
+                    background: var(--code-bg);
+                "
+            >
+                <h2 style="margin: 0 0 0.5rem 0; font-size: 1.1rem">
+                    <a
+                        href="{{ chapter.permalink }}"
+                        style="text-decoration: none; font-weight: 600"
+                    >
+                        {{ chapter.title }}
+                    </a>
+                </h2>
+                <p
+                    style="
+                        margin: 0;
+                        color: var(--muted-color);
+                        font-size: 0.9rem;
+                    "
+                >
+                    {{ chapter.pages | length }} 首诗歌
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Poem list at this level (if any poems here) -->
+    {% if section.pages %}
+    <section style="margin-top: 3rem">
+        <h2
+            style="
+                font-size: 1rem;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--muted-color);
+                margin-bottom: 1rem;
+            "
+        >
+            诗歌目录
+        </h2>
+        <ol style="list-style: none; padding: 0">
+            {% for page in section.pages %}
+            <li
+                style="
+                    padding: 1.25rem 0;
+                    border-bottom: 1px solid var(--border-color);
+                "
+            >
+                <h3 style="margin: 0; font-size: 1.05rem">
+                    <a
+                        href="{{ page.permalink }}"
+                        style="text-decoration: none; font-weight: 600"
+                    >
+                        {{ page.title }}
+                    </a>
+                </h3>
+                {% if page.extra.subtitle %}
+                <p
+                    style="
+                        margin: 0.25rem 0 0 0;
+                        color: var(--muted-color);
+                        font-size: 0.9rem;
+                    "
+                >
+                    {{ page.extra.subtitle }}
+                </p>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ol>
+    </section>
+    {% endif %}
+
+    <!-- Navigation back to home -->
+    <section
+        style="
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        "
+    >
+        <a
+            href="/"
+            style="
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-weight: 500;
+                text-decoration: none;
+            "
+            >← 返回诗人小传</a
+        >
+    </section>
 </div>
-{% endblock content %}
+{% endblock content %} {% block extra_head %}
+<meta
+    name="description"
+    content="{{ section.title }} - 李瑜诗歌作品集。收录于《汗血马》诗集。"
+/>
+<meta property="og:title" content="{{ section.title }}" />
+<meta property="og:description" content="李瑜诗歌作品集 - 收录《汗血马》诗歌" />
+{% endblock extra_head %}

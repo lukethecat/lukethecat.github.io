@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ lang }}">
+<html lang="zh">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,38 +16,8 @@
         {% block extra_head %}{% endblock %}
     </head>
     <body>
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <a href="/" class="sidebar-title">{{ config.title }}</a>
-                <div class="sidebar-subtitle">中国新疆西部诗人</div>
-            </div>
-
-            <div class="search-container">
-                <input
-                    type="text"
-                    id="search-input"
-                    class="search-input"
-                    placeholder="搜索诗歌..."
-                />
-            </div>
-
-            <nav class="sidebar-nav">
-                {% set section = get_section(path="1995hanxuema/_index.md") %}
-                <div class="nav-group">
-                    <div class="nav-group-title">{{ section.title }}</div>
-                    {% for subsection_path in section.subsections %} {% set
-                    subsection = get_section(path=subsection_path) %}
-                    <a
-                        href="{{ subsection.permalink }}"
-                        class="nav-item {% if current_url == subsection.permalink %}active{% endif %}"
-                    >
-                        {{ subsection.title }}
-                    </a>
-                    {% endfor %}
-                </div>
-            </nav>
-        </aside>
+        <!-- Sidebar - use sidebar.html template -->
+        {% include "sidebar.html" %}
 
         <!-- Main Content -->
         <main class="main-content">

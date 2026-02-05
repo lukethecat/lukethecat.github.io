@@ -1,50 +1,99 @@
-{% extends "base.html" %} {% block title %}{{ config.title }} - 李瑜诗歌精选集{%
+{% extends "base.html" %} {% block title %}{{ config.title }} - 诗人李瑜小传{%
 endblock title %} {% block content %}
 <div class="prose">
-    <h1>{{ section.title }}</h1>
+    <!-- Author Bio Section -->
+    <section class="author-bio" style="margin-bottom: 4rem">
+        <h1>{{ section.title }}</h1>
 
-    {% if section.content %}
-    <div class="intro">{{ section.content | safe }}</div>
-    {% endif %}
-
-    <!-- Poems List -->
-    {% if section.pages %}
-    <section class="poem-section">
-        <h2>诗集</h2>
-        <ul class="poem-list">
-            {% for page in section.pages %}
-            <li class="poem-list-item">
-                <h2>
-                    <a href="{{ page.permalink }}">{{ page.title }}</a>
-                </h2>
-                {% if page.extra.subtitle %}
-                <p>{{ page.extra.subtitle }}</p>
-                {% endif %} {% if page.date %}
-                <div class="poem-meta">
-                    <a href="/{{ section.slug }}/">{{ section.title }}</a>
-                    <span>·</span>
-                    <span>{{ page.date | date(format="%Y") }}</span>
-                </div>
-                {% endif %}
-            </li>
-            {% endfor %}
-        </ul>
+        {% if section.content %}
+        <div class="bio-content" style="line-height: 1.8">
+            {{ section.content | safe }}
+        </div>
+        {% endif %}
     </section>
-    {% endif %}
 
-    <!-- Hardcoded book for current build -->
-    <section class="poem-section">
-        <h3>1995年诗集</h3>
-        <ul class="poem-list">
-            <li class="poem-list-item">
-                <h2>
-                    <a href="/1995hanxuema/">汗血马 (1995)</a>
-                </h2>
-                <p style="color: var(--muted-color); font-size: 0.9rem">
-                    李瑜的代表诗集，收录《汗血马》《叶尔羌》等经典作品
+    <!-- Books Section -->
+    <section
+        style="
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border-color);
+        "
+    >
+        <h2
+            style="
+                font-size: 1.2rem;
+                text-transform: uppercase;
+                letter-spacing: 0.15em;
+                color: var(--muted-color);
+                margin-bottom: 1.5rem;
+            "
+        >
+            诗集账单
+        </h2>
+
+        <div class="books-grid" style="display: grid; gap: 1.5rem">
+            {% for book_path in section.subsections %} {% set book =
+            get_section(path=book_path) %}
+
+            <div
+                class="book-card"
+                style="
+                    border: 1px solid var(--border-color);
+                    border-radius: 8px;
+                    padding: 2rem;
+                    background: var(--code-bg);
+                    transition: transform 0.2s ease;
+                "
+            >
+                <h3 style="margin: 0 0 0.5rem 0; font-size: 1.3rem">
+                    <a
+                        href="{{ book.permalink }}"
+                        style="text-decoration: none; font-weight: 600"
+                    >
+                        {{ book.title }}
+                    </a>
+                </h3>
+
+                {% if book.content %}
+                <p
+                    style="
+                        margin: 0.5rem 0 0.75rem 0;
+                        color: var(--muted-color);
+                        font-size: 0.95rem;
+                        line-height: 1.6;
+                    "
+                >
+                    {{ book.content | striptags | truncate(length=180) }}
                 </p>
-            </li>
-        </ul>
+                {% endif %}
+
+                <div
+                    class="book-meta"
+                    style="
+                        display: flex;
+                        gap: 1.5rem;
+                        font-size: 0.85rem;
+                        color: var(--muted-color);
+                        font-family: var(--font-mono);
+                        margin-top: 1rem;
+                    "
+                >
+                    <span>{{ book.pages | length }} 首诗歌</span>
+                    <span>·</span>
+                    <span>1995年出版</span>
+                </div>
+
+                <a
+                    href="{{ book.permalink }}"
+                    class="tag"
+                    style="margin-top: 1rem; display: inline-block"
+                >
+                    阅读诗集 →
+                </a>
+            </div>
+            {% endfor %}
+        </div>
     </section>
 
     <!-- Quick Navigation -->
@@ -57,36 +106,55 @@ endblock title %} {% block content %}
     >
         <h2
             style="
-                font-size: 1.1rem;
+                font-size: 1rem;
                 text-transform: uppercase;
-                letter-spacing: 0.1em;
+                letter-spacing: 0.15em;
                 color: var(--muted-color);
+                margin-bottom: 1rem;
             "
         >
-            快速导航
+            站点快速导航
         </h2>
-        <div
-            style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem"
-        >
-            <a href="/1995hanxuema/" class="tag" style="font-size: 0.85rem"
-                >汗血马 →</a
-            >
-            <a href="/tags/" class="tag" style="font-size: 0.85rem">标签 →</a>
-            <a href="/categories/" class="tag" style="font-size: 0.85rem"
-                >分类 →</a
-            >
+
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem">
+            <a href="/tags/" class="tag">🏷️ 标签系统</a>
+            <a href="/categories/" class="tag">📂 分类系统</a>
+            <a href="/search/" class="tag">🔍 全站搜索</a>
+            <a href="/1995hanxuema/" class="tag">📚 汗血马诗集</a>
         </div>
     </section>
 </div>
-{% endblock %} {% block extra_head %}
+{% endblock content %} {% block extra_head %}
 <meta
     name="description"
-    content="李瑜个人诗歌网站，收录《1980》《汗血马》等诗集作品，中国新疆西部诗人"
+    content="李瑜诗歌作品全集 - 1956年生于新疆石河子，当代著名诗人，西部诗歌奠基人。代表作：汗血马、1980、匈奴传。"
 />
-<meta property="og:title" content="{{ config.title }}" />
+<meta property="og:title" content="{{ config.title }} - 诗人李瑜" />
 <meta
     property="og:description"
-    content="李瑜个人诗歌网站，收录《1980》《汗血马》等诗集作品"
+    content="李瑜的数字诗歌档案馆，收录《汗血马》《1980》《匈奴传》等代表诗集。中国西部现代诗的代表人物之一。"
 />
 <meta property="og:type" content="website" />
+<meta
+    property="og:image"
+    content="https://raw.githubusercontent.com/lukethecat/lukethecat.github.io/main/static/og-image.png"
+/>
+
+<!-- Structured data for author -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "李瑜 (Li Yu)",
+        "description": "1956年出生于新疆石河子，中国当代著名诗人，西部诗歌奠基人",
+        "url": "https://lukethecat.github.io",
+        "alumniOf": "中国作家协会",
+        "jobTitle": "诗人、散文家",
+        "works": [
+            { "@type": "Book", "name": "汗血马" },
+            { "@type": "Book", "name": "1980" },
+            { "@type": "Book", "name": "匈奴传" }
+        ]
+    }
+</script>
 {% endblock extra_head %}
