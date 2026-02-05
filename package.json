@@ -2,16 +2,14 @@
     "name": "poet-archive",
     "version": "0.1.0",
     "private": true,
-    "type": "module",
     "scripts": {
         "dev": "next dev",
         "build": "npm run process:books && next build",
         "start": "next start",
         "lint": "next lint",
-        "process:books": "tsx scripts/process-books.ts"
+        "process:books": "ts-node --esm scripts/process-books.ts"
     },
     "dependencies": {
-        "tsx": "^4.7.0",
         "chokidar": "^3.5.3",
         "framer-motion": "^11.0.8",
         "lucide-react": "^0.344.0",
