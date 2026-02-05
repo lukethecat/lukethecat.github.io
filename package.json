@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "build": "npm run process:books && next build",
+        "build": "next build",
         "start": "next start",
         "lint": "next lint",
         "process:books": "ts-node scripts/process-books.ts"
