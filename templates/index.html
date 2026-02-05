@@ -1,26 +1,92 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}{{ config.title }} - 李瑜诗歌精选集{%
+endblock title %} {% block content %}
 <div class="prose">
     <h1>{{ section.title }}</h1>
 
     {% if section.content %}
-        {{ section.content | safe }}
+    <div class="intro">{{ section.content | safe }}</div>
     {% endif %}
 
-    <ul>
-    {% for page in section.pages %}
-        <li><a href="{{ page.permalink }}">{{ page.title }}</a></li>
-    {% endfor %}
-    </ul>
-
-    <!-- If this is the Root index, show books -->
-    {% if section.path == "_index.md" %}
-        <h2>Books</h2>
-        <!-- Hardcoded for now since we just rebooted -->
-        <ul>
-            <li><a href="/1995hanxuema/">汗血马 (1995)</a></li>
+    <!-- Poems List -->
+    {% if section.pages %}
+    <section class="poem-section">
+        <h2>诗集</h2>
+        <ul class="poem-list">
+            {% for page in section.pages %}
+            <li class="poem-list-item">
+                <h2>
+                    <a href="{{ page.permalink }}">{{ page.title }}</a>
+                </h2>
+                {% if page.extra.subtitle %}
+                <p>{{ page.extra.subtitle }}</p>
+                {% endif %} {% if page.date %}
+                <div class="poem-meta">
+                    <a href="/{{ section.slug }}/">{{ section.title }}</a>
+                    <span>·</span>
+                    <span>{{ page.date | date(format="%Y") }}</span>
+                </div>
+                {% endif %}
+            </li>
+            {% endfor %}
         </ul>
+    </section>
     {% endif %}
+
+    <!-- Hardcoded book for current build -->
+    <section class="poem-section">
+        <h3>1995年诗集</h3>
+        <ul class="poem-list">
+            <li class="poem-list-item">
+                <h2>
+                    <a href="/1995hanxuema/">汗血马 (1995)</a>
+                </h2>
+                <p style="color: var(--muted-color); font-size: 0.9rem">
+                    李瑜的代表诗集，收录《汗血马》《叶尔羌》等经典作品
+                </p>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Quick Navigation -->
+    <section
+        style="
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        "
+    >
+        <h2
+            style="
+                font-size: 1.1rem;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--muted-color);
+            "
+        >
+            快速导航
+        </h2>
+        <div
+            style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem"
+        >
+            <a href="/1995hanxuema/" class="tag" style="font-size: 0.85rem"
+                >汗血马 →</a
+            >
+            <a href="/tags/" class="tag" style="font-size: 0.85rem">标签 →</a>
+            <a href="/categories/" class="tag" style="font-size: 0.85rem"
+                >分类 →</a
+            >
+        </div>
+    </section>
 </div>
-{% endblock content %}
+{% endblock %} {% block extra_head %}
+<meta
+    name="description"
+    content="李瑜个人诗歌网站，收录《1980》《汗血马》等诗集作品，中国新疆西部诗人"
+/>
+<meta property="og:title" content="{{ config.title }}" />
+<meta
+    property="og:description"
+    content="李瑜个人诗歌网站，收录《1980》《汗血马》等诗集作品"
+/>
+<meta property="og:type" content="website" />
+{% endblock extra_head %}
