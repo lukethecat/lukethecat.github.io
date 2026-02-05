@@ -8,9 +8,10 @@
         "build": "npm run process:books && next build",
         "start": "next start",
         "lint": "next lint",
-        "process:books": "node scripts/process-books.ts"
+        "process:books": "tsx scripts/process-books.ts"
     },
     "dependencies": {
+        "tsx": "^4.7.0",
         "chokidar": "^3.5.3",
         "framer-motion": "^11.0.8",
         "lucide-react": "^0.344.0",
