@@ -7,7 +7,7 @@
         "build": "npm run process:books && next build",
         "start": "next start",
         "lint": "next lint",
-        "process:books": "ts-node --esm scripts/process-books.ts"
+        "process:books": "node scripts/process-books.js"
     },
     "dependencies": {
         "chokidar": "^3.5.3",
