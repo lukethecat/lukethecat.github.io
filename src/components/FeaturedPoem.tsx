@@ -32,15 +32,31 @@ export const FeaturedPoem: React.FC<{ poems: FeaturedPoemData[] }> = ({ poems })
 
     return (
         <div className={`transition-opacity duration-1000 ${fade ? 'opacity-100' : 'opacity-0'}`}>
-            <div className="space-y-2 mb-4">
-                {poem.lines.map((line, i) => (
-                    <p key={i} className="text-gray-800 text-xl font-serif leading-relaxed tracking-wide">
-                        {line}
-                    </p>
-                ))}
+            <div className="relative inline-block px-12 py-6">
+                {/* Decorative Quote Marks */}
+                <span className="absolute top-0 left-0 text-6xl font-serif text-gray-200 leading-none select-none -translate-x-4 -translate-y-4">
+                    “
+                </span>
+
+                <div className="space-y-3 mb-6 relative z-10">
+                    {poem.lines.map((line, i) => (
+                        <p key={i} className="text-gray-800 text-xl md:text-2xl font-serif leading-relaxed tracking-wide italic text-opacity-90">
+                            {line}
+                        </p>
+                    ))}
+                </div>
+
+                <span className="absolute bottom-0 right-0 text-6xl font-serif text-gray-200 leading-none select-none translate-x-4 translate-y-4">
+                    ”
+                </span>
             </div>
-            <p className="text-gray-400 text-sm mt-4 font-sans tracking-widest uppercase">
-                —— {poem.source}
+
+            <div className="flex justify-center mt-4">
+                <div className="w-12 h-px bg-gray-300 mb-4 mx-auto"></div>
+            </div>
+
+            <p className="text-gray-500 text-sm font-sans tracking-[0.2em] uppercase">
+                {poem.source}
             </p>
         </div>
     );
