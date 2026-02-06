@@ -89,9 +89,6 @@ function processBook(bookDirName) {
 
     book.intro = introBuffer.join('\n');
 
-    // Pass 2: Parse Body using Page Markers
-    let currentPoem = null;
-
     // Initialize chapters in book structure
     book.chapters = tocChapters.map((tc, idx) => ({
         id: `chapter-${idx + 1}`,
@@ -99,7 +96,19 @@ function processBook(bookDirName) {
         poems: []
     }));
 
-    // Start parsing content
+    // Pass 2: Parse Body using Page Markers
+    // CRITICAL: In the source, each poem has a structure like:
+    //   ... some content before [pX] marker (often just the subtitle line)
+    //   [pX]
+    //   ... actual poem content ...
+    //   [pY]  (next poem's marker)
+    //
+    // We need to:
+    // 1. When we see [pX], create a new poem entry
+    // 2. Collect all lines AFTER [pX] until the NEXT [pY] marker
+
+    let currentPoem = null;
+
     for (let i = contentStartLine; i < lines.length; i++) {
         const line = lines[i];
         const trimmed = line.trim();
@@ -108,7 +117,7 @@ function processBook(bookDirName) {
         if (pageMatch) {
             const pageNum = pageMatch[1];
 
-            // Find the poem with this page number
+            // Find the poem with this page number in TOC
             let found = false;
             for (let cIdx = 0; cIdx < tocChapters.length; cIdx++) {
                 const ch = tocChapters[cIdx];
@@ -123,11 +132,6 @@ function processBook(bookDirName) {
                     };
                     book.chapters[cIdx].poems.push(currentPoem);
                     found = true;
-
-                    // Skip the subtitle line that appears right before [pX] marker
-                    // It's the line with leading fullwidth spaces "　　　　..."
-                    // We've already captured the full title (主标题 /副标题) from TOC
-
                     break;
                 }
             }
@@ -135,7 +139,7 @@ function processBook(bookDirName) {
                 currentPoem = null;
             }
         } else if (currentPoem) {
-            // Process line with U+2028 line separators
+            // This is poem content - process U+2028 line separators
             const splitLines = line.split('\u2028');
             for (const subline of splitLines) {
                 currentPoem.lines.push(subline);
