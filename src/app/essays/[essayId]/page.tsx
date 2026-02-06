@@ -10,17 +10,44 @@ interface Essay {
 async function getEssay(essayId: string): Promise<{ content: string, metadata: Essay } | null> {
     try {
         const markdownPath = path.join(process.cwd(), `src/content/essays/${essayId}.md`);
-        const content = await fs.readFile(markdownPath, 'utf8');
+        let content = await fs.readFile(markdownPath, 'utf8');
 
-        // Extract title and author from markdown
-        const titleMatch = content.match(/^# (.+)$/m);
-        const authorMatch = content.match(/\*\*作者[：:]\s*(.+?)\*\*/);
+        // Parse and remove frontmatter
+        let title = '未命名文章';
+        let author = '佚名';
+
+        if (content.startsWith('---')) {
+            const frontmatterEnd = content.indexOf('---', 3);
+            if (frontmatterEnd !== -1) {
+                const frontmatter = content.substring(3, frontmatterEnd);
+                content = content.substring(frontmatterEnd + 3).trim();
+
+                // Extract title from frontmatter
+                const titleMatch = frontmatter.match(/title:\s*["'](.+?)["']/);
+                if (titleMatch) title = titleMatch[1];
+
+                // Extract author from frontmatter  
+                const authorMatch = frontmatter.match(/author:\s*["'](.+?)["']/);
+                if (authorMatch && authorMatch[1]) author = authorMatch[1];
+            }
+        }
+
+        // Also try to extract from markdown content if not found
+        if (title === '未命名文章') {
+            const titleMatch = content.match(/^# (.+)$/m);
+            if (titleMatch) title = titleMatch[1];
+        }
+
+        if (author === '佚名') {
+            const authorMatch = content.match(/\*\*作者[：:]\s*(.+?)\*\*/);
+            if (authorMatch) author = authorMatch[1];
+        }
 
         return {
             content,
             metadata: {
-                title: titleMatch?.[1] || '未命名文章',
-                author: authorMatch?.[1] || '佚名'
+                title,
+                author
             }
         };
     } catch (error) {
