@@ -179,9 +179,10 @@ function processBook(bookDirName: string) {
         }
 
 
-        // Check for *** separator - stops all poem content collection
+        // Check for *** separator - skip it but continue parsing
+        // *** appears between chapters as section divider, not just at end
         if (trimmed === '***' || trimmed === '* * *') {
-            break; // Stop processing entirely
+            continue; // Skip the separator line, don't stop entirely
         }
 
         // Check for page marker [pX] - this ends the current poem
