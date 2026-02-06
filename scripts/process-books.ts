@@ -78,13 +78,18 @@ function processBook(bookDirName: string) {
             isTOC = true;
             continue;
         } else if (line.startsWith('## ') && line.match(/（\d+首）$/)) {
-            // Found first chapter heading - start of actual poem content
-            isTOC = false;
-            contentStartLine = i;
-            break;
+            // Found first chapter heading - mark content start but keep parsing TOC
+            if (contentStartLine === 0) {
+                contentStartLine = i;
+            }
+            // DON'T break here! TOC continues after chapter headings in new format
+            continue;
         } else if (line.startsWith('[p') && contentStartLine === 0) {
             // Skip [p] markers before we find the first chapter
             continue;
+        } else if (line === '***' || line === '* * *') {
+            // Stop parsing entirely at separator
+            break;
         }
 
         if (isIntro) {
