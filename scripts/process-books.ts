@@ -173,6 +173,12 @@ function processBook(bookDirName: string) {
             continue;
         }
 
+
+        // Check for *** separator - stops all poem content collection
+        if (trimmed === '***' || trimmed === '* * *') {
+            break; // Stop processing entirely
+        }
+
         // Check for page marker [pX] - this ends the current poem
         if (trimmed.match(PAGE_MARKER_REGEX)) {
             currentPoem = null;
