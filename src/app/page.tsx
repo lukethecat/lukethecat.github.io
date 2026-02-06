@@ -98,19 +98,25 @@ export default async function Home() {
 
                                     {/* Related Essays */}
                                     {book.relatedEssays && book.relatedEssays.length > 0 && (
-                                        <div className="mt-6 pt-6 border-t border-gray-100">
-                                            <p className="text-xs text-gray-500 uppercase tracking-wider mb-3">相关文章</p>
+                                        <div className="mt-6 pt-6 border-t-2 border-gray-200 bg-gray-50 -mx-8 -mb-8 px-8 pb-8 rounded-b-xl">
+                                            <p className="text-sm font-semibold text-gray-700 mb-4 flex items-center">
+                                                <svg className="w-4 h-4 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                </svg>
+                                                相关文章
+                                            </p>
                                             <div className="space-y-2">
                                                 {book.relatedEssays.map((essay: any) => (
                                                     <Link
                                                         key={essay.id}
                                                         href={essay.path}
-                                                        className="flex items-center text-sm text-gray-600 hover:text-blue-600 transition"
+                                                        className="flex items-center text-sm text-gray-700 hover:text-blue-600 hover:bg-white px-3 py-2 rounded-lg transition"
                                                     >
-                                                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                        <svg className="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                                         </svg>
-                                                        {essay.title} <span className="text-gray-400 ml-2">/ {essay.author}</span>
+                                                        <span className="font-medium">{essay.title}</span>
+                                                        <span className="text-gray-500 ml-2">/ {essay.author}</span>
                                                     </Link>
                                                 ))}
                                             </div>
