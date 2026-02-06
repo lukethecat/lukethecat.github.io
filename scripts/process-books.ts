@@ -115,47 +115,72 @@ function processBook(bookDirName: string) {
 
     book.intro = introBuffer.join('\n');
 
-    // Pass 2: Parse Body using Page Markers
-    let currentPoem: Poem | null = null;
+    // Pass 2: Parse Body using Markdown Structure
+    // In the new format:
+    // - Each poem starts with "### 诗歌主标题"
+    // - Followed by "　　　　副标题" (full-width spaces + subtitle)
+    // - Then poem content
+    // - Ends with [pX] page marker
 
-    // Initialize chapters in book structure
     book.chapters = tocChapters.map((tc, idx) => ({
         id: `chapter-${idx + 1}`,
         title: tc.title,
         poems: []
     }));
 
-    // Start parsing content
+    let currentPoem: Poem | null = null;
+    let currentChapterIndex: number = -1;
+    let skipNextLine = false; // To skip subtitle line after ###
+
     for (let i = contentStartLine; i < lines.length; i++) {
         const line = lines[i];
         const trimmed = line.trim();
 
-        const pageMatch = trimmed.match(PAGE_MARKER_REGEX);
-        if (pageMatch) {
-            const pageNum = pageMatch[1];
+        // Check for chapter heading (## 章节名（X首）)
+        if (trimmed.startsWith('## ') && trimmed.match(/（\d+首）$/)) {
+            currentChapterIndex++;
+            currentPoem = null;
+            continue;
+        }
 
-            // Find the poem with this page number
-            let found = false;
-            for (let cIdx = 0; cIdx < tocChapters.length; cIdx++) {
-                const ch = tocChapters[cIdx];
-                const pIdx = ch.poems.findIndex(p => p.page === pageNum);
+        // Check for poem title (### 诗歌标题)
+        if (trimmed.startsWith('### ')) {
+            const poemTitle = trimmed.substring(4).trim();
+
+            // Find this poem in TOC to get its metadata
+            if (currentChapterIndex >= 0 && currentChapterIndex < tocChapters.length) {
+                const ch = tocChapters[currentChapterIndex];
+                const pIdx = ch.poems.findIndex(p => p.title.startsWith(poemTitle));
+
                 if (pIdx !== -1) {
                     const poemInfo = ch.poems[pIdx];
                     currentPoem = {
-                        id: `poem-${cIdx + 1}-${pIdx + 1}`,
+                        id: `poem-${currentChapterIndex + 1}-${pIdx + 1}`,
                         title: poemInfo.title,
                         lines: [],
-                        pageNumber: pageNum
+                        pageNumber: poemInfo.page
                     };
-                    book.chapters[cIdx].poems.push(currentPoem);
-                    found = true;
-                    break;
+                    book.chapters[currentChapterIndex].poems.push(currentPoem);
+                    skipNextLine = true; // Next line is subtitle, skip it
                 }
             }
-            if (!found) {
-                currentPoem = null;
-            }
-        } else if (currentPoem) {
+            continue;
+        }
+
+        // Skip subtitle line (starts with full-width spaces)
+        if (skipNextLine) {
+            skipNextLine = false;
+            continue;
+        }
+
+        // Check for page marker [pX] - this ends the current poem
+        if (trimmed.match(PAGE_MARKER_REGEX)) {
+            currentPoem = null;
+            continue;
+        }
+
+        // Collect poem content lines
+        if (currentPoem && trimmed) {
             currentPoem.lines.push(line);
         }
     }
