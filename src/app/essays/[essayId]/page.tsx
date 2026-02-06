@@ -140,7 +140,22 @@ export default async function EssayPage({ params }: { params: { essayId: string 
         }
 
         flushParagraph();
-        return elements;
+
+        // Process bold markdown in all paragraphs
+        return elements.map((element, idx) => {
+            if (element.type === 'p') {
+                const children = element.props.children;
+                if (typeof children === 'string' && children.includes('**')) {
+                    // Split by ** and create bold elements
+                    const parts = children.split('**');
+                    const processed = parts.map((part, i) =>
+                        i % 2 === 1 ? <strong key={`bold-${idx}-${i}`}>{part}</strong> : part
+                    );
+                    return { ...element, props: { ...element.props, children: processed } };
+                }
+            }
+            return element;
+        });
     };
 
     return (
