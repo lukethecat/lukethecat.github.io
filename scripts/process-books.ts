@@ -146,8 +146,9 @@ function processBook(bookDirName: string) {
             currentChapterIndex++;
             currentPoem = null;
             continue;
-        } else if (trimmed.startsWith('## ')) {
-            // Hit a non-chapter ## heading (like "## 后记" or "## 出版信息")
+        } else if (trimmed.startsWith('## ') && currentChapterIndex >= 0) {
+            // Hit a non-chapter ## heading AFTER we started collecting chapters
+            // (like "## 后记" or "## 出版信息" at the end)
             // This means we've finished all poems, stop parsing
             currentPoem = null;
             break;
