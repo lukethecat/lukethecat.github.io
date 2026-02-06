@@ -73,21 +73,22 @@ function processBook(bookDirName: string) {
             continue;
         }
 
-        // Extract year from content intro if it contains publication year
-        if (line.includes('年') && line.match(/\d{4}年/)) {
-            const yearMatch = line.match(/(\d{4})年/);
-            if (yearMatch && !book.year.includes(yearMatch[1])) {
-                book.year = `${yearMatch[1]}年`;
-            }
-        }
-
         if (line.startsWith('诗人小传：') || line === '## 作者小传') {
             isIntro = true;
             isTOC = false;
             const text = line.startsWith('诗人小传：') ? line.substring(5).trim() : '';
             if (text) introBuffer.push(text);
             continue;
-        } else if (line.startsWith('目录：') || line === '## 目录') {
+        }
+
+        // Extract year from content intro if it contains publication year (ONLY within intro)
+        if (isIntro && line.includes('年') && line.match(/\d{4}年/)) {
+            const yearMatch = line.match(/(\d{4})年/);
+            if (yearMatch && !book.year.includes(yearMatch[1])) {
+                book.year = `${yearMatch[1]}年`;
+            }
+        }
+        if (line.startsWith('目录：') || line === '## 目录') {
             isIntro = false;
             isTOC = true;
             continue;
