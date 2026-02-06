@@ -92,7 +92,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         </button>
                     </div>
                     <h1 className="font-bold text-gray-900 mb-1">{book.title}</h1>
-                    <p className="text-xs text-gray-500">{book.author} {book.year}</p>
+                    <p className="text-xs text-gray-500">{book.author}</p>
                 </div>
 
                 <div className="p-2 border-b border-gray-200">
