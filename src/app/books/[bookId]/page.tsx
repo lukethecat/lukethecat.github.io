@@ -17,7 +17,8 @@ async function getBook(bookId: string): Promise<Book | null> {
 
 export async function generateStaticParams() {
     return [
-        { bookId: 'hanxuema1995' }
+        { bookId: 'hanxuema1995' },
+        { bookId: 'zhungaer1984' }
     ];
 }
 

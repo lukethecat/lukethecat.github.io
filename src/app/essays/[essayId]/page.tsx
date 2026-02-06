@@ -61,7 +61,9 @@ export async function generateStaticParams() {
         { essayId: 'hanxuema-introduction' },
         { essayId: 'hanxuema-preface' },
         { essayId: 'hanxuema-afterword' },
-        { essayId: 'hanxuema-publication' }
+        { essayId: 'hanxuema-publication' },
+        { essayId: 'zhungaer-preface' },
+        { essayId: 'zhungaer-afterword' }
     ];
 }
 
