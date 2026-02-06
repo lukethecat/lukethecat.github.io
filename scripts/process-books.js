@@ -123,6 +123,11 @@ function processBook(bookDirName) {
                     };
                     book.chapters[cIdx].poems.push(currentPoem);
                     found = true;
+
+                    // Skip the subtitle line that appears right before [pX] marker
+                    // It's the line with leading fullwidth spaces "　　　　..."
+                    // We've already captured the full title (主标题 /副标题) from TOC
+
                     break;
                 }
             }
@@ -130,7 +135,11 @@ function processBook(bookDirName) {
                 currentPoem = null;
             }
         } else if (currentPoem) {
-            currentPoem.lines.push(line);
+            // Process line with U+2028 line separators
+            const splitLines = line.split('\u2028');
+            for (const subline of splitLines) {
+                currentPoem.lines.push(subline);
+            }
         }
     }
 
