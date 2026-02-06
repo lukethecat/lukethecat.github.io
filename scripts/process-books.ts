@@ -135,7 +135,6 @@ function processBook(bookDirName: string) {
 
     let currentPoem: Poem | null = null;
     let currentChapterIndex: number = -1;
-    let skipNextLine = false; // To skip subtitle line after ###
 
     for (let i = contentStartLine; i < lines.length; i++) {
         const line = lines[i];
@@ -172,18 +171,10 @@ function processBook(bookDirName: string) {
                         pageNumber: poemInfo.page
                     };
                     book.chapters[currentChapterIndex].poems.push(currentPoem);
-                    skipNextLine = true; // Next line is subtitle, skip it
                 }
             }
             continue;
         }
-
-        // Skip subtitle line (starts with full-width spaces)
-        if (skipNextLine) {
-            skipNextLine = false;
-            continue;
-        }
-
 
         // Check for *** separator - skip it but continue parsing
         // *** appears between chapters as section divider, not just at end
@@ -194,6 +185,11 @@ function processBook(bookDirName: string) {
         // Check for page marker [pX] - this ends the current poem
         if (trimmed.match(PAGE_MARKER_REGEX)) {
             currentPoem = null;
+            continue;
+        }
+
+        // Skip subtitle lines (start with full-width spaces like "　　　　")
+        if (line.match(/^　+/)) {
             continue;
         }
 
