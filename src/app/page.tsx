@@ -82,19 +82,41 @@ export default async function Home() {
                         </h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {books.map(book => (
-                                <Link
-                                    key={book.id}
-                                    href={book.path}
-                                    className="group block bg-white rounded-xl border border-gray-200 hover:border-gray-400 hover:shadow-lg transition-all duration-300 p-8"
-                                >
-                                    <h4 className="text-2xl font-serif font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition">
-                                        {book.title}
-                                    </h4>
-                                    <p className="text-gray-500 text-sm mb-4">{book.year}</p>
-                                    <p className="text-gray-600 leading-relaxed">
-                                        {book.description}
-                                    </p>
-                                </Link>
+                                <div key={book.id} className="bg-white rounded-xl border border-gray-200 hover:border-gray-400 hover:shadow-lg transition-all duration-300 p-8">
+                                    <Link
+                                        href={book.path}
+                                        className="group block"
+                                    >
+                                        <h4 className="text-2xl font-serif font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition">
+                                            {book.title}
+                                        </h4>
+                                        <p className="text-gray-500 text-sm mb-4">{book.year}</p>
+                                        <p className="text-gray-600 leading-relaxed">
+                                            {book.description}
+                                        </p>
+                                    </Link>
+
+                                    {/* Related Essays */}
+                                    {book.relatedEssays && book.relatedEssays.length > 0 && (
+                                        <div className="mt-6 pt-6 border-t border-gray-100">
+                                            <p className="text-xs text-gray-500 uppercase tracking-wider mb-3">相关文章</p>
+                                            <div className="space-y-2">
+                                                {book.relatedEssays.map((essay: any) => (
+                                                    <Link
+                                                        key={essay.id}
+                                                        href={essay.path}
+                                                        className="flex items-center text-sm text-gray-600 hover:text-blue-600 transition"
+                                                    >
+                                                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                        </svg>
+                                                        {essay.title} <span className="text-gray-400 ml-2">/ {essay.author}</span>
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
                             ))}
                         </div>
                     </div>

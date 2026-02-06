@@ -7,18 +7,16 @@
             "description": "西域历史系列组诗，以汗血马为意象，追溯从古长安到西域的丝绸之路历史。",
             "type": "poetry",
             "path": "/books/hanxuema1995",
-            "cover": "/images/hanxuema-cover.jpg"
+            "cover": "/images/hanxuema-cover.jpg",
+            "relatedEssays": [
+                {
+                    "id": "hanxuema-preface",
+                    "title": "序",
+                    "author": "张小平",
+                    "path": "/essays/hanxuema-preface"
+                }
+            ]
         }
     ],
-    "essays": [
-        {
-            "id": "hanxuema-preface",
-            "title": "汗血马 序",
-            "author": "张小平",
-            "description": "对李瑜《汗血马》的深度评论，探讨西部诗歌的漂流精神和历史意识。",
-            "type": "essay",
-            "path": "/essays/hanxuema-preface",
-            "relatedWork": "hanxuema1995"
-        }
-    ]
+    "essays": []
 }
