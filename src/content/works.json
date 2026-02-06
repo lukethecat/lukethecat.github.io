@@ -10,10 +10,28 @@
             "cover": "/images/hanxuema-cover.jpg",
             "relatedEssays": [
                 {
+                    "id": "hanxuema-introduction",
+                    "title": "内容简介",
+                    "author": "",
+                    "path": "/essays/hanxuema-introduction"
+                },
+                {
                     "id": "hanxuema-preface",
                     "title": "序",
                     "author": "张小平",
                     "path": "/essays/hanxuema-preface"
+                },
+                {
+                    "id": "hanxuema-afterword",
+                    "title": "后记",
+                    "author": "李瑜",
+                    "path": "/essays/hanxuema-afterword"
+                },
+                {
+                    "id": "hanxuema-publication",
+                    "title": "出版信息",
+                    "author": "",
+                    "path": "/essays/hanxuema-publication"
                 }
             ]
         }

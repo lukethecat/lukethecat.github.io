@@ -31,7 +31,10 @@ async function getEssay(essayId: string): Promise<{ content: string, metadata: E
 
 export async function generateStaticParams() {
     return [
-        { essayId: 'hanxuema-preface' }
+        { essayId: 'hanxuema-introduction' },
+        { essayId: 'hanxuema-preface' },
+        { essayId: 'hanxuema-afterword' },
+        { essayId: 'hanxuema-publication' }
     ];
 }
 
