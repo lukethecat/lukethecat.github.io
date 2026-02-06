@@ -209,7 +209,25 @@ function processBook(bookDirName: string) {
 
         // Collect poem content lines
         if (currentPoem && trimmed) {
-            currentPoem.lines.push(line);
+            // Skip code block fences
+            if (trimmed.startsWith('```')) {
+                continue;
+            }
+
+            // Clean markdown artifacts
+            let cleanLine = line;
+
+            // Remove blockquote markers
+            if (trimmed.startsWith('>')) {
+                cleanLine = cleanLine.replace(/^\s*>\s?/, '');
+            }
+
+            // Remove bold markers
+            cleanLine = cleanLine.replace(/\*\*/g, '');
+
+            if (cleanLine.trim()) {
+                currentPoem.lines.push(cleanLine);
+            }
         }
     }
 

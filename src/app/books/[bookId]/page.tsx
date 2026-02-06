@@ -41,8 +41,7 @@ export default async function BookPage({ params }: { params: { bookId: string } 
                 <div className="max-w-4xl mx-auto pb-32">
                     <header className="pt-24 pb-12 px-8 text-center border-b border-gray-100 mb-12">
                         <h1 className="text-4xl font-serif font-bold text-gray-900 mb-4">{book.title}</h1>
-                        <p className="text-gray-500 font-sans tracking-wide uppercase text-sm">{book.author} / {book.year}</p>
-                        {book.intro && <p className="mt-8 text-gray-600 max-w-2xl mx-auto leading-relaxed text-sm">{book.intro.substring(0, 150)}...</p>}
+
                     </header>
 
                     {book.chapters.map(chapter => (
