@@ -146,6 +146,11 @@ function processBook(bookDirName: string) {
             currentChapterIndex++;
             currentPoem = null;
             continue;
+        } else if (trimmed.startsWith('## ')) {
+            // Hit a non-chapter ## heading (like "## 后记" or "## 出版信息")
+            // This means we've finished all poems, stop parsing
+            currentPoem = null;
+            break;
         }
 
         // Check for poem title (### 诗歌标题)
