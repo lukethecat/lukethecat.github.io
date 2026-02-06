@@ -11,9 +11,9 @@ function ensureDir(dir) {
 }
 
 // Global regex patterns
-const CHAPTER_REGEX = /^(.+)（(\d+)首）$/;
-const POEM_IN_TOC_REGEX = /^\s*(.+?)\s+(\d+)$/;
+const CHAPTER_REGEX = /^##\s+(.+)（(\d+)首）$/;
 const PAGE_MARKER_REGEX = /^\[p(\d+)\]$/;
+const POEM_TITLE_REGEX = /^###\s+(.+)$/;
 
 function processBook(bookDirName) {
     const bookPath = path.join(BOOKS_DIR, bookDirName, 'source.md');
@@ -32,120 +32,101 @@ function processBook(bookDirName) {
         chapters: []
     };
 
+    let mode = 'intro'; // intro, toc, content
     let introBuffer = [];
-    let isIntro = false;
-    let isTOC = false;
-    let tocChapters = [];
-    let currentTocChapter = null;
+    let currentChapter = null;
+    let currentPoem = null;
+    let poemTitleParts = [];
 
-    let contentStartLine = 0;
-
-    // Pass 1: Parse Intro and TOC
     for (let i = 0; i < lines.length; i++) {
-        const line = lines[i].trim();
+        const line = lines[i];
+        const trimmed = line.trim();
 
-        if (line.startsWith('诗人小传：')) {
-            isIntro = true;
-            isTOC = false;
-            const text = line.substring(5).trim();
+        // State transitions
+        if (trimmed.startsWith('诗人小传：')) {
+            mode = 'intro';
+            const text = trimmed.substring(5).trim();
             if (text) introBuffer.push(text);
             continue;
-        } else if (line.startsWith('目录：')) {
-            isIntro = false;
-            isTOC = true;
+        } else if (trimmed.startsWith('目录：')) {
+            mode = 'toc';
             continue;
-        } else if (line.startsWith('[p')) {
-            // End of TOC, start of content
-            isTOC = false;
-            contentStartLine = i;
-            break;
         }
 
-        if (isIntro) {
-            if (line) introBuffer.push(line);
-        } else if (isTOC) {
-            if (!line) continue;
+        // Handle different modes
+        if (mode === 'intro') {
+            if (trimmed) introBuffer.push(trimmed);
+        } else if (mode === 'toc') {
+            // Skip TOC - we'll use the H2/H3 markers in content section
+            const chapterMatch = trimmed.match(CHAPTER_REGEX);
+            if (chapterMatch) {
+                // Found first chapter marker, switch to content mode
+                mode = 'content';
+                currentChapter = {
+                    id: `chapter-${book.chapters.length + 1}`,
+                    title: chapterMatch[1],
+                    poems: []
+                };
+                book.chapters.push(currentChapter);
+            }
+        } else if (mode === 'content') {
+            // Check for chapter marker
+            const chapterMatch = trimmed.match(CHAPTER_REGEX);
+            if (chapterMatch) {
+                currentChapter = {
+                    id: `chapter-${book.chapters.length + 1}`,
+                    title: chapterMatch[1],
+                    poems: []
+                };
+                book.chapters.push(currentChapter);
+                currentPoem = null;
+                poemTitleParts = [];
+                continue;
+            }
 
-            // Normalize separators (handle U+2028 LINE SEPARATOR)
-            const parts = line.split(/[\u2028\n]+/);
-            for (const part of parts) {
-                const trimmedPart = part.trim();
-                const chapterMatch = trimmedPart.match(CHAPTER_REGEX);
-                if (chapterMatch) {
-                    currentTocChapter = { title: chapterMatch[1], poems: [] };
-                    tocChapters.push(currentTocChapter);
-                } else if (currentTocChapter) {
-                    const poemMatch = trimmedPart.match(POEM_IN_TOC_REGEX);
-                    if (poemMatch) {
-                        currentTocChapter.poems.push({
-                            title: poemMatch[1],
-                            page: poemMatch[2]
-                        });
-                    }
+            // Check for page marker [pX]
+            const pageMatch = trimmed.match(PAGE_MARKER_REGEX);
+            if (pageMatch) {
+                if (poemTitleParts.length > 0 && currentChapter) {
+                    // Create new poem with collected title parts
+                    const fullTitle = poemTitleParts.join('／');
+                    currentPoem = {
+                        id: `poem-${book.chapters.length}-${currentChapter.poems.length + 1}`,
+                        title: fullTitle,
+                        lines: [],
+                        pageNumber: pageMatch[1]
+                    };
+                    currentChapter.poems.push(currentPoem);
+                    poemTitleParts = [];
                 }
+                continue;
+            }
+
+            // Check for poem title (### format)
+            const titleMatch = trimmed.match(POEM_TITLE_REGEX);
+            if (titleMatch) {
+                const titleText = titleMatch[1].trim();
+                // Remove leading fullwidth spaces for subtitle
+                const cleanTitle = titleText.replace(/^　+/, '');
+                poemTitleParts.push(cleanTitle);
+                continue;
+            }
+
+            // Poem content lines
+            if (currentPoem && trimmed !== '') {
+                // Split by U+2028 line separator
+                const splitLines = line.split('\u2028');
+                for (const subline of splitLines) {
+                    currentPoem.lines.push(subline);
+                }
+            } else if (currentPoem && trimmed === '') {
+                // Empty line - preserve
+                currentPoem.lines.push('');
             }
         }
     }
 
     book.intro = introBuffer.join('\n');
-
-    // Initialize chapters in book structure
-    book.chapters = tocChapters.map((tc, idx) => ({
-        id: `chapter-${idx + 1}`,
-        title: tc.title,
-        poems: []
-    }));
-
-    // Pass 2: Parse Body using Page Markers
-    // CRITICAL: In the source, each poem has a structure like:
-    //   ... some content before [pX] marker (often just the subtitle line)
-    //   [pX]
-    //   ... actual poem content ...
-    //   [pY]  (next poem's marker)
-    //
-    // We need to:
-    // 1. When we see [pX], create a new poem entry
-    // 2. Collect all lines AFTER [pX] until the NEXT [pY] marker
-
-    let currentPoem = null;
-
-    for (let i = contentStartLine; i < lines.length; i++) {
-        const line = lines[i];
-        const trimmed = line.trim();
-
-        const pageMatch = trimmed.match(PAGE_MARKER_REGEX);
-        if (pageMatch) {
-            const pageNum = pageMatch[1];
-
-            // Find the poem with this page number in TOC
-            let found = false;
-            for (let cIdx = 0; cIdx < tocChapters.length; cIdx++) {
-                const ch = tocChapters[cIdx];
-                const pIdx = ch.poems.findIndex(p => p.page === pageNum);
-                if (pIdx !== -1) {
-                    const poemInfo = ch.poems[pIdx];
-                    currentPoem = {
-                        id: `poem-${cIdx + 1}-${pIdx + 1}`,
-                        title: poemInfo.title,
-                        lines: [],
-                        pageNumber: pageNum
-                    };
-                    book.chapters[cIdx].poems.push(currentPoem);
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                currentPoem = null;
-            }
-        } else if (currentPoem) {
-            // This is poem content - process U+2028 line separators
-            const splitLines = line.split('\u2028');
-            for (const subline of splitLines) {
-                currentPoem.lines.push(subline);
-            }
-        }
-    }
 
     // Clean up poem lines
     book.chapters.forEach(c => {
