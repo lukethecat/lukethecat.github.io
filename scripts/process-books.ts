@@ -67,21 +67,24 @@ function processBook(bookDirName: string) {
     for (let i = 0; i < lines.length; i++) {
         const line = lines[i].trim();
 
-        if (line.startsWith('诗人小传：')) {
+        if (line.startsWith('诗人小传：') || line === '## 作者小传') {
             isIntro = true;
             isTOC = false;
-            const text = line.substring(5).trim();
+            const text = line.startsWith('诗人小传：') ? line.substring(5).trim() : '';
             if (text) introBuffer.push(text);
             continue;
-        } else if (line.startsWith('目录：')) {
+        } else if (line.startsWith('目录：') || line === '## 目录') {
             isIntro = false;
             isTOC = true;
             continue;
-        } else if (line.startsWith('[p')) {
-            // End of TOC, start of content
+        } else if (line.startsWith('## ') && line.match(/（\d+首）$/)) {
+            // Found first chapter heading - start of actual poem content
             isTOC = false;
             contentStartLine = i;
             break;
+        } else if (line.startsWith('[p') && contentStartLine === 0) {
+            // Skip [p] markers before we find the first chapter
+            continue;
         }
 
         if (isIntro) {
