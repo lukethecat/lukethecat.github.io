@@ -67,6 +67,20 @@ function processBook(bookDirName: string) {
     for (let i = 0; i < lines.length; i++) {
         const line = lines[i].trim();
 
+        // Extract book title from first # heading
+        if (line.startsWith('# ') && !book.title.includes(line.substring(2))) {
+            book.title = line.substring(2).trim();
+            continue;
+        }
+
+        // Extract year from content intro if it contains publication year
+        if (line.includes('年') && line.match(/\d{4}年/)) {
+            const yearMatch = line.match(/(\d{4})年/);
+            if (yearMatch && !book.year.includes(yearMatch[1])) {
+                book.year = `${yearMatch[1]}年`;
+            }
+        }
+
         if (line.startsWith('诗人小传：') || line === '## 作者小传') {
             isIntro = true;
             isTOC = false;

@@ -34,6 +34,29 @@
                     "path": "/essays/hanxuema-publication"
                 }
             ]
+        },
+        {
+            "id": "zhungaer1984",
+            "title": "准噶尔诗草",
+            "year": "1984年",
+            "description": "李瑜早期诗歌代表作，收录诗人在新疆垦区创作的抒情诗篇。全书分为四卷：飘动的篝火、将军与城、一位诗人在古尔班通古特、为了爱情巴格达不嫌远。",
+            "type": "poetry",
+            "path": "/books/zhungaer1984",
+            "cover": "/images/zhungaer-cover.jpg",
+            "relatedEssays": [
+                {
+                    "id": "zhungaer-preface",
+                    "title": "序·开拓精神万岁",
+                    "author": "公刘",
+                    "path": "/essays/zhungaer-preface"
+                },
+                {
+                    "id": "zhungaer-afterword",
+                    "title": "跋·从大漠升起袅袅的笛声",
+                    "author": "阿红",
+                    "path": "/essays/zhungaer-afterword"
+                }
+            ]
         }
     ],
     "essays": []
