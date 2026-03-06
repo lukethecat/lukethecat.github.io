@@ -209,7 +209,7 @@ function processBook(bookDirName: string) {
         }
 
         // Collect poem content lines
-        if (currentPoem && trimmed) {
+        if (currentPoem) {
             // Skip code block fences
             if (trimmed.startsWith('```')) {
                 continue;
@@ -226,9 +226,7 @@ function processBook(bookDirName: string) {
             // Remove bold markers
             cleanLine = cleanLine.replace(/\*\*/g, '');
 
-            if (cleanLine.trim()) {
-                currentPoem.lines.push(cleanLine);
-            }
+            currentPoem.lines.push(cleanLine);
         }
     }
 

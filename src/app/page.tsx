@@ -90,7 +90,7 @@ export default async function Home() {
                     <h2 className="text-2xl font-serif font-bold text-gray-900 mb-6 text-center">
                         诗人小传
                     </h2>
-                    <p className="text-gray-700 leading-relaxed text-lg">
+                    <p className="font-serif text-gray-700 leading-relaxed text-lg">
                         {poet?.bio || '诗人信息加载中...'}
                     </p>
                 </div>
