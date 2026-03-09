@@ -1,0 +1,63 @@
+{
+    "books": [
+        {
+            "id": "hanxuema1995",
+            "title": "قان تەرلەيدىغان ئاتلار",
+            "year": "1995",
+            "author": "لى يۈ",
+            "description": "غەربىي دىياردىكى ئىككى مىڭ يىللىق تارىخنى ئۆز ئىچىگە ئالغان يىگىرمە بىر توپ تارىخىي شېئىرلار. غەربىي خەن سۇلالىسىنىڭ دەسلەپكى يىللىرىدىن ئاپيۇن ئۇرۇشىغىچە بولغان دەۋرنى قامتىدى. چاپقۇر قان تەرلەيدىغان ئاتلار ھايات روھى ۋە مەدەنىيەت ئۇلۇغلۇقىنىڭ تىمسالىدۇر.",
+            "type": "book",
+            "path": "/ug/books/hanxuema1995",
+            "relatedEssays": [
+                {
+                    "id": "hanxuema-introduction",
+                    "title": "كىرىش سۆز",
+                    "author": "جۇ جېڭ",
+                    "path": "/ug/essays/hanxuema-introduction"
+                },
+                {
+                    "id": "hanxuema-preface",
+                    "title": "سۆز بېشى",
+                    "author": "جاڭ گۇئومىن",
+                    "path": "/ug/essays/hanxuema-preface"
+                },
+                {
+                    "id": "hanxuema-afterword",
+                    "title": "سۆز ئاخىرى",
+                    "author": "لى يۈ",
+                    "path": "/ug/essays/hanxuema-afterword"
+                },
+                {
+                    "id": "hanxuema-publication",
+                    "title": "نەشر ئىزاھاتى",
+                    "author": "لى يۈ",
+                    "path": "/ug/essays/hanxuema-publication"
+                }
+            ]
+        },
+        {
+            "id": "zhungaer1984",
+            "title": "جۇڭغار شېئىرلىرى",
+            "year": "1984",
+            "author": "لى يۈ",
+            "description": "جۇڭغار ئويمانلىقىدىن يارالغان غىنائىي شېئىرلار. تەڭرىتاغنىڭ شىمالىدىكى ھايات — چېگرادىكى گۈلخانلار، سەركەردىلەر ۋە شەھەرلەر، گۇربانتۈڭگۈت ئارا سەيلەپ يۈرگەن بىر شائىر ۋە «مۇھەببەت ئۈچۈن باغداد يىراق ئەمەس» دېگەن مۇھەببەت ناخشىلىرى.",
+            "type": "book",
+            "path": "/ug/books/zhungaer1984",
+            "relatedEssays": [
+                {
+                    "id": "zhungaer-preface",
+                    "title": "سۆز بېشى",
+                    "author": "لى يۈ",
+                    "path": "/ug/essays/zhungaer-preface"
+                },
+                {
+                    "id": "zhungaer-afterword",
+                    "title": "سۆز ئاخىرى",
+                    "author": "لى يۈ",
+                    "path": "/ug/essays/zhungaer-afterword"
+                }
+            ]
+        }
+    ],
+    "essays": []
+}

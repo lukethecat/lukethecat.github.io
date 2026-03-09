@@ -1,0 +1,63 @@
+{
+    "books": [
+        {
+            "id": "hanxuema1995",
+            "title": "Blood-Sweating Horses",
+            "year": "1995",
+            "author": "Li Yu",
+            "description": "Twenty-one groups of historical poems set in the Western Regions, spanning two thousand years from the early Western Han to the Opium Wars. The galloping blood-sweating horses embody the spirit of life and the grandeur of a civilization reborn.",
+            "type": "book",
+            "path": "/en/books/hanxuema1995",
+            "relatedEssays": [
+                {
+                    "id": "hanxuema-introduction",
+                    "title": "Introduction",
+                    "author": "Zhou Zheng",
+                    "path": "/en/essays/hanxuema-introduction"
+                },
+                {
+                    "id": "hanxuema-preface",
+                    "title": "Preface",
+                    "author": "Zhang Guomin",
+                    "path": "/en/essays/hanxuema-preface"
+                },
+                {
+                    "id": "hanxuema-afterword",
+                    "title": "Afterword",
+                    "author": "Li Yu",
+                    "path": "/en/essays/hanxuema-afterword"
+                },
+                {
+                    "id": "hanxuema-publication",
+                    "title": "Publication Notes",
+                    "author": "Li Yu",
+                    "path": "/en/essays/hanxuema-publication"
+                }
+            ]
+        },
+        {
+            "id": "zhungaer1984",
+            "title": "Verses from Junggar",
+            "year": "1984",
+            "author": "Li Yu",
+            "description": "Lyric poems born of the Junggar Basin, chronicling life along the northern Tianshan — campfires on the frontier, generals and cities, a poet wandering the Gurbantünggüt, and love songs where 'for love, Baghdad is not too far.'",
+            "type": "book",
+            "path": "/en/books/zhungaer1984",
+            "relatedEssays": [
+                {
+                    "id": "zhungaer-preface",
+                    "title": "Preface",
+                    "author": "Li Yu",
+                    "path": "/en/essays/zhungaer-preface"
+                },
+                {
+                    "id": "zhungaer-afterword",
+                    "title": "Afterword",
+                    "author": "Li Yu",
+                    "path": "/en/essays/zhungaer-afterword"
+                }
+            ]
+        }
+    ],
+    "essays": []
+}

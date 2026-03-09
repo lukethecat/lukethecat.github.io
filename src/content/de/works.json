@@ -1,0 +1,63 @@
+{
+    "books": [
+        {
+            "id": "hanxuema1995",
+            "title": "Blut-Schwitzende Pferde",
+            "year": "1995",
+            "author": "Li Yu",
+            "description": "Einundzwanzig Gruppen historischer Gedichte aus den Westlichen Regionen, die zweitausend Jahre umspannen, von der frühen Westlichen Han-Dynastie bis zu den Opiumkriegen. Die galoppierenden Blut-schwitzenden Pferde verkörpern den Geist des Lebens und die Erhabenheit einer wiedergeborenen Zivilisation.",
+            "type": "book",
+            "path": "/de/books/hanxuema1995",
+            "relatedEssays": [
+                {
+                    "id": "hanxuema-introduction",
+                    "title": "Einleitung",
+                    "author": "Zhou Zheng",
+                    "path": "/de/essays/hanxuema-introduction"
+                },
+                {
+                    "id": "hanxuema-preface",
+                    "title": "Vorwort",
+                    "author": "Zhang Guomin",
+                    "path": "/de/essays/hanxuema-preface"
+                },
+                {
+                    "id": "hanxuema-afterword",
+                    "title": "Nachwort",
+                    "author": "Li Yu",
+                    "path": "/de/essays/hanxuema-afterword"
+                },
+                {
+                    "id": "hanxuema-publication",
+                    "title": "Publikationshinweise",
+                    "author": "Li Yu",
+                    "path": "/de/essays/hanxuema-publication"
+                }
+            ]
+        },
+        {
+            "id": "zhungaer1984",
+            "title": "Verse aus Dsungarien",
+            "year": "1984",
+            "author": "Li Yu",
+            "description": "Lyrische Gedichte aus dem Dsungarischen Becken, die das Leben entlang des nördlichen Tianshan schildern — Lagerfeuer an der Grenze, Generäle und Städte, ein Dichter in den Weiten der Gurbantünggüt-Wüste und Liebeslieder, in denen 'für die Liebe Bagdad nicht zu fern' ist.",
+            "type": "book",
+            "path": "/de/books/zhungaer1984",
+            "relatedEssays": [
+                {
+                    "id": "zhungaer-preface",
+                    "title": "Vorwort",
+                    "author": "Li Yu",
+                    "path": "/de/essays/zhungaer-preface"
+                },
+                {
+                    "id": "zhungaer-afterword",
+                    "title": "Nachwort",
+                    "author": "Li Yu",
+                    "path": "/de/essays/zhungaer-afterword"
+                }
+            ]
+        }
+    ],
+    "essays": []
+}

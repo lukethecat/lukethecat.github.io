@@ -40,3 +40,4 @@ build/
 # Next.js
 .next/
 out/
+.next_old

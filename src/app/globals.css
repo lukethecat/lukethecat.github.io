@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-white text-gray-900;
+  }
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 255, 255, 255;
@@ -17,4 +23,22 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* RTL support for Arabic and Uyghur */
+[dir="rtl"] {
+  font-family: var(--font-noto-naskh), var(--font-inter), sans-serif;
+}
+
+[dir="rtl"] .font-serif {
+  font-family: var(--font-noto-naskh), serif;
+}
+
+/* Annotation term styles */
+.annotation-term {
+  transition: background-color 0.2s ease;
+}
+
+.annotation-term:hover {
+  background-color: rgba(59, 130, 246, 0.08);
 }

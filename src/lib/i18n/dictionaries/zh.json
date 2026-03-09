@@ -1,0 +1,45 @@
+{
+    "site": {
+        "title": "李瑜诗歌数字档案馆",
+        "subtitle": "当代西部诗人",
+        "description": "数字档案馆收录诗集全文",
+        "archiveLabel": "诗歌档案"
+    },
+    "nav": {
+        "home": "首页",
+        "works": "作品",
+        "about": "关于",
+        "language": "语言"
+    },
+    "home": {
+        "poetBioTitle": "诗人小传",
+        "worksTitle": "作品集",
+        "featuredTitle": "精彩诗篇",
+        "booksSection": "诗集",
+        "essaysSection": "文论",
+        "readMore": "阅读全文",
+        "viewCollection": "阅读诗集"
+    },
+    "book": {
+        "backToHome": "返回首页",
+        "tableOfContents": "目录",
+        "chapter": "卷",
+        "poem": "诗",
+        "page": "页码",
+        "originalText": "原文",
+        "annotations": "注释"
+    },
+    "essay": {
+        "backToHome": "返回首页",
+        "relatedEssays": "相关文章",
+        "readMore": "阅读"
+    },
+    "footer": {
+        "copyright": "© 李瑜诗歌数字档案馆",
+        "allRightsReserved": "版权所有"
+    },
+    "meta": {
+        "poetName": "李瑜",
+        "poetBio": "李瑜，当代著名西部诗人，原籍安徽巢县，生于重庆，长在武汉，浪迹了大半个中国，但一生中大部光阴却是在天山北麓的风雪和浓荫中度过的。"
+    }
+}
