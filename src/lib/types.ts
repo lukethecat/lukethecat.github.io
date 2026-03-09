@@ -1,8 +1,14 @@
+export interface Annotation {
+    term: string;
+    note: string;
+}
+
 export interface Poem {
     id: string;
     title: string;
     lines: string[];
     pageNumber?: string;
+    annotations?: Annotation[];
 }
 
 export interface Chapter {
@@ -19,3 +25,4 @@ export interface Book {
     intro?: string;
     chapters: Chapter[];
 }
+

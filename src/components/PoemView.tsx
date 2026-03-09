@@ -1,5 +1,5 @@
 import React from 'react';
-import { Poem, Chapter, Book } from '@/lib/types';
+import { Poem, Chapter, Book, Annotation } from '@/lib/types';
 
 interface PoemViewProps {
     chapter: Chapter;
@@ -7,7 +7,73 @@ interface PoemViewProps {
     book: Book;
 }
 
+function AnnotatedLine({ line, annotations }: { line: string; annotations: Annotation[] }) {
+    if (!annotations || annotations.length === 0 || !line.trim()) {
+        return <>{line}</>;
+    }
+
+    // Find which annotations appear in this line
+    const matchedAnnotations = annotations.filter(a => line.includes(a.term));
+    if (matchedAnnotations.length === 0) {
+        return <>{line}</>;
+    }
+
+    // Build segments: split by annotation terms
+    const parts: (string | { term: string; index: number })[] = [];
+    let remaining = line;
+
+    while (remaining.length > 0) {
+        let earliestMatch: { term: string; pos: number; index: number } | null = null;
+
+        for (const ann of matchedAnnotations) {
+            const pos = remaining.indexOf(ann.term);
+            if (pos !== -1 && (earliestMatch === null || pos < earliestMatch.pos)) {
+                earliestMatch = {
+                    term: ann.term,
+                    pos,
+                    index: annotations.indexOf(ann),
+                };
+            }
+        }
+
+        if (earliestMatch === null) {
+            parts.push(remaining);
+            break;
+        }
+
+        if (earliestMatch.pos > 0) {
+            parts.push(remaining.substring(0, earliestMatch.pos));
+        }
+        parts.push({ term: earliestMatch.term, index: earliestMatch.index });
+        remaining = remaining.substring(earliestMatch.pos + earliestMatch.term.length);
+    }
+
+    return (
+        <>
+            {parts.map((part, i) => {
+                if (typeof part === 'string') {
+                    return <React.Fragment key={i}>{part}</React.Fragment>;
+                }
+                return (
+                    <span
+                        key={i}
+                        className="annotation-term border-b border-dotted border-gray-400 cursor-help"
+                        title={annotations[part.index]?.note}
+                    >
+                        {part.term}
+                        <sup className="text-xs text-gray-400 ml-px select-none">
+                            {part.index + 1}
+                        </sup>
+                    </span>
+                );
+            })}
+        </>
+    );
+}
+
 export const PoemView: React.FC<PoemViewProps> = ({ chapter, poem, book }) => {
+    const annotations = poem.annotations || [];
+
     return (
         <article id={poem.id} className="max-w-2xl mx-auto py-32 px-8 scroll-mt-12">
             {/* Poem Title */}
@@ -32,10 +98,33 @@ export const PoemView: React.FC<PoemViewProps> = ({ chapter, poem, book }) => {
             <div className="space-y-1 font-serif text-xl text-gray-800 leading-[2.2]">
                 {poem.lines.map((line, index) => (
                     <p key={index} className={`min-h-[1.5em] ${line === '' || !line.trim() ? 'h-6' : ''}`}>
-                        {line}
+                        <AnnotatedLine line={line} annotations={annotations} />
                     </p>
                 ))}
             </div>
+
+            {/* Annotations / Footnotes */}
+            {annotations.length > 0 && (
+                <div className="mt-16 pt-8 border-t border-gray-100">
+                    <h4 className="text-xs font-sans font-semibold text-gray-400 uppercase tracking-widest mb-4">
+                        注释
+                    </h4>
+                    <ol className="space-y-2">
+                        {annotations.map((ann, i) => (
+                            <li key={i} className="flex text-sm text-gray-500 leading-relaxed">
+                                <span className="text-xs text-gray-400 mr-2 mt-0.5 flex-shrink-0 font-mono">
+                                    {i + 1}.
+                                </span>
+                                <span>
+                                    <span className="font-medium text-gray-600">{ann.term}</span>
+                                    <span className="mx-1.5 text-gray-300">—</span>
+                                    {ann.note}
+                                </span>
+                            </li>
+                        ))}
+                    </ol>
+                </div>
+            )}
 
             {/* Enhanced Meta Information */}
             <div className="mt-20 pt-6 border-t border-gray-200">

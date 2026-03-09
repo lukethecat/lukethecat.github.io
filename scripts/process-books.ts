@@ -244,6 +244,24 @@ function processBook(bookDirName: string) {
         });
     });
 
+    // Merge annotations if available
+    const annotationsPath = path.join(CONTENT_DIR, bookDirName, 'annotations.json');
+    if (fs.existsSync(annotationsPath)) {
+        try {
+            const annotations = JSON.parse(fs.readFileSync(annotationsPath, 'utf-8'));
+            book.chapters.forEach(c => {
+                c.poems.forEach(p => {
+                    if (annotations[p.id]) {
+                        (p as any).annotations = annotations[p.id];
+                    }
+                });
+            });
+            console.log(`  Merged annotations for ${bookDirName}`);
+        } catch (e) {
+            console.warn(`  Warning: Could not parse annotations for ${bookDirName}`, e);
+        }
+    }
+
     ensureDir(path.join(CONTENT_DIR, bookDirName));
     fs.writeFileSync(
         path.join(CONTENT_DIR, bookDirName, 'book.json'),

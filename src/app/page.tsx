@@ -65,6 +65,31 @@ export default async function Home() {
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+            {/* JSON-LD Structured Data */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        '@context': 'https://schema.org',
+                        '@type': 'WebSite',
+                        name: '李瑜诗歌数字档案馆',
+                        alternateName: 'Li Yu Poetry Digital Archive',
+                        url: 'https://www.liyupoetry.com',
+                        description: '当代著名西部诗人李瑜作品全集数字档案馆',
+                        inLanguage: ['zh-CN', 'en', 'de', 'ar', 'ug'],
+                        about: {
+                            '@type': 'Person',
+                            name: '李瑜',
+                            alternateName: 'Li Yu',
+                            birthDate: '1939',
+                            birthPlace: '重庆',
+                            description: '当代著名西部诗人，新边塞诗代表人物',
+                            knowsAbout: ['诗歌', '西部文学', '丝绸之路', '新疆'],
+                        },
+                    }),
+                }}
+            />
+
             {/* Hero Section */}
             <section className="max-w-5xl mx-auto px-8 pt-32 pb-20">
                 <div className="text-center">
