@@ -1,270 +1,270 @@
 {
   "poem-1-1": [
     {
-      "term": "张骞",
-      "note": "Zhang Qian — Han Dynasty diplomat and explorer (c. 164-114 BC) who pioneered the Silk Road route to Central Asia on behalf of Emperor Wu."
+      "term": "Zhang Qian",
+      "note": "Zhang Qian (c. 164–114 BC) — Han Dynasty diplomat and explorer who pioneered the Silk Road route to Central Asia on behalf of Emperor Wu."
     },
     {
-      "term": "胡笳",
-      "note": "古代北方游牧民族的簧管乐器，音色苍凉悲壮，常用于边塞诗歌意象。"
+      "term": "Hujia",
+      "note": "Hujia — an ancient reed instrument of northern nomadic peoples, known for its desolate, tragic timbre, often used as a trope in frontier poetry."
     },
     {
-      "term": "大月氏",
-      "note": "Great Yuezhi — a nomadic people originally from the Gansu/Tarim region, later migrated to Central Asia (modern Afghanistan/Pakistan)."
+      "term": "Great Yuezhi",
+      "note": "Great Yuezhi — a nomadic people originally from the Hexi Corridor, later migrated to Central Asia. They were Zhang Qian's destination in seeking an alliance against the Xiongnu."
     },
     {
-      "term": "汉节",
-      "note": "Han Staff (jié) — the imperial envoy's staff of authority, a bamboo rod topped with yak-tail tassels symbolizing the emperor's mandate."
+      "term": "Han Staff",
+      "note": "Han Staff (jié) — the imperial envoy's staff of authority, a bamboo rod topped with yak-tail tassels symbolizing the emperor's mandate and mission."
     }
   ],
   "poem-1-2": [
     {
-      "term": "祁连",
-      "note": "祁连山，位于甘肃、青海交界，匈奴语意为「天山」。是河西走廊的南部屏障，古代中原通往西域的必经之地。"
+      "term": "Qilian Mountains",
+      "note": "Qilian Mountains — located at the border of Gansu and Qinghai, meaning 'Heavenly Mountain' in Xiongnu. It is the southern barrier of the Hexi Corridor and an ancient crucial passage to the Western Regions."
     }
   ],
   "poem-1-3": [
     {
-      "term": "堂邑父",
-      "note": "Tangyi Fu — Zhang Qian's loyal Xiongnu companion and guide throughout his journey to the Western Regions."
+      "term": "Tangyi Fu",
+      "note": "Tangyi Fu — Zhang Qian's loyal Xiongnu companion and guide throughout his perilous journey to the Western Regions."
     }
   ],
   "poem-1-5": [
     {
-      "term": "河西走廊",
-      "note": "位于甘肃省西北部、祁连山与北山之间的狭长通道，是中原通往西域的咽喉要道，丝绸之路的关键路段。"
+      "term": "Hexi Corridor",
+      "note": "Hexi Corridor — a narrow passage located in northwestern Gansu between the Qilian and Beishan mountains. It was the crucial throat connecting the Central Plains to the Western Regions and a key segment of the Silk Road."
     },
     {
-      "term": "丝绸之路",
-      "note": "Silk Road — the ancient network of trade routes connecting China to the Mediterranean, named for the Chinese silk traded westward."
+      "term": "Silk Road",
+      "note": "Silk Road — the ancient network of trade routes connecting China to Central and West Asia, and Europe, named for the Chinese silk that was heavily traded westward."
     }
   ],
   "poem-2-1": [
     {
-      "term": "霍去病",
-      "note": "Huo Qubing — brilliant young general (140-117 BC) who defeated the Xiongnu at Qilian. Died at age 24."
+      "term": "Huo Qubing",
+      "note": "Huo Qubing (140–117 BC) — brilliant young Han general who defeated the Xiongnu at Qilian, securing the Hexi Corridor. He died prematurely at age 24."
     }
   ],
   "poem-2-2": [
     {
-      "term": "敦煌",
-      "note": "Dunhuang — an ancient oasis city at the western end of the Hexi Corridor, famous for its Mogao Caves and Buddhist art."
+      "term": "Dunhuang",
+      "note": "Dunhuang — an ancient oasis city at the westernmost end of the Hexi Corridor, a hub of the ancient Silk Road, world-renowned for its Mogao Caves."
     },
     {
-      "term": "月牙湖",
-      "note": "即月牙泉，位于敦煌鸣沙山下，因形似新月而得名，自古被誉为「沙漠第一泉」。"
+      "term": "Crescent Lake",
+      "note": "Crescent Lake (Yueyaquan) — located at the foot of the Mingsha Mountains in Dunhuang, named for its crescent moon shape, historically praised as 'the first spring in the desert'."
     }
   ],
   "poem-2-6": [
     {
-      "term": "酒泉",
-      "note": "Jiuquan ('Wine Spring') — city in Gansu named after a legend that Huo Qubing poured wine into a spring to share with his troops."
+      "term": "Jiuquan",
+      "note": "Jiuquan ('Wine Spring') — a city in Gansu named after a legend that General Huo Qubing poured imperial wine into a spring to share it with all his troops."
     }
   ],
   "poem-3-1": [
     {
-      "term": "巩乃斯",
-      "note": "位于新疆伊犁州新源县，天山山脉中段的高山草甸，水草丰茂，是古代乌孙国的核心牧地。"
+      "term": "Künes",
+      "note": "Künes — an alpine meadow in the middle section of the Tianshan Mountains (Xinyuan County, Ili, Xinjiang), rich in water and grass, the core pasture of the ancient Wusun State."
     },
     {
-      "term": "细君",
-      "note": "即刘细君，西汉江都王刘建之女。元封六年（前105年），汉武帝将她作为和亲公主远嫁乌孙国昆莫（国王），史称「细君公主」。"
+      "term": "Princess Xijun",
+      "note": "Liu Xijun — daughter of Liu Jian, King of Jiangdu in the Western Han. In 105 BC, Emperor Wu sent her to marry the Wusun King (Kunmo) in a political alliance."
     },
     {
-      "term": "乌孙",
-      "note": "Wusun — ancient nomadic kingdom in the Ili River valley (modern Kazakhstan/Xinjiang) allied with the Han Dynasty."
+      "term": "Wusun",
+      "note": "Wusun — an ancient nomadic kingdom located in the Ili River valley (modern Kazakhstan/Xinjiang) that allied with the Han Dynasty through marriage diplomacy."
     }
   ],
   "poem-3-2": [
     {
-      "term": "伊犁河",
-      "note": "Ili River — major river flowing from the Tianshan into Lake Balkhash, historically central to Wusun and Kazakh cultures."
+      "term": "Ili River",
+      "note": "Ili River — major river flowing from the Tianshan Mountains into Lake Balkhash, historically the cradle of Wusun and Kazakh cultures."
     }
   ],
   "poem-3-5": [
     {
-      "term": "望乡之歌",
-      "note": "细君公主所作的《悲愁歌》：「吾家嫁我兮天一方，远托异国兮乌孙王。穹庐为室兮旃为墙，以肉为食兮酪为浆。居常土思兮心内伤，愿为黄鹄兮归故乡。」是中国文学史上最早的和亲诗歌。"
+      "term": "Song of Homesickness",
+      "note": "Song of Sorrow — composed by Princess Xijun, expressing deep lament over being married off to an alien, distant land. It is the earliest recorded 'Heqin' (marriage alliance) poem in Chinese literary history."
     },
     {
-      "term": "黄鹄",
-      "note": "即天鹅，细君公主《悲愁歌》中以「愿为黄鹄兮归故乡」表达思乡之情，此后黄鹄成为思乡的经典意象。"
+      "term": "Yellow Swan",
+      "note": "Yellow Swan — referenced in Princess Xijun's Song of Sorrow, reading 'I wish I were a yellow swan, returning to my hometown.' It has since become a classic literary trope for homesickness."
     },
     {
-      "term": "克孜阿尔达克花",
-      "note": "哈萨克语，意为「红花」，指新疆伊犁河谷常见的野生郁金香，春季盛开如火。"
+      "term": "Kizil Ardak Flower",
+      "note": "Kizil Ardak — meaning 'red flower' in Kazakh, referring to the wild tulips common in the Ili River Valley of Xinjiang that bloom fiery red in spring."
     }
   ],
   "poem-4-1": [
     {
-      "term": "李广利",
-      "note": "Li Guangli — Han general who led the disastrous Dayuan expeditions (104-101 BC) to obtain the famed 'blood-sweating' horses."
+      "term": "Li Guangli",
+      "note": "Li Guangli — Western Han general commissioned by Emperor Wu, who led two immense expeditions to Dayuan (104–101 BC) to obtain the famed 'blood-sweating' horses."
     },
     {
-      "term": "汗血马",
-      "note": "Blood-Sweating Horses — the famed Akhal-Teke horses of Fergana whose skin appeared to 'sweat blood' during exertion."
+      "term": "Blood-Sweating Horses",
+      "note": "Blood-Sweating Horses — the legendary Akhal-Teke horses of Fergana. Their skin was said to 'sweat blood' during intense exertion."
     },
     {
-      "term": "大宛",
-      "note": "Dayuan (Fergana) — an ancient kingdom in Central Asia's Fergana Valley, famed for its 'blood-sweating' Akhal-Teke horses."
+      "term": "Dayuan",
+      "note": "Dayuan (Fergana) — an ancient kingdom in the Fergana Valley of Central Asia, famous for breeding the high-quality 'blood-sweating' Akhal-Teke horses."
     },
     {
-      "term": "帕米尔",
-      "note": "帕米尔高原，位于中亚东南部，古称「葱岭」，是古代丝绸之路翻越的最高屏障，连接中国与中亚。"
+      "term": "Pamir Mountains",
+      "note": "Pamir Mountains — located in southeastern Central Asia, historically known as the 'Onion Range', it was the highest barrier crossed by the ancient Silk Road connecting China and Central Asia."
     }
   ],
   "poem-4-3": [
     {
-      "term": "塔克拉玛干",
-      "note": "中国最大的沙漠，位于新疆塔里木盆地中心，维吾尔语意为「进去出不来的地方」，面积约33万平方公里。"
+      "term": "Taklamakan Desert",
+      "note": "Taklamakan Desert — China's largest desert, located in the Tarim Basin of Xinjiang. In Uyghur, it allegedly means 'place from which there is no return', spanning around 330,000 square kilometers."
     },
     {
-      "term": "乌孜别里山口",
-      "note": "帕米尔高原上的重要山口，位于中国与原苏联（今吉尔吉斯斯坦）边界，是古代丝绸之路的西出通道。"
+      "term": "Uzbel Pass",
+      "note": "Uzbel Pass — an important mountain pass on the Pamir Plateau, located on the border between China and Kyrgyzstan, it was a western exit of the ancient Silk Road."
     },
     {
-      "term": "阿姆河",
-      "note": "中亚最长河流，古称「妫水」，流经阿富汗、塔吉克斯坦、乌兹别克斯坦和土库曼斯坦。大月氏西迁后定居于阿姆河流域。"
+      "term": "Amu Darya",
+      "note": "Amu Darya — the longest river in Central Asia, historically Guishui. The Great Yuezhi settled in the Amu Darya basin after migrating westward."
     }
   ],
   "poem-4-4": [
     {
-      "term": "汉武帝",
-      "note": "西汉第七位皇帝刘彻（前156—前87），在位五十四年。雄才大略，开拓西域，派张骞出使，使丝绸之路正式贯通。"
+      "term": "Emperor Wu of Han",
+      "note": "Emperor Wu (Liu Che, 156–87 BC) — the seventh emperor of the Western Han. A visionary ruler who expanded the empire westward and dispatched Zhang Qian to open the Silk Road."
     },
     {
-      "term": "西极天马歌",
-      "note": "汉武帝获得汗血马后亲作的乐府诗，赞美天马「志俶傥，精权奇，籋浮云，晻上驰」，抒发帝王的宏图壮志。"
+      "term": "Song of the Heavenly Horses from the Western Extremity",
+      "note": "Song of the Heavenly Horses — a Yuefu poem composed personally by Emperor Wu of Han after obtaining the blood-sweating horses, praising their majestic spirit to express his grand imperial ambitions."
     }
   ],
   "poem-5-1": [
     {
-      "term": "罗布泊",
-      "note": "Lop Nur — once a large salt lake in Xinjiang, now a dry lake bed. Site of the Loulan ruins and nuclear testing."
+      "term": "Lop Nur",
+      "note": "Lop Nur — once a vast salt lake in eastern Xinjiang, now a completely dry lake bed. It was the site of the ancient Loulan ruins and later China's nuclear testing ground."
     },
     {
-      "term": "胡杨",
-      "note": "又称「胡桐」，耐旱耐盐碱的落叶乔木，大量分布于塔克拉玛干沙漠周缘。有「生而千年不死，死而千年不倒，倒而千年不朽」之说。"
+      "term": "Desert Poplar",
+      "note": "Desert Poplar (Populus euphratica) — a highly drought and salt-resistant deciduous tree found around the Taklamakan Desert. It is said to 'live a thousand years, stand dead for a thousand years, and remain un-rotted for a thousand years'."
     },
     {
-      "term": "柽柳",
-      "note": "又称红柳，西北荒漠中常见的灌木或小乔木，耐盐碱、耐干旱，是防风固沙的重要植物。"
+      "term": "Tamarisk",
+      "note": "Tamarisk (Red Willow) — a common shrub or small tree in northwestern deserts, highly resistant to salt and drought, serving as a crucial plant for windbreaks and sand fixation."
     },
     {
-      "term": "楼兰",
-      "note": "Loulan — ancient Silk Road kingdom near Lop Nur, vanished around 4th century AD due to desertification."
+      "term": "Loulan",
+      "note": "Loulan — an ancient Silk Road kingdom near Lop Nur that mysteriously vanished around the 4th century AD primarily due to desertification and changing river courses."
     }
   ],
   "poem-6-1": [
     {
-      "term": "贝加尔湖",
-      "note": "Lake Baikal — the world's deepest and oldest freshwater lake in Siberia, where Su Wu was exiled."
+      "term": "Lake Baikal",
+      "note": "Lake Baikal — the deepest and oldest freshwater lake in the world, located in Siberia. It is the historical \"North Sea\" where Han envoy Su Wu was exiled to tend sheep."
     },
     {
-      "term": "苏武",
-      "note": "Su Wu — Han Dynasty envoy (c. 140-60 BC) who was held captive by the Xiongnu for 19 years at Lake Baikal, refusing to surrender."
+      "term": "Su Wu",
+      "note": "Su Wu — a Han Dynasty envoy (c. 140–60 BC) who was held captive by the Xiongnu for 19 years at Lake Baikal, famously clutching his Han imperial staff and refusing to surrender."
     }
   ],
   "poem-6-3": [
     {
-      "term": "李陵",
-      "note": "Li Ling — grandson of the famous general Li Guang, who surrendered to the Xiongnu after a heroic last stand."
+      "term": "Li Ling",
+      "note": "Li Ling — grandson of the famous Han general Li Guang. He surrendered to the Xiongnu after fighting heroically until his arrows ran out, a surrender that remained deeply controversial."
     }
   ],
   "poem-6-4": [
     {
-      "term": "鸿雁",
-      "note": "苏武在北海牧羊时，传说汉昭帝使者对匈奴称：天子射猎时射得鸿雁，足上系有苏武帛书。匈奴遂释放苏武。此即「鸿雁传书」典故之由来。"
+      "term": "Swan Goose",
+      "note": "Swan Goose — in legend, a Han envoy bluffed the Xiongnu by claiming the Emperor shot down a goose with a letter from Su Wu tied to its leg, securing Su Wu's release. Thus 'swan goose' became a metaphor for postal letters."
     }
   ],
   "poem-7-1": [
     {
-      "term": "叶尔羌",
-      "note": "古代西域地名，今新疆莎车县一带。叶尔羌河是塔里木河的主要支流之一。"
+      "term": "Yarkand",
+      "note": "Yarkand — an ancient Western Regions location, present-day Shache County in Xinjiang. The Yarkand River is one of the main tributaries of the Tarim River."
     },
     {
-      "term": "丝绸公主",
-      "note": "传说中将养蚕和丝织技术带到西域的中原公主。据和田出土的木版画记载，一位嫁往于阗（今和田）的公主将蚕种藏于凤冠中偷渡出关，从此丝织业在西域传播开来。"
+      "term": "Silk Princess",
+      "note": "Silk Princess — a legendary Central Plains princess who hid silkworm eggs in her royal headdress when married off to the King of Khotan, thus smuggling sericulture technology into the Western Regions."
     },
     {
-      "term": "阳关",
-      "note": "位于甘肃敦煌西南，汉代设置的边关要塞，是丝绸之路南道的必经之地。王维诗「西出阳关无故人」使其闻名遐迩。"
+      "term": "Yangguan Pass",
+      "note": "Yangguan Pass — a Han Dynasty border fortress southwest of Dunhuang, an essential checkpoint on the southern route of the Silk Road. Made famous by Wang Wei's poem 'West of Yangguan is no old friend'."
     }
   ],
   "poem-7-5": [
     {
-      "term": "阿西汗",
-      "note": "传说中的于阗国王，迎娶了从中原远嫁而来、偷带蚕种的丝绸公主。"
+      "term": "Asikhan",
+      "note": "Asikhan — the legendary King of Khotan (Yutian) who married the Silk Princess that smuggled the silkworm seeds from the Central Plains."
     }
   ],
   "poem-8-1": [
     {
-      "term": "班超",
-      "note": "Ban Chao — Han Dynasty general (32-102 AD) who, with only 36 men, re-established Chinese authority across the Western Regions."
+      "term": "Ban Chao",
+      "note": "Ban Chao (32–102 AD) — a legendary Eastern Han general and diplomat who, with only 36 men, re-established Chinese suzerainty across the Western Regions over a 31-year campaign."
     },
     {
-      "term": "鄯善",
-      "note": "Shanshan — a Silk Road kingdom near Lop Nur; Ban Chao's first victory in the Western Regions."
+      "term": "Shanshan",
+      "note": "Shanshan — a Silk Road kingdom (formerly Loulan); the site of Ban Chao's daring night raid on a Xiongnu delegation, his first major victory in the Western Regions."
     }
   ],
   "poem-9-1": [
     {
-      "term": "甘英",
-      "note": "Gan Ying — Han envoy sent by Ban Chao to reach Da Qin (Rome) in 97 AD. Reached the Persian Gulf but was turned back."
+      "term": "Gan Ying",
+      "note": "Gan Ying — a Han military envoy dispatched by Ban Chao in 97 AD to establish contact with Da Qin (the Roman Empire). He reached the Persian Gulf but was dissuaded from crossing."
     }
   ],
   "poem-9-3": [
     {
-      "term": "扎格罗斯山",
-      "note": "伊朗高原西部的大山脉，从波斯湾北岸延伸至土耳其东部，是古代丝绸之路通往两河流域的天然屏障。"
+      "term": "Zagros Mountains",
+      "note": "Zagros Mountains — a major mountain range in western Iran, stretching from the Persian Gulf to eastern Turkey, acting as a natural barrier on the Silk Road to Mesopotamia."
     },
     {
-      "term": "波斯湾",
-      "note": "位于阿拉伯半岛与伊朗高原之间的海湾。甘英到达波斯湾后被告知渡海需数月，遂未能继续前往罗马。"
+      "term": "Persian Gulf",
+      "note": "Persian Gulf — an arm of the Arabian Sea between the Arabian Peninsula and southwestern Iran. Gan Ying purportedly reached its shores before abandoning his voyage to Rome."
     }
   ],
   "poem-10-1": [
     {
-      "term": "塔里木河",
-      "note": "中国最长的内陆河，全长约2137公里，流经新疆塔里木盆地北缘。古代是西域屯田戍边的命脉之河。"
+      "term": "Tarim River",
+      "note": "Tarim River — China's longest inland river, stretching about 2,137 kilometers along the northern edge of the Tarim Basin. Historically, the lifeblood of garrison agriculture in the Western Regions."
     },
     {
-      "term": "索劢",
-      "note": "东汉将领，率敦煌兵三千人进驻西域，强渡塔里木河，在其南岸开创了中原王朝在西域腹地屯田的先河。"
+      "term": "Suo Mai",
+      "note": "Suo Mai — an Eastern Han general who led 3,000 troops from Dunhuang to forcibly cross the Tarim River, pioneering large-scale military agricultural colonies (tuntian) in the heart of the Western Regions."
     },
     {
-      "term": "军垦",
-      "note": "军队开垦荒地、从事农业生产的制度。始于西汉在西域的「屯田」政策，是巩固边疆的重要举措，也是新疆生产建设兵团的历史渊源。"
+      "term": "Military Reclamation",
+      "note": "Military Reclamation — the system of using military troops to cultivate wasteland for agricultural production. Originating in the Han Dynasty's 'tuntian' policy in the Western Regions, it is the historical precedent for the Xinjiang Production and Construction Corps."
     }
   ],
   "poem-11-1": [
     {
-      "term": "托钵僧",
-      "note": "此处指唐代高僧玄奘（602—664），此组诗以「偷渡的托钵僧」为题，因玄奘当年私自出关西行求法，身份实为偷渡者。"
+      "term": "Mendicant Monk",
+      "note": "Mendicant Monk — referencing the Tang Dynasty monk Xuanzang (602–664). Because he left China illegally in defiance of an imperial travel ban to seek Buddhist scriptures, he was, initially, a stowaway mendicant."
     }
   ],
   "poem-11-6": [
     {
-      "term": "碎叶",
-      "note": "古代安西四镇之一，位于今吉尔吉斯斯坦托克马克附近，唐代西域重镇。传为诗人李白出生地。"
+      "term": "Suyab",
+      "note": "Suyab — one of the ancient Four Garrisons of Anxi, located near modern Tokmok in Kyrgyzstan. A crucial Tang Dynasty fortress town and famously the purported birthplace of poet Li Bai."
     },
     {
-      "term": "伊塞克湖",
-      "note": "Issyk-Kul — an endorheic lake in Kyrgyzstan, the second largest alpine lake in the world."
+      "term": "Issyk-Kul",
+      "note": "Issyk-Kul — a vast endorheic lake in the northern Tian Shan mountains in eastern Kyrgyzstan, the second-largest alpine lake in the world."
     },
     {
-      "term": "叶护可汗",
-      "note": "西突厥可汗，玄奘西行至中亚时曾受其热情接待。叶护可汗赐予护卫和通关文书，助玄奘继续西行。"
+      "term": "Yabghu Qaghan",
+      "note": "Yabghu Qaghan — ruler of the Western Turkic Khaganate who warmly received Xuanzang in Central Asia, providing him with escorts and diplomatic credentials to continue his westward journey."
     },
     {
-      "term": "玄奘",
-      "note": "Xuanzang — Tang Dynasty Buddhist monk (602-664) whose 17-year pilgrimage to India inspired Journey to the West."
+      "term": "Xuanzang",
+      "note": "Xuanzang (602–664) — a legendary Tang Dynasty Buddhist monk whose 17-year overland pilgrimage to India and meticulous geographic records inspired the classic novel 'Journey to the West'."
     }
   ],
   "poem-12-1": [
     {
-      "term": "岑参",
-      "note": "Cen Can — Tang Dynasty frontier poet (c. 715-770), famous for his vivid descriptions of Silk Road landscapes and border warfare."
+      "term": "Cen Shen",
+      "note": "Cen Shen (c. 715–770) — one of the greatest Tang Dynasty frontier poets, celebrated for his majestic, harsh, and vivid depictions of Silk Road landscapes and military campaigns."
     }
   ]
 }
