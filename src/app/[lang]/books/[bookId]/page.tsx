@@ -7,7 +7,18 @@ import { BookLayout } from '@/components/BookLayout';
 import { PoemView } from '@/components/PoemView';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
-async function getBook(bookId: string): Promise<Book | null> {
+async function getBook(bookId: string, locale: string): Promise<Book | null> {
+    // Try locale-specific book first
+    if (locale !== 'zh') {
+        try {
+            const localePath = path.join(process.cwd(), `src/content/${locale}/${bookId}/book.json`);
+            const content = await fs.readFile(localePath, 'utf8');
+            return JSON.parse(content) as Book;
+        } catch {
+            // Fall through to original
+        }
+    }
+    // Fall back to original Chinese
     const jsonPath = path.join(process.cwd(), `src/content/${bookId}/book.json`);
     try {
         const fileContents = await fs.readFile(jsonPath, 'utf8');
@@ -32,7 +43,7 @@ export async function generateStaticParams() {
 export default async function LangBookPage({ params }: { params: { lang: string; bookId: string } }) {
     const locale = params.lang as Locale;
     const dict = await getDictionary(locale);
-    const book = await getBook(params.bookId);
+    const book = await getBook(params.bookId, locale);
 
     if (!book) {
         return (
@@ -53,7 +64,7 @@ export default async function LangBookPage({ params }: { params: { lang: string;
                 <header className="pt-24 pb-12 px-8 text-center border-b border-gray-100 mb-12">
                     <h1 className="text-4xl font-serif font-bold text-gray-900 mb-4">{book.title}</h1>
                     <p className="text-sm text-gray-400 font-sans">
-                        {dict.book.originalText} · {book.author} / {book.year}
+                        {book.author} / {book.year}
                     </p>
                 </header>
 
