@@ -1,11 +1,11 @@
 {
-  "title": "Blood-Sweating Horses",
-  "author": "Li Yu",
+  "title": "قان تەرلەيدىغان ئاتلار",
+  "author": "لى يۈ",
   "year": "1995",
   "chapters": [
     {
       "id": "chapter-1",
-      "title": "O, the New Continent of Central Asia",
+      "title": "ئاھ، ئوتتۇرا ئاسىيا يېڭى قىتئەسى",
       "poems": [
         {
           "id": "poem-1-1",
@@ -200,7 +200,7 @@
     },
     {
       "id": "chapter-2",
-      "title": "Beneath Qilian, Silence Has Fallen",
+      "title": "چىلىيەن تاغ ئاستىدا جىمجىتلىق چۈشتى",
       "poems": [
         {
           "id": "poem-2-1",
@@ -399,7 +399,7 @@
     },
     {
       "id": "chapter-3",
-      "title": "Wild Poppies",
+      "title": "يالغۇز ئاپىيۇن گۈلى",
       "poems": [
         {
           "id": "poem-3-1",
@@ -587,7 +587,7 @@
     },
     {
       "id": "chapter-4",
-      "title": "Blood-Sweating Horses",
+      "title": "قان تەرلەيدىغان ئاتلار",
       "poems": [
         {
           "id": "poem-4-1",
@@ -777,7 +777,7 @@
     },
     {
       "id": "chapter-5",
-      "title": "Loulan Vanished in an Instant",
+      "title": "لوۋلان بىر ئاندا يوقالدى",
       "poems": [
         {
           "id": "poem-5-1",
@@ -919,7 +919,7 @@
     },
     {
       "id": "chapter-6",
-      "title": "O, at Lake Baikal Autumn Is Already Deep",
+      "title": "ئاھ، بايكال كۆلىدە كۈز چوڭقۇرلاشتى",
       "poems": [
         {
           "id": "poem-6-1",
@@ -1087,7 +1087,7 @@
     },
     {
       "id": "chapter-7",
-      "title": "In the Vast Yarkand",
+      "title": "كەڭ يارقەنتتە",
       "poems": [
         {
           "id": "poem-7-1",
@@ -1253,7 +1253,7 @@
     },
     {
       "id": "chapter-8",
-      "title": "The Beacon-Fires Have Died",
+      "title": "مۇنار ئوتلىرى ئۆچتى",
       "poems": [
         {
           "id": "poem-8-1",
@@ -1382,7 +1382,7 @@
     },
     {
       "id": "chapter-9",
-      "title": "The Dark-Blue Persian Gulf",
+      "title": "قاپقارا كۆك فارس قولتۇقى",
       "poems": [
         {
           "id": "poem-9-1",
@@ -1529,7 +1529,7 @@
     },
     {
       "id": "chapter-10",
-      "title": "Waves of the Tarim River",
+      "title": "تارىم دەريا دولقۇنلىرى",
       "poems": [
         {
           "id": "poem-10-1",
@@ -1683,7 +1683,7 @@
     },
     {
       "id": "chapter-11",
-      "title": "The Mendicant Who Crossed the Border in Secret",
+      "title": "چېگرىنى يوشۇرۇن ئاشقان تەلەپچى",
       "poems": [
         {
           "id": "poem-11-1",
@@ -1870,7 +1870,7 @@
     },
     {
       "id": "chapter-12",
-      "title": "The Poet's Soul Still Gallops",
+      "title": "شائىرنىڭ روھى تېخى چاپماقتا",
       "poems": [
         {
           "id": "poem-12-1",
@@ -2028,7 +2028,7 @@
     },
     {
       "id": "chapter-13",
-      "title": "O, the Battle of Talas",
+      "title": "ئاھ، تالاس ئۇرۇشى",
       "poems": [
         {
           "id": "poem-13-1",
@@ -2182,7 +2182,7 @@
     },
     {
       "id": "chapter-14",
-      "title": "The Small Lonely Fortress",
+      "title": "كىچىك يالغۇز قەلئە",
       "poems": [
         {
           "id": "poem-14-1",
@@ -2289,7 +2289,7 @@
     },
     {
       "id": "chapter-15",
-      "title": "Emerald-Green Yarkand",
+      "title": "زۈمرەت يېشىل يارقەنت",
       "poems": [
         {
           "id": "poem-15-1",
@@ -2367,7 +2367,7 @@
     },
     {
       "id": "chapter-16",
-      "title": "The Silent Liupan Mountains",
+      "title": "جىم ليۇپان تاغلىرى",
       "poems": [
         {
           "id": "poem-16-1",
@@ -2497,7 +2497,7 @@
     },
     {
       "id": "chapter-17",
-      "title": "The Rushing Ili River",
+      "title": "ئېقىپ تۇرغان ئىلى دەريا",
       "poems": [
         {
           "id": "poem-17-1",
@@ -2604,7 +2604,7 @@
     },
     {
       "id": "chapter-18",
-      "title": "Maimure Azimu, Fragrant as Oleaster Blossoms",
+      "title": "جىگدە گۈلىدەك خۇشبوي مايمۇرە ئەزىم",
       "poems": [
         {
           "id": "poem-18-1",
@@ -2685,7 +2685,7 @@
     },
     {
       "id": "chapter-19",
-      "title": "O, the Morning Star",
+      "title": "ئاھ، تاڭ يۇلتۇزى",
       "poems": [
         {
           "id": "poem-19-1",
@@ -2812,7 +2812,7 @@
     },
     {
       "id": "chapter-20",
-      "title": "The Frontier's Devoted Son Weeps in Anguish",
+      "title": "چېگرا ساداقەتلىك ئوغلى ئاھ-زار بىلەن يىغلايدۇ",
       "poems": [
         {
           "id": "poem-20-1",
@@ -2903,7 +2903,7 @@
     },
     {
       "id": "chapter-21",
-      "title": "Who in the Western Regions Does Not Know Thee?",
+      "title": "غەربىي دىياردا سېنى كىم تونۇمايدۇ؟",
       "poems": [
         {
           "id": "poem-21-1",

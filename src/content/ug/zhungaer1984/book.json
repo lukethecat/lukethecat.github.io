@@ -1,11 +1,11 @@
 {
-  "title": "Verses from Junggar",
-  "author": "Li Yu",
+  "title": "جۇڭغار شېئىرلىرى",
+  "author": "لى يۈ",
   "year": "1984",
   "chapters": [
     {
       "id": "chapter-1",
-      "title": "Volume I: The Flickering Campfire",
+      "title": "بىرىنچى توم: يالقۇنلۇق گۈلخان",
       "poems": [
         {
           "id": "poem-1-1",
@@ -562,7 +562,7 @@
     },
     {
       "id": "chapter-2",
-      "title": "Volume II: The General and the City",
+      "title": "ئىككىنچى توم: سەركەردە ۋە شەھەر",
       "poems": [
         {
           "id": "poem-2-1",
@@ -808,7 +808,7 @@
     },
     {
       "id": "chapter-3",
-      "title": "Volume III: A Poet in the Gurbantünggüt",
+      "title": "ئۈچىنچى توم: گۇربانتۈڭگۈتتىكى بىر شائىر",
       "poems": [
         {
           "id": "poem-3-1",
@@ -931,7 +931,7 @@
     },
     {
       "id": "chapter-4",
-      "title": "Volume IV: For Love, Baghdad Is Not Too Far",
+      "title": "تۆتىنچى توم: مۇھەببەت ئۈچۈن باغداد يىراق ئەمەس",
       "poems": [
         {
           "id": "poem-4-1",

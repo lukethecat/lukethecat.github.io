@@ -1,36 +1,36 @@
 {
-  "title": "Blood-Sweating Horses",
+  "title": "Blut-Schwitzende Pferde",
   "author": "Li Yu",
   "year": "1995",
   "chapters": [
     {
       "id": "chapter-1",
-      "title": "O, the New Continent of Central Asia",
+      "title": "O, der neue Kontinent Zentralasiens",
       "poems": [
         {
           "id": "poem-1-1",
-          "title": "That Glorious Arrow Must Still Be in Flight / Cast toward the Distant West",
+          "title": "Jener glorreiche Pfeil muss noch immer fliegen / Geschleudert in den fernen Westen",
           "lines": [
-            "The blood-red setting sun is about to die",
-            "The dark-gold curtain of night about to fall",
-            "Zhang Qian drives his herded flock homeward",
-            "A desolate pastoral song blends with the mournful reed-pipe",
-            "Piercing the haze of an autumn twilight",
-            "From a distant felt tent a thread of smoke rises",
-            "Like a dark-gold peony from his native Hanzhong",
-            "Slowly blooming across the sky of the Western Regions",
+            "Die blutrote untergehende Sonne vergeht",
+            "Der dunkle-goldene Vorhang der Nacht senkt sich herab",
+            "Zhang Qian treibt seine Herde heimwärts",
+            "Ein ödes Hirtenlied vermischt sich mit der Klage der Rohrflöte",
+            "Durchdringt den Dunst einer Herbstdämmerung",
+            "Aus einer fernen Jurte steigt ein Faden Rauch empor",
+            "Wie eine dunkle-goldene Pfingstrose aus seiner Heimat Hanzhong",
+            "Die langsam am Himmel der Westlande erblüht",
             "",
-            "He turns to gaze at that dark-gold cloud far to the west",
-            "The flock surges like waves beneath his horse",
-            "O, glorious setting sun",
-            "Already it has tumbled",
-            "Beyond the dark-gold horizon",
+            "Er wendet sich nach jenem dunkle-goldenen Gewölk im fernen Westen",
+            "Die Herde wogt wie Wellen unter seinem Pferd",
+            "O, glorreiche sinkende Sonne",
+            "Schon hinabgerollt",
+            "Hinter den dunkle-goldenen Horizont",
             "",
-            "Yet that glorious arrow must still be in flight",
-            "Cast toward the distant west",
-            "Cast toward the distant road ahead",
-            "Cast toward the vast plains",
-            "Of the Great Yuezhi, longed for day and night"
+            "Doch jener glorreiche Pfeil muss noch immer fliegen",
+            "Geschleudert in den fernen Westen",
+            "Geschleudert auf den fernen Weg voraus",
+            "Geschleudert zu den weiten Ebenen",
+            "Der Großen Yuezhi, Tag und Nacht ersehnt"
           ],
           "annotations": [
             {
@@ -53,42 +53,42 @@
         },
         {
           "id": "poem-1-2",
-          "title": "The Clasped Hands Slowly Loosened / The Tear-Filled Eyes Abruptly Turned Away",
+          "title": "Die verschlungenen Hände lösen sich langsam / Die tränengefüllten Augen wenden sich jäh ab",
           "lines": [
-            "The boundless steppe has fallen asleep",
-            "Snow-crowned Qilian has fallen asleep",
-            "The child in the felt tent must have fallen asleep too",
+            "Die grenzenlose Steppe ist eingeschlafen",
+            "Der schneebekrönte Qilian ist eingeschlafen",
+            "Das Kind in der Jurte muss auch eingeschlafen sein",
             "",
-            "Standing before the black steed",
-            "Gazing in silence",
-            "At his weeping wife of the Western Regions",
-            "Zhang Qian also weeps",
-            "Tear-filled eyes meet tear-filled eyes",
-            "Hands clasp hands tightly",
+            "Vor dem schwarzen Ross stehend",
+            "Schweigend blickend",
+            "Auf seine weinende Frau aus den Westlanden",
+            "Weint auch Zhang Qian",
+            "Tränende Augen treffen tränende Augen",
+            "Hände umklammern Hände",
             "",
-            "Her curling, tawny hair drifts in the breeze",
-            "In the pale moonlight",
-            "In the pale starlight",
-            "Her eyes, blue as Lake Qinghai, gleam with tears",
-            "Pale as the moonlight",
-            "Pale as the starlight",
+            "Ihr lockiges, gelbbraunes Haar weht in der Brise",
+            "Im fahlen Mondlicht",
+            "Im fahlen Sternenlicht",
+            "Ihre Augen, blau wie der Qinghai-See, schimmern vor Tränen",
+            "Fahl wie das Mondlicht",
+            "Fahl wie das Sternenlicht",
             "",
-            "Her tears, ripe as grapes, fall",
-            "Reflecting the pale moonlight",
-            "Reflecting the pale starlight",
+            "Ihre Tränen, reif wie Trauben, fallen",
+            "Im fahlen Mondlicht schimmernd",
+            "Im fahlen Sternenlicht schimmernd",
             "",
-            "The black steed stamps the grass without ceasing",
-            "Its sound oppressive",
-            "A heavy sheepskin water-bag",
-            "And a tall stack of dried naan still hang from the saddle",
+            "Das schwarze Ross stampft unablässig das Gras",
+            "Sein Klang ist beklemmend",
+            "Ein schwerer Schaflederschlauch",
+            "Und ein Stapel getrockneten Naan hängen noch am Sattel",
             "",
-            "Zhang Qian gazes in silence at",
-            "His weeping wife",
-            "Gazes in silence at",
-            "The wife of the Western Regions with whom he has lived for years",
+            "Zhang Qian blickt schweigend auf",
+            "Seine weinende Frau",
+            "Blickt schweigend auf",
+            "Die Frau aus den Westlanden, mit der er jahrelang gelebt hat",
             "",
-            "The clasped hands slowly loosen",
-            "The tear-filled eyes abruptly turn away"
+            "Die verschlungenen Hände lösen sich langsam",
+            "Die tränengefüllten Augen wenden sich jäh ab"
           ],
           "annotations": [
             {
@@ -99,32 +99,32 @@
         },
         {
           "id": "poem-1-3",
-          "title": "O Great Yuezhi / The Holy Land He Has Dreamed of for Eleven Springs",
+          "title": "O Großes Yuezhi / Das Heilige Land, von dem er elf Lenze geträumt hat",
           "lines": [
-            "How long he has been riding, he does not know",
-            "Whether he is still riding, he is not sure",
-            "In the darkness, not even the dim horizon is visible",
-            "Nothing is visible",
-            "All seems frozen in the profound dark",
+            "Wie lang er schon reitet, weiß er nicht",
+            "Ob er noch reitet, ist ungewiss",
+            "In der Dunkelheit ist nicht einmal der fahle Horizont zu sehen",
+            "Nichts ist zu sehen",
+            "Alles scheint in der tiefen Finsternis erstarrt",
             "",
-            "Still he presses on with all his strength",
-            "The distance between him and Tangyi Fu slowly narrows",
-            "But where is the mysterious Great Yuezhi?",
-            "Where is the distant Great Yuezhi?",
+            "Dennoch prescht er mit ganzer Kraft voran",
+            "Der Abstand zu Tangyi Fu wird langsam kleiner",
+            "Doch wo ist das geheimnisvolle Große Yuezhi?",
+            "Wo ist das ferne Große Yuezhi?",
             "",
-            "Just follow loyal, capable Tangyi Fu",
-            "Just ride into the pitch-black west",
-            "One day they shall reach their destination",
+            "Folge einfach dem treuen, fähigen Tangyi Fu",
+            "Reite einfach in den pechschwarzen Westen",
+            "Eines Tages werden sie ihr Ziel erreichen",
             "",
-            "O Great Yuezhi",
-            "The holy land he has dreamed of for eleven springs",
-            "Through more than four thousand unbearable days in foreign lands",
-            "The name he murmured ceaselessly",
-            "Through more than four thousand unbearable nights in foreign lands",
-            "The name he murmured ceaselessly",
+            "O Großes Yuezhi",
+            "Das Heilige Land, von dem er elf Lenze geträumt hat",
+            "Durch mehr als viertausend unerträgliche Tage in der Fremde",
+            "Der Name, den er unaufhörlich flüsterte",
+            "Durch mehr als viertausend unerträgliche Nächte in der Fremde",
+            "Der Name, den er unaufhörlich flüsterte",
             "",
-            "From the galloping saddle he turns once more",
-            "To gaze at a silhouette already lost from sight"
+            "Vom galoppierenden Sattel wendet er sich noch einmal um",
+            "Nach einer Silhouette, die längst entschwunden ist"
           ],
           "annotations": [
             {
@@ -135,55 +135,55 @@
         },
         {
           "id": "poem-1-4",
-          "title": "Bathed in the Cool Radiance / That Daylight Had Yearned for Like Shade",
+          "title": "Gebadet im kühlen Schein / Den das Tageslicht wie Schatten ersehnte",
           "lines": [
-            "That tyrannous sun —",
-            "When did it sheathe its scorching golden arrows?",
-            "A crescent moon above the distant western Tianshan",
-            "Smiles at him tenderly",
+            "Jene tyrannische Sonne —",
+            "Wann hat sie ihre sengenden goldenen Pfeile zurückgezogen?",
+            "Eine Mondsichel über dem fernen westlichen Tianshan",
+            "Lächelt ihm zärtlich zu",
             "",
-            "Waking from a burning, dreadful dream",
-            "He bathes in the cool, liquid light",
-            "Bathes in the cool radiance",
-            "That daylight had yearned for like shade",
+            "Aus einem glühenden, fürchterlichen Traum erwachend",
+            "Badet er im kühlen, fließenden Licht",
+            "Badet er im kühlen Schein",
+            "Den das Tageslicht wie Schatten ersehnte",
             "",
-            "He clenches his fist ever tighter",
-            "The icy grains of sand",
-            "Trickle slowly through his fingers to the ground",
-            "He can hear the soft rustling sound",
-            "As though the mountain stream of home flows again before him",
-            "Moistening his gaunt cheeks",
-            "Moistening his cracked lips"
+            "Er ballt die Faust noch fester",
+            "Die eiskalten Sandkörner",
+            "Rieseln langsam durch seine Finger zu Boden",
+            "Er kann das leise Rascheln hören",
+            "Als flösse der Bergbach der Heimat wieder vor ihm",
+            "Seine hageren Wangen benetzend",
+            "Seine rissigen Lippen benetzend"
           ]
         },
         {
           "id": "poem-1-5",
-          "title": "The Pioneer of the Silk Road Smiled from Horseback / Gazing Westward",
+          "title": "Der Pionier der Seidenstraße lächelte vom Pferderücken / Den Blick nach Westen gerichtet",
           "lines": [
-            "No longer narrow as the Hexi Corridor",
-            "No longer a winding trail",
-            "Hemmed between chains of mountains",
+            "Nicht mehr eng wie der Hexi-Korridor",
+            "Nicht mehr ein gewundener Pfad",
+            "Zwischen Bergketten eingezwängt",
             "",
-            "Gazing into the distance",
-            "Slowly riding west",
-            "As though on a ship of the Gobi",
-            "As though listening to the distant melody of camel bells",
-            "Nothing obstructs the view",
+            "In die Ferne blickend",
+            "Langsam nach Westen reitend",
+            "Wie auf einem Schiff der Gobi",
+            "Wie lauschend der fernen Melodie der Kamelglocken",
+            "Nichts verstellt die Sicht",
             "",
-            "O, the new continent of Central Asia",
-            "Mysterious and vast",
-            "Has miraculously",
-            "Appeared before the explorer bearing the Han envoy's staff",
+            "O, der neue Kontinent Zentralasiens",
+            "Geheimnisvoll und grenzenlos",
+            "Ist wie durch ein Wunder",
+            "Vor dem Entdecker mit dem Han-Gesandtenstab erschienen",
             "",
-            "Zhang Qian smiled",
-            "The pioneer of the Silk Road smiled from horseback",
-            "Gazing westward",
-            "Gazing toward the still-unseen",
-            "Direction of the Great Yuezhi",
-            "From his cracked lips, crimson drops of blood trickled down",
+            "Zhang Qian lächelte",
+            "Der Pionier der Seidenstraße lächelte vom Pferderücken",
+            "Den Blick nach Westen gerichtet",
+            "Blickend zum noch unsichtbaren",
+            "Großen Yuezhi",
+            "Von den rissigen Lippen rannen karmesinrote Blutstropfen",
             "",
             "April 1984",
-            "(Published in *The Writer*, Issue 5, 1985)"
+            "(Veröffentlicht in *Der Schriftsteller*, Ausgabe 5, 1985)"
           ],
           "annotations": [
             {
@@ -200,29 +200,29 @@
     },
     {
       "id": "chapter-2",
-      "title": "Beneath Qilian, Silence Has Fallen",
+      "title": "Unter dem Qilian herrscht Stille",
       "poems": [
         {
           "id": "poem-2-1",
-          "title": "He Kept His Eyes Fixed / On the Distant Icy Peaks of Qilian",
+          "title": "Er blickte unentwegt / Auf die fernen Eisgipfel des Qilian",
           "lines": [
-            "The iron torrent flows slowly",
-            "The great desert flows slowly",
-            "Gazing from horseback",
-            "He can no longer bear to see",
-            "The ash-brown flickering like flame",
+            "Der eiserne Strom fließt langsam",
+            "Die große Wüste fließt langsam",
+            "Vom Pferderücken blickend",
+            "Kann er das aschenbraune Flackern",
+            "Nicht mehr ertragen",
             "",
-            "He keeps his eyes fixed",
-            "On the distant icy peaks of Qilian",
-            "So crystalline and cool",
-            "They chill to the marrow",
-            "Floating on the surging, ash-brown clouds",
-            "Now and then flashing a blue, spectral light",
-            "Like a verdant mirage",
-            "Shimmering always on the horizon",
+            "Er blickt unentwegt",
+            "Auf die fernen Eisgipfel des Qilian",
+            "So kristallen und kühl",
+            "Durch und durch erfrischend",
+            "Schwebend über den tosenden, aschenbraunen Wolken",
+            "Dann und wann bläulich schimmernd",
+            "Wie eine grüne Fata Morgana",
+            "Stets am Horizont funkelnd",
             "",
-            "Huo Qubing licked his cracked lips",
-            "Licked the beading blood"
+            "Huo Qubing leckte seine rissigen Lippen",
+            "Leckte das perlende Blut"
           ],
           "annotations": [
             {
@@ -233,31 +233,31 @@
         },
         {
           "id": "poem-2-2",
-          "title": "Is That the Long-Dreamed Crescent Moon Lake? / The Crescent Lake That Once Graced His Dreams?",
+          "title": "Ist das der lang ersehnte Mondsichelsee?",
           "lines": [
-            "Still galloping",
-            "Into the deep night",
-            "Only the drumming of hooves",
-            "Mingling with the wind's drizzle",
+            "Noch immer galoppierend",
+            "In die tiefe Nacht",
+            "Nur das Trommeln der Hufe",
+            "Vermischt mit dem Sprühregen des Windes",
             "",
-            "Dunhuang in March",
-            "The wind is still biting",
-            "Iron-grey thickets, not yet budding with elm coins,",
-            "Steeped in darkness, sweep past",
-            "Wave-like iron-grey dunes sweep past",
-            "Their outlines so faint",
-            "The night sky, too, is iron-grey",
+            "Dunhuang im März",
+            "Der Wind ist noch beißend",
+            "Eisgraue Dickichte ohne Ulmensamen",
+            "In Dunkelheit getaucht, fliegen vorbei",
+            "Wellenförmige eisgraue Dünen fliegen vorbei",
+            "Ihre Umrisse so schwach",
+            "Auch der Nachthimmel ist eisgrau",
             "",
-            "Wild pigeons startle into flight",
-            "Those startled pigeons are iron-grey too",
-            "The beating of their wings fades in an instant",
+            "Wildtauben schrecken auf",
+            "Auch sie sind eisgrau",
+            "Das Schlagen ihrer Flügel verklingt sofort",
             "",
-            "Ahead, a crescent moon rises",
-            "In the iron-grey night sky",
-            "Glimmering with a pale, spectral light",
+            "Voraus steigt eine Mondsichel auf",
+            "Am eisgrauen Nachthimmel",
+            "Mit fahlem, geisterhaftem Schimmer",
             "",
-            "Is that the Crescent Moon Lake he has long dreamed of?",
-            "The crescent lake that once graced his dreams?"
+            "Ist das der Mondsichelsee, von dem er lang geträumt hat?",
+            "Der sichelförmige See, der einst seine Träume zierte?"
           ],
           "annotations": [
             {
@@ -272,121 +272,121 @@
         },
         {
           "id": "poem-2-3",
-          "title": "The Carrier Pigeon Circled Hurriedly for a Moment / Then Flew Eastward",
+          "title": "Die Brieftaube kreiste hastig einen Moment / Dann flog sie ostwärts",
           "lines": [
-            "The soldier had just fallen",
-            "When he hastily tore open his black tunic",
-            "A carrier pigeon rose from his breast",
-            "His hot blood",
-            "Had already stained the white plumage crimson",
-            "Still glistening wet",
+            "Der Soldat war gerade gefallen",
+            "Da riss er hastig seine schwarze Tunika auf",
+            "Eine Brieftaube stieg aus seiner Brust empor",
+            "Sein heißes Blut",
+            "Hatte das weiße Gefieder schon karmesinrot gefärbt",
+            "Noch glänzend nass",
             "",
-            "Skimming past the steeds that galloped by the soldier",
-            "Past the sand-grains lifted like mist",
-            "Past the overcast sky, dull as sand",
-            "Soaring upward",
+            "An den Rossen vorbeistreifend, die am Soldaten vorbeigaloppierten",
+            "Am wie Nebel aufgewirbelten Sand vorbei",
+            "Am trüben Himmel vorbei, grau wie Sand",
+            "Aufsteigend",
             "",
-            "Lying face-up on the embattled earth",
-            "Iron cavalry thundering across his body",
-            "Like storm clouds sweeping before his eyes",
-            "His clenched hands go slack",
-            "Yet his eyes still gaze at the vast heavens",
+            "Auf dem Rücken liegend auf der umkämpften Erde",
+            "Eiserne Reiterei donnert über seinen Körper",
+            "Wie Gewitterwolken vor seinen Augen",
+            "Die geballten Hände erschlaffen",
+            "Doch seine Augen blicken noch zum weiten Himmel",
             "",
-            "The carrier pigeon circled hurriedly for a moment",
-            "Then flew eastward",
-            "Across the reflection in his pupils — of flashing blades and gleaming swords —",
-            "It cast a dark-brown shadow"
+            "Die Brieftaube kreiste hastig einen Moment",
+            "Dann flog sie ostwärts",
+            "Über die Reflexion in seinen Pupillen — von blitzenden Klingen —",
+            "Warf sie einen dunkelbraunen Schatten"
           ]
         },
         {
           "id": "poem-2-4",
-          "title": "O, Son of the Tianshan / Torrent of Snow-Melt",
+          "title": "O, Sohn des Tianshan / Sturzbach der Schneeschmelze",
           "lines": [
-            "In the spring breeze",
-            "The young general's crimson cloak",
-            "Rises like a red cloud from the saddle",
+            "In der Frühlingsbrise",
+            "Der karmesinrote Umhang des jungen Generals",
+            "Steigt wie eine rote Wolke vom Sattel",
             "",
-            "Even the retreating enemy riders turn to look —",
-            "As though a red lotus had bloomed",
-            "On the darkened horizon",
+            "Selbst die fliehenden Feinde wenden sich um —",
+            "Als wäre ein roter Lotus aufgeblüht",
+            "Am verdunkelten Horizont",
             "",
-            "O, son of the Tianshan",
-            "Torrent of snow-melt",
-            "Even the Qilian Mountains tremble",
-            "At the war drum in your breast",
+            "O, Sohn des Tianshan",
+            "Sturzbach der Schneeschmelze",
+            "Selbst die Qilian-Berge erzittern",
+            "Vor der Kriegstrommel in deiner Brust",
             "",
-            "Four hundred leagues of wilderness spring into green",
-            "In the wake of galloping hooves"
+            "Vierhundert Meilen Wildnis ergrünen",
+            "Im Kielwasser galoppierender Hufe"
           ]
         },
         {
           "id": "poem-2-5",
-          "title": "His Phantom-Like Black Steed / Stands Frozen as a Statue Beneath Qilian",
+          "title": "Sein geisterhaftes schwarzes Ross / Steht erstarrt wie eine Statue unter dem Qilian",
           "lines": [
-            "Beneath Qilian, silence has fallen",
-            "His phantom-like black steed",
-            "Stands frozen as a statue beneath Qilian",
-            "Beneath Qilian, all is silent",
+            "Unter dem Qilian herrscht Stille",
+            "Sein geisterhaftes schwarzes Ross",
+            "Steht erstarrt wie eine Statue unter dem Qilian",
+            "Unter dem Qilian — alles ist still",
             "",
-            "He still gazes at the icy peak before him",
-            "So crystalline and cool",
-            "As though that peak were his eternal monument",
+            "Er blickt noch auf den Eisgipfel vor ihm",
+            "So kristallen und kühl",
+            "Als wäre dieser Gipfel sein ewiges Denkmal",
             "",
-            "He still gazes at the grasslands before him",
-            "Boundless as the sea",
-            "As though those grasslands were his eternal bed",
+            "Er blickt noch auf die Steppen vor ihm",
+            "Grenzenlos wie das Meer",
+            "Als wären diese Steppen sein ewiges Bett",
             "",
-            "The wind whispers against his crimson cloak",
-            "Like the rustling of silk banners",
-            "Like the murmur of his mother's lullaby",
+            "Der Wind flüstert an seinem karmesinroten Umhang",
+            "Wie das Rascheln seidener Banner",
+            "Wie das Murmeln des Wiegenlieds seiner Mutter",
             "",
-            "He was only twenty-four when he",
-            "Let the reins slip from his fingers",
-            "Only twenty-four",
-            "When he closed his eyes for the last time",
+            "Er war erst vierundzwanzig, als er",
+            "Die Zügel aus den Fingern gleiten ließ",
+            "Erst vierundzwanzig",
+            "Als er die Augen zum letzten Mal schloss",
             "",
-            "But the war drum in his breast still thunders",
-            "Thunder upon thunder",
-            "Resounding through the Hexi Corridor",
-            "Through the vast deserts and grasslands of the Western Regions",
+            "Doch die Kriegstrommel in seiner Brust donnert noch",
+            "Donner auf Donner",
+            "Durch den Hexi-Korridor hallend",
+            "Durch die weiten Wüsten und Steppen der Westlande",
             "",
-            "His phantom-like black steed",
-            "Still stands beneath Qilian",
-            "Like a sculpture",
-            "Motionless as a mountain",
-            "The earth is silent",
-            "Beneath Qilian, silence has fallen"
+            "Sein geisterhaftes schwarzes Ross",
+            "Steht noch unter dem Qilian",
+            "Wie eine Skulptur",
+            "Unbeweglich wie ein Berg",
+            "Die Erde schweigt",
+            "Unter dem Qilian herrscht Stille"
           ]
         },
         {
           "id": "poem-2-6",
-          "title": "Standing in the Wine-Sweet, Dark-Gold Sunset / Standing in the Future Bazaars of the Silk Road",
+          "title": "Stehend in der weinseligen, dunkle-goldenen Abendsonne",
           "lines": [
-            "The setting sun paused a moment before slipping away",
-            "Still gilding the young general's bronze cheeks",
-            "The wind-worn, time-struck features of his face",
-            "Still bore the flush of that last battle",
+            "Die Abendsonne verharrte einen Moment, bevor sie verschwand",
+            "Die bronzenen Wangen des jungen Generals noch vergoldend",
+            "Seine windgegerbten Züge",
+            "Trugen noch die Röte der letzten Schlacht",
             "",
-            "His war horse bent down to drink from the spring",
-            "Ripples spread across the water",
-            "Like the silk road unfurling toward the west",
+            "Sein Schlachtross beugte sich zum Trinken an der Quelle",
+            "Wellen breiteten sich über das Wasser",
+            "Wie die Seidenstraße, sich nach Westen entfaltend",
             "",
-            "Standing in the wine-sweet, dark-gold sunset",
-            "He could smell the fragrance drifting from the future",
-            "The mingled scent of grapes and pomegranates",
-            "From bazaars not yet built",
+            "Stehend in der weinseligen, dunkle-goldenen Abendsonne",
+            "Konnte er den Duft der Zukunft riechen",
+            "Den Duft von Trauben und Granatäpfeln",
+            "Von Basaren, die noch nicht gebaut waren",
             "",
-            "Standing in the future bazaars of the Silk Road",
-            "Standing in streets paved with moonlight and camel bells",
-            "He raised the bronze goblet",
-            "Let the wine of Jiuquan pour like gold",
-            "Into the spring that the emperor had named for him",
-            "For his soldiers to share, one sip at a time",
+            "Stehend in den zukünftigen Basaren der Seidenstraße",
+            "In Straßen gepflastert mit Mondlicht und Kamelglocken",
+            "Erhob er den bronzenen Becher",
+            "Ließ den Wein von Jiuquan wie Gold fließen",
+            "In die Quelle, die der Kaiser nach ihm benannte",
+            "Damit seine Soldaten schluckweise teilen konnten",
             "",
-            "The spring flows on",
-            "Even now, still fragrant",
-            "At the foot of Qilian",
-            "In the wine-sweet sunset"
+            "Die Quelle fließt weiter",
+            "Noch immer duftend",
+            "Am Fuß des Qilian",
+            "In der weinseligen Abendsonne"
           ],
           "annotations": [
             {
@@ -399,7 +399,7 @@
     },
     {
       "id": "chapter-3",
-      "title": "Wild Poppies",
+      "title": "Wilder Mohn",
       "poems": [
         {
           "id": "poem-3-1",
@@ -587,7 +587,7 @@
     },
     {
       "id": "chapter-4",
-      "title": "Blood-Sweating Horses",
+      "title": "Blut-Schwitzende Pferde",
       "poems": [
         {
           "id": "poem-4-1",
@@ -777,7 +777,7 @@
     },
     {
       "id": "chapter-5",
-      "title": "Loulan Vanished in an Instant",
+      "title": "Loulan verschwand in einem Augenblick",
       "poems": [
         {
           "id": "poem-5-1",
@@ -919,7 +919,7 @@
     },
     {
       "id": "chapter-6",
-      "title": "O, at Lake Baikal Autumn Is Already Deep",
+      "title": "O, am Baikalsee ist der Herbst schon tief",
       "poems": [
         {
           "id": "poem-6-1",
@@ -1087,7 +1087,7 @@
     },
     {
       "id": "chapter-7",
-      "title": "In the Vast Yarkand",
+      "title": "Im weiten Jarkand",
       "poems": [
         {
           "id": "poem-7-1",
@@ -1253,7 +1253,7 @@
     },
     {
       "id": "chapter-8",
-      "title": "The Beacon-Fires Have Died",
+      "title": "Die Signalfeuer sind erloschen",
       "poems": [
         {
           "id": "poem-8-1",
@@ -1382,7 +1382,7 @@
     },
     {
       "id": "chapter-9",
-      "title": "The Dark-Blue Persian Gulf",
+      "title": "Der dunkelblaue Persische Golf",
       "poems": [
         {
           "id": "poem-9-1",
@@ -1529,7 +1529,7 @@
     },
     {
       "id": "chapter-10",
-      "title": "Waves of the Tarim River",
+      "title": "Wellen des Tarim-Flusses",
       "poems": [
         {
           "id": "poem-10-1",
@@ -1683,7 +1683,7 @@
     },
     {
       "id": "chapter-11",
-      "title": "The Mendicant Who Crossed the Border in Secret",
+      "title": "Der Bettelmönch, der heimlich die Grenze überschritt",
       "poems": [
         {
           "id": "poem-11-1",
@@ -1870,7 +1870,7 @@
     },
     {
       "id": "chapter-12",
-      "title": "The Poet's Soul Still Gallops",
+      "title": "Die Seele des Dichters galoppiert noch immer",
       "poems": [
         {
           "id": "poem-12-1",
@@ -2028,7 +2028,7 @@
     },
     {
       "id": "chapter-13",
-      "title": "O, the Battle of Talas",
+      "title": "O, die Schlacht am Talas",
       "poems": [
         {
           "id": "poem-13-1",
@@ -2182,7 +2182,7 @@
     },
     {
       "id": "chapter-14",
-      "title": "The Small Lonely Fortress",
+      "title": "Die kleine einsame Festung",
       "poems": [
         {
           "id": "poem-14-1",
@@ -2289,7 +2289,7 @@
     },
     {
       "id": "chapter-15",
-      "title": "Emerald-Green Yarkand",
+      "title": "Smaragdgrünes Jarkand",
       "poems": [
         {
           "id": "poem-15-1",
@@ -2367,7 +2367,7 @@
     },
     {
       "id": "chapter-16",
-      "title": "The Silent Liupan Mountains",
+      "title": "Die stillen Liupan-Berge",
       "poems": [
         {
           "id": "poem-16-1",
@@ -2497,7 +2497,7 @@
     },
     {
       "id": "chapter-17",
-      "title": "The Rushing Ili River",
+      "title": "Der rauschende Ili-Fluss",
       "poems": [
         {
           "id": "poem-17-1",
@@ -2604,7 +2604,7 @@
     },
     {
       "id": "chapter-18",
-      "title": "Maimure Azimu, Fragrant as Oleaster Blossoms",
+      "title": "Maimure Azimu, duftend wie Ölweidenblüten",
       "poems": [
         {
           "id": "poem-18-1",
@@ -2685,7 +2685,7 @@
     },
     {
       "id": "chapter-19",
-      "title": "O, the Morning Star",
+      "title": "O, der Morgenstern",
       "poems": [
         {
           "id": "poem-19-1",
@@ -2812,7 +2812,7 @@
     },
     {
       "id": "chapter-20",
-      "title": "The Frontier's Devoted Son Weeps in Anguish",
+      "title": "Des Grenzlands treuer Sohn weint vor Kummer",
       "poems": [
         {
           "id": "poem-20-1",
@@ -2903,7 +2903,7 @@
     },
     {
       "id": "chapter-21",
-      "title": "Who in the Western Regions Does Not Know Thee?",
+      "title": "Wer in den Westlanden kennt dich nicht?",
       "poems": [
         {
           "id": "poem-21-1",
