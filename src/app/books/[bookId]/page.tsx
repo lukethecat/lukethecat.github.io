@@ -56,16 +56,22 @@ export default async function BookPage({ params }: { params: { bookId: string } 
                     <h1 className="text-4xl font-serif font-bold text-gray-900 mb-4">{book.title}</h1>
                 </header>
 
-                {book.chapters.map(chapter => (
-                    <div key={chapter.id} className="mb-24 px-4">
-                        <h2 className="text-xl font-sans font-bold text-gray-300 uppercase tracking-widest pl-8 mb-8 border-l-4 border-gray-100">
-                            {chapter.title}
-                        </h2>
-                        {chapter.poems.map(poem => (
-                            <PoemView key={poem.id} chapter={chapter} poem={poem} book={book} />
-                        ))}
+                {book.chapters && book.chapters.length > 0 ? (
+                    book.chapters.map(chapter => (
+                        <div key={chapter.id} className="mb-24 px-4">
+                            <h2 className="text-xl font-sans font-bold text-gray-300 uppercase tracking-widest pl-8 mb-8 border-l-4 border-gray-100">
+                                {chapter.title}
+                            </h2>
+                            {chapter.poems && chapter.poems.map(poem => (
+                                <PoemView key={poem.id} chapter={chapter} poem={poem} book={book} />
+                            ))}
+                        </div>
+                    ))
+                ) : (
+                    <div className="text-center py-20 text-gray-400 font-serif">
+                        <p>暂无诗歌章节内容</p>
                     </div>
-                ))}
+                )}
             </div>
         </BookLayout>
     );
