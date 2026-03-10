@@ -1,6 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import Link from 'next/link';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
 interface Essay {
     title: string;
@@ -165,6 +166,11 @@ export default async function EssayPage({ params }: { params: { essayId: string 
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+            {/* Language Switcher */}
+            <div className="fixed top-4 right-4 z-50">
+                <LanguageSwitcher />
+            </div>
+
             {/* Header */}
             <header className="border-b border-gray-100 bg-white">
                 <div className="max-w-4xl mx-auto px-8 py-6">

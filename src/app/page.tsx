@@ -68,7 +68,7 @@ export default async function Home() {
         <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
             {/* Language Switcher */}
             <div className="fixed top-4 right-4 z-50">
-                <LanguageSwitcher currentLocale="zh" />
+                <LanguageSwitcher />
             </div>
 
             {/* JSON-LD Structured Data */}

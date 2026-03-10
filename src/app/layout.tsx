@@ -26,29 +26,8 @@ export const metadata: Metadata = {
     authors: [{ name: '李瑜', url: 'https://www.liyupoetry.com' }],
     creator: '李瑜诗歌数字档案馆',
     metadataBase: new URL('https://www.liyupoetry.com'),
-    openGraph: {
-        title: '李瑜诗歌数字档案馆',
-        description: '当代著名西部诗人李瑜作品全集——丝绸之路上的诗魂，天山脚下的歌者。收录《汗血马》《准噶尔诗草》等诗集全文。',
-        url: 'https://www.liyupoetry.com',
-        siteName: '李瑜诗歌数字档案馆',
-        locale: 'zh_CN',
-        alternateLocale: ['en_US', 'de_DE', 'ar_SA'],
-        type: 'website',
-    },
-    twitter: {
-        card: 'summary',
-        title: '李瑜诗歌数字档案馆 | Li Yu Poetry Archive',
-        description: '当代著名西部诗人李瑜作品数字档案——新边塞诗、丝绸之路诗歌、新疆主题诗歌全集。',
-    },
     alternates: {
         canonical: 'https://www.liyupoetry.com',
-        languages: {
-            'zh-CN': 'https://www.liyupoetry.com',
-            'en': 'https://www.liyupoetry.com/en',
-            'de': 'https://www.liyupoetry.com/de',
-            'ar': 'https://www.liyupoetry.com/ar',
-            'ug': 'https://www.liyupoetry.com/ug',
-        },
     },
     robots: {
         index: true,
@@ -67,7 +46,27 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="zh-CN">
-            <body className={`${inter.variable} ${notoSerif.variable} font-sans antialiased bg-white text-gray-900`}>{children}</body>
+            <head>
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({
+                                    pageLanguage: 'zh-CN',
+                                    includedLanguages: 'en,de,ar,ug,ru,fr,es,ja,ko',
+                                    layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+                                    autoDisplay: false
+                                }, 'google_translate_element');
+                            }
+                        `
+                    }}
+                />
+                <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            </head>
+            <body className={`${inter.variable} ${notoSerif.variable} font-sans antialiased bg-white text-gray-900`}>
+                {children}
+            </body>
         </html>
     );
 }
+

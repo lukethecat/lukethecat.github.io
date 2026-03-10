@@ -3,6 +3,7 @@ import path from 'path';
 import { Book } from '@/lib/types';
 import { BookLayout } from '@/components/BookLayout';
 import { PoemView } from '@/components/PoemView';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
 async function getBook(bookId: string): Promise<Book | null> {
     const jsonPath = path.join(process.cwd(), `src/content/${bookId}/book.json`);
@@ -45,6 +46,11 @@ export default async function BookPage({ params }: { params: { bookId: string } 
 
     return (
         <BookLayout book={book}>
+            {/* Language Switcher */}
+            <div className="fixed top-4 right-4 z-50">
+                <LanguageSwitcher />
+            </div>
+
             <div className="max-w-4xl mx-auto pb-32">
                 <header className="pt-24 pb-12 px-8 text-center border-b border-gray-100 mb-12">
                     <h1 className="text-4xl font-serif font-bold text-gray-900 mb-4">{book.title}</h1>
