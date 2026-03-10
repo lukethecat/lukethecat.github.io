@@ -57,6 +57,35 @@
                     "path": "/ar/essays/zhungaer-afterword"
                 }
             ]
+        },
+        {
+            "id": "heiyingsushangjuan1998",
+            "title": "الخشخاش الأسود: المجلد الأول",
+            "year": "1998",
+            "author": "لي يو",
+            "description": "101 قصيدة رحّالة من شمال شينجيانغ — عبر سفوح جبال ألتاي وهضبة تاربغاتاي ووادي نهر إيلي وسلسلة تيانشان، كما رآها شاعر منفيٌّ طوال حياته.",
+            "type": "book",
+            "path": "/ar/books/heiyingsushangjuan1998",
+            "relatedEssays": [
+                {
+                    "id": "heiyingsushangjuan1998-introduction",
+                    "title": "مقدمة",
+                    "author": "",
+                    "path": "/ar/essays/heiyingsushangjuan1998-introduction"
+                },
+                {
+                    "id": "heiyingsushangjuan1998-preface",
+                    "title": "تقديم",
+                    "author": "لياو يوان",
+                    "path": "/ar/essays/heiyingsushangjuan1998-preface"
+                },
+                {
+                    "id": "heiyingsushangjuan1998-publication",
+                    "title": "بيانات النشر",
+                    "author": "",
+                    "path": "/ar/essays/heiyingsushangjuan1998-publication"
+                }
+            ]
         }
     ],
     "essays": []

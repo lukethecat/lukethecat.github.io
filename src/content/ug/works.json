@@ -57,6 +57,35 @@
                     "path": "/ug/essays/zhungaer-afterword"
                 }
             ]
+        },
+        {
+            "id": "heiyingsushangjuan1998",
+            "title": "قارا كوكنار: بىرىنچى توم",
+            "year": "1998",
+            "author": "لى يۈ",
+            "description": "101 ساياھەت شېئىرى، شائىرنىڭ شىنجاڭنىڭ شىمالىدىكى ئالتاي تاغلىق رايونى، تاربىغاتاي يايلاسى، ئىلى دەريا ئوبلاستى ۋە تەڭرى تاغ تىزمىسىدىكى سەپەر قىلغان يەرلىرىنى تەسۋىرلەيدۇ.",
+            "type": "book",
+            "path": "/ug/books/heiyingsushangjuan1998",
+            "relatedEssays": [
+                {
+                    "id": "heiyingsushangjuan1998-introduction",
+                    "title": "مۇندەرىجە",
+                    "author": "",
+                    "path": "/ug/essays/heiyingsushangjuan1998-introduction"
+                },
+                {
+                    "id": "heiyingsushangjuan1998-preface",
+                    "title": "كىرىش سۆز",
+                    "author": "لياۋيۈەن",
+                    "path": "/ug/essays/heiyingsushangjuan1998-preface"
+                },
+                {
+                    "id": "heiyingsushangjuan1998-publication",
+                    "title": "نەشر ئۇچۇرى",
+                    "author": "",
+                    "path": "/ug/essays/heiyingsushangjuan1998-publication"
+                }
+            ]
         }
     ],
     "essays": []

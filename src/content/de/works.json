@@ -57,6 +57,35 @@
                     "path": "/de/essays/zhungaer-afterword"
                 }
             ]
+        },
+        {
+            "id": "heiyingsushangjuan1998",
+            "title": "Schwarze Mohnblumen: Band I",
+            "year": "1998",
+            "author": "Li Yu",
+            "description": "101 Wandergedichte aus dem Norden Xinjiangs — durch Altai-Ausläufer, Tarbaghatai-Hochland, das Ili-Tal und die Hänge des Tianshan, geschrieben aus den Augen eines lebenslangen Verbannten.",
+            "type": "book",
+            "path": "/de/books/heiyingsushangjuan1998",
+            "relatedEssays": [
+                {
+                    "id": "heiyingsushangjuan1998-introduction",
+                    "title": "Einleitung",
+                    "author": "",
+                    "path": "/de/essays/heiyingsushangjuan1998-introduction"
+                },
+                {
+                    "id": "heiyingsushangjuan1998-preface",
+                    "title": "Vorwort",
+                    "author": "Liaoyuan",
+                    "path": "/de/essays/heiyingsushangjuan1998-preface"
+                },
+                {
+                    "id": "heiyingsushangjuan1998-publication",
+                    "title": "Verlagsangaben",
+                    "author": "",
+                    "path": "/de/essays/heiyingsushangjuan1998-publication"
+                }
+            ]
         }
     ],
     "essays": []

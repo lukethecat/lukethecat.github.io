@@ -57,6 +57,35 @@
                     "path": "/essays/zhungaer-afterword"
                 }
             ]
+        },
+        {
+            "id": "heiyingsushangjuan1998",
+            "title": "黑罂粟·上卷",
+            "year": "1998年",
+            "description": "行吟诗101首，收录诗人漫游新疆北部阿尔泰山、塔尔巴哈台高地、伊犁河谷和天山山脉的行吟之作，融历史、人文、民俗于漂泊者的目光之中。",
+            "type": "poetry",
+            "path": "/books/heiyingsushangjuan1998",
+            "cover": "/images/heiyingsu-cover.jpg",
+            "relatedEssays": [
+                {
+                    "id": "heiyingsushangjuan1998-introduction",
+                    "title": "内容简介",
+                    "author": "",
+                    "path": "/essays/heiyingsushangjuan1998-introduction"
+                },
+                {
+                    "id": "heiyingsushangjuan1998-preface",
+                    "title": "序",
+                    "author": "燎原",
+                    "path": "/essays/heiyingsushangjuan1998-preface"
+                },
+                {
+                    "id": "heiyingsushangjuan1998-publication",
+                    "title": "出版信息",
+                    "author": "",
+                    "path": "/essays/heiyingsushangjuan1998-publication"
+                }
+            ]
         }
     ],
     "essays": []

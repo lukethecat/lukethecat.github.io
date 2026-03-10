@@ -57,6 +57,35 @@
                     "path": "/en/essays/zhungaer-afterword"
                 }
             ]
+        },
+        {
+            "id": "heiyingsushangjuan1998",
+            "title": "Black Poppies: Volume I",
+            "year": "1998",
+            "author": "Li Yu",
+            "description": "101 wandering poems tracing the poet's journeys through northern Xinjiang — the Altai foothills, the Tarbaghatai plateau, the Ili River valley and the Tianshan ranges — seen through the eyes of a lifelong exile.",
+            "type": "book",
+            "path": "/en/books/heiyingsushangjuan1998",
+            "relatedEssays": [
+                {
+                    "id": "heiyingsushangjuan1998-introduction",
+                    "title": "Introduction",
+                    "author": "",
+                    "path": "/en/essays/heiyingsushangjuan1998-introduction"
+                },
+                {
+                    "id": "heiyingsushangjuan1998-preface",
+                    "title": "Preface",
+                    "author": "Liaoyuan",
+                    "path": "/en/essays/heiyingsushangjuan1998-preface"
+                },
+                {
+                    "id": "heiyingsushangjuan1998-publication",
+                    "title": "Publication Notes",
+                    "author": "",
+                    "path": "/en/essays/heiyingsushangjuan1998-publication"
+                }
+            ]
         }
     ],
     "essays": []
