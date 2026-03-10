@@ -34,7 +34,7 @@ function ensureDir(dir: string) {
 }
 
 // Global regex patterns
-const CHAPTER_REGEX = /^(.+)（(\d+)首）$/;
+const CHAPTER_REGEX = /^(?:##\s+)?(.+)（(\d+)首）$/;
 const POEM_IN_TOC_REGEX = /^\s*(.+?)\s+(\d+)$/;
 const PAGE_MARKER_REGEX = /^\[p(\d+)\]$/;
 
@@ -92,18 +92,9 @@ function processBook(bookDirName: string) {
             isIntro = false;
             isTOC = true;
             continue;
-        } else if (line.startsWith('## ') && line.match(/（\d+首）$/)) {
-            // Found first chapter heading - mark content start but keep parsing TOC
-            if (contentStartLine === 0) {
-                contentStartLine = i;
-            }
-            // DON'T break here! TOC continues after chapter headings in new format
-            continue;
-        } else if (line.startsWith('[p') && contentStartLine === 0) {
-            // Skip [p] markers before we find the first chapter
-            continue;
         } else if (line === '***' || line === '* * *') {
-            // Stop parsing entirely at separator
+            // Stop parsing entirely at separator and mark content start
+            contentStartLine = i + 1;
             break;
         }
 
