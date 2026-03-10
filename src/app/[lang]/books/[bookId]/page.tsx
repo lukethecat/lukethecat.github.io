@@ -30,7 +30,18 @@ async function getBook(bookId: string, locale: string): Promise<Book | null> {
 }
 
 export async function generateStaticParams() {
-    const bookIds = ['hanxuema1995', 'zhungaer1984'];
+    const contentPath = path.join(process.cwd(), 'src/content');
+    let bookIds: string[] = [];
+    try {
+        const items = await fs.readdir(contentPath, { withFileTypes: true });
+        const exclude = ['ar', 'de', 'en', 'ug', 'essays'];
+        bookIds = items
+            .filter(item => item.isDirectory() && !exclude.includes(item.name))
+            .map(item => item.name);
+    } catch (error) {
+        console.error('Failed to get book IDs for static params:', error);
+    }
+
     const params = [];
     for (const locale of i18n.locales.filter(l => l !== 'zh')) {
         for (const bookId of bookIds) {
@@ -39,6 +50,7 @@ export async function generateStaticParams() {
     }
     return params;
 }
+
 
 export default async function LangBookPage({ params }: { params: { lang: string; bookId: string } }) {
     const locale = params.lang as Locale;

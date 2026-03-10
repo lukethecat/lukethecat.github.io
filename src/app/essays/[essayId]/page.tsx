@@ -57,15 +57,18 @@ async function getEssay(essayId: string): Promise<{ content: string, metadata: E
 }
 
 export async function generateStaticParams() {
-    return [
-        { essayId: 'hanxuema-introduction' },
-        { essayId: 'hanxuema-preface' },
-        { essayId: 'hanxuema-afterword' },
-        { essayId: 'hanxuema-publication' },
-        { essayId: 'zhungaer-preface' },
-        { essayId: 'zhungaer-afterword' }
-    ];
+    const essaysPath = path.join(process.cwd(), 'src/content/essays');
+    try {
+        const files = await fs.readdir(essaysPath);
+        return files
+            .filter(file => file.endsWith('.md') || file.endsWith('.json'))
+            .map(file => ({ essayId: file.replace(/\.(md|json)$/, '') }));
+    } catch (error) {
+        console.error('Failed to generate static params for essays:', error);
+        return [];
+    }
 }
+
 
 export default async function EssayPage({ params }: { params: { essayId: string } }) {
     const essay = await getEssay(params.essayId);

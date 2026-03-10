@@ -16,11 +16,20 @@ async function getBook(bookId: string): Promise<Book | null> {
 }
 
 export async function generateStaticParams() {
-    return [
-        { bookId: 'hanxuema1995' },
-        { bookId: 'zhungaer1984' }
-    ];
+    const contentPath = path.join(process.cwd(), 'src/content');
+    try {
+        const items = await fs.readdir(contentPath, { withFileTypes: true });
+        const exclude = ['ar', 'de', 'en', 'ug', 'essays'];
+
+        return items
+            .filter(item => item.isDirectory() && !exclude.includes(item.name))
+            .map(item => ({ bookId: item.name }));
+    } catch (error) {
+        console.error('Failed to generate static params for books:', error);
+        return [];
+    }
 }
+
 
 export default async function BookPage({ params }: { params: { bookId: string } }) {
     const book = await getBook(params.bookId);

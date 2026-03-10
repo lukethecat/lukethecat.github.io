@@ -51,14 +51,26 @@ const essayIds = [
 ];
 
 export async function generateStaticParams() {
+    const essaysPath = path.join(process.cwd(), 'src/content/essays');
+    let dynamicEssayIds: string[] = [];
+    try {
+        const files = await fs.readdir(essaysPath);
+        dynamicEssayIds = files
+            .filter(file => file.endsWith('.md') || file.endsWith('.json'))
+            .map(file => file.replace(/\.(md|json)$/, ''));
+    } catch (error) {
+        console.error('Failed to get essay IDs for static params:', error);
+    }
+
     const params = [];
     for (const locale of i18n.locales.filter(l => l !== 'zh')) {
-        for (const essayId of essayIds) {
+        for (const essayId of dynamicEssayIds) {
             params.push({ lang: locale, essayId });
         }
     }
     return params;
 }
+
 
 export default async function LangEssayPage({ params }: { params: { lang: string; essayId: string } }) {
     const locale = params.lang as Locale;
