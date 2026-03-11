@@ -40,5 +40,7 @@ build/
 # Next.js
 .next/
 out/
-.next_old
-.next_old2
+.next_old*
+.next_new/
+.next/trace
+.next/trace-build
