@@ -237,8 +237,8 @@ export default async function Home() {
             <footer className="border-t border-gray-100 py-12">
                 <div className="max-w-5xl mx-auto px-8 flex flex-col items-center justify-center space-y-2 text-gray-400 text-xs">
                     <p>李瑜诗歌数字档案馆</p>
-                    <p>最后更新: 2026-03-11 | 地点: 北京 | Commits: 125</p>
-                    <p>联系方式：<a href="mailto:tictic.ta@gmail.com" className="hover:text-gray-600 transition">tictic.ta@gmail.com</a></p>
+                        <p>最后更新: 2026-03-11 | 地点: 北京 | Commits: 126</p>
+                        <p>联系方式：<a href="mailto:tictic.ta@gmail.com" className="hover:text-gray-600 transition">tictic.ta@gmail.com</a></p>
                 </div>
             </footer>
         </div>
