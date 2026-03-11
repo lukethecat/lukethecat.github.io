@@ -92,7 +92,7 @@ function processBook(bookDirName: string) {
             isIntro = false;
             isTOC = true;
             continue;
-        } else if (line === '***' || line === '* * *') {
+        } else if (line === '***' || line === '* * *' || line === '---') {
             // Stop parsing entirely at separator and mark content start
             contentStartLine = i + 1;
             break;
