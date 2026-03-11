@@ -266,6 +266,7 @@ ensureDir(CONTENT_DIR);
 if (fs.existsSync(BOOKS_DIR)) {
     const books = fs.readdirSync(BOOKS_DIR);
     books.forEach(book => {
+        if (book.startsWith('.')) return;
         if (fs.statSync(path.join(BOOKS_DIR, book)).isDirectory()) {
             processBook(book);
         }
