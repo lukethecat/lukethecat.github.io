@@ -97,77 +97,110 @@ export default async function EssayPage({ params }: { params: { essayId: string 
         );
     }
 
-    // Simple markdown rendering (headings and paragraphs)
     const renderMarkdown = (md: string) => {
         const lines = md.split('\n');
         const elements: JSX.Element[] = [];
         let currentParagraph: string[] = [];
+        let inList = false;
+        let listItems: JSX.Element[] = [];
+        let inQuote = false;
+        let quoteLines: string[] = [];
         let key = 0;
 
-        const flushParagraph = () => {
+        const parseInline = (text: string) => {
+            const boldParts = text.split('**');
+            return boldParts.map((part, i) => i % 2 === 1 ? <strong key={`bold-${i}`} className="font-semibold text-gray-900">{part}</strong> : part);
+        };
+
+        const flushBlocks = () => {
             if (currentParagraph.length > 0) {
-                const text = currentParagraph.join('\n');
+                const text = currentParagraph.join('');
                 if (text.trim()) {
                     elements.push(
-                        <p key={`p-${key++}`} className="mb-6 leading-relaxed">
-                            {text.trim()}
+                        <p key={`p-${key++}`} className="mb-6 leading-8 text-[17px] text-gray-700 font-sans tracking-wide text-justify">
+                            {parseInline(text)}
                         </p>
                     );
                 }
                 currentParagraph = [];
             }
+            if (inList) {
+                elements.push(
+                    <ul key={`ul-${key++}`} className="list-disc pl-8 mb-8 space-y-3 text-[17px] text-gray-700 font-sans tracking-wide">
+                        {listItems}
+                    </ul>
+                );
+                inList = false;
+                listItems = [];
+            }
+            if (inQuote) {
+                const text = quoteLines.join('');
+                elements.push(
+                    <blockquote key={`quote-${key++}`} className="border-l-4 border-blue-500 bg-blue-50/40 pl-6 py-5 pr-4 my-8 rounded-r-lg text-gray-600 font-serif italic text-[17px] leading-relaxed relative">
+                        {parseInline(text)}
+                    </blockquote>
+                );
+                inQuote = false;
+                quoteLines = [];
+            }
         };
 
         for (const line of lines) {
-            // H1
+            const trimmed = line.trim();
+
             if (line.startsWith('# ')) {
-                flushParagraph();
+                flushBlocks();
                 elements.push(
-                    <h1 key={`h1-${key++}`} className="text-4xl font-serif font-bold mb-8 text-center">
-                        {line.substring(2)}
+                    <h1 key={`h1-${key++}`} className="text-3xl sm:text-4xl mt-12 mb-8 font-serif font-bold text-gray-900 text-center leading-tight">
+                        {parseInline(line.substring(2))}
                     </h1>
                 );
-            }
-            // H2
-            else if (line.startsWith('## ')) {
-                flushParagraph();
+            } else if (line.startsWith('## ')) {
+                flushBlocks();
                 elements.push(
-                    <h2 key={`h2-${key++}`} className="text-3xl font-serif font-bold mt-16 mb-6">
-                        {line.substring(3)}
+                    <h2 key={`h2-${key++}`} className="text-2xl font-bold font-sans tracking-wide mt-16 mb-8 text-gray-900 border-l-4 border-gray-900 pl-4 py-1">
+                        {parseInline(line.substring(3))}
                     </h2>
                 );
-            }
-            // Bold author line
-            else if (line.includes('**作者')) {
-                flushParagraph();
-            }
-            // Empty line
-            else if (line.trim() === '') {
-                flushParagraph();
-            }
-            // Regular text
-            else {
-                currentParagraph.push(line);
-            }
-        }
-
-        flushParagraph();
-
-        // Process bold markdown in all paragraphs
-        return elements.map((element, idx) => {
-            if (element.type === 'p') {
-                const children = element.props.children;
-                if (typeof children === 'string' && children.includes('**')) {
-                    // Split by ** and create bold elements
-                    const parts = children.split('**');
-                    const processed = parts.map((part, i) =>
-                        i % 2 === 1 ? <strong key={`bold-${idx}-${i}`}>{part}</strong> : part
-                    );
-                    return { ...element, props: { ...element.props, children: processed } };
+            } else if (line.startsWith('### ')) {
+                flushBlocks();
+                elements.push(
+                    <h3 key={`h3-${key++}`} className="text-xl font-bold font-sans tracking-wide mt-12 mb-6 text-gray-800">
+                        {parseInline(line.substring(4))}
+                    </h3>
+                );
+            } else if (line.startsWith('> ')) {
+                if (currentParagraph.length > 0 || inList) flushBlocks();
+                inQuote = true;
+                quoteLines.push(line.substring(2));
+            } else if (trimmed.match(/^[-*]\s/)) {
+                if (currentParagraph.length > 0 || inQuote) flushBlocks();
+                inList = true;
+                listItems.push(<li key={`li-${key++}`}>{parseInline(trimmed.substring(2))}</li>);
+            } else if (trimmed.match(/^\d+\.\s/)) {
+                if (currentParagraph.length > 0 || inQuote) flushBlocks();
+                inList = true;
+                listItems.push(<li key={`li-${key++}`} className="list-decimal">{parseInline(trimmed.replace(/^\d+\.\s/, ''))}</li>);
+            } else if (line.includes('**作者：**') || line.includes('**基金项目：**') || line.includes('**作者简介：**')) {
+                flushBlocks();
+                elements.push(
+                    <div key={`meta-${key++}`} className="text-sm text-gray-500 bg-gray-50 p-4 rounded-md mb-6 border border-gray-100 font-sans">
+                        {parseInline(line)}
+                    </div>
+                );
+            } else if (trimmed === '') {
+                flushBlocks();
+            } else {
+                if (inQuote) {
+                    quoteLines.push(line);
+                } else {
+                    currentParagraph.push(line);
                 }
             }
-            return element;
-        });
+        }
+        flushBlocks();
+
+        return elements;
     };
 
     return (
@@ -227,10 +260,8 @@ export default async function EssayPage({ params }: { params: { essayId: string 
                     )}
                 </div>
 
-                <div className="prose prose-lg max-w-none">
-                    <div className="text-gray-800 font-serif text-lg">
-                        {renderMarkdown(essay.content)}
-                    </div>
+                <div className="w-full">
+                    {renderMarkdown(essay.content)}
                 </div>
             </article>
 
