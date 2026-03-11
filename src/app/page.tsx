@@ -16,6 +16,8 @@ interface Work {
     title: string;
     year?: string;
     author?: string;
+    date?: string;
+    sourceLink?: string;
     description: string;
     type: string;
     path: string;
@@ -190,21 +192,38 @@ export default async function Home() {
                 {/* Essays */}
                 {essays.length > 0 && (
                     <div>
-                        <h3 className="text-xl font-sans font-semibold text-gray-700 mb-6 uppercase tracking-wider">
-                            文章 · 序言
+                        <h3 className="text-xl font-sans font-semibold text-gray-700 mb-6 uppercase tracking-wider flex items-center">
+                            <svg className="w-5 h-5 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5L18.5 7H20" />
+                            </svg>
+                            研究与评论
                         </h3>
-                        <div className="space-y-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {essays.map(essay => (
                                 <Link
                                     key={essay.id}
                                     href={essay.path}
-                                    className="group block bg-white rounded-xl border border-gray-200 hover:border-gray-400 hover:shadow-md transition-all duration-300 p-6"
+                                    className="group block bg-white rounded-xl border border-gray-200 hover:border-gray-400 hover:shadow-md transition-all duration-300 p-6 relative overflow-hidden"
                                 >
-                                    <h4 className="text-xl font-serif font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition">
-                                        {essay.title}
-                                    </h4>
-                                    <p className="text-gray-500 text-sm mb-3">作者：{essay.author}</p>
-                                    <p className="text-gray-600 text-sm leading-relaxed">
+                                    <div className="absolute top-0 left-0 w-1 h-full bg-blue-100 group-hover:bg-blue-500 transition-colors"></div>
+                                    <div className="flex justify-between items-start mb-2">
+                                        <h4 className="text-lg font-serif font-bold text-gray-900 group-hover:text-blue-600 transition line-clamp-2 pr-4">
+                                            {essay.title}
+                                        </h4>
+                                    </div>
+                                    <div className="flex items-center text-xs text-gray-500 mb-4 space-x-3">
+                                        <span className="flex items-center">
+                                            <svg className="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                                            {essay.author}
+                                        </span>
+                                        {essay.date && (
+                                            <span className="flex items-center">
+                                                <svg className="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                                                {essay.date}
+                                            </span>
+                                        )}
+                                    </div>
+                                    <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
                                         {essay.description}
                                     </p>
                                 </Link>

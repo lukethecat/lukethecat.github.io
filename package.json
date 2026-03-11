@@ -4,10 +4,11 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "build": "npm run process:books && next build",
-        "start": "next start",
-        "lint": "next lint",
-        "process:books": "npx tsx scripts/process-books.ts"
+        "build": "npm run process:books && NEXT_PRIVATE_TRACE_FILE=/tmp/next-trace npm exec -y --cache /tmp/tmp_npm_cache next build",
+        "postbuild": "cp -R public_assets/* out/",
+        "start": "npx next start",
+        "lint": "npx next lint",
+        "process:books": "TMPDIR=/tmp npm exec -y --cache /tmp/tmp_npm_cache tsx scripts/process-books.ts"
     },
     "dependencies": {
         "chokidar": "^3.5.3",

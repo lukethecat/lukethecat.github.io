@@ -123,5 +123,15 @@
             ]
         }
     ],
-    "essays": []
+    "essays": [
+        {
+            "id": "xinjiang-bingtuan-bianseshi-60years",
+            "title": "新疆兵团“ 新边塞诗” 六十年发展综述",
+            "author": "杨昌俊",
+            "date": "2019-07",
+            "description": "探讨新疆兵团诗歌随着1954年兵团成立而产生，在80年代成为有全国影响力的流派“新边塞诗”的六十年发展历程。",
+            "sourceLink": "/pdfs/essays/xinjiang-bingtuan-bianseshi-60years.pdf",
+            "path": "/essays/xinjiang-bingtuan-bianseshi-60years"
+        }
+    ]
 }

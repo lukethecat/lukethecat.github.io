@@ -1,0 +1,11 @@
+{
+  "/_not-found": "app/_not-found.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/page": "app/page.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/books/[bookId]/page": "app/books/[bookId]/page.js",
+  "/essays/[essayId]/page": "app/essays/[essayId]/page.js",
+  "/[lang]/essays/[essayId]/page": "app/[lang]/essays/[essayId]/page.js",
+  "/[lang]/books/[bookId]/page": "app/[lang]/books/[bookId]/page.js",
+  "/[lang]/page": "app/[lang]/page.js"
+}

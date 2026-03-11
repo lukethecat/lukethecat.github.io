@@ -6,6 +6,8 @@ import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 interface Essay {
     title: string;
     author: string;
+    date?: string;
+    sourceLink?: string;
 }
 
 async function getEssay(essayId: string): Promise<{ content: string, metadata: Essay } | null> {
@@ -16,6 +18,8 @@ async function getEssay(essayId: string): Promise<{ content: string, metadata: E
         // Parse and remove frontmatter
         let title = '未命名文章';
         let author = '佚名';
+        let date: string | undefined;
+        let sourceLink: string | undefined;
 
         if (content.startsWith('---')) {
             const frontmatterEnd = content.indexOf('---', 3);
@@ -30,6 +34,14 @@ async function getEssay(essayId: string): Promise<{ content: string, metadata: E
                 // Extract author from frontmatter  
                 const authorMatch = frontmatter.match(/author:\s*["'](.+?)["']/);
                 if (authorMatch && authorMatch[1]) author = authorMatch[1];
+
+                // Extract date from frontmatter
+                const dateMatch = frontmatter.match(/date:\s*["'](.+?)["']/);
+                if (dateMatch && dateMatch[1]) date = dateMatch[1];
+
+                // Extract sourceLink from frontmatter
+                const sourceLinkMatch = frontmatter.match(/sourceLink:\s*["'](.+?)["']/);
+                if (sourceLinkMatch && sourceLinkMatch[1]) sourceLink = sourceLinkMatch[1];
             }
         }
 
@@ -48,7 +60,9 @@ async function getEssay(essayId: string): Promise<{ content: string, metadata: E
             content,
             metadata: {
                 title,
-                author
+                author,
+                date,
+                sourceLink
             }
         };
     } catch (error) {
@@ -126,14 +140,6 @@ export default async function EssayPage({ params }: { params: { essayId: string 
             // Bold author line
             else if (line.includes('**作者')) {
                 flushParagraph();
-                const match = line.match(/\*\*作者[：:]\s*(.+?)\*\*/);
-                if (match) {
-                    elements.push(
-                        <p key={`author-${key++}`} className="text-center text-gray-600 mb-12 text-lg">
-                            作者：{match[1]}
-                        </p>
-                    );
-                }
             }
             // Empty line
             else if (line.trim() === '') {
@@ -187,7 +193,40 @@ export default async function EssayPage({ params }: { params: { essayId: string 
             </header>
 
             {/* Article Content */}
-            <article className="max-w-4xl mx-auto px-8 py-16">
+            <article className="max-w-4xl mx-auto px-8 py-12">
+                
+                {/* Essay Header Info */}
+                <div className="text-center mb-16 max-w-2xl mx-auto">
+                    <h1 className="text-4xl font-serif font-bold text-gray-900 leading-tight mb-6">
+                        {essay.metadata.title}
+                    </h1>
+                    <div className="flex items-center justify-center text-gray-500 space-x-6 text-sm mb-8">
+                        {essay.metadata.author && (
+                            <div className="flex items-center">
+                                <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                                {essay.metadata.author}
+                            </div>
+                        )}
+                        {essay.metadata.date && (
+                            <div className="flex items-center">
+                                <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                                {essay.metadata.date}
+                            </div>
+                        )}
+                    </div>
+                    {essay.metadata.sourceLink && (
+                        <a
+                            href={essay.metadata.sourceLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center px-4 py-2 bg-gray-50 text-gray-700 rounded-full border border-gray-200 hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 text-sm font-medium shadow-sm"
+                        >
+                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                            查看原版 PDF
+                        </a>
+                    )}
+                </div>
+
                 <div className="prose prose-lg max-w-none">
                     <div className="text-gray-800 font-serif text-lg">
                         {renderMarkdown(essay.content)}

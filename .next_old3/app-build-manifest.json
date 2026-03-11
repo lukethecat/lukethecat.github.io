@@ -1,0 +1,75 @@
+{
+  "pages": {
+    "/_not-found": [
+      "static/chunks/webpack-c216443a6283dea6.js",
+      "static/chunks/fd9d1056-029d3cc43c8250b0.js",
+      "static/chunks/412-040166f6e5216070.js",
+      "static/chunks/main-app-3a0762902bef9745.js",
+      "static/chunks/app/_not-found-9154d9a7094c0f9b.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-c216443a6283dea6.js",
+      "static/chunks/fd9d1056-029d3cc43c8250b0.js",
+      "static/chunks/412-040166f6e5216070.js",
+      "static/chunks/main-app-3a0762902bef9745.js",
+      "static/css/52d04df9c6ff81c4.css",
+      "static/css/01a5986ebfd567f3.css",
+      "static/chunks/app/layout-50e13067e88885a7.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-c216443a6283dea6.js",
+      "static/chunks/fd9d1056-029d3cc43c8250b0.js",
+      "static/chunks/412-040166f6e5216070.js",
+      "static/chunks/main-app-3a0762902bef9745.js",
+      "static/chunks/381-69b2da2ba8d09540.js",
+      "static/chunks/app/page-a359de9f8526bf0f.js"
+    ],
+    "/books/[bookId]/page": [
+      "static/chunks/webpack-c216443a6283dea6.js",
+      "static/chunks/fd9d1056-029d3cc43c8250b0.js",
+      "static/chunks/412-040166f6e5216070.js",
+      "static/chunks/main-app-3a0762902bef9745.js",
+      "static/chunks/381-69b2da2ba8d09540.js",
+      "static/chunks/app/books/[bookId]/page-77007c1a66febebf.js"
+    ],
+    "/essays/[essayId]/page": [
+      "static/chunks/webpack-c216443a6283dea6.js",
+      "static/chunks/fd9d1056-029d3cc43c8250b0.js",
+      "static/chunks/412-040166f6e5216070.js",
+      "static/chunks/main-app-3a0762902bef9745.js",
+      "static/chunks/381-69b2da2ba8d09540.js",
+      "static/chunks/app/essays/[essayId]/page-01867f221d08e270.js"
+    ],
+    "/[lang]/essays/[essayId]/page": [
+      "static/chunks/webpack-c216443a6283dea6.js",
+      "static/chunks/fd9d1056-029d3cc43c8250b0.js",
+      "static/chunks/412-040166f6e5216070.js",
+      "static/chunks/main-app-3a0762902bef9745.js",
+      "static/chunks/381-69b2da2ba8d09540.js",
+      "static/chunks/app/[lang]/essays/[essayId]/page-c753c4fd1bb52047.js"
+    ],
+    "/[lang]/layout": [
+      "static/chunks/webpack-c216443a6283dea6.js",
+      "static/chunks/fd9d1056-029d3cc43c8250b0.js",
+      "static/chunks/412-040166f6e5216070.js",
+      "static/chunks/main-app-3a0762902bef9745.js",
+      "static/chunks/app/[lang]/layout-4527bac8572eecd7.js"
+    ],
+    "/[lang]/books/[bookId]/page": [
+      "static/chunks/webpack-c216443a6283dea6.js",
+      "static/chunks/fd9d1056-029d3cc43c8250b0.js",
+      "static/chunks/412-040166f6e5216070.js",
+      "static/chunks/main-app-3a0762902bef9745.js",
+      "static/chunks/381-69b2da2ba8d09540.js",
+      "static/chunks/app/[lang]/books/[bookId]/page-4f4a55eb0426987e.js"
+    ],
+    "/[lang]/page": [
+      "static/chunks/webpack-c216443a6283dea6.js",
+      "static/chunks/fd9d1056-029d3cc43c8250b0.js",
+      "static/chunks/412-040166f6e5216070.js",
+      "static/chunks/main-app-3a0762902bef9745.js",
+      "static/chunks/381-69b2da2ba8d09540.js",
+      "static/chunks/app/[lang]/page-39d2f0287ba1acca.js"
+    ]
+  }
+}
