@@ -97,12 +97,6 @@
             "cover": "/images/heiyingsu-cover.jpg",
             "relatedEssays": [
                 {
-                    "id": "heiyingsuxiajuan1998-biography",
-                    "title": "李瑜传略",
-                    "author": "",
-                    "path": "/essays/heiyingsuxiajuan1998-biography"
-                },
-                {
                     "id": "heiyingsuxiajuan1998-introduction",
                     "title": "内容简介",
                     "author": "",
@@ -113,6 +107,18 @@
                     "title": "代序：寂寞心态",
                     "author": "张小平",
                     "path": "/essays/heiyingsuxiajuan1998-preface"
+                },
+                {
+                    "id": "heiyingsuxiajuan1998-biography",
+                    "title": "李瑜传略",
+                    "author": "",
+                    "path": "/essays/heiyingsuxiajuan1998-biography"
+                },
+                {
+                    "id": "heiyingsuxiajuan1998-publication",
+                    "title": "出版信息",
+                    "author": "",
+                    "path": "/essays/heiyingsuxiajuan1998-publication"
                 }
             ]
         }

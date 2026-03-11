@@ -2,7 +2,9 @@
 
 export function LanguageSwitcher() {
     return (
-        <div className="flex items-center">
+        <div className="flex items-center bg-white/80 backdrop-blur-md border border-gray-200 rounded-lg px-3 py-1.5 shadow-sm hover:border-gray-300 transition-all duration-300">
+            <svg className="w-4 h-4 text-gray-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span className="text-sm font-medium text-gray-600 mr-2">Language</span>
             <div id="google_translate_element" className="premium-translate"></div>
             <style jsx global>{`
                 /* Hide Google Translate top bar */
@@ -14,23 +16,19 @@ export function LanguageSwitcher() {
                 }
                 /* Style the widget container */
                 .premium-translate {
-                    min-height: 32px;
+                    min-height: 24px;
+                    display: flex;
+                    align-items: center;
+                    overflow: hidden;
                 }
                 .goog-te-gadget-simple {
-                    background-color: rgba(255, 255, 255, 0.8) !important;
-                    backdrop-filter: blur(8px) !important;
-                    border: 1px solid rgba(243, 244, 246, 1) !important;
-                    padding: 4px 10px !important;
-                    border-radius: 8px !important;
+                    background-color: transparent !important;
+                    border: none !important;
+                    padding: 0 !important;
+                    border-radius: 0 !important;
                     font-family: inherit !important;
                     display: flex !important;
                     align-items: center !important;
-                    transition: all 0.3s ease !important;
-                    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
-                }
-                .goog-te-gadget-simple:hover {
-                    background-color: white !important;
-                    border-color: rgba(209, 213, 219, 1) !important;
                 }
                 .goog-te-gadget-icon {
                     display: none !important;
@@ -46,17 +44,19 @@ export function LanguageSwitcher() {
                     font-size: 13px !important;
                     font-weight: 500 !important;
                 }
-                .goog-te-menu-value:after {
-                    content: '▼' !important;
-                    font-size: 10px !important;
-                    color: #9ca3af !important;
+                .goog-te-menu-value span:hover {
+                    color: #111827 !important;
                 }
-                /* Hide "Powered by Google" text */
+                /* Hide "Powered by Google" text and extra spacing */
                 .goog-logo-link {
                     display: none !important;
                 }
                 .goog-te-gadget {
                     color: transparent !important;
+                    font-size: 0 !important;
+                }
+                .goog-te-gadget img {
+                    display: none !important;
                 }
             `}</style>
         </div>
