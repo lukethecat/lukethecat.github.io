@@ -86,6 +86,35 @@
                     "path": "/essays/heiyingsushangjuan1998-publication"
                 }
             ]
+        },
+        {
+            "id": "heiyingsuxiajuan1998",
+            "title": "黑罂粟·下卷",
+            "year": "1998年",
+            "description": "收录作者环游新疆南部的塔克拉玛干沙漠和攀登帕米尔高原的行吟诗101首。以漂泊者的眼光，构筑了西域人文、地理、历史和现实的诗歌世界。",
+            "type": "poetry",
+            "path": "/books/heiyingsuxiajuan1998",
+            "cover": "/images/heiyingsu-cover.jpg",
+            "relatedEssays": [
+                {
+                    "id": "heiyingsuxiajuan1998-biography",
+                    "title": "李瑜传略",
+                    "author": "",
+                    "path": "/essays/heiyingsuxiajuan1998-biography"
+                },
+                {
+                    "id": "heiyingsuxiajuan1998-introduction",
+                    "title": "内容简介",
+                    "author": "",
+                    "path": "/essays/heiyingsuxiajuan1998-introduction"
+                },
+                {
+                    "id": "heiyingsuxiajuan1998-preface",
+                    "title": "代序：寂寞心态",
+                    "author": "张小平",
+                    "path": "/essays/heiyingsuxiajuan1998-preface"
+                }
+            ]
         }
     ],
     "essays": []

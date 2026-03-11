@@ -1,0 +1,671 @@
+{
+  "id": "heiyingsuxiajuan1998",
+  "title": "黑罂粟·下卷",
+  "author": "李瑜",
+  "year": "1998年",
+  "description": "收录作者环游新疆南部的诗歌创作，共计101个篇目（含代序）。",
+  "path": "/books/heiyingsuxiajuan1998",
+  "cover": "/covers/default.jpg",
+  "relatedEssays": [
+    {
+      "id": "biography",
+      "title": "李瑜传略",
+      "path": "/essays/heiyingsuxiajuan1998-biography"
+    },
+    {
+      "id": "introduction",
+      "title": "小引：李瑜他的诗",
+      "path": "/essays/heiyingsuxiajuan1998-introduction"
+    },
+    {
+      "id": "preface",
+      "title": "序：寂寞心态",
+      "path": "/essays/heiyingsuxiajuan1998-preface"
+    },
+    {
+      "id": "afterword",
+      "title": "跋",
+      "path": "/essays/heiyingsuxiajuan1998-afterword"
+    }
+  ],
+  "chapters": [
+    {
+      "id": "chapter-1",
+      "title": "卷二·行吟诗",
+      "poems": [
+        {
+          "id": "poem-1-1",
+          "title": "不知何时/我已经登上额敏塔之顶了",
+          "lines": [],
+          "pageNumber": "1"
+        },
+        {
+          "id": "poem-1-2",
+          "title": "微微震动了一下就静止了/静止成绵延的赭红",
+          "lines": [
+            "火焰山"
+          ],
+          "pageNumber": "4"
+        },
+        {
+          "id": "poem-1-3",
+          "title": "交河孤城岿然不动/像瀚海不沉的船",
+          "lines": [],
+          "pageNumber": "5"
+        },
+        {
+          "id": "poem-1-4",
+          "title": "吴冠中乌瞰高昌故城/如飞天女神鸟瞰高昌故",
+          "lines": [],
+          "pageNumber": "7"
+        },
+        {
+          "id": "poem-1-5",
+          "title": "那是从美丽牧场乌鲁木齐/漂浮过来的湿漉漉",
+          "lines": [
+            "的乌云"
+          ],
+          "pageNumber": "8"
+        },
+        {
+          "id": "poem-1-6",
+          "title": "库米尔/出了甘沟的静谧山间小站",
+          "lines": [],
+          "pageNumber": "11"
+        },
+        {
+          "id": "poem-1-7",
+          "title": "呀，那乡音/却勾起遥远的乡愁",
+          "lines": [],
+          "pageNumber": "13"
+        },
+        {
+          "id": "poem-1-8",
+          "title": "我在楼兰宾馆/尚未入睡就做着楼兰的梦",
+          "lines": [],
+          "pageNumber": "14"
+        },
+        {
+          "id": "poem-1-9",
+          "title": "岑参的黑骏马/却恬静伫立我的车窗",
+          "lines": [],
+          "pageNumber": "16"
+        },
+        {
+          "id": "poem-1-10",
+          "title": "我坐在铺着红毡毯的毛驴车上/著名的中亚美",
+          "lines": [
+            "女簇拥着我"
+          ],
+          "pageNumber": "18"
+        },
+        {
+          "id": "poem-1-11",
+          "title": "她虔诚读着/龟兹的劲吹雄风",
+          "lines": [],
+          "pageNumber": "20"
+        },
+        {
+          "id": "poem-1-12",
+          "title": "凝固成克孜尔千佛洞/彩绘壁画上的龟兹舞女",
+          "lines": [],
+          "pageNumber": "22"
+        },
+        {
+          "id": "poem-1-13",
+          "title": "连褐黑天幕上的新月/也在秋风吹动下微微飘",
+          "lines": [],
+          "pageNumber": "23"
+        },
+        {
+          "id": "poem-1-14",
+          "title": "美丽的迪里达尔公主的泪水/化为流淌不息的",
+          "lines": [
+            "千滴清泉"
+          ],
+          "pageNumber": "25"
+        },
+        {
+          "id": "poem-1-15",
+          "title": "玄奘有些累了/他的舞步还不太娴熟",
+          "lines": [],
+          "pageNumber": "27"
+        },
+        {
+          "id": "poem-1-16",
+          "title": "昨夜醉酒/与朋友相聚过于兴奋",
+          "lines": [],
+          "pageNumber": "29"
+        },
+        {
+          "id": "poem-1-17",
+          "title": "斜吹古老喀什噶尔/已经没有树荫的绿洲",
+          "lines": [],
+          "pageNumber": "31"
+        },
+        {
+          "id": "poem-1-18",
+          "title": "腰间挂着一把/镶嵌红宝石的英吉沙小刀",
+          "lines": [],
+          "pageNumber": "33"
+        },
+        {
+          "id": "poem-1-19",
+          "title": "一早我就乘上/去人民医院的一路公共马车",
+          "lines": [],
+          "pageNumber": "35"
+        },
+        {
+          "id": "poem-1-20",
+          "title": "他独倚车门/又卷上一枝莫合烟",
+          "lines": [],
+          "pageNumber": "37"
+        },
+        {
+          "id": "poem-1-21",
+          "title": "他的袷袢已经陈旧/据说却是这儿首富",
+          "lines": [],
+          "pageNumber": "38"
+        },
+        {
+          "id": "poem-1-22",
+          "title": "带我在喀什噶尔古老历史胡同/穿行了好几个",
+          "lines": [
+            "世纪"
+          ],
+          "pageNumber": "40"
+        },
+        {
+          "id": "poem-1-23",
+          "title": "在这苦涩的水里/才生长出香甜的卡拉库赛甜",
+          "lines": [],
+          "pageNumber": "42"
+        },
+        {
+          "id": "poem-1-24",
+          "title": "看着手中地图/神秘的帕米尔诱惑着我",
+          "lines": [],
+          "pageNumber": "44"
+        },
+        {
+          "id": "poem-1-25",
+          "title": "从地图上看/“冰山之父”慕士塔格已经临近",
+          "lines": [],
+          "pageNumber": "47"
+        },
+        {
+          "id": "poem-1-26",
+          "title": "苍茫帕米尔/那永恒的悠长目光骤然缩短",
+          "lines": [],
+          "pageNumber": "49"
+        },
+        {
+          "id": "poem-1-27",
+          "title": "那一小团白面/不胜那么多饥饿目光凝视",
+          "lines": [],
+          "pageNumber": "51"
+        },
+        {
+          "id": "poem-1-28",
+          "title": "呀，这难忘的猩红玛瑙般叶城石榴/这难忘的",
+          "lines": [
+            "帕米尔晚餐"
+          ],
+          "pageNumber": "53"
+        },
+        {
+          "id": "poem-1-29",
+          "title": "霎时间意识到/我是在帕米尔一家小店夜宿",
+          "lines": [],
+          "pageNumber": "55"
+        },
+        {
+          "id": "poem-1-30",
+          "title": "我的目光刚刚穿过风惟雪幕/就让晶莹雪山折",
+          "lines": [
+            "射回来"
+          ],
+          "pageNumber": "56"
+        },
+        {
+          "id": "poem-1-31",
+          "title": "他步行了遥遥长途/才来到这陌生雪山",
+          "lines": [],
+          "pageNumber": "58"
+        },
+        {
+          "id": "poem-1-32",
+          "title": "我还回首遥望/被反锁着的中国最小的县级监",
+          "lines": [],
+          "pageNumber": "60"
+        },
+        {
+          "id": "poem-1-33",
+          "title": "那新疆杨枝条/闪耀一片神秘翠碧",
+          "lines": [],
+          "pageNumber": "61"
+        },
+        {
+          "id": "poem-1-34",
+          "title": "他在海拔四千二百米的红其拉甫/俯视过眼烟",
+          "lines": [],
+          "pageNumber": "63"
+        },
+        {
+          "id": "poem-1-35",
+          "title": "刚从巴基斯坦驶来两辆大篷车/饰有斑斓图画",
+          "lines": [],
+          "pageNumber": "65"
+        },
+        {
+          "id": "poem-1-36",
+          "title": "凝视我的手中/那枝黑色幽灵化成的黑色鹰笛",
+          "lines": [],
+          "pageNumber": "68"
+        },
+        {
+          "id": "poem-1-37",
+          "title": "可能也在乌瞰已经属于吉尔吉斯版图的/神秘",
+          "lines": [
+            "的帕米尔山洞"
+          ],
+          "pageNumber": "70"
+        },
+        {
+          "id": "poem-1-38",
+          "title": "在帕米尔宾馆/我趿着拖鞋临窗远眺",
+          "lines": [],
+          "pageNumber": "71"
+        },
+        {
+          "id": "poem-1-39",
+          "title": "一颗燃烧的流星/骤然从我面前闪过",
+          "lines": [],
+          "pageNumber": "74"
+        },
+        {
+          "id": "poem-1-40",
+          "title": "我恐怕她/不胜沙枣花的粗犷醉人香味",
+          "lines": [],
+          "pageNumber": "76"
+        },
+        {
+          "id": "poem-1-41",
+          "title": "我再也不愿看到她了/甚至不愿登高",
+          "lines": [],
+          "pageNumber": "77"
+        },
+        {
+          "id": "poem-1-42",
+          "title": "她站在远方沙枣林带向我眺望/不知已有多久",
+          "lines": [],
+          "pageNumber": "79"
+        },
+        {
+          "id": "poem-1-43",
+          "title": "那盏不灭的灯还是熄灭了/我就不曾看到",
+          "lines": [],
+          "pageNumber": "81"
+        },
+        {
+          "id": "poem-1-44",
+          "title": "土耳其弯刀闪动的微弱轮廓/在我眼前渐渐清",
+          "lines": [],
+          "pageNumber": "83"
+        },
+        {
+          "id": "poem-1-45",
+          "title": "黑色的波涛/黑色的波涛",
+          "lines": [],
+          "pageNumber": "85"
+        },
+        {
+          "id": "poem-1-46",
+          "title": "在秋日黄昏/我到莎车谛听一支叶尔羌恋歌",
+          "lines": [],
+          "pageNumber": "87"
+        },
+        {
+          "id": "poem-1-47",
+          "title": "沿公路的亚麻花/像波涛涌向天涯",
+          "lines": [],
+          "pageNumber": "88"
+        },
+        {
+          "id": "poem-1-48",
+          "title": "献上一个洁白花环/金字塔下倚着一轮硕大圆",
+          "lines": [],
+          "pageNumber": "90"
+        },
+        {
+          "id": "poem-1-49",
+          "title": "呀，美丽的阿拉尔/美丽的石榴树",
+          "lines": [],
+          "pageNumber": "92"
+        },
+        {
+          "id": "poem-1-50",
+          "title": "犁过的浪花/已经闪耀丝绸的光泽",
+          "lines": [],
+          "pageNumber": "93"
+        },
+        {
+          "id": "poem-1-51",
+          "title": "奔腾雪浪/还将穿过年轻牧人的梦境",
+          "lines": [],
+          "pageNumber": "95"
+        },
+        {
+          "id": "poem-1-52",
+          "title": "跋涉者的眼眶/滚动依然苦涩的泪滴",
+          "lines": [],
+          "pageNumber": "97"
+        },
+        {
+          "id": "poem-1-53",
+          "title": "她摘下一枝褐黑的红柳花瓣/摘下一枚褐黑玛",
+          "lines": [],
+          "pageNumber": "100"
+        },
+        {
+          "id": "poem-1-54",
+          "title": "也分辨不清/红柳花瓣上的泪滴和露珠",
+          "lines": [],
+          "pageNumber": "101"
+        },
+        {
+          "id": "poem-1-55",
+          "title": "我只感到/我的视野骤然如此空旷",
+          "lines": [],
+          "pageNumber": "102"
+        },
+        {
+          "id": "poem-1-56",
+          "title": "呀，岁月之河/却使她的朦胧倩影更加清晰",
+          "lines": [],
+          "pageNumber": "103"
+        },
+        {
+          "id": "poem-1-57",
+          "title": "她的歌声不会消逝/会伴着无涯絮语般涛声",
+          "lines": [],
+          "pageNumber": "104"
+        },
+        {
+          "id": "poem-1-58",
+          "title": "缠绵悱恻/犹如当年我心里抽不尽的情丝",
+          "lines": [],
+          "pageNumber": "105"
+        },
+        {
+          "id": "poem-1-59",
+          "title": "伴着悠远红柳花瓣的涛声/伴着我心灵微微颤",
+          "lines": [],
+          "pageNumber": "106"
+        },
+        {
+          "id": "poem-1-60",
+          "title": "她好像还在那个遥远月夜/对我羞涩微笑",
+          "lines": [],
+          "pageNumber": "107"
+        },
+        {
+          "id": "poem-1-61",
+          "title": "我的心海/泛起白蝴蝶般飞翔的浪花",
+          "lines": [],
+          "pageNumber": "108"
+        },
+        {
+          "id": "poem-1-62",
+          "title": "我心中的幻影/比在黑夜更加朦胧更加迷茫",
+          "lines": [],
+          "pageNumber": "109"
+        },
+        {
+          "id": "poem-1-63",
+          "title": "她早就离开那儿了/我还向小径末端回首张望",
+          "lines": [],
+          "pageNumber": "110"
+        },
+        {
+          "id": "poem-1-64",
+          "title": "这条小径在沙包的波浪上蜿蜒/在红柳的沙帐",
+          "lines": [
+            "里蜿蜒"
+          ],
+          "pageNumber": "111"
+        },
+        {
+          "id": "poem-1-65",
+          "title": "那星星/是她的孤寂眼睛",
+          "lines": [],
+          "pageNumber": "112"
+        },
+        {
+          "id": "poem-1-66",
+          "title": "我们面前/像是缀满葡萄的葱葱绿洲",
+          "lines": [],
+          "pageNumber": "113"
+        },
+        {
+          "id": "poem-1-67",
+          "title": "我已将虔诚祝福/托付给那片金黑的云了",
+          "lines": [],
+          "pageNumber": "114"
+        },
+        {
+          "id": "poem-1-68",
+          "title": "带去河滩褐黑红柳落英/还有我心中落英",
+          "lines": [],
+          "pageNumber": "115"
+        },
+        {
+          "id": "poem-1-69",
+          "title": "可能还以净洁的爱/做着遥远的雪山的梦",
+          "lines": [],
+          "pageNumber": "116"
+        },
+        {
+          "id": "poem-1-70",
+          "title": "我只要想到了她/这条干涸小河就复活了",
+          "lines": [],
+          "pageNumber": "117"
+        },
+        {
+          "id": "poem-1-71",
+          "title": "隐约听到/小溪源头澎湃春潮的歌吟",
+          "lines": [],
+          "pageNumber": "118"
+        },
+        {
+          "id": "poem-1-72",
+          "title": "今夜我却伫立/没有那枝红柳花瓣摇曳的夜里",
+          "lines": [],
+          "pageNumber": "119"
+        },
+        {
+          "id": "poem-1-73",
+          "title": "她撒下的种子早已萌芽/正在悄悄生长",
+          "lines": [],
+          "pageNumber": "120"
+        },
+        {
+          "id": "poem-1-74",
+          "title": "我在黎明之前/要飞进她的深邃梦境",
+          "lines": [],
+          "pageNumber": "121"
+        },
+        {
+          "id": "poem-1-75",
+          "title": "为古老而年轻的和田/获得一枚植树造林金牌",
+          "lines": [],
+          "pageNumber": "122"
+        },
+        {
+          "id": "poem-1-76",
+          "title": "我一大早/就赶到和田长途汽车站",
+          "lines": [],
+          "pageNumber": "123"
+        },
+        {
+          "id": "poem-1-77",
+          "title": "车窗刚刚闪过清真寺拱北/那弯沉浸在暮色里",
+          "lines": [
+            "的新月"
+          ],
+          "pageNumber": "127"
+        },
+        {
+          "id": "poem-1-78",
+          "title": "群驴图上那两群毛驴/还在我的记忆里嘶鸣",
+          "lines": [],
+          "pageNumber": "129"
+        },
+        {
+          "id": "poem-1-79",
+          "title": "我想起了/被讹传为野人的大河沿人",
+          "lines": [],
+          "pageNumber": "130"
+        },
+        {
+          "id": "poem-1-80",
+          "title": "刚打开车门/当地乘客便一拥而上",
+          "lines": [],
+          "pageNumber": "133"
+        },
+        {
+          "id": "poem-1-81",
+          "title": "来到沉睡了三千八百个春秋的/这位楼兰美女",
+          "lines": [
+            "身边"
+          ],
+          "pageNumber": "136"
+        },
+        {
+          "id": "poem-1-82",
+          "title": "乌兰还在车上/我也还在车上",
+          "lines": [],
+          "pageNumber": "138"
+        },
+        {
+          "id": "poem-1-83",
+          "title": "那就是他早就憧憬的米兰么/曾明星般镶嵌他",
+          "lines": [
+            "梦中的米兰么"
+          ],
+          "pageNumber": "140"
+        },
+        {
+          "id": "poem-1-84",
+          "title": "定格为《斯坦因西域考古记》里/一张凝重的",
+          "lines": [
+            "黑白照片"
+          ],
+          "pageNumber": "144"
+        },
+        {
+          "id": "poem-1-85",
+          "title": "那么多美丽的有翼天使/在黑暗中翩翩飞翔",
+          "lines": [],
+          "pageNumber": "146"
+        },
+        {
+          "id": "poem-1-86",
+          "title": "蓝色的泰晤士河/从黯淡的星空下流过",
+          "lines": [],
+          "pageNumber": "147"
+        },
+        {
+          "id": "poem-1-87",
+          "title": "仿佛米兰还是一个梦/仿佛米兰还在梦中",
+          "lines": [],
+          "pageNumber": "149"
+        },
+        {
+          "id": "poem-1-88",
+          "title": "这是自楼兰故国迁徙以来/人类再次深入罗布",
+          "lines": [
+            "泊腹地的标志"
+          ],
+          "pageNumber": "150"
+        },
+        {
+          "id": "poem-1-89",
+          "title": "那只无名飞鸟已经倦了/坠落罗布泊凝固了的",
+          "lines": [
+            "波涛"
+          ],
+          "pageNumber": "152"
+        },
+        {
+          "id": "poem-1-90",
+          "title": "向着新月/向着新月",
+          "lines": [],
+          "pageNumber": "153"
+        },
+        {
+          "id": "poem-1-91",
+          "title": "彭加木独自向东而去/彭加木一去不再复返···",
+          "lines": [],
+          "pageNumber": "156"
+        },
+        {
+          "id": "poem-1-92",
+          "title": "向我勾勒一幅罗布泊/神秘而且模糊的写意画",
+          "lines": [],
+          "pageNumber": "158"
+        },
+        {
+          "id": "poem-1-93",
+          "title": "罗布泊落日/是在使人惆怅的静寂中坠落的···",
+          "lines": [],
+          "pageNumber": "161"
+        },
+        {
+          "id": "poem-1-94",
+          "title": "罗布泊的如水月光/流泻到银灰的胡杨树丛里",
+          "lines": [],
+          "pageNumber": "163"
+        },
+        {
+          "id": "poem-1-95",
+          "title": "啊，乘客都已离去/库尔勒长途汽车站静寂无",
+          "lines": [],
+          "pageNumber": "165"
+        },
+        {
+          "id": "poem-1-96",
+          "title": "仿佛就在昨天/我离开库尔勒南下环绕塔里木",
+          "lines": [],
+          "pageNumber": "167"
+        },
+        {
+          "id": "poem-1-97",
+          "title": "在以马兰芳名命名/即将崛起新城的荒原摇曳",
+          "lines": [],
+          "pageNumber": "169"
+        },
+        {
+          "id": "poem-1-98",
+          "title": "那只夜莺/终于从他双手筑成的暖巢飞去",
+          "lines": [],
+          "pageNumber": "171"
+        },
+        {
+          "id": "poem-1-99",
+          "title": "只留下腥骚的沙雨/和一个谜一样的传奇",
+          "lines": [],
+          "pageNumber": "173"
+        },
+        {
+          "id": "poem-1-100",
+          "title": "那二十世纪中叶中国西部名花/那紫黑牡丹般的",
+          "lines": [
+            "紫黑蘑茹云"
+          ],
+          "pageNumber": "174"
+        }
+      ]
+    }
+  ]
+}
