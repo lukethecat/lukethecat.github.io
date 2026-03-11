@@ -22,6 +22,9 @@ export const metadata: Metadata = {
         'Li Yu', 'Chinese poetry', 'modern Chinese poetry', 'Xinjiang poetry',
         'frontier poetry', 'Silk Road poetry', 'Western China poet',
         'Tianshan', 'Ili River', 'Junggar', 'contemporary Chinese literature',
+        '八十年代', '知识分子', '农民', '乡村论述', '西部诗歌', '西部意识', '西部精神', '新边塞诗', '国土论述', '朦胧诗', '国族话语', '个人话语', '美学现代性', '文学主体性', '知青', '寻根派', '寻根小说', '寻根意识', '文化他者', '文化主体性', '文化考察者', '乡土小说', '乡土中国',
+        '八十年代', '知識份子', '農民', '鄉村論述', '西部詩歌', '西部意識', '西部精神', '新邊塞詩', '國土論述', '朦朧詩', '國族話語', '個人話語', '美學現代性', '文學主體性', '知青', '尋根派', '尋根小說', '尋根意識', '文化他者', '文化主體性', '文化考察者', '鄉土小說', '鄉土中國',
+        '1980s', 'Intellectuals', 'Peasants', 'Rural Discourse', 'Western Poetry', 'Western Consciousness', 'Western Spirit', 'New Frontier Poetry', 'National Territory Discourse', 'Misty Poetry', 'National Discourse', 'Personal Discourse', 'Aesthetic Modernity', 'Literary Subjectivity', 'Zhiqing', 'Root-seeking School', 'Root-seeking Fiction', 'Root-seeking Consciousness', 'Cultural Other', 'Cultural Subjectivity', 'Cultural Observer', 'Native Fiction', 'Rural China'
     ],
     authors: [{ name: '李瑜', url: 'https://www.liyupoetry.com' }],
     creator: '李瑜诗歌数字档案馆',
