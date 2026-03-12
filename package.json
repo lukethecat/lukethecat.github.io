@@ -8,7 +8,8 @@
         "postbuild": "cp -R public_assets/* out/",
         "start": "npx next start",
         "lint": "npx next lint",
-        "process:books": "TMPDIR=/tmp npm exec -y --cache /tmp/tmp_npm_cache tsx scripts/process-books.ts"
+        "process:books": "TMPDIR=/tmp npm exec -y --cache /tmp/tmp_npm_cache tsx scripts/process-books.ts",
+        "test:data": "TMPDIR=/tmp npm exec -y --cache /tmp/tmp_npm_cache tsx scripts/verify-data.ts"
     },
     "dependencies": {
         "chokidar": "^3.5.3",

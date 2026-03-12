@@ -42,3 +42,19 @@ body {
 .annotation-term:hover {
   background-color: rgba(59, 130, 246, 0.08);
 }
+
+/* Hide Google's annoying top bar and hover tooltips */
+.goog-te-banner-frame.skiptranslate,
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+body {
+  top: 0px !important;
+}
+
+.goog-te-gadget-simple {
+  background-color: transparent !important;
+  border: none !important;
+}

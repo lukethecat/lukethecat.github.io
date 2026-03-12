@@ -20,47 +20,6 @@ export function LanguageSwitcher() {
                 <div id="google_translate_element" className="w-full h-full"></div>
             </div>
             
-            <style jsx global>{`
-                /* Hide Google's annoying top bar and hover tooltips */
-                .goog-te-banner-frame.skiptranslate,
-                .goog-tooltip,
-                .goog-tooltip:hover {
-                    display: none !important;
-                }
-                body {
-                    top: 0px !important;
-                }
-                
-                #google_translate_element {
-                    width: 100%;
-                    height: 100%;
-                }
-
-                .goog-te-gadget {
-                    height: 100%;
-                    width: 100%;
-                }
-
-                /* Stretch the hit area over the entire container */
-                .goog-te-gadget-simple {
-                    background-color: transparent !important;
-                    border: none !important;
-                    padding: 0 !important;
-                    border-radius: 0 !important;
-                    width: 100% !important;
-                    height: 36px !important;
-                    display: block !important;
-                    cursor: pointer !important;
-                }
-                
-                /* Extra safeguard to ensure the widget's internal text/icons don't overflow */
-                .goog-te-menu-value,
-                .goog-te-gadget-icon,
-                .goog-logo-link,
-                .goog-te-gadget img {
-                    display: none !important;
-                }
-            `}</style>
         </div>
     );
 }
