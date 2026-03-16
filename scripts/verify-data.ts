@@ -34,6 +34,11 @@ function verifyData() {
         assert(fs.existsSync(bookJsonPath), `Missing book.json for book: \${book.id}`);
         
         const bookData = JSON.parse(fs.readFileSync(bookJsonPath, 'utf8'));
+        
+        // 2a. Verify annotations.json exists
+        const annotationsPath = path.join(contentDir, book.id, 'annotations.json');
+        assert(fs.existsSync(annotationsPath), `Missing annotations.json for book: \${book.id}`);
+        
         assert(bookData.id === book.id, `ID mismatch in \${book.id}/book.json`);
         assert(Array.isArray(bookData.chapters), `Missing chapters array in \${book.id}`);
         assert(bookData.chapters.length > 0, `Book \${book.id} has no chapters`);
