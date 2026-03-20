@@ -29,3 +29,7 @@
 - **自测要求 (Dogfooding)**：在提供给用户 URL 或进行展示前，必须优先使用 `agent-browser` 工具完成内部自测打样。
 - **代码质量**：遵循最佳实践撰写高效、简洁的代码，禁止写反直觉（anti-patterns）的代码结构；保障充足且快速高效的测试覆盖。
 - **文档引用**：若是引用了新的三方库、依赖和组件，开发过程中必须主动给出并参考其官方文档链接。
+
+## 7. 版本心跳与时间戳更新 (Version Heartbeat)
+- 每次完成重要特性和提交 (commit) 前，必须检查并更新全站的部署版本号（Commit 更新次数递增）和最后更新时间（最后更新: YYYY-MM-DD）。
+- 它们必须在 `src/components/Sidebar.tsx`、`src/app/page.tsx`、`src/app/essays/[essayId]/page.tsx` 等所有声明了更新和部署版本的页脚文字中被统一修改。
