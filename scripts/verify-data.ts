@@ -31,6 +31,9 @@ function verifyData() {
     
     for (const book of worksData.books) {
         const bookJsonPath = path.join(contentDir, book.id, 'book.json');
+        const sourcePath = path.join(__dirname, '../books', book.id, 'source.md');
+        
+        assert(fs.existsSync(sourcePath), `Missing source.md (Rule: Immutable source text) for book: \${book.id}`);
         assert(fs.existsSync(bookJsonPath), `Missing book.json for book: \${book.id}`);
         
         const bookData = JSON.parse(fs.readFileSync(bookJsonPath, 'utf8'));
@@ -59,6 +62,14 @@ function verifyData() {
                 assert(Array.isArray(poem.lines), `Missing lines for poem \${poem.id} in \${book.id}`);
                 const validLines = poem.lines.filter((line: string) => line.trim().length > 0);
                 assert(validLines.length > 0, `Poem \${poem.id} in \${book.id} has no content lines`);
+                
+                // Milestone 4: Check if publication info accidentally got parsed as poem content
+                const pubKeywords = ['版次', '印数', '印张', 'ISBN', '印刷厂', '字数', '定价'];
+                for (const line of validLines) {
+                    for (const kw of pubKeywords) {
+                        assert(!line.includes(kw), `Poem \${poem.id} in \${book.id} seems to contain trailing publication info ('\${kw}')`);
+                    }
+                }
                 
                 bookPoemCount++;
                 totalPoemsChecked++;

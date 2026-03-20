@@ -44,3 +44,6 @@ out/
 .next_new/
 .next/trace
 .next/trace-build
+
+# Archive
+_archive_202603/
