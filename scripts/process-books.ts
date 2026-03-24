@@ -267,6 +267,7 @@ if (fs.existsSync(BOOKS_DIR)) {
     const books = fs.readdirSync(BOOKS_DIR);
     books.forEach(book => {
         if (book.startsWith('.')) return;
+        if (book.startsWith('essay')) return; // 跳过文章目录，essays 不走书籍处理流程
         if (fs.statSync(path.join(BOOKS_DIR, book)).isDirectory()) {
             processBook(book);
         }

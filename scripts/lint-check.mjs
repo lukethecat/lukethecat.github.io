@@ -41,11 +41,33 @@ if (fs.existsSync(worksPath)) {
 // GR-3: 检查 src/content 中没有手动编辑的 essay book.json
 console.log('\n=== GR-3: 源文件隔离 ===');
 const essayDirs = fs.readdirSync(path.join(ROOT, 'src/content'))
-  .filter(d => d.startsWith('essay') && fs.statSync(path.join(ROOT, 'src/content', d)).isDirectory());
-check('src/content/ 中无 essay 误生成目录', essayDirs.length === 0);
+  .filter(d => /^essay\d+$/.test(d) && fs.statSync(path.join(ROOT, 'src/content', d)).isDirectory());
+check('src/content/ 中无 essay 误生成目录（essay1, essay2...）', essayDirs.length === 0);
 if (essayDirs.length > 0) {
   console.log(`   发现: ${essayDirs.join(', ')}（应删除，essays 不走 book 处理）`);
 }
+
+// GR-2: 版本一致性 — 检查三个文件的版本号是否一致
+console.log('\n=== GR-2: 版本一致性 ===');
+const versionFiles = [
+  'src/components/Sidebar.tsx',
+  'src/app/page.tsx',
+  'src/app/essays/[essayId]/page.tsx'
+];
+const versions = new Set();
+const dates = new Set();
+for (const f of versionFiles) {
+  const full = path.join(ROOT, f);
+  if (fs.existsSync(full)) {
+    const content = fs.readFileSync(full, 'utf-8');
+    const verMatch = content.match(/部署版本:\s*(\d+)/);
+    const dateMatch = content.match(/最后更新:\s*([\d-]+)/);
+    if (verMatch) versions.add(verMatch[1]);
+    if (dateMatch) dates.add(dateMatch[1]);
+  }
+}
+check(`版本号一致（${Array.from(versions).join(', ')}）`, versions.size <= 1);
+check(`日期一致（${Array.from(dates).join(', ')}）`, dates.size <= 1);
 
 // 检查所有 JSON 文件可解析
 console.log('\n=== 全局 JSON 检查 ===');
