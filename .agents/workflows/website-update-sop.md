@@ -19,6 +19,7 @@
 ### 3. 构建验证
 ```bash
 cd /path/to/project
+node scripts/lint-check.mjs      # 黄金规则检查
 npm run process:books    # 处理书籍数据
 npm run test:data        # 数据校验
 npm run build            # Next.js 构建
