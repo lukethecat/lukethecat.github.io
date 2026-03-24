@@ -69,7 +69,7 @@ export default function RootLayout({
                         `
                     }}
                 />
-                <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
             </head>
             <body className={`${inter.variable} ${notoSerifLatin.variable} ${notoSerifSC.variable} font-sans antialiased bg-white text-gray-900`}>
                 {children}

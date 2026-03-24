@@ -15,8 +15,8 @@ export function LanguageSwitcher() {
                 <span className="text-[9px] text-gray-400 font-sans mt-[1px]">▼</span>
             </div>
 
-            {/* Invisible Google Translate overlay that catches absolutely all clicks */}
-            <div className="absolute inset-0 opacity-0 z-10 w-full h-full cursor-pointer">
+            {/* Google Translate overlay — near-invisible but clickable in all browsers including Safari */}
+            <div className="absolute inset-0 z-10 w-full h-full cursor-pointer" style={{opacity: 0.01}}>
                 <div id="google_translate_element" className="w-full h-full"></div>
             </div>
             
