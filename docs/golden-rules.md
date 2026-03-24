@@ -39,3 +39,4 @@ npm run process:books && npm run test:data && npm run build
 - `git add -A` 前必须 `git status` 检查变更范围
 - `.gitignore` 中禁止使用通配符模式（如 `essay*/` 会误匹配 `essays/`）
 - 删除文件前先确认影响范围
+- **禁止 `rm -rf essay*`** — 会误删 `essays/` 目录。只允许 `rm -rf essay1 essay2`（精确匹配）
