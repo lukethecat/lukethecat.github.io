@@ -1,5 +1,9 @@
 # Liyupoetry Project Rules (Essential)
 
+> 🦐 **Agent 读取此文件后，必须在首次回复中声明："已加载项目规范。遵守全部规则。"**
+
+> 详细操作流程见 `.agents/workflows/website-update-sop.md`
+
 ## 1. 原典不可变与隔离原则 (Immutable Source)
 - **唯一真理**：任何关于书籍内容的修改只能在 `books/[bookId]/source.md` 中进行，绝不可手动修改生成的 JSON。
 - **出版信息隔离**：原著最后一首诗之后，若涉版权页、定价等出版信息或跋尾，必须以 `## 附记` 或 `## 出版信息` 物理隔离，防止混入正文。

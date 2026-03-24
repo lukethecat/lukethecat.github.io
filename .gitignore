@@ -47,3 +47,6 @@ out/
 
 # Archive
 _archive_202603/
+
+# Essay directories are not books - ignore generated artifacts
+src/content/essay*/
