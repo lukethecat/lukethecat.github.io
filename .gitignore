@@ -49,4 +49,5 @@ out/
 _archive_202603/
 
 # Essay directories are not books - ignore generated artifacts
-src/content/essay*/
+src/content/essay1/
+src/content/essay2/
