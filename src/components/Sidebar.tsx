@@ -144,7 +144,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
                 <div className="p-4 border-t border-gray-200 text-center">
                     <div className="text-[10px] text-gray-400 space-y-1">
-                        <p>最后更新: 2026-03-24 | 地点: 北京 | 部署版本: 142</p>
+                        <p>最后更新: 2026-03-24 | 地点: 北京 | 部署版本: 143</p>
                         <p>联系方式：<a href="mailto:tictic.ta@gmail.com" className="hover:text-gray-600 transition">tictic.ta@gmail.com</a></p>
                     </div>
                 </div>
