@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Serif_SC } from "next/font/google";
+import { Inter, Noto_Serif, Noto_Serif_SC } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const notoSerif = Noto_Serif_SC({
+const notoSerifLatin = Noto_Serif({
     subsets: ["latin"],
     weight: ["400", "700"],
-    variable: "--font-noto-serif"
+    variable: "--font-noto-serif-latin"
+});
+const notoSerifSC = Noto_Serif_SC({
+    subsets: ["latin"],
+    weight: ["400", "700"],
+    variable: "--font-noto-serif-sc"
 });
 
 export const metadata: Metadata = {
@@ -66,7 +71,7 @@ export default function RootLayout({
                 />
                 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
             </head>
-            <body className={`${inter.variable} ${notoSerif.variable} font-sans antialiased bg-white text-gray-900`}>
+            <body className={`${inter.variable} ${notoSerifLatin.variable} ${notoSerifSC.variable} font-sans antialiased bg-white text-gray-900`}>
                 {children}
             </body>
         </html>

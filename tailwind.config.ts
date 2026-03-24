@@ -10,7 +10,7 @@ const config: Config = {
         extend: {
             fontFamily: {
                 sans: ["var(--font-inter)", "sans-serif"],
-                serif: ["var(--font-noto-serif)", "serif"],
+                serif: ["var(--font-noto-serif-latin)", "var(--font-noto-serif-sc)", "serif"],
             },
             colors: {
                 // specific colors can be added here
