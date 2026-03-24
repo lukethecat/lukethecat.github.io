@@ -17,7 +17,7 @@ export const TitleRenderer: React.FC<TitleRendererProps> = ({
         return (
             <Component className={className}>
                 <span className="block">{parts[0]}</span>
-                <span className="block pl-[2em] text-gray-500 font-normal mt-1">{parts[1]}</span>
+                <span className="block pl-[2em] text-foreground-muted font-normal mt-1">{parts[1]}</span>
             </Component>
         );
     }

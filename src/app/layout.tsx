@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Serif, Noto_Serif_SC } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const notoSerifLatin = Noto_Serif({
@@ -71,8 +73,11 @@ export default function RootLayout({
                 />
                 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
             </head>
-            <body className={`${inter.variable} ${notoSerifLatin.variable} ${notoSerifSC.variable} font-sans antialiased bg-white text-gray-900`}>
-                {children}
+            <body className={`${inter.variable} ${notoSerifLatin.variable} ${notoSerifSC.variable} font-sans antialiased`}>
+                <ThemeProvider>
+                    <ThemeToggle />
+                    {children}
+                </ThemeProvider>
             </body>
         </html>
     );

@@ -48,14 +48,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         className="p-2 hover:bg-gray-200 rounded transition mb-4"
                         title="展开侧边栏"
                     >
-                        <Menu className="w-5 h-5 text-gray-600" />
+                        <Menu className="w-5 h-5 text-foreground-muted" />
                     </button>
                     <Link
                         href="/"
                         className="p-2 hover:bg-gray-200 rounded transition"
                         title="返回首页"
                     >
-                        <Home className="w-5 h-5 text-gray-600" />
+                        <Home className="w-5 h-5 text-foreground-muted" />
                     </Link>
                 </div>
             );
@@ -63,11 +63,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         return (
             <div className="flex flex-col h-full">
-                <div className="p-4 border-b border-gray-200">
+                <div className="p-4 border-b border-border">
                     <div className="flex items-center justify-between mb-2">
                         <Link
                             href="/"
-                            className="inline-flex items-center text-gray-600 hover:text-gray-900 transition text-xs"
+                            className="inline-flex items-center text-foreground-muted hover:text-foreground transition text-xs"
                         >
                             <Home className="w-3.5 h-3.5 mr-1" />
                             返回首页
@@ -79,7 +79,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                             className="hidden md:block p-1 hover:bg-gray-200 rounded transition"
                             title="折叠侧边栏"
                         >
-                            <X className="w-4 h-4 text-gray-500" />
+                            <X className="w-4 h-4 text-foreground-muted" />
                         </button>
 
                         {/* Mobile controls */}
@@ -88,20 +88,20 @@ export const Sidebar: React.FC<SidebarProps> = ({
                             className="md:hidden p-1 hover:bg-gray-200 rounded transition"
                             title="关闭菜单"
                         >
-                            <X className="w-4 h-4 text-gray-500" />
+                            <X className="w-4 h-4 text-foreground-muted" />
                         </button>
                     </div>
-                    <h1 className="font-bold text-gray-900 mb-1">{book.title}</h1>
-                    <p className="text-xs text-gray-500">{book.author}</p>
+                    <h1 className="font-bold text-foreground mb-1">{book.title}</h1>
+                    <p className="text-xs text-foreground-muted">{book.author}</p>
                 </div>
 
-                <div className="p-2 border-b border-gray-200">
+                <div className="p-2 border-b border-border">
                     <div className="relative">
-                        <Search className="absolute left-2 top-1.5 w-4 h-4 text-gray-400" />
+                        <Search className="absolute left-2 top-1.5 w-4 h-4 text-foreground-subtle" />
                         <input
                             type="text"
                             placeholder="Search..."
-                            className="w-full pl-8 pr-2 py-1 bg-white border border-gray-200 rounded text-sm focus:outline-none focus:border-blue-500 transition-colors"
+                            className="w-full pl-8 pr-2 py-1 bg-background border border-border rounded text-sm focus:outline-none focus:border-accent transition-colors"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                         />
@@ -113,25 +113,25 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         <div key={chapter.id} className="mb-2">
                             <button
                                 onClick={() => toggleChapter(chapter.id)}
-                                className="w-full flex items-center px-2 py-1 hover:bg-gray-100 rounded text-gray-700 group transition-colors"
+                                className="w-full flex items-center px-2 py-1 hover:bg-surface rounded text-foreground group transition-colors"
                             >
                                 {expandedChapters.has(chapter.id) ? (
-                                    <ChevronDown className="w-3.5 h-3.5 mr-1.5 text-gray-400 group-hover:text-gray-600" />
+                                    <ChevronDown className="w-3.5 h-3.5 mr-1.5 text-foreground-subtle group-hover:text-foreground-muted" />
                                 ) : (
-                                    <ChevronRight className="w-3.5 h-3.5 mr-1.5 text-gray-400 group-hover:text-gray-600" />
+                                    <ChevronRight className="w-3.5 h-3.5 mr-1.5 text-foreground-subtle group-hover:text-foreground-muted" />
                                 )}
                                 <span className="font-medium truncate text-left">{chapter.title}</span>
                             </button>
 
                             {expandedChapters.has(chapter.id) && (
-                                <div className="ml-5 mt-0.5 border-l border-gray-200 pl-2">
+                                <div className="ml-5 mt-0.5 border-l border-border pl-2">
                                     {chapter.poems.map(poem => (
                                         <Link
                                             key={poem.id}
                                             href={`#${poem.id}`}
                                             // Mobile: Close menu on link click
                                             onClick={() => window.innerWidth < 768 && onToggleMobile()}
-                                            className="block px-2 py-1 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded truncate transition-colors"
+                                            className="block px-2 py-1 text-foreground-muted hover:text-foreground hover:bg-surface rounded truncate transition-colors"
                                         >
                                             {poem.title}
                                         </Link>
@@ -142,10 +142,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     ))}
                 </div>
 
-                <div className="p-4 border-t border-gray-200 text-center">
-                    <div className="text-[10px] text-gray-400 space-y-1">
+                <div className="p-4 border-t border-border text-center">
+                    <div className="text-[10px] text-foreground-subtle space-y-1">
                         <p>最后更新: 2026-03-24 | 地点: 北京 | 部署版本: 143</p>
-                        <p>联系方式：<a href="mailto:tictic.ta@gmail.com" className="hover:text-gray-600 transition">tictic.ta@gmail.com</a></p>
+                        <p>联系方式：<a href="mailto:tictic.ta@gmail.com" className="hover:text-foreground-muted transition">tictic.ta@gmail.com</a></p>
                     </div>
                 </div>
             </div>
@@ -172,7 +172,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             {/* Desktop Wrapper */}
             <aside
                 className={`
-                    hidden md:block fixed left-0 top-0 h-screen bg-[#f7f7f7] border-r border-gray-200 
+                    hidden md:block fixed left-0 top-0 h-screen bg-[#f7f7f7] border-r border-border 
                     transition-all duration-300 ease-in-out z-20
                     ${widthClass}
                 `}
@@ -183,7 +183,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             {/* Mobile Wrapper (Drawer) */}
             <aside
                 className={`
-                    md:hidden fixed inset-y-0 left-0 z-50 w-72 bg-[#f7f7f7] border-r border-gray-200 
+                    md:hidden fixed inset-y-0 left-0 z-50 w-72 bg-[#f7f7f7] border-r border-border 
                     transition-transform duration-300 ease-in-out shadow-xl
                     ${mobileTransform}
                 `}

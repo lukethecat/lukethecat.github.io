@@ -57,11 +57,11 @@ function AnnotatedLine({ line, annotations }: { line: string; annotations: Annot
                 return (
                     <span
                         key={i}
-                        className="annotation-term border-b border-dotted border-gray-400 cursor-help"
+                        className="annotation-term border-b border-dotted border-border-hover cursor-help"
                         title={annotations[part.index]?.note}
                     >
                         {part.term}
-                        <sup className="text-xs text-gray-400 ml-px select-none">
+                        <sup className="text-xs text-foreground-subtle ml-px select-none">
                             {part.index + 1}
                         </sup>
                     </span>
@@ -80,22 +80,22 @@ export const PoemView: React.FC<PoemViewProps> = ({ chapter, poem, book }) => {
             <div className="mb-16">
                 {poem.title.includes('／') ? (
                     <>
-                        <h3 className="text-3xl font-bold text-gray-900 font-serif leading-relaxed">
+                        <h3 className="text-3xl font-bold text-foreground font-serif leading-relaxed">
                             {poem.title.split('／')[0]}
                         </h3>
-                        <h3 className="text-3xl font-bold text-gray-500 font-serif leading-relaxed">
+                        <h3 className="text-3xl font-bold text-foreground-muted font-serif leading-relaxed">
                             {poem.title.split('／')[1]}
                         </h3>
                     </>
                 ) : (
-                    <h3 className="text-3xl font-bold text-gray-900 font-serif leading-relaxed">
+                    <h3 className="text-3xl font-bold text-foreground font-serif leading-relaxed">
                         {poem.title}
                     </h3>
                 )}
             </div>
 
             {/* Poem Content */}
-            <div className="space-y-1 font-serif text-xl text-gray-800 leading-[2.2]">
+            <div className="space-y-1 font-serif text-xl text-foreground leading-[2.2]">
                 {poem.lines.map((line, index) => (
                     <p key={index} className={`min-h-[1.5em] ${line === '' || !line.trim() ? 'h-6' : ''}`}>
                         <AnnotatedLine line={line} annotations={annotations} />
@@ -105,18 +105,18 @@ export const PoemView: React.FC<PoemViewProps> = ({ chapter, poem, book }) => {
 
             {/* Annotations / Footnotes */}
             {annotations.length > 0 && (
-                <div className="mt-16 pt-8 border-t border-gray-100">
-                    <h4 className="text-xs font-sans font-semibold text-gray-400 uppercase tracking-widest mb-4">
+                <div className="mt-16 pt-8 border-t border-border">
+                    <h4 className="text-xs font-sans font-semibold text-foreground-subtle uppercase tracking-widest mb-4">
                         注释
                     </h4>
                     <ol className="space-y-2">
                         {annotations.map((ann, i) => (
-                            <li key={i} className="flex text-sm text-gray-500 leading-relaxed">
-                                <span className="text-xs text-gray-400 mr-2 mt-0.5 flex-shrink-0 font-mono">
+                            <li key={i} className="flex text-sm text-foreground-muted leading-relaxed">
+                                <span className="text-xs text-foreground-subtle mr-2 mt-0.5 flex-shrink-0 font-mono">
                                     {i + 1}.
                                 </span>
                                 <span>
-                                    <span className="font-medium text-gray-600">{ann.term}</span>
+                                    <span className="font-medium text-foreground-muted">{ann.term}</span>
                                     <span className="mx-1.5 text-gray-300">—</span>
                                     {ann.note}
                                 </span>
@@ -127,12 +127,12 @@ export const PoemView: React.FC<PoemViewProps> = ({ chapter, poem, book }) => {
             )}
 
             {/* Enhanced Meta Information */}
-            <div className="mt-20 pt-6 border-t border-gray-200">
-                <div className="flex justify-between items-center text-sm text-gray-500 font-sans">
+            <div className="mt-20 pt-6 border-t border-border">
+                <div className="flex justify-between items-center text-sm text-foreground-muted font-sans">
                     <span>《{book.title}》 · {chapter.title}</span>
                     {poem.pageNumber && <span>页码 {poem.pageNumber}</span>}
                 </div>
-                <p className="mt-2 text-xs text-gray-400 text-center">
+                <p className="mt-2 text-xs text-foreground-subtle text-center">
                     {book.author} / {book.year}
                 </p>
             </div>

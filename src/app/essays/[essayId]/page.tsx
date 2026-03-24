@@ -113,11 +113,11 @@ export default async function EssayPage({ params }: { params: { essayId: string 
             
             return parts.map((part, i) => {
                 if (part.startsWith('**') && part.endsWith('**')) {
-                    return <strong key={`bold-${i}`} className="font-semibold text-gray-900">{part.slice(2, -2)}</strong>;
+                    return <strong key={`bold-${i}`} className="font-semibold text-foreground">{part.slice(2, -2)}</strong>;
                 }
                 if (part.startsWith('^[') && part.endsWith(']')) {
                     const num = part.slice(2, -1);
-                    return <sup key={`cite-${i}`} className="text-blue-600 ml-0.5 text-xs">[{num}]</sup>;
+                    return <sup key={`cite-${i}`} className="text-accent ml-0.5 text-xs">[{num}]</sup>;
                 }
                 return part;
             });
@@ -128,7 +128,7 @@ export default async function EssayPage({ params }: { params: { essayId: string 
                 const text = currentParagraph.join('');
                 if (text.trim()) {
                     elements.push(
-                        <p key={`p-${key++}`} className="mb-6 leading-8 text-lg text-gray-800 font-serif tracking-wide text-justify">
+                        <p key={`p-${key++}`} className="mb-6 leading-8 text-lg text-foreground font-serif tracking-wide text-justify">
                             {parseInline(text)}
                         </p>
                     );
@@ -137,7 +137,7 @@ export default async function EssayPage({ params }: { params: { essayId: string 
             }
             if (inList) {
                 elements.push(
-                    <ul key={`ul-${key++}`} className="list-disc pl-8 mb-8 space-y-3 text-lg text-gray-800 font-serif tracking-wide">
+                    <ul key={`ul-${key++}`} className="list-disc pl-8 mb-8 space-y-3 text-lg text-foreground font-serif tracking-wide">
                         {listItems}
                     </ul>
                 );
@@ -147,7 +147,7 @@ export default async function EssayPage({ params }: { params: { essayId: string 
             if (inQuote) {
                 const text = quoteLines.join('');
                 elements.push(
-                    <blockquote key={`quote-${key++}`} className="border-l-4 border-gray-400 bg-gray-50 pl-6 py-5 pr-4 my-8 rounded-r-lg text-gray-600 font-serif italic text-lg leading-relaxed relative">
+                    <blockquote key={`quote-${key++}`} className="border-l-4 border-border-hover bg-surface pl-6 py-5 pr-4 my-8 rounded-r-lg text-foreground-muted font-serif italic text-lg leading-relaxed relative">
                         {parseInline(text)}
                     </blockquote>
                 );
@@ -162,21 +162,21 @@ export default async function EssayPage({ params }: { params: { essayId: string 
             if (line.startsWith('# ')) {
                 flushBlocks();
                 elements.push(
-                    <h1 key={`h1-${key++}`} className="text-3xl sm:text-4xl mt-12 mb-8 font-serif font-bold text-gray-900 text-center leading-tight">
+                    <h1 key={`h1-${key++}`} className="text-3xl sm:text-4xl mt-12 mb-8 font-serif font-bold text-foreground text-center leading-tight">
                         {parseInline(line.substring(2))}
                     </h1>
                 );
             } else if (line.startsWith('## ')) {
                 flushBlocks();
                 elements.push(
-                    <h2 key={`h2-${key++}`} className="text-2xl font-bold font-serif tracking-wide mt-16 mb-8 text-gray-900 border-l-4 border-gray-900 pl-4 py-1">
+                    <h2 key={`h2-${key++}`} className="text-2xl font-bold font-serif tracking-wide mt-16 mb-8 text-foreground border-l-4 border-foreground pl-4 py-1">
                         {parseInline(line.substring(3))}
                     </h2>
                 );
             } else if (line.startsWith('### ')) {
                 flushBlocks();
                 elements.push(
-                    <h3 key={`h3-${key++}`} className="text-xl font-bold font-serif tracking-wide mt-12 mb-6 text-gray-800">
+                    <h3 key={`h3-${key++}`} className="text-xl font-bold font-serif tracking-wide mt-12 mb-6 text-foreground">
                         {parseInline(line.substring(4))}
                     </h3>
                 );
@@ -195,7 +195,7 @@ export default async function EssayPage({ params }: { params: { essayId: string 
             } else if (line.includes('**作者：**') || line.includes('**基金项目：**') || line.includes('**作者简介：**')) {
                 flushBlocks();
                 elements.push(
-                    <div key={`meta-${key++}`} className="text-sm text-gray-500 bg-gray-50 p-4 rounded-md mb-6 border border-gray-100 font-sans">
+                    <div key={`meta-${key++}`} className="text-sm text-foreground-muted bg-surface p-4 rounded-md mb-6 border border-border font-sans">
                         {parseInline(line)}
                     </div>
                 );
@@ -222,11 +222,11 @@ export default async function EssayPage({ params }: { params: { essayId: string 
             </div>
 
             {/* Header */}
-            <header className="border-b border-gray-100 bg-white">
+            <header className="border-b border-border bg-background">
                 <div className="max-w-4xl mx-auto px-8 py-6">
                     <Link
                         href="/"
-                        className="inline-flex items-center text-gray-600 hover:text-gray-900 transition"
+                        className="inline-flex items-center text-foreground-muted hover:text-foreground transition"
                     >
                         <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -241,10 +241,10 @@ export default async function EssayPage({ params }: { params: { essayId: string 
                 
                 {/* Essay Header Info */}
                 <div className="text-center mb-16 max-w-2xl mx-auto">
-                    <h1 className="text-4xl font-serif font-bold text-gray-900 leading-tight mb-6">
+                    <h1 className="text-4xl font-serif font-bold text-foreground leading-tight mb-6">
                         {essay.metadata.title}
                     </h1>
-                    <div className="flex items-center justify-center text-gray-500 space-x-6 text-sm mb-8">
+                    <div className="flex items-center justify-center text-foreground-muted space-x-6 text-sm mb-8">
                         {essay.metadata.author && (
                             <div className="flex items-center">
                                 <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
@@ -263,7 +263,7 @@ export default async function EssayPage({ params }: { params: { essayId: string 
                             href={essay.metadata.sourceLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center px-4 py-2 bg-gray-50 text-gray-700 rounded-full border border-gray-200 hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300 text-sm font-medium shadow-sm"
+                            className="inline-flex items-center px-4 py-2 bg-surface text-foreground rounded-full border border-border hover:border-accent hover:text-accent hover:bg-accent-bg transition-all duration-300 text-sm font-medium shadow-sm"
                         >
                             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                             查看原版 PDF
@@ -277,12 +277,12 @@ export default async function EssayPage({ params }: { params: { essayId: string 
             </article>
 
             {/* Footer */}
-            <footer className="border-t border-gray-100 py-8 mt-24">
-                <div className="max-w-4xl mx-auto px-8 text-center text-sm text-gray-400 space-y-2">
+            <footer className="border-t border-border py-8 mt-24">
+                <div className="max-w-4xl mx-auto px-8 text-center text-sm text-foreground-subtle space-y-2">
                     <p>最后更新: 2026-03-24 | 地点: 北京 | 部署版本: 143</p>
-                    <p>联系方式：<a href="mailto:tictic.ta@gmail.com" className="hover:text-gray-600 transition">tictic.ta@gmail.com</a></p>
+                    <p>联系方式：<a href="mailto:tictic.ta@gmail.com" className="hover:text-foreground-muted transition">tictic.ta@gmail.com</a></p>
                     <div className="mt-4">
-                        <Link href="/" className="text-gray-600 hover:text-gray-900 transition font-medium">
+                        <Link href="/" className="text-foreground-muted hover:text-foreground transition font-medium">
                             返回首页
                         </Link>
                     </div>

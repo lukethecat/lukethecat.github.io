@@ -34,15 +34,15 @@ export const BookLayout: React.FC<BookLayoutProps> = ({ book, children }) => {
     const mainMarginClass = isDesktopCollapsed ? 'md:ml-16' : 'md:ml-80';
 
     return (
-        <div className="flex min-h-screen bg-white text-gray-900 overflow-x-hidden">
+        <div className="flex min-h-screen bg-background text-foreground overflow-x-hidden">
             {/* Mobile Header Trigger (Only visible on mobile when sidebar closed) */}
             <div className={`md:hidden fixed top-4 left-4 z-30 transition-opacity duration-300 ${isMobileOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
                 <button
                     onClick={() => setIsMobileOpen(true)}
-                    className="p-2 bg-white/80 backdrop-blur rounded-full shadow-sm hover:bg-gray-100 border border-gray-200 transition"
+                    className="p-2 bg-background/80 backdrop-blur rounded-full shadow-sm hover:bg-surface border border-border transition"
                     aria-label="打开菜单"
                 >
-                    <Menu className="w-5 h-5 text-gray-600" />
+                    <Menu className="w-5 h-5 text-foreground-muted" />
                 </button>
             </div>
 
@@ -63,7 +63,7 @@ export const BookLayout: React.FC<BookLayoutProps> = ({ book, children }) => {
                 />
             )}
 
-            <main className={`flex-1 min-h-screen bg-white transition-all duration-300 ease-in-out ml-0 ${mainMarginClass} w-full`}>
+            <main className={`flex-1 min-h-screen bg-background transition-all duration-300 ease-in-out ml-0 ${mainMarginClass} w-full`}>
                 {children}
             </main>
         </div>

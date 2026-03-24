@@ -40,7 +40,7 @@ export const FeaturedPoem: React.FC<{ poems: FeaturedPoemData[] }> = ({ poems })
 
                 <div className="space-y-3 mb-6 relative z-10">
                     {poem.lines.map((line, i) => (
-                        <p key={i} className="text-gray-800 text-xl md:text-2xl font-serif leading-relaxed tracking-wide italic text-opacity-90">
+                        <p key={i} className="text-foreground text-xl md:text-2xl font-serif leading-relaxed tracking-wide italic text-opacity-90">
                             {line}
                         </p>
                     ))}
@@ -55,7 +55,7 @@ export const FeaturedPoem: React.FC<{ poems: FeaturedPoemData[] }> = ({ poems })
                 <div className="w-12 h-px bg-gray-300 mb-4 mx-auto"></div>
             </div>
 
-            <p className="text-gray-500 text-sm font-sans tracking-[0.2em] uppercase">
+            <p className="text-foreground-muted text-sm font-sans tracking-[0.2em] uppercase">
                 {poem.source}
             </p>
         </div>

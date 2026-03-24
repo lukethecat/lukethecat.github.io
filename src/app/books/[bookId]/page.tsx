@@ -52,14 +52,14 @@ export default async function BookPage({ params }: { params: { bookId: string } 
             </div>
 
             <div className="max-w-4xl mx-auto pb-32">
-                <header className="pt-24 pb-12 px-8 text-center border-b border-gray-100 mb-12">
-                    <h1 className="text-4xl font-serif font-bold text-gray-900 mb-4">{book.title}</h1>
+                <header className="pt-24 pb-12 px-8 text-center border-b border-border mb-12">
+                    <h1 className="text-4xl font-serif font-bold text-foreground mb-4">{book.title}</h1>
                 </header>
 
                 {book.chapters && book.chapters.length > 0 ? (
                     book.chapters.map(chapter => (
                         <div key={chapter.id} className="mb-24 px-4">
-                            <h2 className="text-xl font-sans font-bold text-gray-300 uppercase tracking-widest pl-8 mb-8 border-l-4 border-gray-100">
+                            <h2 className="text-xl font-sans font-bold text-gray-300 uppercase tracking-widest pl-8 mb-8 border-l-4 border-border">
                                 {chapter.title}
                             </h2>
                             {chapter.poems && chapter.poems.map(poem => (
@@ -68,7 +68,7 @@ export default async function BookPage({ params }: { params: { bookId: string } 
                         </div>
                     ))
                 ) : (
-                    <div className="text-center py-20 text-gray-400 font-serif">
+                    <div className="text-center py-20 text-foreground-subtle font-serif">
                         <p>暂无诗歌章节内容</p>
                     </div>
                 )}
