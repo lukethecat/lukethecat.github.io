@@ -4,7 +4,7 @@
             "id": "hanxuema1995",
             "title": "汗血马",
             "year": "1995年",
-            "description": "西域历史系列组诗，以汗血马为意象，追溯从古长安到西域的丝绸之路历史。",
+            "description": "西域历史系列组诗,以汗血马为意象,追溯从古长安到西域的丝绸之路历史。",
             "type": "poetry",
             "path": "/books/hanxuema1995",
             "cover": "/images/hanxuema-cover.jpg",
@@ -39,7 +39,7 @@
             "id": "zhungaer1984",
             "title": "准噶尔诗草",
             "year": "1984年",
-            "description": "李瑜早期诗歌代表作，收录诗人在新疆垦区创作的抒情诗篇。全书分为四卷：飘动的篝火、将军与城、一位诗人在古尔班通古特、为了爱情巴格达不嫌远。",
+            "description": "李瑜早期诗歌代表作,收录诗人在新疆垦区创作的抒情诗篇。全书分为四卷:飘动的篝火、将军与城、一位诗人在古尔班通古特、为了爱情巴格达不嫌远。",
             "type": "poetry",
             "path": "/books/zhungaer1984",
             "cover": "/images/zhungaer-cover.jpg",
@@ -62,7 +62,7 @@
             "id": "heiyingsushangjuan1998",
             "title": "黑罂粟·上卷",
             "year": "1998年",
-            "description": "行吟诗101首，收录诗人漫游新疆北部阿尔泰山、塔尔巴哈台高地、伊犁河谷和天山山脉的行吟之作，融历史、人文、民俗于漂泊者的目光之中。",
+            "description": "行吟诗101首,收录诗人漫游新疆北部阿尔泰山、塔尔巴哈台高地、伊犁河谷和天山山脉的行吟之作,融历史、人文、民俗于漂泊者的目光之中。",
             "type": "poetry",
             "path": "/books/heiyingsushangjuan1998",
             "cover": "/images/heiyingsu-cover.jpg",
@@ -91,7 +91,7 @@
             "id": "heiyingsuxiajuan1998",
             "title": "黑罂粟·下卷",
             "year": "1998年",
-            "description": "收录作者环游新疆南部的塔克拉玛干沙漠和攀登帕米尔高原的行吟诗101首。以漂泊者的眼光，构筑了西域人文、地理、历史和现实的诗歌世界。",
+            "description": "收录作者环游新疆南部的塔克拉玛干沙漠和攀登帕米尔高原的行吟诗101首。以漂泊者的眼光,构筑了西域人文、地理、历史和现实的诗歌世界。",
             "type": "poetry",
             "path": "/books/heiyingsuxiajuan1998",
             "cover": "/images/heiyingsu-cover.jpg",
@@ -104,7 +104,7 @@
                 },
                 {
                     "id": "heiyingsuxiajuan1998-preface",
-                    "title": "代序：寂寞心态",
+                    "title": "代序:寂寞心态",
                     "author": "张小平",
                     "path": "/essays/heiyingsuxiajuan1998-preface"
                 },
@@ -126,12 +126,20 @@
     "essays": [
         {
             "id": "xinjiang-bingtuan-bianseshi-60years",
-            "title": "新疆兵团“ 新边塞诗” 六十年发展综述",
+            "title": "新疆兵团“新边塞诗”六十年发展综述",
             "author": "杨昌俊",
             "date": "2019-07",
-            "description": "探讨新疆兵团诗歌随着1954年兵团成立而产生，在80年代成为有全国影响力的流派“新边塞诗”的六十年发展历程。",
+            "description": "探讨新疆兵团诗歌随着1954年兵团成立而产生，在80年代成为有全国影响力的流派"新边塞诗"的六十年发展历程。",
             "sourceLink": "/pdfs/essays/xinjiang-bingtuan-bianseshi-60years.pdf",
             "path": "/essays/xinjiang-bingtuan-bianseshi-60years"
+        },
+        {
+            "id": "xia-guanzhou-liyu-poetry",
+            "title": "一支深情的长箫——论新边塞诗婉约派代表诗人李瑜的诗歌",
+            "author": "夏冠洲",
+            "date": "2011-06",
+            "description": "从创作题材、艺术风格、诗体形式等方面，论述李瑜作为新边塞诗"婉约派"代表诗人的独特贡献。",
+            "path": "/essays/xia-guanzhou-liyu-poetry"
         }
     ]
 }
