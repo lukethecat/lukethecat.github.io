@@ -40,6 +40,7 @@ npm run build            # Next.js 构建
 
 ### 6. 提交推送
 ```bash
+git status                  # 检查变更范围（确认没有误删）
 git add -A
 git commit -m "type(scope): 描述"
 git push origin main

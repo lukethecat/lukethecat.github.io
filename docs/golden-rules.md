@@ -34,3 +34,8 @@ npm run process:books && npm run test:data && npm run build
 
 ## GR-5: 自测确认
 推送给用户前，必须用 Chrome CDP 验证线上页面。
+
+## GR-6: Git 安全
+- `git add -A` 前必须 `git status` 检查变更范围
+- `.gitignore` 中禁止使用通配符模式（如 `essay*/` 会误匹配 `essays/`）
+- 删除文件前先确认影响范围
