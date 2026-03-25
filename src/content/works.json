@@ -140,6 +140,14 @@
             "date": "2011-06",
             "description": "从创作题材、艺术风格、诗体形式等方面，论述李瑜作为新边塞诗「婉约派」代表诗人的独特贡献。",
             "path": "/essays/xia-guanzhou-liyu-poetry"
+        },
+        {
+            "id": "zhang-xiaoping-liyu-1988",
+            "title": "论李瑜诗歌创作的艺术特色",
+            "author": "张小平",
+            "date": "1988",
+            "description": "从题材主题、情感表达、艺术张力、诗体形式等方面，系统论述李瑜「轻赋体」诗歌的独特艺术风格。",
+            "path": "/essays/zhang-xiaoping-liyu-1988"
         }
     ]
 }
