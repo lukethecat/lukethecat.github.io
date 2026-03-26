@@ -175,6 +175,15 @@
             "description": "诗人李瑜印象，新疆作家巡礼系列，记录李瑜的创作生涯与诗歌风格。",
             "type": "news",
             "path": "/essays/xinjiang-economy-2017-liyu"
+        },
+        {
+            "id": "gudao-miss-liyu-2024",
+            "title": "李瑜的怀念",
+            "author": "孤岛",
+            "date": "2024-09-02",
+            "description": "孤岛怀念诗人李瑜，回忆与李瑜的交往，以及李瑜对新疆书画界的贡献。",
+            "type": "memorial",
+            "path": "/essays/gudao-miss-liyu-2024"
         }
     ]
 }
