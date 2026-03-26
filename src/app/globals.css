@@ -95,3 +95,32 @@ body {
   background-color: transparent !important;
   border: none !important;
 }
+
+/* Newspaper Gallery Styles */
+.newspaper-gallery {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: #fafafa;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.newspaper-gallery img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+
+.newspaper-gallery img:hover {
+  transform: scale(1.02);
+}
+
+.newspaper-gallery p {
+  margin-top: 1rem;
+  text-align: center;
+  font-style: italic;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
