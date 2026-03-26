@@ -108,12 +108,29 @@ export default async function EssayPage({ params }: { params: { essayId: string 
         let key = 0;
 
         const parseInline = (text: string) => {
-            const citeRegex = /\^\[(\d+)\]/g;
-            const parts = text.split(/(\*\*.*?\*\*|\^\[\d+\])/g);
+            // Support bold, links, and citations
+            const parts = text.split(/(\*\*.*?\*\*|\[.*?\]\(.*?\)|\^\[\d+\])/g);
             
             return parts.map((part, i) => {
                 if (part.startsWith('**') && part.endsWith('**')) {
                     return <strong key={`bold-${i}`} className="font-semibold text-foreground">{part.slice(2, -2)}</strong>;
+                }
+                if (part.match(/^\[.*?\]\(.*?\)$/)) {
+                    const match = part.match(/^\[(.*?)\]\((.*?)\)$/);
+                    if (match) {
+                        const [, linkText, url] = match;
+                        return (
+                            <a 
+                                key={`link-${i}`} 
+                                href={url} 
+                                className="text-accent hover:text-accent-hover underline transition-colors"
+                                target={url.startsWith('http') ? '_blank' : undefined}
+                                rel={url.startsWith('http') ? 'noopener noreferrer' : undefined}
+                            >
+                                {linkText}
+                            </a>
+                        );
+                    }
                 }
                 if (part.startsWith('^[') && part.endsWith(']')) {
                     const num = part.slice(2, -1);
@@ -159,54 +176,37 @@ export default async function EssayPage({ params }: { params: { essayId: string 
         for (const line of lines) {
             const trimmed = line.trim();
 
-            if (line.startsWith('# ')) {
-                flushBlocks();
-                elements.push(
-                    <h1 key={`h1-${key++}`} className="text-3xl sm:text-4xl mt-12 mb-8 font-serif font-bold text-foreground text-center leading-tight">
-                        {parseInline(line.substring(2))}
-                    </h1>
-                );
-            } else if (line.startsWith('## ')) {
+            if (trimmed.startsWith('# ')) {
                 flushBlocks();
                 elements.push(
                     <h2 key={`h2-${key++}`} className="text-2xl font-bold font-serif tracking-wide mt-16 mb-8 text-foreground border-l-4 border-foreground pl-4 py-1">
-                        {parseInline(line.substring(3))}
+                        {trimmed.slice(2)}
                     </h2>
                 );
-            } else if (line.startsWith('### ')) {
+            } else if (trimmed.startsWith('### ')) {
                 flushBlocks();
                 elements.push(
                     <h3 key={`h3-${key++}`} className="text-xl font-bold font-serif tracking-wide mt-12 mb-6 text-foreground">
-                        {parseInline(line.substring(4))}
+                        {trimmed.slice(4)}
                     </h3>
                 );
-            } else if (line.startsWith('> ')) {
-                if (currentParagraph.length > 0 || inList) flushBlocks();
-                inQuote = true;
-                quoteLines.push(line.substring(2));
-            } else if (trimmed.match(/^[-*]\s/)) {
-                if (currentParagraph.length > 0 || inQuote) flushBlocks();
-                inList = true;
-                listItems.push(<li key={`li-${key++}`}>{parseInline(trimmed.substring(2))}</li>);
-            } else if (trimmed.match(/^\d+\.\s/)) {
-                if (currentParagraph.length > 0 || inQuote) flushBlocks();
-                inList = true;
-                listItems.push(<li key={`li-${key++}`} className="list-decimal">{parseInline(trimmed.replace(/^\d+\.\s/, ''))}</li>);
-            } else if (line.includes('**作者：**') || line.includes('**基金项目：**') || line.includes('**作者简介：**')) {
+            } else if (trimmed.startsWith('- ')) {
                 flushBlocks();
-                elements.push(
-                    <div key={`meta-${key++}`} className="text-sm text-foreground-muted bg-surface p-4 rounded-md mb-6 border border-border font-sans">
-                        {parseInline(line)}
-                    </div>
+                inList = true;
+                listItems.push(
+                    <li key={`li-${key++}`} className="pl-2">
+                        {parseInline(trimmed.slice(2))}
+                    </li>
                 );
+            } else if (trimmed.startsWith('> ')) {
+                flushBlocks();
+                inQuote = true;
+                quoteLines.push(trimmed.slice(2));
             } else if (trimmed === '') {
                 flushBlocks();
             } else {
-                if (inQuote) {
-                    quoteLines.push(line);
-                } else {
-                    currentParagraph.push(line);
-                }
+                if (inList || inQuote) flushBlocks();
+                currentParagraph.push(trimmed);
             }
         }
         flushBlocks();
@@ -216,18 +216,10 @@ export default async function EssayPage({ params }: { params: { essayId: string 
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-            {/* Language Switcher */}
-            <div className="fixed top-4 right-4 z-50">
-                <LanguageSwitcher />
-            </div>
-
-            {/* Header */}
+            <LanguageSwitcher />
             <header className="border-b border-border bg-background">
                 <div className="max-w-4xl mx-auto px-8 py-6">
-                    <Link
-                        href="/"
-                        className="inline-flex items-center text-foreground-muted hover:text-foreground transition"
-                    >
+                    <Link href="/" className="inline-flex items-center text-foreground-muted hover:text-foreground transition">
                         <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                         </svg>
@@ -236,10 +228,7 @@ export default async function EssayPage({ params }: { params: { essayId: string 
                 </div>
             </header>
 
-            {/* Article Content */}
             <article className="max-w-4xl mx-auto px-8 py-12">
-                
-                {/* Essay Header Info */}
                 <div className="text-center mb-16 max-w-2xl mx-auto">
                     <h1 className="text-4xl font-serif font-bold text-foreground leading-tight mb-6">
                         {essay.metadata.title}
@@ -247,28 +236,21 @@ export default async function EssayPage({ params }: { params: { essayId: string 
                     <div className="flex items-center justify-center text-foreground-muted space-x-6 text-sm mb-8">
                         {essay.metadata.author && (
                             <div className="flex items-center">
-                                <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                                <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
                                 {essay.metadata.author}
                             </div>
                         )}
                         {essay.metadata.date && (
                             <div className="flex items-center">
-                                <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                                <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
                                 {essay.metadata.date}
                             </div>
                         )}
                     </div>
-                    {essay.metadata.sourceLink && (
-                        <a
-                            href={essay.metadata.sourceLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center px-4 py-2 bg-surface text-foreground rounded-full border border-border hover:border-accent hover:text-accent hover:bg-accent-bg transition-all duration-300 text-sm font-medium shadow-sm"
-                        >
-                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                            查看原版 PDF
-                        </a>
-                    )}
                 </div>
 
                 <div className="w-full">
@@ -276,15 +258,12 @@ export default async function EssayPage({ params }: { params: { essayId: string 
                 </div>
             </article>
 
-            {/* Footer */}
             <footer className="border-t border-border py-8 mt-24">
                 <div className="max-w-4xl mx-auto px-8 text-center text-sm text-foreground-subtle space-y-2">
                     <p>最后更新: 2026-03-26 | 地点: 北京 | 部署版本: 145</p>
                     <p>联系方式：<a href="mailto:tictic.ta@gmail.com" className="hover:text-foreground-muted transition">tictic.ta@gmail.com</a></p>
                     <div className="mt-4">
-                        <Link href="/" className="text-foreground-muted hover:text-foreground transition font-medium">
-                            返回首页
-                        </Link>
+                        <Link href="/" className="text-foreground-muted hover:text-foreground transition font-medium">返回首页</Link>
                     </div>
                 </div>
             </footer>
