@@ -5,8 +5,8 @@ import Link from 'next/link'
 const imageData: Record<string, { src: string; title: string; description: string; backLink: string }> = {
   'liyu-xinjiang-economy-2017': {
     src: '/images/newspaper/liyu-xinjiang-economy-2017-small.jpg',
-    title: '新疆经济报 2017年1月15日 第08版',
-    description: '天山副刊·悦读',
+    title: '那丛野罂粟依然火焰般燃烧 · 原版扫描',
+    description: '新疆经济报 · 新疆作家巡礼（三十四）',
     backLink: '/essays/xinjiang-economy-2017-liyu'
   }
 }
