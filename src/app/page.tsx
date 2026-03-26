@@ -237,7 +237,7 @@ export default async function Home() {
             <footer className="border-t border-border py-12">
                 <div className="max-w-5xl mx-auto px-8 flex flex-col items-center justify-center space-y-2 text-foreground-subtle text-xs">
                     <p>李瑜诗歌数字档案馆</p>
-                    <p>最后更新: 2026-03-25 | 地点: 北京 | 部署版本: 144</p>
+                    <p>最后更新: 2026-03-26 | 地点: 北京 | 部署版本: 145</p>
                     <p>联系方式：<a href="mailto:tictic.ta@gmail.com" className="hover:text-foreground-muted transition">tictic.ta@gmail.com</a></p>
                 </div>
             </footer>
