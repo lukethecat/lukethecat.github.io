@@ -11,6 +11,10 @@ const imageData: Record<string, { src: string; title: string; description: strin
   }
 }
 
+export function generateStaticParams() {
+  return Object.keys(imageData).map((imageId) => ({ imageId }))
+}
+
 export default function ImageViewPage({ params }: { params: { imageId: string } }) {
   const image = imageData[params.imageId]
   
