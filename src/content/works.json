@@ -155,7 +155,8 @@
             "author": "张秋格",
             "date": "2011-02",
             "type": "academic",
-            "path": "/essays/zhang-qiuge-xinbianseshi-2011"
+            "path": "/essays/zhang-qiuge-xinbianseshi-2011",
+            "description": "2011年新疆大学硕士学位论文，系统研究20世纪80年代新边塞诗的形成、发展与新变，分析诗人身份、审美特色和当代性。"
         },
         {
             "id": "tian-xianyao-liyu-memorial",
@@ -163,7 +164,8 @@
             "author": "田先瑶",
             "date": "2024-08-04",
             "type": "memorial",
-            "path": "/essays/tian-xianyao-liyu-memorial"
+            "path": "/essays/tian-xianyao-liyu-memorial",
+            "description": "田先瑶悼念挚友李瑜，回忆60年友谊，记录诗人严谨、勤奋、孤独而充满诗意的一生，以及「为了爱情，巴格达不嫌远」的传奇。"
         }
     ]
 }
