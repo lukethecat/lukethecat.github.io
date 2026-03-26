@@ -4,7 +4,7 @@ import Link from 'next/link'
 // Image data mapping
 const imageData: Record<string, { src: string; title: string; description: string; backLink: string }> = {
   'liyu-xinjiang-economy-2017': {
-    src: '/images/newspaper/liyu-xinjiang-economy-2017.jpg',
+    src: '/images/newspaper/liyu-xinjiang-economy-2017-small.jpg',
     title: '新疆经济报 2017年1月15日 第08版',
     description: '天山副刊·悦读',
     backLink: '/essays/xinjiang-economy-2017-liyu'
@@ -49,8 +49,8 @@ export default function ImageViewPage({ params }: { params: { imageId: string } 
           <Image
             src={image.src}
             alt={image.title}
-            width={800}
-            height={1200}
+            width={1200}
+            height={800}
             className="rounded-lg shadow-lg"
           />
         </div>
