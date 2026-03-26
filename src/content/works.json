@@ -148,6 +148,22 @@
             "date": "1988",
             "description": "从题材主题、情感表达、艺术张力、诗体形式等方面，系统论述李瑜「轻赋体」诗歌的独特艺术风格。",
             "path": "/essays/zhang-xiaoping-liyu-1988"
+        },
+        {
+            "id": "zhang-qiuge-xinbianseshi-2011",
+            "title": "新边塞诗研究",
+            "author": "张秋格",
+            "date": "2011-02",
+            "type": "academic",
+            "path": "/essays/zhang-qiuge-xinbianseshi-2011"
+        },
+        {
+            "id": "tian-xianyao-liyu-memorial",
+            "title": "「为了爱情，巴格达不嫌远」的诗人远去了",
+            "author": "田先瑶",
+            "date": "2024-08-04",
+            "type": "memorial",
+            "path": "/essays/tian-xianyao-liyu-memorial"
         }
     ]
 }
