@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
 // Image data mapping
@@ -46,12 +45,11 @@ export default function ImageViewPage({ params }: { params: { imageId: string } 
         </div>
 
         <div className="flex justify-center">
-          <Image
-            src={image.src}
+          {/* Use regular img tag instead of Next.js Image to avoid optimization issues */}
+          <img 
+            src={image.src} 
             alt={image.title}
-            width={1200}
-            height={800}
-            className="rounded-lg shadow-lg"
+            className="rounded-lg shadow-lg max-w-full h-auto"
           />
         </div>
       </main>
