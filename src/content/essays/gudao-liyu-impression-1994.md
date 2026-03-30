@@ -41,4 +41,4 @@ tags: [李瑜, 诗歌评论, 孤岛, 陈伍国, 新疆作家巡礼]
 
 ---
 
-[那丛野罂粟依然火焰般燃烧 · 原版扫描](/view/liyu-xinjiang-economy-2017)
+[那丛野罂粟依然火焰般燃烧 · 原版扫描](/view/gudao-liyu-impression-1994)

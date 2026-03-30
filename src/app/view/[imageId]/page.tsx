@@ -2,11 +2,11 @@ import Link from 'next/link'
 
 // Image data mapping
 const imageData: Record<string, { src: string; title: string; description: string; backLink: string }> = {
-  'liyu-xinjiang-economy-2017': {
+  'gudao-liyu-impression-1994': {
     src: '/images/newspaper/liyu-xinjiang-economy-2017-small.jpg',
     title: '那丛野罂粟依然火焰般燃烧 · 原版扫描',
-    description: '新疆经济报 · 新疆作家巡礼（三十四）',
-    backLink: '/essays/xinjiang-economy-2017-liyu'
+    description: '新疆作家巡礼（三十四）· 1994年11月15日',
+    backLink: '/essays/gudao-liyu-impression-1994'
   }
 }
 
@@ -45,7 +45,6 @@ export default function ImageViewPage({ params }: { params: { imageId: string } 
         </div>
 
         <div className="flex justify-center">
-          {/* Use regular img tag instead of Next.js Image to avoid optimization issues */}
           <img 
             src={image.src} 
             alt={image.title}
