@@ -56,6 +56,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 拉取完整的 Git 历史
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
