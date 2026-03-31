@@ -176,12 +176,19 @@ export default async function EssayPage({ params }: { params: { essayId: string 
         for (const line of lines) {
             const trimmed = line.trim();
 
-            if (trimmed.startsWith('# ')) {
+            if (trimmed.startsWith('# ') && !trimmed.startsWith('## ')) {
                 flushBlocks();
                 elements.push(
                     <h2 key={`h2-${key++}`} className="text-2xl font-bold font-serif tracking-wide mt-16 mb-8 text-foreground border-l-4 border-foreground pl-4 py-1">
                         {trimmed.slice(2)}
                     </h2>
+                );
+            } else if (trimmed.startsWith('## ')) {
+                flushBlocks();
+                elements.push(
+                    <h3 key={`h3-${key++}`} className="text-xl font-bold font-serif tracking-wide mt-12 mb-6 text-foreground">
+                        {trimmed.slice(3)}
+                    </h3>
                 );
             } else if (trimmed.startsWith('### ')) {
                 flushBlocks();
