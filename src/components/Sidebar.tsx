@@ -144,7 +144,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
                 <div className="p-4 border-t border-border text-center">
                     <div className="text-[10px] text-foreground-subtle space-y-1">
-                        <p>最后更新: 2026-03-26 | 地点: 北京 | 部署版本: 145</p>
+                        <p>最后更新: {process.env.NEXT_PUBLIC_GIT_LAST_DATE} | 提交次数: {process.env.NEXT_PUBLIC_GIT_COMMIT_COUNT} | 部署版本: v{process.env.NEXT_PUBLIC_GIT_COMMIT_COUNT}</p>
                         <p>联系方式：<a href="mailto:tictic.ta@gmail.com" className="hover:text-foreground-muted transition">tictic.ta@gmail.com</a></p>
                     </div>
                 </div>

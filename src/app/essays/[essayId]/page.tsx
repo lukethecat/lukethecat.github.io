@@ -258,9 +258,10 @@ export default async function EssayPage({ params }: { params: { essayId: string 
                 </div>
             </article>
 
+            {/* Footer */}
             <footer className="border-t border-border py-8 mt-24">
                 <div className="max-w-4xl mx-auto px-8 text-center text-sm text-foreground-subtle space-y-2">
-                    <p>最后更新: 2026-03-26 | 地点: 北京 | 部署版本: 145</p>
+                    <p className="mt-2 text-xs text-gray-400">最后更新: {process.env.NEXT_PUBLIC_GIT_LAST_DATE} | 提交次数: {process.env.NEXT_PUBLIC_GIT_COMMIT_COUNT} | 部署版本: v{process.env.NEXT_PUBLIC_GIT_COMMIT_COUNT}</p>
                     <p>联系方式：<a href="mailto:tictic.ta@gmail.com" className="hover:text-foreground-muted transition">tictic.ta@gmail.com</a></p>
                     <div className="mt-4">
                         <Link href="/" className="text-foreground-muted hover:text-foreground transition font-medium">返回首页</Link>
