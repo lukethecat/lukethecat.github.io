@@ -1,9 +1,9 @@
 ---
-title: 从大漠升起袅袅的笛声——读《准噶尔诗草》
-author: 阿红
-date: 1984年5月6日
-type: afterword
-location: 沈阳辽宁协作
+title: "从大漠升起袅袅的笛声——读《准噶尔诗草》"
+author: "阿红"
+date: "1984-05-06"
+publication: "准噶尔诗草"
+location: "沈阳辽宁协作"
 ---
 
 # 从大漠升起袅袅的笛声——读《准噶尔诗草》
