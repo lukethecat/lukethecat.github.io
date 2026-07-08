@@ -3,6 +3,9 @@ import path from 'path';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { marked } from 'marked';
+import markedFootnote from 'marked-footnote';
+
+marked.use(markedFootnote());
 interface Essay {
     title: string;
     author: string;
