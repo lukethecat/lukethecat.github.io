@@ -183,7 +183,7 @@ export default async function EssayPage({ params }: { params: Promise<{ essayId:
             {/* Footer */}
             <footer className="border-t border-border py-8 mt-24">
                 <div className="max-w-3xl mx-auto px-6 md:px-8 text-center text-sm text-foreground-subtle space-y-2 font-sans">
-                    <p className="mt-2 text-xs">最后更新: {process.env.NEXT_PUBLIC_GIT_LAST_DATE} | <a href="https://github.com/lukethecat/lukethecat.github.io" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition">提交次数: {process.env.NEXT_PUBLIC_GIT_COMMIT_COUNT}</a> | 部署时间: {process.env.NEXT_PUBLIC_BUILD_TIME}</p>
+                    <p className="mt-2 text-xs">最后更新: {process.env.NEXT_PUBLIC_GIT_LAST_DATE} | <a href="https://github.com/lukethecat/lukethecat.github.io/deployments" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition">部署次数: {process.env.NEXT_PUBLIC_GIT_COMMIT_COUNT}</a> | 部署时间: {process.env.NEXT_PUBLIC_BUILD_TIME}</p>
                     <p>联系方式：<a href="mailto:tictic.ta@gmail.com" className="hover:text-foreground-muted transition">tictic.ta@gmail.com</a></p>
                     <div className="mt-4">
                         <Link href="/" className="text-foreground-muted hover:text-foreground transition font-medium">返回首页</Link>
