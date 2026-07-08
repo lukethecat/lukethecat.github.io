@@ -1,7 +1,7 @@
 {
     "name": "poet-archive",
     "version": "0.1.0",
-    "private": true,
+    "license": "MIT",
     "scripts": {
         "dev": "next dev",
         "build": "npm run process:books && NEXT_TELEMETRY_DISABLED=1 next build",
