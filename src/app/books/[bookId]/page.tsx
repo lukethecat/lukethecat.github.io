@@ -31,8 +31,9 @@ export async function generateStaticParams() {
     }
 }
 
-export async function generateMetadata({ params }: { params: { bookId: string } }): Promise<Metadata> {
-    const book = await getBook(params.bookId);
+export async function generateMetadata({ params }: { params: Promise<{ bookId: string }> }): Promise<Metadata> {
+    const { bookId } = await params;
+    const book = await getBook(bookId);
     if (!book) {
         return {
             title: '诗集未找到',
@@ -50,14 +51,15 @@ export async function generateMetadata({ params }: { params: { bookId: string } 
     };
 }
 
-export default async function BookPage({ params }: { params: { bookId: string } }) {
-    const book = await getBook(params.bookId);
+export default async function BookPage({ params }: { params: Promise<{ bookId: string }> }) {
+    const { bookId } = await params;
+    const book = await getBook(bookId);
 
     if (!book) {
         return (
             <main className="flex min-h-screen flex-col items-center justify-center p-24">
                 <h1 className="text-2xl font-bold">Book Not Found</h1>
-                <p className="mt-4">The book "{params.bookId}" does not exist.</p>
+                <p className="mt-4">The book "{bookId}" does not exist.</p>
             </main>
         );
     }

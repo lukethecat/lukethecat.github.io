@@ -86,8 +86,9 @@ export async function generateStaticParams() {
     }
 }
 
-export async function generateMetadata({ params }: { params: { essayId: string } }): Promise<Metadata> {
-    const essay = await getEssay(params.essayId);
+export async function generateMetadata({ params }: { params: Promise<{ essayId: string }> }): Promise<Metadata> {
+    const { essayId } = await params;
+    const essay = await getEssay(essayId);
     if (!essay) {
         return {
             title: '文章未找到',
@@ -111,8 +112,9 @@ export async function generateMetadata({ params }: { params: { essayId: string }
 }
 
 
-export default async function EssayPage({ params }: { params: { essayId: string } }) {
-    const essay = await getEssay(params.essayId);
+export default async function EssayPage({ params }: { params: Promise<{ essayId: string }> }) {
+    const { essayId } = await params;
+    const essay = await getEssay(essayId);
 
     if (!essay) {
         return (
@@ -170,8 +172,7 @@ export default async function EssayPage({ params }: { params: { essayId: string 
                     <ReactMarkdown 
                         className="prose prose-lg prose-stone dark:prose-invert max-w-none prose-headings:font-serif prose-headings:tracking-wide prose-headings:text-foreground prose-p:font-serif prose-p:leading-[2.2] prose-p:text-justify prose-p:tracking-[0.04em] prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-blockquote:border-accent/40 prose-blockquote:font-kai prose-blockquote:italic prose-blockquote:text-foreground-muted prose-blockquote:bg-surface prose-blockquote:px-6 prose-blockquote:py-2 prose-blockquote:rounded-r-lg"
                         remarkPlugins={[remarkGfm, remarkBreaks]}
-                    >    {essay.content}
-                    </ReactMarkdown>
+                    >{essay.content}</ReactMarkdown>
                 </div>
             </article>
 
