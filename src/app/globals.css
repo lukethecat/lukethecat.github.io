@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Design Tokens ===== */
+@layer base {
+  :root {
+    /* Foreground — warm ink tones */
+    --color-foreground: 44 36 24;          /* #2C2418 — warm dark brown, like print ink */
+    --color-foreground-muted: 122 110 93;  /* #7A6E5D — warm muted brown */
+    --color-foreground-subtle: 163 150 130; /* #A39682 — warm subtle */
+
+    /* Background — warm paper/parchment */
+    --color-background: 248 244 237;       /* #F8F4ED — warm cream paper */
+    --color-surface: 243 237 226;          /* #F3EDE2 — slightly deeper warm */
+    --color-surface-elevated: 252 249 244; /* #FCF9F4 — lighter elevated surface */
+
+    /* Border — warm tones */
+    --color-border: 232 223 208;           /* #E8DFD0 — warm border */
+    --color-border-hover: 210 198 178;     /* #D2C6B2 — warm border hover */
+
+    /* Accent — elegant olive/brown */
+    --color-accent: 107 92 62;             /* #6B5C3E — warm olive accent */
+    --color-accent-hover: 86 73 48;        /* #564930 — darker hover */
+    --color-accent-bg: 243 237 226;        /* #F3EDE2 — warm accent bg */
+
+    /* Sidebar — warm paper */
+    --color-sidebar-bg: 245 240 232;       /* #F5F0E8 */
+    --color-sidebar-border: 232 223 208;   /* #E8DFD0 */
+    --color-sidebar-active: 237 230 218;   /* #EDE6DA */
+
+    /* Reading typography tokens */
+    --reading-line-height: 2.4;
+    --reading-letter-spacing: 0.05em;
+    --reading-font-size: 1.2rem;
+    --reading-font-size-lg: 1.35rem;
+  }
+
+  .dark {
+    /* Foreground — warm light tones */
+    --color-foreground: 237 230 218;       /* #EDE6DA — warm light */
+    --color-foreground-muted: 180 168 148; /* #B4A894 — warm muted */
+    --color-foreground-subtle: 140 128 108; /* #8C806C — warm subtle */
+
+    /* Background — warm dark */
+    --color-background: 32 28 22;          /* #201C16 — warm dark bg */
+    --color-surface: 42 37 29;             /* #2A251D — warm dark surface */
+    --color-surface-elevated: 56 49 38;    /* #383126 — warm dark elevated */
+
+    /* Border — warm dark */
+    --color-border: 60 53 40;              /* #3C3528 */
+    --color-border-hover: 80 71 55;        /* #504737 */
+
+    /* Accent — warm gold */
+    --color-accent: 198 178 138;           /* #C6B28A — warm gold accent */
+    --color-accent-hover: 218 198 158;     /* #DAC69E — lighter hover */
+    --color-accent-bg: 42 37 29;           /* #2A251D */
+
+    /* Sidebar — warm dark */
+    --color-sidebar-bg: 38 33 26;          /* #26211A */
+    --color-sidebar-border: 56 49 38;      /* #383126 */
+    --color-sidebar-active: 50 44 34;      /* #322C22 */
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ===== Utilities ===== */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* ===== Reading typography ===== */
+/* Fine-tuned for Chinese poetry & prose reading on mobile */
+.reading-prose {
+  font-size: var(--reading-font-size);
+  line-height: var(--reading-line-height);
+  letter-spacing: var(--reading-letter-spacing);
+}
+@media (min-width: 768px) {
+  .reading-prose {
+    font-size: var(--reading-font-size-lg);
+  }
+}
+
+/* ===== RTL support ===== */
+[dir="rtl"] {
+  font-family: var(--font-noto-naskh), var(--font-inter), sans-serif;
+}
+[dir="rtl"] .font-serif {
+  font-family: var(--font-noto-naskh), serif;
+}
+
+/* ===== Annotation styles ===== */
+.annotation-term {
+  transition: background-color 0.2s ease;
+}
+.annotation-term:hover {
+  background-color: rgba(107, 92, 62, 0.08);
+}
+.dark .annotation-term:hover {
+  background-color: rgba(198, 178, 138, 0.12);
+}
+
+/* ===== Google Translate ===== */
+.goog-te-banner-frame.skiptranslate,
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+body {
+  top: 0px !important;
+}
+.goog-te-gadget-simple {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+/* Newspaper Gallery Styles */
+.newspaper-gallery {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: rgb(var(--color-surface));
+  border-radius: 8px;
+  border: 1px solid rgb(var(--color-border));
+}
+
+.newspaper-gallery img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+
+.newspaper-gallery img:hover {
+  transform: scale(1.02);
+}
+
+.newspaper-gallery p {
+  margin-top: 1rem;
+  text-align: center;
+  font-style: italic;
+  color: rgb(var(--color-foreground-muted));
+  font-size: 0.875rem;
+}

@@ -1,0 +1,114 @@
+import type { Metadata } from "next";
+import { Inter, Noto_Serif, Noto_Serif_SC, EB_Garamond } from "next/font/google";
+import "./globals.css";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { AISearchToggle } from "@/components/AISearchToggle";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { ChatWidget } from "@/components/ChatWidget";
+import Script from "next/script";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const notoSerifLatin = Noto_Serif({
+    subsets: ["latin"],
+    weight: ["400", "700"],
+    variable: "--font-noto-serif-latin"
+});
+const notoSerifSC = Noto_Serif_SC({
+    subsets: ["latin"],
+    weight: ["400", "700"],
+    variable: "--font-noto-serif-sc"
+});
+const ebGaramond = EB_Garamond({
+    subsets: ["latin"],
+    weight: ["400", "500", "700"],
+    style: ["normal", "italic"],
+    variable: "--font-eb-garamond"
+});
+
+export const metadata: Metadata = {
+    title: {
+        default: '李瑜诗歌数字档案馆 | Li Yu Poetry Digital Archive',
+        template: '%s | 李瑜诗歌数字档案馆',
+    },
+    description: '李瑜（1939—），当代著名西部诗人、新边塞诗代表人物。数字档案馆收录诗集《汗血马》《准噶尔诗草》全文，涵盖丝绸之路、天山、伊犁河、新疆兵团等西域主题。Li Yu, a celebrated contemporary Chinese western frontier poet. Digital archive of his complete poetry collections.',
+    keywords: [
+        '李瑜', '李瑜诗歌', '西部诗人', '新边塞诗', '中国现代诗歌', '当代诗歌',
+        '新疆诗歌', '西域诗歌', '丝绸之路', '天山', '伊犁河', '准噶尔',
+        '汗血马', '准噶尔诗草', '兵团文学', '新疆兵团', '边塞诗',
+        'Li Yu', 'Chinese poetry', 'modern Chinese poetry', 'Xinjiang poetry',
+        'frontier poetry', 'Silk Road poetry', 'Western China poet',
+        'Tianshan', 'Ili River', 'Junggar', 'contemporary Chinese literature',
+        '八十年代', '知识分子', '农民', '乡村论述', '西部诗歌', '西部意识', '西部精神', '新边塞诗', '国土论述', '朦胧诗', '国族话语', '个人话语', '美学现代性', '文学主体性', '知青', '寻根派', '寻根小说', '寻根意识', '文化他者', '文化主体性', '文化考察者', '乡土小说', '乡土中国',
+        '八十年代', '知識份子', '農民', '鄉村論述', '西部詩歌', '西部意識', '西部精神', '新邊塞詩', '國土論述', '朦朧詩', '國族話語', '個人話語', '美學現代性', '文學主體性', '知青', '尋根派', '尋根小說', '尋根意識', '文化他者', '文化主體性', '文化考察者', '鄉土小說', '鄉土中國',
+        '1980s', 'Intellectuals', 'Peasants', 'Rural Discourse', 'Western Poetry', 'Western Consciousness', 'Western Spirit', 'New Frontier Poetry', 'National Territory Discourse', 'Misty Poetry', 'National Discourse', 'Personal Discourse', 'Aesthetic Modernity', 'Literary Subjectivity', 'Zhiqing', 'Root-seeking School', 'Root-seeking Fiction', 'Root-seeking Consciousness', 'Cultural Other', 'Cultural Subjectivity', 'Cultural Observer', 'Native Fiction', 'Rural China'
+    ],
+    authors: [{ name: '李瑜', url: 'https://www.liyupoetry.com' }],
+    creator: '李瑜诗歌数字档案馆',
+    metadataBase: new URL('https://www.liyupoetry.com'),
+    alternates: {
+        canonical: 'https://www.liyupoetry.com',
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+        },
+    },
+};
+
+export default function RootLayout({
+    children,
+}: Readonly<{
+    children: React.ReactNode;
+}>) {
+    return (
+        <html lang="zh-CN">
+            <head>
+                {/* LXGW WenKai — elegant Chinese serif/kai font for reading */}
+                <link
+                    rel="preconnect"
+                    href="https://cdn.jsdelivr.net"
+                    crossOrigin="anonymous"
+                />
+                <link
+                    rel="stylesheet"
+                    href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"
+                />
+                <Script
+                    id="google-translate-config"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({
+                                    pageLanguage: 'zh-CN',
+                                    includedLanguages: 'en,de,ar,ug,ru,fr,es,ja,ko',
+                                    layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+                                    autoDisplay: false
+                                }, 'google_translate_element');
+                            }
+                        `
+                    }}
+                />
+                <Script
+                    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+                    strategy="afterInteractive"
+                />
+            </head>
+            <body className={`${inter.variable} ${notoSerifLatin.variable} ${notoSerifSC.variable} ${ebGaramond.variable} font-serif antialiased`}>
+                <ThemeProvider>
+                    <div className="fixed top-4 right-4 z-50 flex items-center gap-3">
+                        <LanguageSwitcher />
+                        <AISearchToggle />
+                        <ThemeToggle />
+                    </div>
+                    {children}
+                    <ChatWidget />
+                </ThemeProvider>
+            </body>
+        </html>
+    );
+}

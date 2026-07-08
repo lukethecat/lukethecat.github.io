@@ -1,0 +1,118 @@
+name: Deploy Website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  actions: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Lint check (golden rules)
+        run: node scripts/lint-check.mjs
+
+      - name: Build Next.js site
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy-gh-pages:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  deploy-cloudflare:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Debug Secrets Status
+        run: |
+          echo "Checking Cloudflare Secrets configuration..."
+          if [ -z "${{ secrets.CF_API_TOKEN }}" ]; then
+            echo "❌ CF_API_TOKEN is missing"
+            exit 1
+          fi
+          if [ -z "${{ secrets.CF_ACCOUNT_ID }}" ]; then
+            echo "❌ CF_ACCOUNT_ID is missing"
+            exit 1
+          fi
+          echo "✅ CF_API_TOKEN exists"
+          echo "✅ CF_ACCOUNT_ID exists"
+
+      - name: Build for Cloudflare
+        run: npm run build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@1
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          projectName: liyupoetry
+          directory: ./out
+          branch: main
+
+  verify-deployment:
+    needs: [deploy-gh-pages]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Verify GitHub Pages
+        run: |
+          echo "Waiting for pages to propagate..."
+          url="https://lukethecat.github.io/"
+          max_retries=12
+          for ((i=1; i<=max_retries; i++)); do
+            echo "Attempt $i/$max_retries: Checking $url"
+            if curl -I -f -s "$url"; then
+              echo "✅ GitHub Pages is UP."
+              exit 0
+            fi
+            echo "⚠️ Not reachable yet. Waiting 10s..."
+            sleep 10
+          done
+          echo "❌ Failed to reach site after 2 minutes."
+          exit 1

@@ -1,0 +1,68 @@
+# Zola build output
+public/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node modules
+node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist/
+build/
+
+# Log files
+*.log
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.temp
+
+# Next.js
+.next/
+out/
+.next_old*
+.next_new/
+.next/trace
+.next/trace-build
+
+# Archive
+_archive_202603/
+
+# Binary source materials (store externally, not in Git)
+*.pdf
+*.docx
+*.doc
+*.xlsx
+*.pptx
+
+# Large test/scratch files
+test.html
+test.js
+test_merge*.py
+
+# Old git backup
+.git_backup/
+
+# Essay directories are not books - ignore generated artifacts
+src/content/essay1/
+src/content/essay2/

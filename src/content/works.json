@@ -1,0 +1,245 @@
+{
+  "books": [
+    {
+      "id": "heiyingsushangjuan1998",
+      "title": "黑罂粟·上卷",
+      "year": "1998年",
+      "description": "行吟诗101首,收录诗人漫游新疆北部阿尔泰山、塔尔巴哈台高地、伊犁河谷和天山山脉的行吟之作,融历史、人文、民俗于漂泊者的目光之中。",
+      "type": "poetry",
+      "path": "/books/heiyingsushangjuan1998",
+      "cover": "/images/heiyingsu-cover.jpg",
+      "relatedEssays": [
+        {
+          "id": "heiyingsushangjuan1998-introduction",
+          "title": "内容简介",
+          "author": "",
+          "path": "/essays/heiyingsushangjuan1998-introduction"
+        },
+        {
+          "id": "heiyingsushangjuan1998-preface",
+          "title": "序",
+          "author": "燎原",
+          "path": "/essays/heiyingsushangjuan1998-preface"
+        },
+        {
+          "id": "heiyingsushangjuan1998-publication",
+          "title": "出版信息",
+          "author": "",
+          "path": "/essays/heiyingsushangjuan1998-publication"
+        }
+      ]
+    },
+    {
+      "id": "heiyingsuxiajuan1998",
+      "title": "黑罂粟·下卷",
+      "year": "1998年",
+      "description": "收录作者环游新疆南部的塔克拉玛干沙漠和攀登帕米尔高原的行吟诗101首。以漂泊者的眼光,构筑了西域人文、地理、历史和现实的诗歌世界。",
+      "type": "poetry",
+      "path": "/books/heiyingsuxiajuan1998",
+      "cover": "/images/heiyingsu-cover.jpg",
+      "relatedEssays": [
+        {
+          "id": "heiyingsuxiajuan1998-introduction",
+          "title": "内容简介",
+          "author": "",
+          "path": "/essays/heiyingsuxiajuan1998-introduction"
+        },
+        {
+          "id": "heiyingsuxiajuan1998-preface",
+          "title": "代序:寂寞心态",
+          "author": "张小平",
+          "path": "/essays/heiyingsuxiajuan1998-preface"
+        },
+        {
+          "id": "heiyingsuxiajuan1998-biography",
+          "title": "李瑜传略",
+          "author": "",
+          "path": "/essays/heiyingsuxiajuan1998-biography"
+        },
+        {
+          "id": "heiyingsuxiajuan1998-publication",
+          "title": "出版信息",
+          "author": "",
+          "path": "/essays/heiyingsuxiajuan1998-publication"
+        }
+      ]
+    },
+    {
+      "id": "hanxuema1995",
+      "title": "汗血马",
+      "year": "1995年",
+      "description": "西域历史系列组诗,以汗血马为意象,追溯从古长安到西域的丝绸之路历史。",
+      "type": "poetry",
+      "path": "/books/hanxuema1995",
+      "cover": "/images/hanxuema-cover.jpg",
+      "relatedEssays": [
+        {
+          "id": "hanxuema1995-biography",
+          "title": "作者小传",
+          "author": "",
+          "path": "/essays/hanxuema1995-biography"
+        },
+        {
+          "id": "hanxuema-introduction",
+          "title": "内容简介",
+          "author": "",
+          "path": "/essays/hanxuema-introduction"
+        },
+        {
+          "id": "hanxuema-preface",
+          "title": "序",
+          "author": "张小平",
+          "path": "/essays/hanxuema-preface"
+        },
+        {
+          "id": "hanxuema-afterword",
+          "title": "后记",
+          "author": "李瑜",
+          "path": "/essays/hanxuema-afterword"
+        },
+        {
+          "id": "hanxuema-publication",
+          "title": "出版信息",
+          "author": "",
+          "path": "/essays/hanxuema-publication"
+        }
+      ]
+    },
+    {
+      "id": "weileaiqingbagedabuxianyuan1991",
+      "title": "为了爱情，巴格达不嫌远",
+      "year": "1991年",
+      "description": "李瑜的另一部代表作。收录诗人以黑戈壁为背景创作的抒情诗篇，全书分为两卷：黑戈壁、悲戚的夜莺，展现了第一代拓荒者在艰苦岁月中的赤诚与浪漫爱恋。",
+      "type": "poetry",
+      "path": "/books/weileaiqingbagedabuxianyuan1991",
+      "cover": "/images/weileaiqing-cover.jpg",
+      "relatedEssays": [
+        {
+          "id": "weileaiqingbagedabuxianyuan1991-biography",
+          "title": "作者小传",
+          "author": "",
+          "path": "/essays/weileaiqingbagedabuxianyuan1991-biography"
+        },
+        {
+          "id": "weileaiqingbagedabuxianyuan1991-afterword",
+          "title": "后记",
+          "author": "李瑜",
+          "path": "/essays/weileaiqingbagedabuxianyuan1991-afterword"
+        },
+        {
+          "id": "weileaiqingbagedabuxianyuan1991-publication",
+          "title": "出版信息",
+          "author": "",
+          "path": "/essays/weileaiqingbagedabuxianyuan1991-publication"
+        }
+      ]
+    },
+    {
+      "id": "zhungaer1984",
+      "title": "准噶尔诗草",
+      "year": "1984年",
+      "description": "李瑜早期诗歌代表作,收录诗人在新疆垦区创作的抒情诗篇。全书分为四卷:飘动的篝火、将军与城、一位诗人在古尔班通古特、为了爱情，巴格达不嫌远。",
+      "type": "poetry",
+      "path": "/books/zhungaer1984",
+      "cover": "/images/zhungaer-cover.jpg",
+      "relatedEssays": [
+        {
+          "id": "zhungaer1984-biography",
+          "title": "作者小传",
+          "author": "",
+          "path": "/essays/zhungaer1984-biography"
+        },
+        {
+          "id": "zhungaer1984-introduction",
+          "title": "内容简介",
+          "author": "",
+          "path": "/essays/zhungaer1984-introduction"
+        },
+        {
+          "id": "zhungaer-preface",
+          "title": "序·开拓精神万岁",
+          "author": "公刘",
+          "path": "/essays/zhungaer-preface"
+        },
+        {
+          "id": "zhungaer-afterword",
+          "title": "跋·从大漠升起袅袅的笛声",
+          "author": "阿红",
+          "path": "/essays/zhungaer-afterword"
+        }
+      ]
+    }
+  ],
+  "essays": [
+    {
+      "id": "gudao-miss-liyu-2024",
+      "title": "李瑜的怀念",
+      "author": "孤岛",
+      "date": "2024-09-02",
+      "description": "孤岛怀念诗人李瑜，回忆与李瑜的交往，以及李瑜对新疆书画界的贡献。",
+      "type": "memorial",
+      "path": "/essays/gudao-miss-liyu-2024"
+    },
+    {
+      "id": "tian-xianyao-liyu-memorial",
+      "title": "「为了爱情，巴格达不嫌远」的诗人远去了",
+      "author": "田先瑶",
+      "date": "2024-08-04",
+      "type": "memorial",
+      "path": "/essays/tian-xianyao-liyu-memorial",
+      "description": "田先瑶悼念挚友李瑜，回忆60年友谊，记录诗人严谨、勤奋、孤独而充满诗意的一生，以及「为了爱情，巴格达不嫌远」的传奇。"
+    },
+    {
+      "id": "zhang-deqiang-xinbianseshi-2022",
+      "title": "“新边塞诗派”崛起的来龙去脉",
+      "author": "张德强",
+      "date": "2022-03-24",
+      "description": "梳理“新边塞诗派”从孕育、萌芽到崛起的来龙去脉，探讨其对中国现代诗歌的重要贡献与深远影响。",
+      "sourceLink": "https://www.chinawriter.com.cn/n1/2022/0324/c404063-32382648.html",
+      "path": "/essays/zhang-deqiang-xinbianseshi-2022"
+    },
+    {
+      "id": "xinjiang-bingtuan-bianseshi-60years",
+      "title": "新疆兵团“新边塞诗”六十年发展综述",
+      "author": "杨昌俊",
+      "date": "2019-07",
+      "description": "探讨新疆兵团诗歌随着1954年兵团成立而产生，在80年代成为有全国影响力的流派「新边塞诗」的六十年发展历程。",
+      "sourceLink": "/pdfs/essays/xinjiang-bingtuan-bianseshi-60years.pdf",
+      "path": "/essays/xinjiang-bingtuan-bianseshi-60years"
+    },
+    {
+      "id": "xia-guanzhou-liyu-poetry",
+      "title": "一支深情的长箫——论新边塞诗婉约派代表诗人李瑜的诗歌",
+      "author": "夏冠洲",
+      "date": "2011-06",
+      "description": "从创作题材、艺术风格、诗体形式等方面，论述李瑜作为新边塞诗「婉约派」代表诗人的独特贡献。",
+      "path": "/essays/xia-guanzhou-liyu-poetry"
+    },
+    {
+      "id": "zhang-qiuge-xinbianseshi-2011",
+      "title": "新边塞诗研究",
+      "author": "张秋格",
+      "date": "2011-02",
+      "type": "academic",
+      "path": "/essays/zhang-qiuge-xinbianseshi-2011",
+      "description": "2011年新疆大学硕士学位论文，系统研究20世纪80年代新边塞诗的形成、发展与新变，分析诗人身份、审美特色和当代性。"
+    },
+    {
+      "id": "gudao-liyu-impression-1994",
+      "title": "那丛野罂粟依然火焰般燃烧",
+      "author": "孤岛 陈伍国",
+      "date": "1994-11-15",
+      "description": "诗人李瑜印象，新疆作家巡礼系列，记录李瑜的创作生涯与诗歌风格。",
+      "type": "news",
+      "path": "/essays/gudao-liyu-impression-1994"
+    },
+    {
+      "id": "zhang-xiaoping-liyu-1988",
+      "title": "论李瑜诗歌创作的艺术特色",
+      "author": "张小平",
+      "date": "1988",
+      "description": "从题材主题、情感表达、艺术张力、诗体形式等方面，系统论述李瑜「轻赋体」诗歌的独特艺术风格。",
+      "path": "/essays/zhang-xiaoping-liyu-1988"
+    }
+  ]
+}
