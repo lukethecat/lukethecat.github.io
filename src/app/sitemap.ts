@@ -1,37 +1,40 @@
 import { MetadataRoute } from 'next';
+import { promises as fs } from 'fs';
+import path from 'path';
 
 export const dynamic = 'force-static';
 
 const BASE_URL = 'https://www.liyupoetry.com';
 
-const locales = ['en', 'de', 'ar', 'ug'];
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+    // 1. Get Essays from markdown files
+    const essaysDir = path.join(process.cwd(), 'src/content/essays');
+    const essayFiles = await fs.readdir(essaysDir);
+    const essayIds = essayFiles
+        .filter(file => file.endsWith('.md'))
+        .map(file => file.replace(/\.md$/, ''));
 
-export default function sitemap(): MetadataRoute.Sitemap {
-    const bookIds = ['hanxuema1995', 'zhungaer1984'];
-    const essayIds = [
-        'hanxuema-introduction',
-        'hanxuema-preface',
-        'hanxuema-afterword',
-        'hanxuema-publication',
-        'zhungaer-preface',
-        'zhungaer-afterword',
-    ];
+    // 2. Get Books from works.json
+    const worksJsonPath = path.join(process.cwd(), 'src/content/works.json');
+    const worksJsonContent = await fs.readFile(worksJsonPath, 'utf8');
+    const worksData = JSON.parse(worksJsonContent);
+    const bookIds = worksData.books.map((b: any) => b.id);
 
     const entries: MetadataRoute.Sitemap = [
-        // Chinese (default)
+        // Home
         {
             url: `${BASE_URL}/`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 1.0,
         },
-        ...bookIds.map((id) => ({
+        ...bookIds.map((id: string) => ({
             url: `${BASE_URL}/books/${id}`,
             lastModified: new Date(),
             changeFrequency: 'monthly' as const,
             priority: 0.9,
         })),
-        ...essayIds.map((id) => ({
+        ...essayIds.map((id: string) => ({
             url: `${BASE_URL}/essays/${id}`,
             lastModified: new Date(),
             changeFrequency: 'monthly' as const,
@@ -39,32 +42,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         })),
     ];
 
-    // Multi-language pages
-    for (const locale of locales) {
-        entries.push({
-            url: `${BASE_URL}/${locale}`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        });
-        for (const id of bookIds) {
-            entries.push({
-                url: `${BASE_URL}/${locale}/books/${id}`,
-                lastModified: new Date(),
-                changeFrequency: 'monthly',
-                priority: 0.7,
-            });
-        }
-        for (const id of essayIds) {
-            entries.push({
-                url: `${BASE_URL}/${locale}/essays/${id}`,
-                lastModified: new Date(),
-                changeFrequency: 'monthly',
-                priority: 0.5,
-            });
-        }
-    }
-
     return entries;
 }
-

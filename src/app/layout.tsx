@@ -57,6 +57,28 @@ export const metadata: Metadata = {
             follow: true,
         },
     },
+    openGraph: {
+        title: '李瑜诗歌数字档案馆 | Li Yu Poetry Digital Archive',
+        description: '李瑜（1939—），当代著名西部诗人、新边塞诗代表人物。数字档案馆收录诗集《汗血马》《准噶尔诗草》全文，涵盖丝绸之路、天山、伊犁河、新疆兵团等西域主题。',
+        url: 'https://www.liyupoetry.com',
+        siteName: '李瑜诗歌数字档案馆',
+        images: [
+            {
+                url: '/images/og-image.jpg',
+                width: 1200,
+                height: 630,
+                alt: '李瑜诗歌数字档案馆',
+            },
+        ],
+        locale: 'zh_CN',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: '李瑜诗歌数字档案馆 | Li Yu Poetry Digital Archive',
+        description: '李瑜（1939—），当代著名西部诗人、新边塞诗代表人物。数字档案馆收录诗集《汗血马》《准噶尔诗草》全文。',
+        images: ['/images/og-image.jpg'],
+    },
 };
 
 export default function RootLayout({
