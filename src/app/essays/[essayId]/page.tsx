@@ -2,9 +2,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import remarkBreaks from 'remark-breaks';
+import { marked } from 'marked';
 interface Essay {
     title: string;
     author: string;
@@ -169,10 +167,13 @@ export default async function EssayPage({ params }: { params: Promise<{ essayId:
                         <div className="w-1.5 h-1.5 rounded-full bg-border-hover"></div>
                         <div className="w-8 h-px bg-border-hover"></div>
                     </div>
-                    <ReactMarkdown 
-                        className="prose prose-lg prose-stone dark:prose-invert max-w-none prose-headings:font-serif prose-headings:tracking-wide prose-headings:text-foreground prose-p:font-serif prose-p:leading-[2.2] prose-p:text-justify prose-p:tracking-[0.04em] prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-blockquote:border-accent/40 prose-blockquote:font-kai prose-blockquote:italic prose-blockquote:text-foreground-muted prose-blockquote:bg-surface prose-blockquote:px-6 prose-blockquote:py-2 prose-blockquote:rounded-r-lg"
-                        remarkPlugins={[remarkGfm, remarkBreaks]}
-                    >{essay.content}</ReactMarkdown>
+                </div>
+
+                <div className="max-w-none text-left mt-8">
+                    <div 
+                        className="prose prose-lg prose-stone dark:prose-invert max-w-none prose-headings:font-serif prose-headings:tracking-wide prose-headings:text-foreground prose-p:font-serif prose-p:leading-[2.0] prose-p:text-left prose-p:tracking-normal prose-a:text-accent prose-a:no-underline hover:prose-a:underline prose-blockquote:border-accent/40 prose-blockquote:font-kai prose-blockquote:italic prose-blockquote:text-foreground-muted prose-blockquote:bg-surface prose-blockquote:px-6 prose-blockquote:py-2 prose-blockquote:rounded-r-lg"
+                        dangerouslySetInnerHTML={{ __html: marked.parse(essay.content as string, { async: false }) }} 
+                    />
                 </div>
             </article>
 

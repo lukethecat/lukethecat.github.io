@@ -17,6 +17,7 @@
         "chokidar": "^3.5.3",
         "framer-motion": "^11.0.8",
         "lucide-react": "^0.344.0",
+        "marked": "^18.0.5",
         "next": "^15.1.0",
         "react": "^19.0.0",
         "react-dom": "^19.0.0"

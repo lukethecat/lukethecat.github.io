@@ -1,19 +1,31 @@
 /** @type {import('next').NextConfig} */
 import { execSync } from 'child_process';
 
-function getGitInfo() {
+async function getGitInfo() {
     try {
-        const commitCount = execSync('git rev-list --count HEAD', { encoding: 'utf8' }).trim();
-        const lastDate = execSync('git log -1 --format="%ci"', { encoding: 'utf8' }).trim();
-        // Extract just the date part (YYYY-MM-DD)
-        const dateOnly = lastDate.split(' ')[0];
-        return { commitCount, lastDate: dateOnly };
-    } catch {
+        const res = await fetch('https://api.github.com/repos/lukethecat/lukethecat.github.io/commits?per_page=1');
+        const data = await res.json();
+        
+        let commitCount = "1";
+        const linkHeader = res.headers.get('link');
+        if (linkHeader) {
+            const match = linkHeader.match(/page=(\d+)>; rel="last"/);
+            if (match) {
+                commitCount = match[1];
+            }
+        } else {
+            commitCount = data.length.toString();
+        }
+        
+        const lastDate = new Date(data[0].commit.committer.date).toISOString().split('T')[0];
+        
+        return { commitCount, lastDate };
+    } catch (e) {
         return { commitCount: '197', lastDate: '2026-03-31' };
     }
 }
 
-const git = getGitInfo();
+const git = await getGitInfo();
 const buildTime = new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
 
 const nextConfig = {
