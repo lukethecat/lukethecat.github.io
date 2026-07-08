@@ -140,6 +140,7 @@ export default async function Home() {
                                 <div key={book.id} className="bg-background rounded-xl border border-border hover:border-border-hover hover:shadow-lg transition-all duration-300 p-8">
                                     <Link
                                         href={book.path}
+                                        prefetch={false}
                                         className="group block"
                                     >
                                         <h4 className="text-2xl font-serif font-semibold text-foreground mb-2 group-hover:text-accent transition tracking-wide">
@@ -165,6 +166,7 @@ export default async function Home() {
                                                     <Link
                                                         key={essay.id}
                                                         href={essay.path}
+                                                        prefetch={false}
                                                         className="flex items-center text-sm text-foreground hover:text-accent hover:bg-background px-3 py-2 rounded-lg transition"
                                                     >
                                                         <svg className="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -197,6 +199,7 @@ export default async function Home() {
                                 <Link
                                     key={essay.id}
                                     href={essay.path}
+                                    prefetch={false}
                                     className="group block bg-background rounded-xl border border-border hover:border-border-hover hover:shadow-md transition-all duration-300 p-6 relative overflow-hidden"
                                 >
                                     <div className="absolute top-0 left-0 w-1 h-full bg-accent-bg group-hover:bg-accent-bg0 transition-colors"></div>
