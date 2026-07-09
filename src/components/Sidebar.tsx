@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Book, Chapter, Poem } from '@/lib/types';
 import { ChevronRight, ChevronDown, Search, Home, Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import FooterEasterEgg from '@/components/FooterEasterEgg';
 
 interface SidebarProps {
     book: Book;
@@ -144,7 +145,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
                 <div className="p-4 border-t border-border text-center">
                     <div className="text-[10px] text-foreground-subtle space-y-1">
-                        <p>最后更新: {process.env.NEXT_PUBLIC_GIT_LAST_DATE} | <a href="https://github.com/lukethecat/lukethecat.github.io/deployments" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition">部署次数: {process.env.NEXT_PUBLIC_GIT_COMMIT_COUNT}</a> | 部署时间: {process.env.NEXT_PUBLIC_BUILD_TIME}</p>
+                        <p>
+                            <a href="https://github.com/lukethecat/lukethecat.github.io/deployments" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition">最后部署于 {process.env.NEXT_PUBLIC_BUILD_TIME} (第 {process.env.NEXT_PUBLIC_GIT_COMMIT_COUNT} 次)</a>
+                        </p>
+                        <FooterEasterEgg />
                         <p>联系方式：<a href="mailto:tictic.ta@gmail.com" className="hover:text-foreground-muted transition">tictic.ta@gmail.com</a></p>
                     </div>
                 </div>

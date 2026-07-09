@@ -3,6 +3,7 @@ import path from 'path';
 import Link from 'next/link';
 
 import { FeaturedPoem } from '@/components/FeaturedPoem';
+import FooterEasterEgg from '@/components/FooterEasterEgg';
 
 interface PoetInfo {
     name: string;
@@ -234,7 +235,10 @@ export default async function Home() {
             <footer className="border-t border-border py-12">
                 <div className="max-w-5xl mx-auto px-8 flex flex-col items-center justify-center space-y-2 text-foreground-subtle text-xs">
                     <p>李瑜诗歌数字档案馆</p>
-                    <p className="mt-2 text-xs text-foreground-subtle">最后更新: {process.env.NEXT_PUBLIC_GIT_LAST_DATE} | <a href="https://github.com/lukethecat/lukethecat.github.io/deployments" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition">部署次数: {process.env.NEXT_PUBLIC_GIT_COMMIT_COUNT}</a> | 部署时间: {process.env.NEXT_PUBLIC_BUILD_TIME}</p>
+                    <p className="mt-2 text-xs text-foreground-subtle">
+                        <a href="https://github.com/lukethecat/lukethecat.github.io/deployments" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition">最后部署于 {process.env.NEXT_PUBLIC_BUILD_TIME} (第 {process.env.NEXT_PUBLIC_GIT_COMMIT_COUNT} 次)</a>
+                    </p>
+                    <FooterEasterEgg />
                     <p>联系方式：<a href="mailto:tictic.ta@gmail.com" className="hover:text-foreground-muted transition">tictic.ta@gmail.com</a></p>
                 </div>
             </footer>
