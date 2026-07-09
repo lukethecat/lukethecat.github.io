@@ -87,9 +87,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="zh-CN">
+        <html lang="zh-CN" suppressHydrationWarning>
             <head>
-
+            </head>
+            <body className={`${inter.variable} ${notoSerifLatin.variable} ${notoSerifSC.variable} ${ebGaramond.variable} font-serif antialiased`}>
                 <Script
                     id="google-translate-config"
                     strategy="afterInteractive"
@@ -110,8 +111,6 @@ export default function RootLayout({
                     src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
                     strategy="afterInteractive"
                 />
-            </head>
-            <body className={`${inter.variable} ${notoSerifLatin.variable} ${notoSerifSC.variable} ${ebGaramond.variable} font-serif antialiased`}>
                 <ThemeProvider>
                     <div className="fixed top-4 right-4 z-50 flex items-center gap-3">
                         <LanguageSwitcher />
