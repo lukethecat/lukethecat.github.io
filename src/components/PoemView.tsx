@@ -75,7 +75,18 @@ export const PoemView: React.FC<PoemViewProps> = ({ chapter, poem, book }) => {
     const annotations = poem.annotations || [];
 
     return (
-        <article id={poem.id} className="max-w-2xl mx-auto py-16 px-6 md:py-28 md:px-8 scroll-mt-12 [content-visibility:auto] min-h-[500px]">
+        <article
+            id={poem.id}
+            data-poem-id={poem.id}
+            data-poem-title={poem.title}
+            data-chapter-title={chapter.title}
+            data-book-title={book.title}
+            data-book-author={book.author}
+            data-book-year={book.year || ''}
+            data-page-number={poem.pageNumber || ''}
+            data-book-id={book.id}
+            className="max-w-2xl mx-auto py-16 px-6 md:py-28 md:px-8 scroll-mt-12 [content-visibility:auto] min-h-[500px]"
+        >
             {/* Poem Title */}
             <div className="mb-10 md:mb-14">
                 {poem.title.includes('／') ? (

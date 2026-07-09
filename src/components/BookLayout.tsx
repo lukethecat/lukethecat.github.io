@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Book } from '@/lib/types';
 import { Sidebar } from '@/components/Sidebar';
+import { ShareCardProvider } from '@/components/ShareCard';
 import { Menu } from 'lucide-react';
 
 interface BookLayoutProps {
@@ -64,7 +65,9 @@ export const BookLayout: React.FC<BookLayoutProps> = ({ book, children }) => {
             )}
 
             <main className={`flex-1 min-h-screen bg-background transition-all duration-300 ease-in-out ml-0 ${mainMarginClass} w-full`}>
-                {children}
+                <ShareCardProvider>
+                    {children}
+                </ShareCardProvider>
             </main>
         </div>
     );

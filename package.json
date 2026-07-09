@@ -19,7 +19,9 @@
         "lucide-react": "^0.344.0",
         "marked": "^18.0.5",
         "marked-footnote": "^1.4.0",
+        "modern-screenshot": "^4.7.0",
         "next": "^15.1.0",
+        "qrcode.react": "^4.2.0",
         "react": "^19.0.0",
         "react-dom": "^19.0.0"
     },
