@@ -89,16 +89,7 @@ export default function RootLayout({
     return (
         <html lang="zh-CN">
             <head>
-                {/* LXGW WenKai — elegant Chinese serif/kai font for reading */}
-                <link
-                    rel="preconnect"
-                    href="https://cdn.jsdelivr.net"
-                    crossOrigin="anonymous"
-                />
-                <link
-                    rel="stylesheet"
-                    href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"
-                />
+
                 <Script
                     id="google-translate-config"
                     strategy="afterInteractive"

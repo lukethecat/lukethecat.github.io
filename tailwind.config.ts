@@ -11,8 +11,8 @@ const config: Config = {
         extend: {
             fontFamily: {
                 sans: ["var(--font-inter)", "sans-serif"],
-                serif: ["var(--font-noto-serif-sc)", "var(--font-noto-serif-latin)", "'LXGW WenKai'", "serif"],
-                kai: ["'LXGW WenKai'", "var(--font-noto-serif-sc)", "serif"],
+                serif: ["var(--font-eb-garamond)", "var(--font-noto-serif-sc)", "var(--font-noto-serif-latin)", "Georgia", "serif"],
+                kai: ["var(--font-noto-serif-sc)", "serif"],
                 'serif-latin': ["var(--font-eb-garamond)", "var(--font-noto-serif-latin)", "Georgia", "serif"],
             },
             colors: {
