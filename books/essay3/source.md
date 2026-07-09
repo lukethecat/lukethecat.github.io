@@ -4,7 +4,7 @@ author: "张小平"
 date: "1988"
 publication: "当代文艺思潮 1988年第一期"
 source: "Evernote 截图 OCR"
-tags: [李瑜, 诗歌评论, 新边塞诗, 艺术特色]
+tags: [李瑜，诗歌评论，新边塞诗，艺术特色]
 ---
 
 # 论李瑜诗歌创作的艺术特色
