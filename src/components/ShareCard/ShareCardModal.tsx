@@ -47,9 +47,9 @@ export const ShareCardModal: React.FC<ShareCardModalProps> = ({
     : `https://www.liyupoetry.com/books/${poemContext.bookId}#${poemContext.poemId}`;
 
   // QR colors per theme
-  const qrFgColor = theme === 'darkgold' ? '#C6B28A' : '#2C2418';
-  const qrBgColor = theme === 'darkgold' ? '#201C16' : '#F8F4ED';
-  const qrSize = theme === 'stationery' ? 80 : theme === 'calendar' ? 72 : 80;
+  const qrFgColor = theme === 'darkgold' ? '#C6B28A' : theme === 'editorial' ? '#D97757' : '#2C2418';
+  const qrBgColor = theme === 'darkgold' ? '#201C16' : theme === 'editorial' ? '#FAF9F5' : '#F8F4ED';
+  const qrSize = theme === 'stationery' ? 90 : 96;
 
   // Generate the card image
   const generateImage = useCallback(async () => {
@@ -59,7 +59,7 @@ export const ShareCardModal: React.FC<ShareCardModalProps> = ({
       const dataUrl = await domToPng(cardRef.current, {
         scale: 2,
         quality: 1,
-        backgroundColor: theme === 'darkgold' ? '#201C16' : '#F8F4ED',
+        backgroundColor: theme === 'darkgold' ? '#201C16' : theme === 'editorial' ? '#FAF9F5' : '#F8F4ED',
       });
       setGeneratedImageUrl(dataUrl);
     } catch (err) {
@@ -241,14 +241,14 @@ export const ShareCardModal: React.FC<ShareCardModalProps> = ({
             }}
             aria-hidden="true"
           >
-            <div ref={cardRef} style={{ width: 1080 }}>
+            <div ref={cardRef} style={{ width: 1080, position: 'relative' }}>
               <ShareCardContent text={text} poemContext={poemContext} theme={theme} />
               {/* Render QR code directly inside the card's placeholder using CSS positioning */}
               <div
                 style={{
                   position: 'absolute',
-                  bottom: theme === 'stationery' ? 40 : theme === 'calendar' ? 48 : 48,
-                  right: theme === 'stationery' ? 56 : 72,
+                  bottom: theme === 'stationery' ? 112 : 80,
+                  right: theme === 'stationery' ? 104 : 80,
                 }}
               >
                 <QRCodeSVG

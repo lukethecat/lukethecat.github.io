@@ -29,6 +29,20 @@ export const BookLayout: React.FC<BookLayoutProps> = ({ book, children }) => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    // Handle hash scrolling on initial load (for QR code links)
+    useEffect(() => {
+        if (typeof window !== 'undefined' && window.location.hash) {
+            // Slight delay to allow DOM to fully render
+            setTimeout(() => {
+                const id = window.location.hash.substring(1);
+                const el = document.getElementById(id);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 500);
+        }
+    }, []);
+
     // Main section marginLeft logic:
     // Mobile: ml-0 (always full width)
     // Desktop: transition with ml-80 (expanded) or ml-16 (collapsed)
