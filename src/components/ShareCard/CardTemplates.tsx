@@ -39,7 +39,7 @@ function EditorialCard({ text, poemContext }: Omit<CardProps, 'theme'>) {
         background: '#FAF9F5', // Warm off-white
         display: 'flex',
         flexDirection: 'column',
-        fontFamily: '"KingHwa_OldSong", "Tiempos Text", "Noto Serif SC", "Songti SC", serif',
+        fontFamily: 'var(--font-eb-garamond), var(--font-noto-serif-sc), var(--font-noto-serif-latin), Georgia, serif',
         position: 'relative',
         padding: '80px',
       }}
@@ -117,7 +117,7 @@ function StationeryCard({ text, poemContext }: Omit<CardProps, 'theme'>) {
         background: '#F8F4ED',
         display: 'flex',
         flexDirection: 'column',
-        fontFamily: '"KingHwa_OldSong", "Noto Serif SC", "Songti SC", serif',
+        fontFamily: 'var(--font-eb-garamond), var(--font-noto-serif-sc), var(--font-noto-serif-latin), Georgia, serif',
         padding: 48,
       }}
     >
@@ -200,7 +200,7 @@ function DarkGoldCard({ text, poemContext }: Omit<CardProps, 'theme'>) {
         background: '#201C16',
         display: 'flex',
         flexDirection: 'column',
-        fontFamily: '"KingHwa_OldSong", "Noto Serif SC", "Songti SC", serif',
+        fontFamily: 'var(--font-eb-garamond), var(--font-noto-serif-sc), var(--font-noto-serif-latin), Georgia, serif',
         padding: '80px',
       }}
     >
