@@ -122,7 +122,7 @@ export default async function EssayPage({ params }: { params: Promise<{ essayId:
         return (
             <main className="flex min-h-screen flex-col items-center justify-center p-24">
                 <h1 className="text-2xl font-bold">文章未找到</h1>
-                <p className="mt-4">文章 &quot;{params.essayId}&quot; 不存在。</p>
+                <p className="mt-4">文章 &quot;{essayId}&quot; 不存在。</p>
             </main>
         );
     }

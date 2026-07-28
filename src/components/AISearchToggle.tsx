@@ -3,19 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Search, X } from 'lucide-react';
 
-// Declare custom element for TypeScript
-declare global {
-    namespace JSX {
-        interface IntrinsicElements {
-            'search-bar-snippet': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
-                'api-url'?: string;
-                placeholder?: string;
-                'max-results'?: string | number;
-                class?: string;
-            }, HTMLElement>;
-        }
-    }
-}
+
 
 export function AISearchToggle() {
     const [isOpen, setIsOpen] = useState(false);

@@ -150,16 +150,18 @@ function processBook(bookDirName: string) {
         const trimmed = line.trim();
 
         // Check for chapter heading (## 章节名（X首）)
+        const END_SECTIONS_REGEX = /^## (?:出版信息|后记|跋)/;
         if (trimmed.startsWith('## ') && trimmed.match(/（\d+首）$/)) {
             currentChapterIndex++;
             currentPoem = null;
             continue;
-        } else if (trimmed.startsWith('## ') && currentChapterIndex >= 0) {
-            // Hit a non-chapter ## heading AFTER we started collecting chapters
-            // (like "## 后记" or "## 出版信息" at the end)
-            // This means we've finished all poems, stop parsing
+        } else if (trimmed.match(END_SECTIONS_REGEX)) {
             currentPoem = null;
             break;
+        } else if (trimmed.startsWith('## ')) {
+            // Non-chapter ## heading inside body (like preface or inline section)
+            currentPoem = null;
+            continue;
         }
 
         // Check for poem title (### 诗歌标题)

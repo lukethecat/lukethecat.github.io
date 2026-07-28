@@ -1,12 +1,14 @@
 import React from 'react';
+import { QRCodeSVG } from 'qrcode.react';
 import { PoemContext } from './useTextSelection';
 
-export type CardTheme = 'editorial' | 'stationery' | 'darkgold';
+export type CardTheme = 'darkgold' | 'stationery' | 'celadon' | 'darkwood';
 
 interface CardProps {
   text: string;
   poemContext: PoemContext;
   theme: CardTheme;
+  poemUrl?: string;
 }
 
 /** Format today's date in Chinese */
@@ -20,166 +22,264 @@ function splitLines(text: string): string[] {
   return text.split('\n').filter(line => line.trim().length > 0);
 }
 
-/** Get short title (before the ／) */
-function shortTitle(title: string): string {
-  return title.includes('／') ? title.split('／')[0] : title;
+/** Rich Traditional Chinese Serif Font Family Stack */
+const TRADITIONAL_SERIF_FONT = '"STSong", "Songti SC", "SimSun", "Noto Serif CJK SC", "Noto Serif SC", "Source Han Serif SC", "Georgia", serif';
+
+/** WebFont Calligraphy Seal Font Stack */
+const WEBFONT_SEAL_STACK = 'var(--font-ma-shan-zheng), "Ma Shan Zheng", "Zhi Mang Xing", "LiSu", "STLiti", "KaiTi", serif';
+
+/** Calculate dynamic font size based on max line length to prevent overflow */
+function getAdaptiveFontSize(lines: string[]): number {
+  const maxLen = Math.max(...lines.map(l => l.length), 1);
+  if (maxLen <= 10) return 54;
+  if (maxLen <= 13) return 46;
+  if (maxLen <= 16) return 40;
+  if (maxLen <= 20) return 34;
+  return Math.max(26, Math.floor(700 / maxLen));
 }
 
-// ═══════════════════════════════════════════
-// THEME A: Editorial (Claude Style) - Default
-// ═══════════════════════════════════════════
-function EditorialCard({ text, poemContext }: Omit<CardProps, 'theme'>) {
-  const lines = splitLines(text);
+// ═══════════════════════════════════════════════════════════════
+// WebFont Seal Stamp Component
+// ═══════════════════════════════════════════════════════════════
+interface SealStampProps {
+  borderColor: string;
+  textColor: string;
+  bgColor?: string;
+  variant?: 'zhuwen' | 'yinwen';
+  size?: number;
+}
+
+function WebFontSealStamp({
+  borderColor,
+  textColor,
+  bgColor = 'transparent',
+  variant = 'zhuwen',
+  size = 72,
+}: SealStampProps) {
+  const isYin = variant === 'yinwen';
+  const actualBg = isYin ? borderColor : bgColor;
+  const actualColor = isYin ? textColor : textColor;
 
   return (
     <div
       style={{
-        width: 1080,
-        minHeight: 1440,
-        background: '#FAF9F5', // Warm off-white
+        width: size,
+        height: size,
+        border: `3px solid ${borderColor}`,
+        outline: `1.5px solid ${borderColor}`,
+        outlineOffset: '-5px',
+        borderRadius: 4,
+        backgroundColor: actualBg,
+        color: actualColor,
         display: 'flex',
-        flexDirection: 'column',
-        fontFamily: 'var(--font-eb-garamond), var(--font-noto-serif-sc), var(--font-noto-serif-latin), Georgia, serif',
-        position: 'relative',
-        padding: '80px',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontFamily: WEBFONT_SEAL_STACK,
+        fontWeight: 800,
+        boxSizing: 'border-box',
+        padding: '2px',
+        boxShadow: isYin ? '0 4px 12px rgba(140, 36, 36, 0.2)' : '0 2px 6px rgba(0,0,0,0.1)',
+        flexShrink: 0,
+        userSelect: 'none',
       }}
     >
-      {/* Top Accent Line */}
-      <div style={{ width: '100%', height: 4, background: '#D97757', marginBottom: 64 }} />
-
-      {/* Header Attribution */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 80 }}>
-        <div>
-          <h1 style={{ fontSize: 42, color: '#2D2926', margin: '0 0 16px', fontWeight: 600 }}>
-            {shortTitle(poemContext.poemTitle)}
-          </h1>
-          <p style={{ fontSize: 24, color: '#6B655F', margin: 0 }}>
-            {poemContext.bookAuthor} · 《{poemContext.bookTitle}》
-          </p>
-        </div>
-        <div style={{ textAlign: 'right' }}>
-          <p style={{ fontSize: 20, color: '#D97757', margin: 0, fontWeight: 500, letterSpacing: '0.05em' }}>
-            CLAUDE
-          </p>
-        </div>
-      </div>
-
-      {/* Poetry text (Left aligned, elegant) */}
-      <div style={{ flex: 1, paddingLeft: 32, borderLeft: '3px solid #EBE5D9', marginBottom: 80 }}>
-        {lines.map((line, i) => (
-          <p
-            key={i}
-            style={{
-              fontSize: 44,
-              lineHeight: 2.2,
-              color: '#332F2C',
-              textAlign: 'left',
-              margin: 0,
-              letterSpacing: '0.05em',
-            }}
-          >
-            {line}
-          </p>
-        ))}
-      </div>
-
-      {/* Divider */}
-      <div style={{ borderTop: '1px solid #EBE5D9', marginBottom: 40 }} />
-
-      {/* Footer */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', minHeight: 96 }}>
-        <div>
-          <p style={{ fontSize: 20, color: '#8F8982', margin: '0 0 8px' }}>
-            {poemContext.chapterTitle} {poemContext.pageNumber && ` · 页码 ${poemContext.pageNumber}`}
-          </p>
-          <p style={{ fontSize: 20, color: '#8F8982', margin: 0 }}>
-            liyupoetry.com · {formatDateChinese()}
-          </p>
-        </div>
-        {/* QR Placeholder */}
-        <div data-qr-placeholder="true" style={{ width: 96, height: 96 }} />
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gridTemplateRows: '1fr 1fr',
+          width: '100%',
+          height: '100%',
+          alignItems: 'center',
+          justifyItems: 'center',
+          fontSize: Math.round(size * 0.34),
+          lineHeight: 1,
+          letterSpacing: 0,
+        }}
+      >
+        <span>{'\u85CF'}</span>{/* 藏 */}
+        <span>{'\u674E'}</span>{/* 李 */}
+        <span>{'\u5370'}</span>{/* 印 */}
+        <span>{'\u7600'}</span>{/* 瑜 */}
       </div>
     </div>
   );
 }
 
-// ═══════════════════════════════════════════
-// THEME B: Poetry Stationery
-// ═══════════════════════════════════════════
-function StationeryCard({ text, poemContext }: Omit<CardProps, 'theme'>) {
+// ═══════════════════════════════════════════════════════════════
+// Shared layout: poetry body with subtle "" + bottom attribution
+// ═══════════════════════════════════════════════════════════════
+
+interface ThemeColors {
+  bg: string;
+  frameBg: string;
+  frameBorder: string;
+  quoteMark: string;
+  poemText: string;
+  titleText: string;
+  metaText: string;
+  mutedText: string;
+  sealBorder: string;
+  sealText: string;
+  sealBg: string;
+  sealVariant: 'zhuwen' | 'yinwen';
+  qrFg: string;
+  qrBg: string;
+  divider: string;
+}
+
+function PoemCard({ text, poemContext, poemUrl, colors }: { text: string; poemContext: PoemContext; poemUrl?: string; colors: ThemeColors }) {
   const lines = splitLines(text);
+  const fontSize = getAdaptiveFontSize(lines);
+  const fullTitle = poemContext.poemTitle.replace('／', '\n');
 
   return (
     <div
       style={{
         width: 1080,
         minHeight: 1440,
-        background: '#F8F4ED',
+        background: colors.bg,
         display: 'flex',
         flexDirection: 'column',
-        fontFamily: 'var(--font-eb-garamond), var(--font-noto-serif-sc), var(--font-noto-serif-latin), Georgia, serif',
-        padding: 48,
+        fontFamily: TRADITIONAL_SERIF_FONT,
+        padding: '64px',
+        boxSizing: 'border-box',
+        overflow: 'hidden',
       }}
     >
-      {/* Inner border frame */}
+      {/* Inner frame */}
       <div
         style={{
-          border: '1px solid #E8DFD0',
+          border: `1px solid ${colors.frameBorder}`,
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
-          padding: '64px 56px',
+          padding: '72px 64px 56px',
+          background: colors.frameBg,
+          boxSizing: 'border-box',
+          overflow: 'hidden',
         }}
       >
-        <div style={{ textAlign: 'left', marginBottom: 32, paddingLeft: 40 }}>
-          <span style={{ fontSize: 80, color: '#D2C6B2', fontFamily: 'serif', lineHeight: 1 }}>
-            「
+        {/* ── Poetry body with subtle quotation marks ── */}
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative' }}>
+          {/* Opening " */}
+          <span
+            style={{
+              fontSize: 72,
+              color: colors.quoteMark,
+              fontFamily: 'Georgia, serif',
+              lineHeight: 1,
+              marginBottom: 24,
+              userSelect: 'none',
+              opacity: 0.5,
+            }}
+          >
+            {'\u201C'}
+          </span>
+
+          {/* Poem lines */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', paddingLeft: '8px', overflow: 'hidden' }}>
+            {lines.map((line, i) => (
+              <p
+                key={i}
+                style={{
+                  fontSize,
+                  lineHeight: 1.7,
+                  color: colors.poemText,
+                  fontWeight: 700,
+                  margin: 0,
+                  letterSpacing: '0.05em',
+                  whiteSpace: 'nowrap',
+                  wordBreak: 'keep-all',
+                }}
+              >
+                {line}
+              </p>
+            ))}
+          </div>
+
+          {/* Closing " */}
+          <span
+            style={{
+              fontSize: 72,
+              color: colors.quoteMark,
+              fontFamily: 'Georgia, serif',
+              lineHeight: 1,
+              textAlign: 'right',
+              marginTop: 24,
+              userSelect: 'none',
+              opacity: 0.5,
+            }}
+          >
+            {'\u201D'}
           </span>
         </div>
 
-        {/* Poetry text */}
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingLeft: 80, paddingRight: 40 }}>
-          {lines.map((line, i) => (
+        {/* ── Divider ── */}
+        <div style={{ borderTop: `1px solid ${colors.divider}`, marginTop: 32, marginBottom: 32 }} />
+
+        {/* ── Bottom attribution: title + meta + seal/QR ── */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+          {/* Left: full title + meta */}
+          <div style={{ flex: 1, minWidth: 0 }}>
             <p
-              key={i}
               style={{
-                fontSize: 46,
-                lineHeight: 2.2,
-                color: '#2C2418',
-                textAlign: 'left',
-                margin: 0,
-                letterSpacing: '0.05em',
+                fontSize: 28,
+                color: colors.titleText,
+                fontWeight: 700,
+                margin: '0 0 10px',
+                letterSpacing: '0.04em',
+                lineHeight: 1.5,
+                whiteSpace: 'pre-line',
               }}
             >
-              {line}
+              {fullTitle}
             </p>
-          ))}
-        </div>
-
-        <div style={{ textAlign: 'right', marginTop: 16, marginBottom: 40, paddingRight: 40 }}>
-          <span style={{ fontSize: 80, color: '#D2C6B2', fontFamily: 'serif', lineHeight: 1 }}>
-            」
-          </span>
-        </div>
-
-        <div style={{ borderTop: '1px solid #D2C6B2', marginBottom: 40, marginLeft: 40, marginRight: 40 }} />
-
-        <div style={{ textAlign: 'left', paddingLeft: 40, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-          <div>
-            <p style={{ fontSize: 26, color: '#2C2418', margin: '0 0 12px', letterSpacing: '0.1em' }}>
-              ——「{shortTitle(poemContext.poemTitle)}」
+            <p style={{ fontSize: 22, color: colors.metaText, margin: '0 0 6px', letterSpacing: '0.03em' }}>
+              {poemContext.bookAuthor} · 《{poemContext.bookTitle}》
             </p>
-            <p style={{ fontSize: 22, color: '#7A6E5D', margin: '0 0 8px', letterSpacing: '0.05em' }}>
-              《{poemContext.bookTitle}》· {poemContext.chapterTitle}
+            <p style={{ fontSize: 20, color: colors.mutedText, margin: '0 0 4px' }}>
+              {poemContext.chapterTitle}{poemContext.pageNumber && ` · 页 ${poemContext.pageNumber}`}
             </p>
-            <p style={{ fontSize: 20, color: '#A39682', margin: '0 0 8px' }}>
-              {poemContext.bookAuthor} / {poemContext.bookYear}
-            </p>
-            <p style={{ fontSize: 18, color: '#A39682', margin: 0 }}>
-              {formatDateChinese()}
+            <p style={{ fontSize: 18, color: colors.mutedText, margin: 0, opacity: 0.7 }}>
+              liyupoetry.com · {formatDateChinese()}
             </p>
           </div>
-          <div data-qr-placeholder="true" style={{ width: 90, height: 90 }} />
+
+          {/* Right: seal + QR, perfectly aligned side by side */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexShrink: 0, marginLeft: 32 }}>
+            <WebFontSealStamp
+              borderColor={colors.sealBorder}
+              textColor={colors.sealText}
+              bgColor={colors.sealBg}
+              variant={colors.sealVariant}
+              size={72}
+            />
+            {poemUrl ? (
+              <div
+                style={{
+                  width: 72,
+                  height: 72,
+                  borderRadius: 4,
+                  overflow: 'hidden',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: colors.qrBg,
+                }}
+              >
+                <QRCodeSVG
+                  value={poemUrl}
+                  size={72}
+                  fgColor={colors.qrFg}
+                  bgColor={colors.qrBg}
+                  level="M"
+                />
+              </div>
+            ) : (
+              <div style={{ width: 72, height: 72 }} />
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -187,91 +287,139 @@ function StationeryCard({ text, poemContext }: Omit<CardProps, 'theme'>) {
 }
 
 // ═══════════════════════════════════════════
-// THEME C: Dark Gold
+// THEME 1: DarkGold (墨金)
 // ═══════════════════════════════════════════
-function DarkGoldCard({ text, poemContext }: Omit<CardProps, 'theme'>) {
-  const lines = splitLines(text);
-
+function DarkGoldCard(props: Omit<CardProps, 'theme'>) {
   return (
-    <div
-      style={{
-        width: 1080,
-        minHeight: 1440,
-        background: '#201C16',
-        display: 'flex',
-        flexDirection: 'column',
-        fontFamily: 'var(--font-eb-garamond), var(--font-noto-serif-sc), var(--font-noto-serif-latin), Georgia, serif',
-        padding: '80px',
+    <PoemCard
+      {...props}
+      colors={{
+        bg: '#161412',
+        frameBg: 'linear-gradient(180deg, rgba(32, 28, 22, 0.5) 0%, rgba(22, 20, 18, 0.7) 100%)',
+        frameBorder: '#504030',
+        quoteMark: '#8C7652',
+        poemText: '#FAF4E8',
+        titleText: '#E8D8B8',
+        metaText: '#A69575',
+        mutedText: '#73644B',
+        sealBorder: '#D9C398',
+        sealText: '#D9C398',
+        sealBg: 'rgba(217, 195, 152, 0.06)',
+        sealVariant: 'zhuwen',
+        qrFg: '#D9C398',
+        qrBg: '#161412',
+        divider: '#3A3020',
       }}
-    >
-      {/* Decorative top element */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 64 }}>
-        <div style={{ flex: 1, maxWidth: 240, borderTop: '1px solid #504737' }} />
-        <span style={{ margin: '0 24px', fontSize: 16, color: '#C6B28A' }}>◆</span>
-        <div style={{ flex: 1, maxWidth: 240, borderTop: '1px solid #504737' }} />
-      </div>
+    />
+  );
+}
 
-      {/* Poetry */}
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingLeft: 40 }}>
-        {lines.map((line, i) => (
-          <p
-            key={i}
-            style={{
-              fontSize: 48,
-              lineHeight: 2.2,
-              color: '#EDE6DA',
-              margin: 0,
-              letterSpacing: '0.05em',
-            }}
-          >
-            {line}
-          </p>
-        ))}
-      </div>
+// ═══════════════════════════════════════════
+// THEME 2: XuanPaper (宣纸)
+// ═══════════════════════════════════════════
+function XuanPaperCard(props: Omit<CardProps, 'theme'>) {
+  return (
+    <PoemCard
+      {...props}
+      colors={{
+        bg: '#F5F0E6',
+        frameBg: 'rgba(255, 255, 255, 0.35)',
+        frameBorder: '#D6C8B4',
+        quoteMark: '#8C2424',
+        poemText: '#1A1412',
+        titleText: '#2C2418',
+        metaText: '#66594C',
+        mutedText: '#8C7D6B',
+        sealBorder: '#8C2424',
+        sealText: '#F5F0E6',
+        sealBg: '#8C2424',
+        sealVariant: 'yinwen',
+        qrFg: '#8C2424',
+        qrBg: '#F5F0E6',
+        divider: '#D6C8B4',
+      }}
+    />
+  );
+}
 
-      <div style={{ borderTop: '1px solid #504737', marginTop: 64, marginBottom: 40 }} />
+// ═══════════════════════════════════════════
+// THEME 3: Celadon (青绀)
+// ═══════════════════════════════════════════
+function CeladonCard(props: Omit<CardProps, 'theme'>) {
+  return (
+    <PoemCard
+      {...props}
+      colors={{
+        bg: '#0F172A',
+        frameBg: 'linear-gradient(180deg, #1E293B 0%, #0F172A 100%)',
+        frameBorder: '#334155',
+        quoteMark: '#38BDF8',
+        poemText: '#E2E8F0',
+        titleText: '#CBD5E1',
+        metaText: '#94A3B8',
+        mutedText: '#64748B',
+        sealBorder: '#38BDF8',
+        sealText: '#38BDF8',
+        sealBg: 'rgba(56, 189, 248, 0.06)',
+        sealVariant: 'zhuwen',
+        qrFg: '#38BDF8',
+        qrBg: '#0F172A',
+        divider: '#293548',
+      }}
+    />
+  );
+}
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-        <div>
-          <p style={{ fontSize: 26, color: '#C6B28A', margin: '0 0 12px', letterSpacing: '0.08em' }}>
-            「{shortTitle(poemContext.poemTitle)}」
-          </p>
-          <p style={{ fontSize: 22, color: '#8C806C', margin: '0 0 8px' }}>
-            《{poemContext.bookTitle}》· {poemContext.chapterTitle}
-          </p>
-          <p style={{ fontSize: 20, color: '#8C806C', margin: '0 0 8px' }}>
-            {poemContext.bookAuthor} / {poemContext.bookYear}
-          </p>
-          <p style={{ fontSize: 18, color: '#504737', margin: 0 }}>
-            {formatDateChinese()}
-          </p>
-        </div>
-        
-        <div data-qr-placeholder="true" style={{ width: 96, height: 96 }} />
-      </div>
-    </div>
+// ═══════════════════════════════════════════
+// THEME 4: DarkWood (紫檀)
+// ═══════════════════════════════════════════
+function DarkWoodCard(props: Omit<CardProps, 'theme'>) {
+  return (
+    <PoemCard
+      {...props}
+      colors={{
+        bg: '#231B15',
+        frameBg: 'rgba(0, 0, 0, 0.25)',
+        frameBorder: '#5C4535',
+        quoteMark: '#D4A373',
+        poemText: '#FAF3E0',
+        titleText: '#EADBC8',
+        metaText: '#A8927C',
+        mutedText: '#785E4A',
+        sealBorder: '#D4A373',
+        sealText: '#D4A373',
+        sealBg: 'rgba(212, 163, 115, 0.06)',
+        sealVariant: 'zhuwen',
+        qrFg: '#D4A373',
+        qrBg: '#231B15',
+        divider: '#4A3828',
+      }}
+    />
   );
 }
 
 // ═══════════════════════════════════════════
 // Main Card Component
 // ═══════════════════════════════════════════
-export const ShareCardContent: React.FC<CardProps> = ({ text, poemContext, theme }) => {
+export const ShareCardContent: React.FC<CardProps> = ({ text, poemContext, theme, poemUrl }) => {
   switch (theme) {
     case 'stationery':
-      return <StationeryCard text={text} poemContext={poemContext} />;
+      return <XuanPaperCard text={text} poemContext={poemContext} poemUrl={poemUrl} />;
+    case 'celadon':
+      return <CeladonCard text={text} poemContext={poemContext} poemUrl={poemUrl} />;
+    case 'darkwood':
+      return <DarkWoodCard text={text} poemContext={poemContext} poemUrl={poemUrl} />;
     case 'darkgold':
-      return <DarkGoldCard text={text} poemContext={poemContext} />;
-    case 'editorial':
     default:
-      return <EditorialCard text={text} poemContext={poemContext} />;
+      return <DarkGoldCard text={text} poemContext={poemContext} poemUrl={poemUrl} />;
   }
 };
 
 export const THEME_LABELS: Record<CardTheme, string> = {
-  editorial: '克劳德',
-  stationery: '诗笺',
   darkgold: '墨金',
+  stationery: '宣纸',
+  celadon: '青绀',
+  darkwood: '紫檀',
 };
 
-export const THEME_ORDER: CardTheme[] = ['editorial', 'stationery', 'darkgold'];
+export const THEME_ORDER: CardTheme[] = ['darkgold', 'stationery', 'celadon', 'darkwood'];

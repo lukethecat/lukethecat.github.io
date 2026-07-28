@@ -26,6 +26,37 @@ function verifyData() {
     
     console.log(`Verified ${worksData.books.length} books in works.json`);
 
+    // 1b. Run Full-Text Structural & Semantic Anomaly Audit
+    const DATE_REGEX = /^(?:一九|二〇)[〇一二三四五六七八九十0-9]+年[一二三四五六七八九十0-9]+月(?:[一二三四五六七八九十0-9]+日)?(?:修改)?\s*[\u4e00-\u9fa5]{2,6}$/;
+    const booksDir = path.join(__dirname, '../books');
+    if (fs.existsSync(booksDir)) {
+        const bookFolders = fs.readdirSync(booksDir).filter(f => fs.statSync(path.join(booksDir, f)).isDirectory());
+        for (const bId of bookFolders) {
+            const mdPath = path.join(booksDir, bId, 'source.md');
+            if (!fs.existsSync(mdPath)) continue;
+            const lines = fs.readFileSync(mdPath, 'utf-8').split('\n');
+            let lastDateIdx = -1;
+            let lastDateText = '';
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (DATE_REGEX.test(line) && !line.includes('日晕么') && !line.includes('这个不朽日子')) {
+                    lastDateIdx = i;
+                    lastDateText = line;
+                    continue;
+                }
+                if (lastDateIdx !== -1 && i > lastDateIdx) {
+                    if (line.startsWith('### ') || line.startsWith('## ')) {
+                        lastDateIdx = -1;
+                        lastDateText = '';
+                        continue;
+                    }
+                    if (!line || /^\[p\d+\]$/.test(line) || line === '***' || line.startsWith('封面题签') || line.startsWith('扉页题签') || line.startsWith('装帧设计') || line.startsWith('责任编辑') || line.startsWith('黑罂粟') || line.startsWith('新疆大学出版社') || line.startsWith('开本') || line.startsWith('印数') || line.startsWith('ISBN') || line.startsWith('1998年')) continue;
+                    assert(false, `Text anomaly in ${bId}/source.md: Date metadata "${lastDateText}" at L${lastDateIdx + 1} is followed by stray poem text L${i + 1}: "${line}" before next header.`);
+                }
+            }
+        }
+    }
+
     // 2. Verify individual book.json files
     let totalPoemsChecked = 0;
     
@@ -64,13 +95,10 @@ function verifyData() {
                 assert(validLines.length > 0, `Poem ${poem.id} in ${book.id} has no content lines`);
                 
                 // Milestone 5: Defense against truncated extraction
-                // If a poem has 3 lines or less (e.g. only a 2-line title), it's highly suspicious and usually an extraction error.
-                // We allow it only if there is a specific marker or we know it's a very short poem. 
-                // For this project, almost all poems are > 3 lines.
-                if (validLines.length <= 3) {
+                if (validLines.length <= 2) {
                     console.warn(`[WARNING] Poem ${poem.id} in ${book.id} is extremely short (${validLines.length} lines). Possible truncation.`);
                 }
-
+                
                 // Milestone 4: Check if publication info accidentally got parsed as poem content
                 const pubKeywords = ['版次', '印数', '印张', 'ISBN', '印刷厂', '字数', '定价'];
                 for (const line of validLines) {

@@ -2,17 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-// Declare custom element for TypeScript
-declare global {
-    namespace JSX {
-        interface IntrinsicElements {
-            'chat-bubble-snippet': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement> & {
-                'api-url'?: string;
-                class?: string;
-            }, HTMLElement>;
-        }
-    }
-}
+
 
 export const ChatWidget = () => {
     const [mounted, setMounted] = useState(false);

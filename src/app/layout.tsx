@@ -1,5 +1,4 @@
-import type { Metadata } from "next";
-import { Inter, Noto_Serif, Noto_Serif_SC, EB_Garamond } from "next/font/google";
+import { Inter, Noto_Serif, Noto_Serif_SC, EB_Garamond, Ma_Shan_Zheng, Zhi_Mang_Xing } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -24,6 +23,16 @@ const ebGaramond = EB_Garamond({
     weight: ["400", "500", "700"],
     style: ["normal", "italic"],
     variable: "--font-eb-garamond"
+});
+const maShanZheng = Ma_Shan_Zheng({
+    weight: "400",
+    subsets: ["latin"],
+    variable: "--font-ma-shan-zheng"
+});
+const zhiMangXing = Zhi_Mang_Xing({
+    weight: "400",
+    subsets: ["latin"],
+    variable: "--font-zhi-mang-xing"
 });
 
 export const metadata: Metadata = {
@@ -90,7 +99,7 @@ export default function RootLayout({
         <html lang="zh-CN" suppressHydrationWarning>
             <head>
             </head>
-            <body className={`${inter.variable} ${notoSerifLatin.variable} ${notoSerifSC.variable} ${ebGaramond.variable} font-serif antialiased`}>
+            <body className={`${inter.variable} ${notoSerifLatin.variable} ${notoSerifSC.variable} ${ebGaramond.variable} ${maShanZheng.variable} ${zhiMangXing.variable} font-serif antialiased`}>
                 <Script
                     id="google-translate-config"
                     strategy="afterInteractive"

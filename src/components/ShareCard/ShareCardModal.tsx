@@ -35,7 +35,7 @@ export const ShareCardModal: React.FC<ShareCardModalProps> = ({
   text: rawText,
   poemContext,
 }) => {
-  const [theme, setTheme] = useState<CardTheme>('stationery');
+  const [theme, setTheme] = useState<CardTheme>('darkgold');
   const [generatedImageUrl, setGeneratedImageUrl] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -47,9 +47,9 @@ export const ShareCardModal: React.FC<ShareCardModalProps> = ({
     : `https://www.liyupoetry.com/books/${poemContext.bookId}#${poemContext.poemId}`;
 
   // QR colors per theme
-  const qrFgColor = theme === 'darkgold' ? '#C6B28A' : theme === 'editorial' ? '#D97757' : '#2C2418';
-  const qrBgColor = theme === 'darkgold' ? '#201C16' : theme === 'editorial' ? '#FAF9F5' : '#F8F4ED';
-  const qrSize = theme === 'stationery' ? 90 : 96;
+  const qrFgColor = theme === 'darkgold' ? '#D9C398' : theme === 'stationery' ? '#8C2424' : theme === 'celadon' ? '#38BDF8' : '#D4A373';
+  const qrBgColor = theme === 'darkgold' ? '#161412' : theme === 'stationery' ? '#F5F0E6' : theme === 'celadon' ? '#0F172A' : '#231B15';
+  const qrSize = 88;
 
   // Generate the card image
   const generateImage = useCallback(async () => {
@@ -242,23 +242,7 @@ export const ShareCardModal: React.FC<ShareCardModalProps> = ({
             aria-hidden="true"
           >
             <div ref={cardRef} style={{ width: 1080, position: 'relative' }}>
-              <ShareCardContent text={text} poemContext={poemContext} theme={theme} />
-              {/* Render QR code directly inside the card's placeholder using CSS positioning */}
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: theme === 'stationery' ? 112 : 80,
-                  right: theme === 'stationery' ? 104 : 80,
-                }}
-              >
-                <QRCodeSVG
-                  value={poemUrl}
-                  size={qrSize}
-                  fgColor={qrFgColor}
-                  bgColor={qrBgColor}
-                  level="M"
-                />
-              </div>
+              <ShareCardContent text={text} poemContext={poemContext} theme={theme} poemUrl={poemUrl} />
             </div>
           </div>
         </motion.div>
