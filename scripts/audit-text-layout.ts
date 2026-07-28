@@ -20,7 +20,7 @@ const EXPECTED_POEM_COUNTS: Record<string, number> = {
     heiyingsushangjuan1998: 101,
     heiyingsuxiajuan1998: 101,
     hanxuema1995: 101,
-    weileaiqingbagedabuxianyuan1991: 99,
+    weileaiqingbagedabuxianyuan1991: 100,
     zhungaer1984: 69,
 };
 
@@ -249,6 +249,33 @@ function auditAllBooks() {
                         context: `L${i + 1}: "${line.slice(0, 80)}" (matched: "${m[0]}")`,
                     });
                 }
+            }
+        }
+
+        // ─── Dimension 8: OCR Header Leaks & Tab Artifacts ───
+        for (let i = 0; i < lines.length; i++) {
+            const rawLine = lines[i];
+            const line = rawLine.trim();
+            if (!line) continue;
+            // Check for tab character in body line (outside TOC)
+            if (rawLine.includes('\t') && i > 120) {
+                issues.push({
+                    bookId, lineNum: i + 1,
+                    issueType: 'TAB_ARTIFACT',
+                    severity: 'ERROR',
+                    description: `Stray tab character found in line.`,
+                    context: `L${i + 1}: "${line.slice(0, 80)}"`,
+                });
+            }
+            // Check for page number header leakage like (129) or (130) attached to text
+            if (/\(\d{2,4}\)/.test(line) && !/（[一二三四五六七八九十0-9]+）/.test(line)) {
+                issues.push({
+                    bookId, lineNum: i + 1,
+                    issueType: 'OCR_PAGE_HEADER_LEAK',
+                    severity: 'ERROR',
+                    description: `OCR page header/number leakage detected in line.`,
+                    context: `L${i + 1}: "${line.slice(0, 80)}"`,
+                });
             }
         }
     }

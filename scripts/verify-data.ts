@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-const contentDir = path.join(__dirname, '../src/content');
+const contentDir = path.join(process.cwd(), 'src/content');
 const worksPath = path.join(contentDir, 'works.json');
 
 function assert(condition: boolean, message: string) {
@@ -28,7 +28,7 @@ function verifyData() {
 
     // 1b. Run Full-Text Structural & Semantic Anomaly Audit
     const DATE_REGEX = /^(?:一九|二〇)[〇一二三四五六七八九十0-9]+年[一二三四五六七八九十0-9]+月(?:[一二三四五六七八九十0-9]+日)?(?:修改)?\s*[\u4e00-\u9fa5]{2,6}$/;
-    const booksDir = path.join(__dirname, '../books');
+    const booksDir = path.join(process.cwd(), 'books');
     if (fs.existsSync(booksDir)) {
         const bookFolders = fs.readdirSync(booksDir).filter(f => fs.statSync(path.join(booksDir, f)).isDirectory());
         for (const bId of bookFolders) {
@@ -62,7 +62,7 @@ function verifyData() {
     
     for (const book of worksData.books) {
         const bookJsonPath = path.join(contentDir, book.id, 'book.json');
-        const sourcePath = path.join(__dirname, '../books', book.id, 'source.md');
+        const sourcePath = path.join(process.cwd(), 'books', book.id, 'source.md');
         
         assert(fs.existsSync(sourcePath), `Missing source.md (Rule: Immutable source text) for book: ${book.id}`);
         assert(fs.existsSync(bookJsonPath), `Missing book.json for book: ${book.id}`);
@@ -107,9 +107,19 @@ function verifyData() {
                     }
                 }
                 
+                // Assert no OCR running header leakage in title or subtitle
+                const fullTitle = `${poem.title} ${poem.subtitle || ''}`;
+                assert(!fullTitle.includes('\t'), `Poem ${poem.id} in ${book.id} contains stray tab in title/subtitle: "${fullTitle}"`);
+                assert(!/\(\d{2,4}\)/.test(fullTitle), `Poem ${poem.id} in ${book.id} contains OCR page header leak in title/subtitle: "${fullTitle}"`);
+                
                 bookPoemCount++;
                 totalPoemsChecked++;
             }
+        }
+        
+        // Specific regression assertions based on past issues
+        if (book.id === 'weileaiqingbagedabuxianyuan1991') {
+            assert(bookPoemCount === 100, `weileaiqingbagedabuxianyuan1991 should have exactly 100 poems (found ${bookPoemCount})`);
         }
         
         // Specific regression assertions based on past issues
@@ -125,7 +135,7 @@ function verifyData() {
     }
 
     // 3. Global CSS Check for Language Switcher optimizations
-    const cssPath = path.join(__dirname, '../src/app/globals.css');
+    const cssPath = path.join(process.cwd(), 'src/app/globals.css');
     const cssContent = fs.readFileSync(cssPath, 'utf8');
     assert(cssContent.includes('.goog-te-banner-frame.skiptranslate'), 'globals.css is missing Google Translate hide rules');
 

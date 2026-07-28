@@ -87,7 +87,7 @@ function processBook(bookDirName: string) {
         // Extract year from content intro if it contains publication year (ONLY within intro)
         if (!hasDirYear && isIntro && line.includes('年') && line.match(/\d{4}年/)) {
             const yearMatch = line.match(/(\d{4})年/);
-            if (yearMatch && !book.year.includes(yearMatch[1])) {
+            if (yearMatch && (!book.year || !book.year.includes(yearMatch[1]))) {
                 book.year = `${yearMatch[1]}年`;
             }
         }
