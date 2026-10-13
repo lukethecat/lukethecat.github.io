@@ -21,10 +21,19 @@
 cd /path/to/project
 node scripts/lint-check.mjs      # 黄金规则检查
 npm run process:books    # 处理书籍数据
+python3 scripts/check_typeset.py # ★ 排版/结构校验门（task #16）：日期入正文/分节号/MD残留/半角标点/异常年份，命中即 FAIL
 npm run test:data        # 数据校验
 npm run build            # Next.js 构建
 ```
 全部通过才能继续。
+
+### 3b. 诗歌录入源格式规范（录入必守，避免排版错根因）
+- **创作日期**：单独一行 `YYYY年M月` 或 `**YYYY年M月**`，置于诗末、`[pN]` 之前；解析器会收进 `composedDate` 并渲染为诗末署名行。
+- **组诗分节**：用 `#### N`（不混用裸数字行）；节内诗句用 ``` 包裹。
+- **副标题**：`　　　　xxx`（全角空格开头）。
+- **页码**：`[pN]` 单独一行。
+- **中文标点用全角**，禁止半角 `.,()!?:;` 邻接中文；行首勿留 `.``..``-` 等 OCR 伪影。
+- 遇可疑年份（如 `108x`、`18xx`）**回源核**，勿凭记忆改；无源则如实标注。
 
 ### 4. 自测 (Dogfooding)
 - [ ] 用 Chrome CDP 打开本地或预览页面
