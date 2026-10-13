@@ -107,12 +107,30 @@ export const PoemView: React.FC<PoemViewProps> = ({ chapter, poem, book }) => {
 
             {/* Poem Content — refined reading typography */}
             <div className="font-serif text-lg md:text-xl text-foreground leading-[2.4] tracking-[0.05em]">
-                {poem.lines.map((line, index) => (
-                    <p key={index} className={`min-h-[1.5em] ${line === '' || !line.trim() ? 'h-8 md:h-10' : ''}`}>
-                        <AnnotatedLine line={line} annotations={annotations} />
-                    </p>
-                ))}
+                {(() => {
+                    // Collapse consecutive blank lines into a single section gap (task #16)
+                    const rows: string[] = [];
+                    for (const line of poem.lines) {
+                        const blank = !line.trim();
+                        if (blank && rows.length > 0 && rows[rows.length - 1] === '') continue;
+                        rows.push(line);
+                    }
+                    return rows.map((line, index) => (
+                        <p key={index} className={`min-h-[1.5em] ${line === '' || !line.trim() ? 'h-8 md:h-10' : ''}`}>
+                            <AnnotatedLine line={line} annotations={annotations} />
+                        </p>
+                    ));
+                })()}
             </div>
+
+            {/* 创作日期 — 元数据署名行，与正文空间分层（task #16） */}
+            {poem.composedDate && (
+                <div className="mt-6 md:mt-8 text-right">
+                    <span className="font-serif text-sm md:text-base text-foreground-muted tracking-wide">
+                        {poem.composedDate}
+                    </span>
+                </div>
+            )}
 
             {/* Annotations / Footnotes */}
             {annotations.length > 0 && (

@@ -8,6 +8,8 @@ export interface Poem {
     title: string;
     lines: string[];
     pageNumber?: string;
+    composedDate?: string;
+    sections?: number;
     annotations?: Annotation[];
 }
 

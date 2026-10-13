@@ -7,6 +7,8 @@ interface Poem {
     title: string;
     lines: string[];
     pageNumber?: string;
+    composedDate?: string;
+    sections?: number;
 }
 
 interface Chapter {
@@ -37,6 +39,26 @@ function ensureDir(dir: string) {
 const CHAPTER_REGEX = /^(?:##\s+)?(.+)（(\d+)首）$/;
 const POEM_IN_TOC_REGEX = /^\s*(.+?)\s+(\d+)$/;
 const PAGE_MARKER_REGEX = /^\[p(\d+)\]$/;
+// --- 排版/结构感知（task #16）---
+// 创作日期行：诗末、[pN] 之前；支持裸 / 加粗 / 带「于地点」/ 带日 / 中文数字年
+const COMPOSED_DATE_REGEX = /^\**\s*(\d{4}\s*年\s*\d{1,2}\s*月(?:\s*\d{1,2}\s*日)?(?:\s*于\s*\S+)?|\s*[\u4e00-\u9fff]{4}年[\u4e00-\u9fff]{1,3}月(?:[\u4e00-\u9fff]{1,4}日)?(?:\s*\S+)?)\s*\**$/;
+// 组诗分节标记：`#### N` 或独立数字行（仅在诗体内跳过）
+const SECTION_MARKER_REGEX = /^(?:#{1,6}\s*)?(\d{1,2})$/;
+const SECTION_MD_REGEX = /^#{1,6}\s*\d{1,2}\s*$/;
+// 只在「与中文相邻」时归一标点（避免误伤英文/数字/URL）
+function normalizePunct(line: string): string {
+    return line
+        // 行首 OCR 伪影（. .. - 等）直接剥除（task #16 E4）
+        .replace(/^[\.\-\u2013\u2014\s]+(?=[\u4e00-\u9fff])/u, '')
+        .replace(/\u0028(?=[\u4e00-\u9fff])/gu, '（')   // ( → （
+        .replace(/(?<=[\u4e00-\u9fff])\u0029/gu, '）')   // ) → ）
+        .replace(/(?<=[\u4e00-\u9fff])\u002c/gu, '，')   // , → ，
+        .replace(/(?<=[\u4e00-\u9fff])\u003b/gu, '；')   // ; → ；
+        .replace(/(?<=[\u4e00-\u9fff])\u003a/gu, '：')   // : → ：
+        .replace(/(?<=[\u4e00-\u9fff])\u0021/gu, '！')   // ! → ！
+        .replace(/(?<=[\u4e00-\u9fff])\u003f/gu, '？')   // ? → ？
+        .replace(/(?<=[\u4e00-\u9fff])\.\.?/gu, '。'); // . / .. → 。
+}
 
 function processBook(bookDirName: string) {
     const bookPath = path.join(BOOKS_DIR, bookDirName, 'source.md');
@@ -199,6 +221,19 @@ function processBook(bookDirName: string) {
             continue;
         }
 
+        // 创作日期行：收进 composedDate，不入正文（task #16 E1）
+        const dateMatch = trimmed.match(COMPOSED_DATE_REGEX);
+        if (dateMatch && currentPoem) {
+            currentPoem.composedDate = dateMatch[1];
+            continue;
+        }
+
+        // 组诗分节标记：`#### N` 或独立数字行，不入正文（task #16 E2/E3）
+        if (currentPoem && (trimmed.match(SECTION_MD_REGEX) || trimmed.match(SECTION_MARKER_REGEX))) {
+            currentPoem.sections = (currentPoem.sections || 0) + 1;
+            continue;
+        }
+
         // Skip subtitle lines (start with full-width spaces like "　　　　")
         if (line.match(/^　+/)) {
             continue;
@@ -221,6 +256,9 @@ function processBook(bookDirName: string) {
 
             // Remove bold markers
             cleanLine = cleanLine.replace(/\*\*/g, '');
+
+            // 标点归一（task #16 E4/E5）
+            cleanLine = normalizePunct(cleanLine);
 
             currentPoem.lines.push(cleanLine);
         }
