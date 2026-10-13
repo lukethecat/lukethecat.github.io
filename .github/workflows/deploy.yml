@@ -87,13 +87,11 @@ jobs:
         run: npm run build
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: liyupoetry
-          directory: ./out
-          branch: main
+          command: pages deploy out --project-name=liyupoetry --branch=main
 
   verify-deployment:
     needs: [deploy-gh-pages]
