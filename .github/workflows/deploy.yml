@@ -42,6 +42,13 @@ jobs:
         with:
           path: ./out
 
+      - name: Upload out for Cloudflare
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-out
+          path: ./out
+          retention-days: 1
+
   deploy-gh-pages:
     needs: build
     runs-on: ubuntu-latest
@@ -57,34 +64,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Download built site
+        uses: actions/download-artifact@v4
         with:
-          fetch-depth: 0
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm install --legacy-peer-deps
-
-      - name: Debug Secrets Status
-        run: |
-          echo "Checking Cloudflare Secrets configuration..."
-          if [ -z "${{ secrets.CF_API_TOKEN }}" ]; then
-            echo "❌ CF_API_TOKEN is missing"
-            exit 1
-          fi
-          if [ -z "${{ secrets.CF_ACCOUNT_ID }}" ]; then
-            echo "❌ CF_ACCOUNT_ID is missing"
-            exit 1
-          fi
-          echo "✅ CF_API_TOKEN exists"
-          echo "✅ CF_ACCOUNT_ID exists"
-
-      - name: Build for Cloudflare
-        run: npm run build
+          name: site-out
+          path: ./out
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
