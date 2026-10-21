@@ -9,6 +9,7 @@ interface Poem {
     pageNumber?: string;
     composedDate?: string;
     sections?: number;
+    subtitle?: string;
 }
 
 interface Chapter {
@@ -45,6 +46,31 @@ const COMPOSED_DATE_REGEX = /^\**\s*(\d{4}\s*年\s*\d{1,2}\s*月(?:\s*\d{1,2}\s*
 // 组诗分节标记：`#### N` 或独立数字行（仅在诗体内跳过）
 const SECTION_MARKER_REGEX = /^(?:#{1,6}\s*)?(\d{1,2})$/;
 const SECTION_MD_REGEX = /^#{1,6}\s*\d{1,2}\s*$/;
+// 常见 OCR 错字/符号修正（task #16：错别字 + 省略号）
+// 象→像：仅在作「像/如同」义（后接量词/比喻）时改，不碰 想象/现象/象征/大象/象牙/气象
+function normalizeOcr(s: string): string {
+    let out = s
+        // 省略号归一：··· / ... / 。。。 → ……
+        .replace(/·{2,}|\.{3,}|。{3,}/g, '……');
+    // 象→像：白名单（保留「象牙/想象/现象/象征/大象/…」）之外的「象」=「像(如同)」
+    const KEEP = /意象|象牙|想象|现象|象征|大象|气象|卦象|天象|星象|形象|迹象|象限|象棋|抽象|对象|表象|征象|象形/;
+    out = out.replace(/象/g, (m, offset, str) => {
+        const ctx = str.slice(Math.max(0, offset - 2), offset + 3);
+        return KEEP.test(ctx) ? m : '像';
+    });
+    return out;
+}
+
+// 副标题/标题「干净」判定：含页码、畸形省略号、括号混用、过长、多标题粘连 → 判脏不采用
+function subIsClean(s: string): boolean {
+    if (/[（(]\s*\d+\s*[）)]/.test(s)) return false;              // 含页码
+    if (/···|\.\.(?!\.)/.test(s)) return false;                  // 省略号不规范
+    if ((s.includes('(') && s.includes('）')) || (s.includes('（') && s.includes(')'))) return false; // 半全角括号混
+    if (s.split('／').length > 2) return false;                     // 多标题粘连
+    if (s.length > 20) return false;                                 // 过长=疑似正文
+    return true;
+}
+
 // 只在「与中文相邻」时归一标点（避免误伤英文/数字/URL）
 function normalizePunct(line: string): string {
     return line
@@ -199,10 +225,12 @@ function processBook(bookDirName: string) {
                     const poemInfo = ch.poems[pIdx];
                     currentPoem = {
                         id: `poem-${currentChapterIndex + 1}-${pIdx + 1}`,
-                        title: poemInfo.title,
+                        // 标题优先用干净的 ### 正标题，不用畸形目录条目（task #16）
+                        title: poemTitle,
                         lines: [],
-                        pageNumber: poemInfo.page
-                    };
+                        pageNumber: poemInfo.page,
+                        subtitle: ''
+                    } as any;
                     book.chapters[currentChapterIndex].poems.push(currentPoem);
                 }
             }
@@ -236,6 +264,13 @@ function processBook(bookDirName: string) {
 
         // Skip subtitle lines (start with full-width spaces like "　　　　")
         if (line.match(/^　+/)) {
+            // 副标题：仅在干净时拼进标题（task #16）
+            if (currentPoem) {
+                const sub = line.replace(/^[　\s]+/, '').trim();
+                if (sub && subIsClean(sub)) {
+                    (currentPoem as any).subtitle = sub;
+                }
+            }
             continue;
         }
 
@@ -264,9 +299,17 @@ function processBook(bookDirName: string) {
         }
     }
 
-    // Clean up poem lines
+    // Clean up poem lines + 标题定稿（task #16）
     book.chapters.forEach(c => {
         c.poems.forEach(p => {
+            // 副标题拼入标题（仅当副标题干净）；拼后删除 subtitle 字段（不重复下发）
+            const sub = (p as any).subtitle;
+            if (sub) {
+                p.title = `${p.title}／${sub}`;
+                delete (p as any).subtitle;
+            }
+            // 标题 + 正文做 OCR 错字/省略号归一
+            p.title = normalizeOcr(p.title);
             // Trim trailing empty lines
             while (p.lines.length > 0 && !p.lines[p.lines.length - 1].trim()) {
                 p.lines.pop();
@@ -275,6 +318,7 @@ function processBook(bookDirName: string) {
             while (p.lines.length > 0 && !p.lines[0].trim()) {
                 p.lines.shift();
             }
+            p.lines = p.lines.map(normalizeOcr);
         });
     });
 
