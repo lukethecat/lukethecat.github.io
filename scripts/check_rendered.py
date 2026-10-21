@@ -16,9 +16,9 @@ check_rendered.py — 渲染后网页审计（task #16；补上「看网页最�
     python3 scripts/check_rendered.py --live     # 验线上（建议周度抽查；可 --host 指定域名）
     python3 scripts/check_rendered.py --live --host https://lukethecat.github.io
 
-退出码：0=通过；1=发现缺陷
+退出码：0=通过；1=发现缺陷；3=未检查成（--live 网络失败，不代表通过）
 """
-import glob, re, html as H, sys, os, ssl
+import glob, re, html as H, sys, os, ssl, time
 from collections import Counter
 from urllib.request import urlopen, Request
 from urllib.error import URLError
@@ -48,18 +48,30 @@ def get_pages_local(root):
     return [(os.path.basename(f), open(f, encoding='utf-8').read()) for f in files]
 
 
-def get_pages_live(host):
-    pages = []
-    for b in BOOKS:
-        url = f'{host}/books/{b}'
+def _fetch(url, tries=3):
+    last = None
+    for i in range(tries):
         try:
             req = Request(url, headers={'User-Agent': 'check_rendered/1.0'})
             with urlopen(req, timeout=60, context=_ssl_ctx()) as r:
-                pages.append((f'{b}.html', r.read().decode('utf-8', 'replace')))
-        except (URLError, Exception) as e:
-            print(f'✗ 拉取失败 {url}: {e}')
-            sys.exit(1)
-    return pages
+                return r.read().decode('utf-8', 'replace')
+        except Exception as e:
+            last = e
+            if i < tries - 1:
+                time.sleep(2 * (i + 1))
+    raise last
+
+
+def get_pages_live(host):
+    """返回 (pages, failed)。failed 非空 = 审计不完整（网络问题，非内容问题）。"""
+    pages, failed = [], []
+    for b in BOOKS:
+        url = f'{host}/books/{b}'
+        try:
+            pages.append((f'{b}.html', _fetch(url)))
+        except Exception as e:
+            failed.append((url, str(e)))
+    return pages, failed
 
 
 def audit(pages, label):
@@ -112,7 +124,15 @@ def main():
         host = DEFAULT_HOST
         if '--host' in sys.argv:
             host = sys.argv[sys.argv.index('--host') + 1]
-        sys.exit(audit(get_pages_live(host), f'线上渲染审计（{host}）'))
+        pages, failed = get_pages_live(host)
+        code = audit(pages, f'线上渲染审计（{host}）') if pages else 0
+        if failed:
+            print(f'\n⚠️  拉取失败（网络，非内容）—— {len(failed)}/{len(BOOKS)} 个页面未取到，审计不完整：')
+            for u, e in failed:
+                print(f'    ✗ {u}: {e}')
+            # 退出码 3 = 未检查成（不等于发现缺陷，也不等于通过）
+            sys.exit(3 if code == 0 else 1)
+        sys.exit(code)
     sys.exit(audit(get_pages_local(root), '本地构建产物渲染审计（out/）'))
 
 
